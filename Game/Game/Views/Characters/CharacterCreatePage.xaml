@@ -11,6 +11,8 @@
              Title="Create Character">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" IconImageSource="icon_cancel.png" Clicked="Cancel_Clicked"/>
+        <ToolbarItem Text="Save" IconImageSource="icon_save.png" Clicked="Save_Clicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -20,7 +22,60 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Style="{StaticResource OuterBoxStack}" 
+                Spacing="10">
+
+                <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand" HeightRequest="250" WidthRequest="200"/>
+
+                <Button Text="Change Image" WidthRequest="200"/>
+
+                <Grid
+                    WidthRequest="400"
+                    RowSpacing="1"
+                    ColumnSpacing="2"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                        Text="Trainer Name:" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Entry Grid.Row="1" Grid.Column="1"
+                        Text="{Binding Data.Name}" 
+                        Style="{StaticResource EntryStyle}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                        Text="Trainer Level:" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Picker Grid.Row="2" Grid.Column="1" 
+                        x:Name="TrainerLevel"
+                        Title="Select a Level:"/>
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                        Text="Trainer Type:" 
+                        Style="{StaticResource LabelStyle}"/>
+
+                    <Picker Grid.Row="3" Grid.Column="1" 
+                        x:Name="TrainerType"
+                        Title="Select a Type:">
+                        <Picker.ItemsSource>                        <!--Need to add data binding-->
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Pet Lover</x:String>
+                                <x:String>Dojo Master</x:String>
+                                <x:String>Quick Attack</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
