@@ -27,7 +27,7 @@
                     Margin="5,0,5,0"
                     RowHeight="80"
                     >
-                
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -53,26 +53,48 @@
 
                                 <StackLayout Grid.Column="1" Grid.Row="1"
                                     Orientation="Horizontal">
-                                    
+
                                     <Label 
                                        Text="{Binding Attribute}" 
                                        Style="{StaticResource ListStyle}"/>
 
                                     <Label Text="{Binding Value}" 
                                         Style="{StaticResource ListStyle}"/>
-                                
+
                                 </StackLayout>
 
                                 <Label Grid.Column="1" Grid.Row="2"
                                        Text="{Binding Description}" 
                                        Style="{StaticResource ListStyle}"
                                        FontSize="Micro"/>
-
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <StackLayout Orientation="Horizontal" Padding="20,5,0,5">
+                <Label Text="Trainer Name:"/>
+                <Label Text="XXX"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="20,5,0,5">
+                <Label Text="Trainer Level:"/>
+                <Label Text="XXX"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="20,5,0,5">
+                <Label Text="Trainer Type:"/>
+                <Label Text="XXX"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Padding="20,5,0,5">
+                <Button Text="Create"/>
+                <Button Text="View"/>
+                <Button Text="Edit"/>
+                <Button Text="Delete"/>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
