@@ -46,5 +46,10 @@ namespace Game.Views
         {
 
         }
+
+        private void ChangeImage_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

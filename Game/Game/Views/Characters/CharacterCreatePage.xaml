@@ -28,7 +28,7 @@
 
                 <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}" HorizontalOptions="CenterAndExpand" HeightRequest="250" WidthRequest="200"/>
 
-                <Button Text="Change Image" WidthRequest="200"/>
+                <Button Text="Change Image" WidthRequest="200" Clicked="ChangeImage_Clicked"/>
 
                 <Grid
                     WidthRequest="400"
