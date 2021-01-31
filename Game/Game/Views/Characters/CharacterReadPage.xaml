@@ -12,87 +12,173 @@
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked" IconImageSource="icon_delete.png"/>
     </ContentPage.ToolbarItems>
 
-
     <ScrollView>
         <StackLayout Style="{StaticResource OuterBoxStack}"
             Spacing="10">
 
-            <Label Text="Detail Page" Style="{StaticResource HeaderStyle}"/>
+            <Grid
+                HorizontalOptions="CenterAndExpand"
+                Padding="20"
+                RowSpacing="15"
+                ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.Row="0"
+                Source="{Binding Data.ImageURI}"
+                Style="{StaticResource ImageLargeStyle}"/>
 
-            <Image Source="{Binding Data.ImageURI}" Style="{StaticResource ImageLargeStyle}"/>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                   Text="Name : " 
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0"
+                   Text="Trainer Name: " 
                     Style="{StaticResource LabelStyle}"/>
-                <Label 
+                    <Label Grid.Column="1" Grid.Row="0"
                     Text="{Binding Data.Name}" 
                     Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Description : " 
+                    <Label Grid.Column="0" Grid.Row="1"
+                   Text="Trainer Level: " 
                     Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Description}" 
+                    <Label Grid.Column="1" Grid.Row="1"
+                    Text="{Binding Data.Name}" 
                     Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Location : " 
+                    <Label Grid.Column="0" Grid.Row="2"
+                   Text="Trainer Type: " 
                     Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Location}" 
+                    <Label Grid.Column="1" Grid.Row="2"
+                    Text="{Binding Data.Name}" 
                     Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+                    <Button Grid.ColumnSpan="1" Grid.Row="3"
+                            Text="Pokedex" />
+                </Grid>
+            </Grid>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Attribute : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Attribute}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+            <Grid
+                HorizontalOptions="CenterAndExpand"
+                Padding="20"
+                RowSpacing="10"
+                ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75"></ColumnDefinition>
+                    <ColumnDefinition Width="75"></ColumnDefinition>
+                    <ColumnDefinition Width="75"></ColumnDefinition>
+                    <ColumnDefinition Width="75"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Column="0" Grid.Row="0"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <ImageButton Grid.Column="1" Grid.Row="0"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <ImageButton Grid.Column="2" Grid.Row="0"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <ImageButton Grid.Column="3" Grid.Row="0"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <Label Grid.Column="0" Grid.Row="1"
+                       Text="Head"/>
+                <Label Grid.Column="1" Grid.Row="1"
+                       Text="Necklace"/>
+                <Label Grid.Column="2" Grid.Row="1"
+                       Text="Feet"/>
+                <Label Grid.Column="3" Grid.Row="1"
+                       Text="Unique"/>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Range : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Range}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+                <ImageButton Grid.Column="0" Grid.Row="2"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <ImageButton Grid.Column="1" Grid.Row="2"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <ImageButton Grid.Column="2" Grid.Row="2"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <ImageButton Grid.Column="3" Grid.Row="2"
+                Source="perfume.png"
+                Style="{StaticResource ImageLargeStyle}"/>
+                <Label Grid.Column="0" Grid.Row="3"
+                       Text="Left Finger"/>
+                <Label Grid.Column="1" Grid.Row="3"
+                       Text="Right Finger"/>
+                <Label Grid.Column="2" Grid.Row="3"
+                       Text="Primary Hand"/>
+                <Label Grid.Column="3" Grid.Row="3"
+                       Text="Off Hand"/>
+            </Grid>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Range : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Range}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
+            <Grid
+                HorizontalOptions="CenterAndExpand"
+                Padding="20"
+                ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <BoxView Color="DimGray" Grid.ColumnSpan="2" Grid.Row="0"/>
+                <BoxView Color="LightGreen" Grid.ColumnSpan="2" Grid.Row="1"/>
+                <BoxView Color="Green" Grid.ColumnSpan="2" Grid.Row="2"/>
+                <BoxView Color="LightGreen" Grid.ColumnSpan="2" Grid.Row="3"/>
+                <BoxView Color="Green" Grid.ColumnSpan="2" Grid.Row="4"/>
+                <BoxView Color="LightGreen" Grid.ColumnSpan="2" Grid.Row="5"/>
+                <BoxView Color="Green" Grid.ColumnSpan="2" Grid.Row="6"/>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Value : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Value}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
-            <StackLayout Style="{StaticResource HorizontalStack}">
-                <Label 
-                    Text="Damage : " 
-                    Style="{StaticResource LabelStyle}"/>
-                <Label 
-                    Text="{Binding Data.Damage}" 
-                    Style="{StaticResource ValueStyle}"/>
-            </StackLayout>
-
+                <Label Grid.Row="0" Grid.Column="0"
+                       Text="Attribues" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                <Label Grid.Row="0" Grid.Column="1"
+                       Text="Values" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                <Label Grid.Row="1" Grid.Column="0"
+                       Text="Current Health"/>
+                <Label Grid.Row="1" Grid.Column="1"
+                       Text="XXXX"/>
+                <Label Grid.Row="2" Grid.Column="0"
+                       Text="Max Health"/>
+                <Label Grid.Row="2" Grid.Column="1"
+                       Text="XXXX"/>
+                <Label Grid.Row="3" Grid.Column="0"
+                       Text="Attack"/>
+                <Label Grid.Row="3" Grid.Column="1"
+                       Text="XXXX"/>
+                <Label Grid.Row="4" Grid.Column="0"
+                       Text="Defense"/>
+                <Label Grid.Row="4" Grid.Column="1"
+                       Text="XXXX"/>
+                <Label Grid.Row="5" Grid.Column="0"
+                       Text="Speed"/>
+                <Label Grid.Row="5" Grid.Column="1"
+                       Text="XXXX"/>
+                <Label Grid.Row="6" Grid.Column="0"
+                       Text="Total Attack"/>
+                <Label Grid.Row="6" Grid.Column="1"
+                       Text="XXXX"/>
+            </Grid>
         </StackLayout>
     </ScrollView>
 </ContentPage>
