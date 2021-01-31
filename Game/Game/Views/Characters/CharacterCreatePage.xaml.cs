@@ -36,5 +36,15 @@ namespace Game.Views
             this.ViewModel.Title = "Create";
 
         }
+
+        private void Cancel_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Save_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
