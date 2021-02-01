@@ -16,7 +16,7 @@ namespace Game.Views
     public partial class CharacterUpdatePage : ContentPage
     {
         // View Model for Item
-        public readonly GenericViewModel<ItemModel> ViewModel;
+        public readonly GenericViewModel<CharacterModel> ViewModel;
 
         // Empty Constructor for Tests
         public CharacterUpdatePage(bool UnitTest){ }
@@ -24,7 +24,7 @@ namespace Game.Views
         /// <summary>
         /// Constructor that takes and existing data item
         /// </summary>
-        public CharacterUpdatePage(GenericViewModel<ItemModel> data)
+        public CharacterUpdatePage(GenericViewModel<CharacterModel> data)
         {
             InitializeComponent();
 
