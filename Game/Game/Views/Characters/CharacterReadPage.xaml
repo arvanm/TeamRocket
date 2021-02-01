@@ -20,7 +20,7 @@
                 HorizontalOptions="CenterAndExpand"
                 Padding="20"
                 RowSpacing="15"
-                ColumnSpacing="5">
+                ColumnSpacing="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -28,9 +28,10 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Grid.Row="0"
-                Source="{Binding Data.ImageURI}"
-                Style="{StaticResource ImageLargeStyle}"/>
+
+                <Image Grid.Row="0" Grid.Column="0" 
+                    Source="{Binding Data.ImageURI}"
+                    Style="{StaticResource ImageLargeStyle}"/>
 
                 <Grid Grid.Row="0" Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -40,8 +41,8 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     
                     <Label Grid.Column="0" Grid.Row="0"
