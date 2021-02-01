@@ -52,19 +52,30 @@
                             <ColumnDefinition Width="150"></ColumnDefinition>
                             <ColumnDefinition Width="200"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        
                         <Label Grid.Column="0" Grid.Row="0"
                             Text="Trainer Name: " 
                             Style="{StaticResource LabelStyle}"/>
-                        <Entry Grid.Column="1" Grid.Row="0" Placeholder="Name" />
+                        
+                        <Entry Grid.Column="1" Grid.Row="0"
+                            Text="{Binding Data.Name}" 
+                            Style="{StaticResource EntryStyle}"/>
+                        
                         <Label Grid.Column="0" Grid.Row="1"
                             Text="Trainer Level: " 
                             Style="{StaticResource LabelStyle}"/>
-                        <Picker Grid.Column="1" Grid.Row="1" Title="Select a Level" FontSize="Small" />
+                        
+                        <Picker Grid.Column="1" Grid.Row="1" 
+                                Title="Select a Level" 
+                                FontSize="Small" />
+                        
                         <Label Grid.Column="0" Grid.Row="2"
                             Text="Trainer Type: " 
                             Style="{StaticResource LabelStyle}"/>
+                        
                         <Picker Grid.Column="1" Grid.Row="2"
                                 Title="Select a Type"/>
+                        
                         <Button Grid.ColumnSpan="1" Grid.Row="3"
                             Text="Pokedex" />
                     </Grid>
