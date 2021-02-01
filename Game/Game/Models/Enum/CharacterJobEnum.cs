@@ -9,11 +9,14 @@
         // Not specified
         Unknown = 0,    
 
-        // Fighters hit hard and have fight abilities
-        Fighter = 10,
+        // Trainer with additional chance to capture the Pokemon
+        PetLover = 10,
 
-        // Clerics defend well and have buff abilities
-        Cleric = 12,
+        // Trainer with special ability with Pokedex 
+        DojoMaster = 12,
+
+        // Trainer with 50% chance to do double damage
+        QuickAttacker = 14
 
     }
 
@@ -34,12 +37,16 @@
 
             switch (value)
             {
-                case CharacterJobEnum.Fighter:
-                    Message = "Fighter";
+                case CharacterJobEnum.PetLover:
+                    Message = "Pet Lover";
                     break;
 
-                case CharacterJobEnum.Cleric:
-                    Message = "Cleric";
+                case CharacterJobEnum.DojoMaster:
+                    Message = "Dojo Master";
+                    break;
+
+                case CharacterJobEnum.QuickAttacker:
+                    Message = "Quick Attacker";
                     break;
 
                 case CharacterJobEnum.Unknown:
