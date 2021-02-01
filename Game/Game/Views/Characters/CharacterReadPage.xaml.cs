@@ -32,6 +32,8 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
+            
+            this.ViewModel.Title = "Character Read";
         }
 
         /// <summary>
