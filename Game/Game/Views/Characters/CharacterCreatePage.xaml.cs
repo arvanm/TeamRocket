@@ -33,7 +33,7 @@ namespace Game.Views
 
             BindingContext = this.ViewModel;
 
-            this.ViewModel.Title = "Create";
+            this.ViewModel.Title = "Character Create";
 
         }
 
