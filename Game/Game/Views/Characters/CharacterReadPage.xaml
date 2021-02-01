@@ -37,31 +37,46 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"></ColumnDefinition>
                         <ColumnDefinition Width="100"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+                    
                     <Label Grid.Column="0" Grid.Row="0"
-                   Text="Trainer Name: " 
-                    Style="{StaticResource LabelStyle}"/>
+                        Text="Trainer Name: " 
+                        Style="{StaticResource LabelStyle}"/>
+                    
                     <Label Grid.Column="1" Grid.Row="0"
-                    Text="{Binding Data.Name}" 
-                    Style="{StaticResource ValueStyle}"/>
+                        Text="{Binding Data.Name}" 
+                        Style="{StaticResource ValueStyle}"/>
+
                     <Label Grid.Column="0" Grid.Row="1"
-                   Text="Trainer Level: " 
-                    Style="{StaticResource LabelStyle}"/>
+                        Text="Trainer Description: " 
+                        Style="{StaticResource LabelStyle}"/>
+
                     <Label Grid.Column="1" Grid.Row="1"
-                    Text="{Binding Data.Name}" 
-                    Style="{StaticResource ValueStyle}"/>
+                        Text="{Binding Data.Description}" 
+                        Style="{StaticResource ValueStyle}"/>
+                    
                     <Label Grid.Column="0" Grid.Row="2"
-                   Text="Trainer Type: " 
-                    Style="{StaticResource LabelStyle}"/>
+                        Text="Trainer Level: " 
+                        Style="{StaticResource LabelStyle}"/>
+                    
                     <Label Grid.Column="1" Grid.Row="2"
-                    Text="{Binding Data.Name}" 
-                    Style="{StaticResource ValueStyle}"/>
-                    <Button Grid.ColumnSpan="1" Grid.Row="3"
-                            Text="Pokedex" />
+                        Text="{Binding Data.Name}" 
+                        Style="{StaticResource ValueStyle}"/>
+                    
+                    <Label Grid.Column="0" Grid.Row="3"
+                        Text="Trainer Type: " 
+                        Style="{StaticResource LabelStyle}"/>
+                    
+                    <Label Grid.Column="1" Grid.Row="3"
+                        Text="{Binding Data.Name}" 
+                        Style="{StaticResource ValueStyle}"/>
+                    
+                    <Button Grid.ColumnSpan="1" Grid.Row="4" Text="Pokedex" />
                 </Grid>
             </Grid>
 
