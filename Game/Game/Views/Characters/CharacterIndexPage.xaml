@@ -88,13 +88,6 @@
                 <Label Text="XXX"/>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Padding="20,5,0,5">
-                <Button Text="Create"/>
-                <Button Text="View"/>
-                <Button Text="Edit"/>
-                <Button Text="Delete"/>
-            </StackLayout>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
