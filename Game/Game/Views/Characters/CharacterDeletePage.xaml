@@ -90,64 +90,94 @@
                 </Grid>
             </Grid>
 
-            <Grid
-                HorizontalOptions="CenterAndExpand"
-                Padding="20"
-                RowSpacing="10"
-                ColumnSpacing="5">
+            <Grid HorizontalOptions="CenterAndExpand"
+                  Padding="20"
+                  RowSpacing="5"
+                  ColumnSpacing="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="75" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="75" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="75"></ColumnDefinition>
-                    <ColumnDefinition Width="75"></ColumnDefinition>
-                    <ColumnDefinition Width="75"></ColumnDefinition>
-                    <ColumnDefinition Width="75"></ColumnDefinition>
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="75" />
                 </Grid.ColumnDefinitions>
-                <ImageButton Grid.Column="0" Grid.Row="0"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <ImageButton Grid.Column="1" Grid.Row="0"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <ImageButton Grid.Column="2" Grid.Row="0"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <ImageButton Grid.Column="3" Grid.Row="0"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <Label Grid.Column="0" Grid.Row="1"
-                       Text="Head"/>
-                <Label Grid.Column="1" Grid.Row="1"
-                       Text="Necklace"/>
-                <Label Grid.Column="2" Grid.Row="1"
-                       Text="Feet"/>
-                <Label Grid.Column="3" Grid.Row="1"
-                       Text="Unique"/>
 
-                <ImageButton Grid.Column="0" Grid.Row="2"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <ImageButton Grid.Column="1" Grid.Row="2"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <ImageButton Grid.Column="2" Grid.Row="2"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <ImageButton Grid.Column="3" Grid.Row="2"
-                Source="perfume.png"
-                Style="{StaticResource ImageLargeStyle}"/>
-                <Label Grid.Column="0" Grid.Row="3"
-                       Text="Left Finger"/>
-                <Label Grid.Column="1" Grid.Row="3"
-                       Text="Right Finger"/>
-                <Label Grid.Column="2" Grid.Row="3"
-                       Text="Primary Hand"/>
-                <Label Grid.Column="3" Grid.Row="3"
-                       Text="Off Hand"/>
+                <ImageButton Grid.Column="0"
+                             Grid.Row="0"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="0"
+                       Grid.Row="1"
+                       Text="Head"
+                       HorizontalTextAlignment="Center" />
+
+                <ImageButton Grid.Column="1"
+                             Grid.Row="0"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="1"
+                       Grid.Row="1"
+                       Text="Necklace"
+                       HorizontalTextAlignment="Center" />
+
+                <ImageButton Grid.Column="2"
+                             Grid.Row="0"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="2"
+                       Grid.Row="1"
+                       Text="Feet"
+                       HorizontalTextAlignment="Center" />
+
+                <ImageButton Grid.Column="3"
+                             Grid.Row="0"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="3"
+                       Grid.Row="1"
+                       Text="Unique"
+                       HorizontalTextAlignment="Center" />
+
+                <ImageButton Grid.Column="0"
+                             Grid.Row="2"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="0"
+                       Grid.Row="3"
+                       Text="Left Finger"
+                       HorizontalTextAlignment="Center" />
+
+                <ImageButton Grid.Column="1"
+                             Grid.Row="2"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="1"
+                       Grid.Row="3"
+                       Text="Right Finger"
+                       HorizontalTextAlignment="Center" />
+
+                <ImageButton Grid.Column="2"
+                             Grid.Row="2"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="2"
+                       Grid.Row="3"
+                       Text="Primary Hand"
+                       HorizontalTextAlignment="Center" />
+
+                <ImageButton Grid.Column="3"
+                             Grid.Row="2"
+                             Source="item.png"
+                             Style="{StaticResource ImageLargeStyle}" />
+                <Label Grid.Column="3"
+                       Grid.Row="3"
+                       Text="Off Hand"
+                       HorizontalTextAlignment="Center" />
             </Grid>
 
             <Grid
