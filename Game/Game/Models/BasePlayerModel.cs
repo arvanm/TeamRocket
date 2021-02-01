@@ -185,18 +185,18 @@ namespace Game.Models
             {
                 var result = 0;
 
-                switch (Job)
-                {
-                    case CharacterJobEnum.Cleric:
-                        result = -1;
-                        break;
-                    case CharacterJobEnum.Fighter:
-                        result = +2;
-                        break;
-                    case CharacterJobEnum.Unknown:
-                    default:
-                        break;
-                }
+                //switch (Job)
+                //{
+                //    case CharacterJobEnum.Cleric:
+                //        result = -1;
+                //        break;
+                //    case CharacterJobEnum.Fighter:
+                //        result = +2;
+                //        break;
+                //    case CharacterJobEnum.Unknown:
+                //    default:
+                //        break;
+                //}
                 return result;
             }
         }
@@ -228,18 +228,18 @@ namespace Game.Models
             {
                 var result = 0;
 
-                switch (Job)
-                {
-                    case CharacterJobEnum.Cleric:
-                        result = +2;
-                        break;
-                    case CharacterJobEnum.Fighter:
-                        result = -1;
-                        break;
-                    case CharacterJobEnum.Unknown:
-                    default:
-                        break;
-                }
+                //switch (Job)
+                //{
+                //    case CharacterJobEnum.Cleric:
+                //        result = +2;
+                //        break;
+                //    case CharacterJobEnum.Fighter:
+                //        result = -1;
+                //        break;
+                //    case CharacterJobEnum.Unknown:
+                //    default:
+                //        break;
+                //}
                 return result;
             }
         }
@@ -268,18 +268,18 @@ namespace Game.Models
             {
                 var result = 0;
 
-                switch (Job)
-                {
-                    case CharacterJobEnum.Cleric:
-                        result = 0;
-                        break;
-                    case CharacterJobEnum.Fighter:
-                        result = +1;
-                        break;
-                    case CharacterJobEnum.Unknown:
-                    default:
-                        break;
-                }
+                //switch (Job)
+                //{
+                //    case CharacterJobEnum.Cleric:
+                //        result = 0;
+                //        break;
+                //    case CharacterJobEnum.Fighter:
+                //        result = +1;
+                //        break;
+                //    case CharacterJobEnum.Unknown:
+                //    default:
+                //        break;
+                //}
                 return result;
             }
         }

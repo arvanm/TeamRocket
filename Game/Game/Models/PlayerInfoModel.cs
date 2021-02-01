@@ -112,7 +112,7 @@ namespace Game.Models
             // TODO: Mike, Refactor this, so it is in a helper, and call it on level up as well.
             switch (Job)
             {
-                case CharacterJobEnum.Cleric:
+                case CharacterJobEnum.PetLover:
 
                     foreach (var item in AbilityEnumHelper.GetListCleric)
                     {
@@ -120,7 +120,14 @@ namespace Game.Models
                     }
                     break;
 
-                case CharacterJobEnum.Fighter:
+                case CharacterJobEnum.DojoMaster:
+                    foreach (var item in AbilityEnumHelper.GetListFighter)
+                    {
+                        AbilityTracker.Add(AbilityEnumHelper.ConvertStringToEnum(item), Level);
+                    }
+                    break;
+
+                case CharacterJobEnum.QuickAttacker:
                     foreach (var item in AbilityEnumHelper.GetListFighter)
                     {
                         AbilityTracker.Add(AbilityEnumHelper.ConvertStringToEnum(item), Level);
