@@ -60,9 +60,9 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void AddItem_Clicked(object sender, EventArgs e)
+        public async void AddCharacter_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemCreatePage()));
+            await Navigation.PushModalAsync(new NavigationPage(new CharacterCreatePage()));
         }
 
         /// <summary>
