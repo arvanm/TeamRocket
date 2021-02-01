@@ -1,4 +1,5 @@
 ﻿using Game.GameRules;
+using System.Collections;
 
 namespace Game.Models
 {
@@ -9,6 +10,9 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : BasePlayerModel<CharacterModel>
     {
+        // List of Pokedex that stores captured Pokemons (Monsters)
+        public ArrayList Pokedex { get; set; }
+
         /// <summary>
         /// Default character
         /// 
@@ -18,15 +22,18 @@ namespace Game.Models
         {
             PlayerType = PlayerTypeEnum.Character;
             Guid = Id;
-            Name = "Elf";
-            Description = "Happy Elf";
+            Name = "Beginner";
+            Description = "Just became a Pokemon trainer";
             Level = 1;
             ImageURI = "item.png";
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
 
             // Default to unknown, which is no special job
-            Job = CharacterJobEnum.Unknown; 
+            Job = CharacterJobEnum.Unknown;
+
+            // Initial an empty Pokedex
+            Pokedex = new ArrayList();
         }
 
         /// <summary>
@@ -79,6 +86,9 @@ namespace Game.Models
 
             // Update the Job
             Job = newData.Job;
+
+            // Update the Pokedex
+            Pokedex = newData.Pokedex;
 
             return true;
         }
