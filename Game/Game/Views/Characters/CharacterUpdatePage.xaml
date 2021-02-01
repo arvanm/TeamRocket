@@ -29,7 +29,7 @@
                 HorizontalOptions="CenterAndExpand"
                 Padding="20"
                 RowSpacing="15"
-                ColumnSpacing="5">
+                ColumnSpacing="15">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -37,46 +37,62 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                          Grid.Row="0">
                     <Image Grid.Column="0" Grid.Row="0"
                 Source="{Binding Data.ImageURI}"
                 Style="{StaticResource ImageLargeStyle}"/>
                     <Button Grid.Column="0" Grid.Row="1" Text="Change Image"/>
+                    </Grid>
+
+
 
                     <Grid Grid.Row="0" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"></ColumnDefinition>
-                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
                         
                         <Label Grid.Column="0" Grid.Row="0"
-                            Text="Trainer Name: " 
+                            Text="Name: " 
                             Style="{StaticResource LabelStyle}"/>
                         
                         <Entry Grid.Column="1" Grid.Row="0"
                             Text="{Binding Data.Name}" 
                             Style="{StaticResource EntryStyle}"/>
-                        
-                        <Label Grid.Column="0" Grid.Row="1"
-                            Text="Trainer Level: " 
-                            Style="{StaticResource LabelStyle}"/>
-                        
-                        <Picker Grid.Column="1" Grid.Row="1" 
-                                Title="Select a Level" 
-                                FontSize="Small" />
-                        
+
+                        <Label Grid.Column="0"
+                               Grid.Row="1"
+                               Text="Description: "
+                               Style="{StaticResource LabelStyle}" />
+
+                        <Entry Grid.Column="1"
+                               Grid.Row="1"
+                               Text="{Binding Data.Description}"
+                               Style="{StaticResource EntryStyle}" />
+
                         <Label Grid.Column="0" Grid.Row="2"
-                            Text="Trainer Type: " 
+                            Text="Level: " 
                             Style="{StaticResource LabelStyle}"/>
                         
                         <Picker Grid.Column="1" Grid.Row="2"
-                                Title="Select a Type"/>
+                                FontSize="Small"/>
                         
-                        <Button Grid.ColumnSpan="1" Grid.Row="3"
+                        <Label Grid.Column="0" Grid.Row="3"
+                            Text="Type: " 
+                            Style="{StaticResource LabelStyle}"/>
+                        
+                        <Picker Grid.Column="1" Grid.Row="3"
+                                FontSize="Small"/>
+                        
+                        <Button Grid.ColumnSpan="1" Grid.Row="4"
                             Text="Pokedex" />
                     </Grid>
                 </Grid>
