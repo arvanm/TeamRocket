@@ -10,26 +10,29 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" IconImageSource="icon_cancel.png"/>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" IconImageSource="icon_save.png"/>
+        <ToolbarItem Text="Cancel"
+                     Clicked="Cancel_Clicked"
+                     IconImageSource="icon_cancel.png" />
+        <ToolbarItem Text="Save"
+                     Clicked="Save_Clicked"
+                     IconImageSource="icon_save.png" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:StringEnumConverter x:Key="StringEnum"/>
+            <local_helpers:StringEnumConverter x:Key="StringEnum" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource OuterBoxStack}"
-                Spacing="10">
+                         Spacing="10">
 
-                <Grid
-                HorizontalOptions="CenterAndExpand"
-                Padding="20"
-                RowSpacing="15"
-                ColumnSpacing="15">
+                <Grid HorizontalOptions="CenterAndExpand"
+                      Padding="20"
+                      RowSpacing="15"
+                      ColumnSpacing="15">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -40,15 +43,17 @@
 
                     <Grid Grid.Column="0"
                           Grid.Row="0">
-                    <Image Grid.Column="0" Grid.Row="0"
-                Source="{Binding Data.ImageURI}"
-                Style="{StaticResource ImageLargeStyle}"/>
-                    <Button Grid.Column="0" Grid.Row="1" Text="Change Image"/>
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Source="{Binding Data.ImageURI}"
+                               Style="{StaticResource ImageLargeStyle}" />
+                        <Button Grid.Column="0"
+                                Grid.Row="1"
+                                Text="Change Image" />
                     </Grid>
 
-
-
-                    <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid Grid.Row="0"
+                          Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -59,14 +64,16 @@
                             <ColumnDefinition Width="90" />
                             <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
-                        
-                        <Label Grid.Column="0" Grid.Row="0"
-                            Text="Name: " 
-                            Style="{StaticResource LabelStyle}"/>
-                        
-                        <Entry Grid.Column="1" Grid.Row="0"
-                            Text="{Binding Data.Name}" 
-                            Style="{StaticResource EntryStyle}"/>
+
+                        <Label Grid.Column="0"
+                               Grid.Row="0"
+                               Text="Name: "
+                               Style="{StaticResource LabelStyle}" />
+
+                        <Entry Grid.Column="1"
+                               Grid.Row="0"
+                               Text="{Binding Data.Name}"
+                               Style="{StaticResource EntryStyle}" />
 
                         <Label Grid.Column="0"
                                Grid.Row="1"
@@ -78,22 +85,27 @@
                                Text="{Binding Data.Description}"
                                Style="{StaticResource EntryStyle}" />
 
-                        <Label Grid.Column="0" Grid.Row="2"
-                            Text="Level: " 
-                            Style="{StaticResource LabelStyle}"/>
-                        
-                        <Picker Grid.Column="1" Grid.Row="2"
-                                FontSize="Small"/>
-                        
-                        <Label Grid.Column="0" Grid.Row="3"
-                            Text="Type: " 
-                            Style="{StaticResource LabelStyle}"/>
-                        
-                        <Picker Grid.Column="1" Grid.Row="3"
-                                FontSize="Small"/>
-                        
-                        <Button Grid.ColumnSpan="1" Grid.Row="4"
-                            Text="Pokedex" />
+                        <Label Grid.Column="0"
+                               Grid.Row="2"
+                               Text="Level: "
+                               Style="{StaticResource LabelStyle}" />
+
+                        <Picker Grid.Column="1"
+                                Grid.Row="2"
+                                FontSize="Small" />
+
+                        <Label Grid.Column="0"
+                               Grid.Row="3"
+                               Text="Type: "
+                               Style="{StaticResource LabelStyle}" />
+
+                        <Picker Grid.Column="1"
+                                Grid.Row="3"
+                                FontSize="Small" />
+
+                        <Button Grid.ColumnSpan="1"
+                                Grid.Row="4"
+                                Text="Pokedex" />
                     </Grid>
                 </Grid>
 
@@ -187,66 +199,97 @@
                            HorizontalTextAlignment="Center" />
                 </Grid>
 
-                <Grid
-                HorizontalOptions="CenterAndExpand"
-                Padding="20"
-                ColumnSpacing="5">
+                <Grid HorizontalOptions="CenterAndExpand"
+                      Padding="20"
+                      ColumnSpacing="5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="100" />
                     </Grid.ColumnDefinitions>
 
-                    <BoxView Color="DimGray" Grid.ColumnSpan="2" Grid.Row="0"/>
-                    <BoxView Color="LightGreen" Grid.ColumnSpan="2" Grid.Row="1"/>
-                    <BoxView Color="Green" Grid.ColumnSpan="2" Grid.Row="2"/>
-                    <BoxView Color="LightGreen" Grid.ColumnSpan="2" Grid.Row="3"/>
-                    <BoxView Color="Green" Grid.ColumnSpan="2" Grid.Row="4"/>
-                    <BoxView Color="LightGreen" Grid.ColumnSpan="2" Grid.Row="5"/>
-                    <BoxView Color="Green" Grid.ColumnSpan="2" Grid.Row="6"/>
+                    <BoxView Color="DimGray"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="0" />
+                    <BoxView Color="LightGreen"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="1" />
+                    <BoxView Color="Green"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="2" />
+                    <BoxView Color="LightGreen"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="3" />
+                    <BoxView Color="Green"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="4" />
+                    <BoxView Color="LightGreen"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="5" />
+                    <BoxView Color="Green"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="6" />
 
-                    <Label Grid.Row="0" Grid.Column="0"
-                       Text="Attribues" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
-                    <Label Grid.Row="0" Grid.Column="1"
-                       Text="Values" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Attribues"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Text="Values"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
 
-                    <Label Grid.Row="1" Grid.Column="0"
-                       Text="Current Health"/>
-                    <Label Grid.Row="1" Grid.Column="1"
-                       Text="XXXX"/>
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Current Health" />
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="XXXX" />
 
-                    <Label Grid.Row="2" Grid.Column="0"
-                       Text="Max Health"/>
-                    <Label Grid.Row="2" Grid.Column="1"
-                       Text="XXXX"/>
+                    <Label Grid.Row="2"
+                           Grid.Column="0"
+                           Text="Max Health" />
+                    <Label Grid.Row="2"
+                           Grid.Column="1"
+                           Text="XXXX" />
 
-                    <Label Grid.Row="3" Grid.Column="0"
-                       Text="Attack"/>
-                    <Label Grid.Row="3" Grid.Column="1"
-                       Text="XXXX"/>
+                    <Label Grid.Row="3"
+                           Grid.Column="0"
+                           Text="Attack" />
+                    <Label Grid.Row="3"
+                           Grid.Column="1"
+                           Text="XXXX" />
 
-                    <Label Grid.Row="4" Grid.Column="0"
-                       Text="Defense"/>
-                    <Label Grid.Row="4" Grid.Column="1"
-                       Text="XXXX"/>
+                    <Label Grid.Row="4"
+                           Grid.Column="0"
+                           Text="Defense" />
+                    <Label Grid.Row="4"
+                           Grid.Column="1"
+                           Text="XXXX" />
 
-                    <Label Grid.Row="5" Grid.Column="0"
-                       Text="Speed"/>
-                    <Label Grid.Row="5" Grid.Column="1"
-                       Text="XXXX"/>
+                    <Label Grid.Row="5"
+                           Grid.Column="0"
+                           Text="Speed" />
+                    <Label Grid.Row="5"
+                           Grid.Column="1"
+                           Text="XXXX" />
 
-                    <Label Grid.Row="6" Grid.Column="0"
-                       Text="Total Attack"/>
-                    <Label Grid.Row="6" Grid.Column="1"
-                       Text="XXXX"/>
+                    <Label Grid.Row="6"
+                           Grid.Column="0"
+                           Text="Total Attack" />
+                    <Label Grid.Row="6"
+                           Grid.Column="1"
+                           Text="XXXX" />
                 </Grid>
             </StackLayout>
         </ScrollView>
