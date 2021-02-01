@@ -45,7 +45,7 @@
                     </Grid.ColumnDefinitions>
                     
                     <Label Grid.Column="0" Grid.Row="0"
-                        Text="Trainer Name: " 
+                        Text="Name: " 
                         Style="{StaticResource LabelStyle}"/>
                     
                     <Label Grid.Column="1" Grid.Row="0"
@@ -53,7 +53,7 @@
                         Style="{StaticResource ValueStyle}"/>
 
                     <Label Grid.Column="0" Grid.Row="1"
-                        Text="Trainer Description: " 
+                        Text="Description: " 
                         Style="{StaticResource LabelStyle}"/>
 
                     <Label Grid.Column="1" Grid.Row="1"
@@ -61,7 +61,7 @@
                         Style="{StaticResource ValueStyle}"/>
                     
                     <Label Grid.Column="0" Grid.Row="2"
-                        Text="Trainer Level: " 
+                        Text="Level: " 
                         Style="{StaticResource LabelStyle}"/>
                     
                     <Label Grid.Column="1" Grid.Row="2"
@@ -69,7 +69,7 @@
                         Style="{StaticResource ValueStyle}"/>
                     
                     <Label Grid.Column="0" Grid.Row="3"
-                        Text="Trainer Type: " 
+                        Text="Type: " 
                         Style="{StaticResource LabelStyle}"/>
                     
                     <Label Grid.Column="1" Grid.Row="3"
