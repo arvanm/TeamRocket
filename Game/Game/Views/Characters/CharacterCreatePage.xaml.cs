@@ -37,9 +37,9 @@ namespace Game.Views
 
         }
 
-        private void Cancel_Clicked(object sender, EventArgs e)
+        private async void Cancel_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PopModalAsync();
         }
 
         private void Save_Clicked(object sender, EventArgs e)
