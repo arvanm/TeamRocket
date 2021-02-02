@@ -85,7 +85,7 @@
 
                     <Label Grid.Column="1"
                            Grid.Row="3"
-                           Text="{Binding Data.Name}"
+                           Text="{Binding Data.Job}"
                            Style="{StaticResource ValueStyle}" />
 
                     <Button Grid.ColumnSpan="1"
