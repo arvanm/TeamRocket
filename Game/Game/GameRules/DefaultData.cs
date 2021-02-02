@@ -138,8 +138,8 @@ namespace Game.GameRules
         var datalist = new List<CharacterModel>()
             {
                 new CharacterModel {
-                    Name = "C1",
-                    Description = "C1",
+                    Name = "Jessie",
+                    Description = "The first Team Rocket member",
                     Level = 1,
                     MaxHealth = 5,
                     ImageURI = "item.png",
@@ -153,8 +153,8 @@ namespace Game.GameRules
                 },
 
                 new CharacterModel {
-                    Name = "C2",
-                    Description = "C2",
+                    Name = "Giovanni",
+                    Description = "An exper in ground-type Pokémon",
                     Level = 1,
                     MaxHealth = 5,
                     ImageURI = "item.png",
@@ -168,8 +168,8 @@ namespace Game.GameRules
                 },
 
                 new CharacterModel {
-                    Name = "C3",
-                    Description = "C3",
+                    Name = "Gideon",
+                    Description = "Head team rocket scientist",
                     Level = 1,
                     MaxHealth = 5,
                     ImageURI = "item.png",
@@ -183,8 +183,8 @@ namespace Game.GameRules
                 },
 
                 new CharacterModel {
-                    Name = "C4",
-                    Description = "C4",
+                    Name = "Archer",
+                    Description = "Team rocket admin",
                     Level = 1,
                     MaxHealth = 5,
                     ImageURI = "item.png",
@@ -198,8 +198,8 @@ namespace Game.GameRules
                 },
 
                 new CharacterModel {
-                    Name = "C5",
-                    Description = "C5",
+                    Name = "Proton",
+                    Description = "Most ruthless of the trainer",
                     Level = 1,
                     MaxHealth = 5,
                     ImageURI = "item.png",
@@ -213,8 +213,8 @@ namespace Game.GameRules
                 },
 
                 new CharacterModel {
-                    Name = "C6",
-                    Description = "C6",
+                    Name = "Petrel",
+                    Description = "Master of disguise",
                     Level = 1,
                     MaxHealth = 5,
                     ImageURI = "item.png",
@@ -228,8 +228,8 @@ namespace Game.GameRules
                 },
 
                 new CharacterModel {
-                    Name = "C7",
-                    Description = "C6",
+                    Name = "Ariana",
+                    Description = "Interim leader",
                     Level = 1,
                     MaxHealth = 5,
                     ImageURI = "item.png",
