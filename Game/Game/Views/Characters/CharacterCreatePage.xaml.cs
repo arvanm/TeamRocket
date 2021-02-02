@@ -37,11 +37,22 @@ namespace Game.Views
 
         }
 
+        /// <summary>
+        /// Cancel the character creation and close this page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
 
+
+        /// <summary>
+        /// Save the character and close this page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Save_Clicked(object sender, EventArgs e)
         {
             // If the image in the data box is empty, use the default one..
@@ -54,6 +65,11 @@ namespace Game.Views
             await Navigation.PopModalAsync();
         }
 
+        /// <summary>
+        /// Randomly change the image of the character
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChangeImage_Clicked(object sender, EventArgs e)
         {
 
