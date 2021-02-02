@@ -75,7 +75,7 @@
 
                     <Label Grid.Column="1"
                            Grid.Row="2"
-                           Text="{Binding Data.Name}"
+                           Text="{Binding Data.Level}"
                            Style="{StaticResource ValueStyle}" />
 
                     <Label Grid.Column="0"
