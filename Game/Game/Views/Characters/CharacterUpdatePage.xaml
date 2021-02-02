@@ -253,15 +253,13 @@
                            Text="Current Health" />
                     <Entry Grid.Row="1"
                            Grid.Column="1"
-                           Text="{Binding Data.CurrentHealth}"
-                           Style="{StaticResource EntryStyle}" />
+                           Text="{Binding Data.CurrentHealth}" />
                     <Label Grid.Row="2"
                            Grid.Column="0"
                            Text="Max Health" />
                     <Entry Grid.Row="2"
                            Grid.Column="1"
-                           Text="{Binding Data.MaxHealth}"
-                           Style="{StaticResource EntryStyle}" />
+                           Text="{Binding Data.MaxHealth}" />
                     <Label Grid.Row="3"
                            Grid.Column="0"
                            Text="Attack" />
