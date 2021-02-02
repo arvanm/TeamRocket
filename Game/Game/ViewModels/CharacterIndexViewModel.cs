@@ -11,7 +11,7 @@ using Game.GameRules;
 namespace Game.ViewModels
 {
     /// <summary>
-    /// Index View Model
+    /// Character View Model
     /// Manages the list of data records
     /// </summary>
     public class CharacterIndexViewModel : BaseViewModel<CharacterModel>
@@ -66,7 +66,7 @@ namespace Game.ViewModels
             // Register the Update Message
             MessagingCenter.Subscribe<CharacterUpdatePage, CharacterModel>(this, "Update", async (obj, data) =>
             {
-                // Have the item update itself
+                // Have the character update itself
                 data.Update(data);
 
                 await UpdateAsync(data as CharacterModel);
@@ -98,7 +98,7 @@ namespace Game.ViewModels
         #region DataOperations_CRUDi
 
         /// <summary>
-        /// Returns the item passed in
+        /// Returns the character passed in
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -109,9 +109,8 @@ namespace Game.ViewModels
                 return null;
             }
 
-            // This will walk the items and find if there is one that is the same.
-            // If so, it returns the item...
-
+            // This will walk the characters and find if there is one that is the same.
+            // If so, it returns the character...
             var myList = Dataset.Where(a =>
                                         a.Name == data.Name &&
                                         a.Description == data.Description
