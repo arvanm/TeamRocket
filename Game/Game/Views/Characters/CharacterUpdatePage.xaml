@@ -248,48 +248,44 @@
                            Text="Values"
                            FontAttributes="Bold"
                            VerticalOptions="CenterAndExpand" />
-
                     <Label Grid.Row="1"
                            Grid.Column="0"
                            Text="Current Health" />
-                    <Label Grid.Row="1"
+                    <Entry Grid.Row="1"
                            Grid.Column="1"
-                           Text="XXXX" />
-
+                           Text="{Binding Data.CurrentHealth}"
+                           Style="{StaticResource EntryStyle}" />
                     <Label Grid.Row="2"
                            Grid.Column="0"
                            Text="Max Health" />
-                    <Label Grid.Row="2"
+                    <Entry Grid.Row="2"
                            Grid.Column="1"
-                           Text="XXXX" />
-
+                           Text="{Binding Data.MaxHealth}"
+                           Style="{StaticResource EntryStyle}" />
                     <Label Grid.Row="3"
                            Grid.Column="0"
                            Text="Attack" />
                     <Label Grid.Row="3"
                            Grid.Column="1"
-                           Text="XXXX" />
-
+                           Text="{Binding Data.Attack}" />
                     <Label Grid.Row="4"
                            Grid.Column="0"
                            Text="Defense" />
                     <Label Grid.Row="4"
                            Grid.Column="1"
-                           Text="XXXX" />
-
+                           Text="{Binding Data.Defense}" />
                     <Label Grid.Row="5"
                            Grid.Column="0"
                            Text="Speed" />
                     <Label Grid.Row="5"
                            Grid.Column="1"
-                           Text="XXXX" />
-
+                           Text="{Binding Data.Speed}" />
                     <Label Grid.Row="6"
                            Grid.Column="0"
                            Text="Total Attack" />
                     <Label Grid.Row="6"
                            Grid.Column="1"
-                           Text="XXXX" />
+                           Text="{Binding Data.GetAttackTotal}" />
                 </Grid>
             </StackLayout>
         </ScrollView>
