@@ -21,7 +21,7 @@ namespace Game.Views
         public readonly GenericViewModel<CharacterModel> ViewModel;
 
         // Empty Constructor for Tests
-        public CharacterUpdatePage(bool UnitTest){ }
+        public CharacterUpdatePage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor that takes and existing data item
@@ -102,7 +102,7 @@ namespace Game.Views
             await Navigation.PopModalAsync();
         }
 
-        #region Picker
+        #region LevelPicker
         /// <summary>
         /// Load the values for the Level Picker
         /// </summary>
@@ -154,7 +154,7 @@ namespace Game.Views
                 UpdateAttributeValues();
             }
         }
-        #endregion Picker
+        #endregion LevelPicker
 
     }
 }
