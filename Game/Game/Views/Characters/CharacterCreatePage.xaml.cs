@@ -36,7 +36,11 @@ namespace Game.Views
 
             this.ViewModel.Title = "Character Create";
 
+            // Load Level Values for the Level Picker
             LoadLevelPickerValues();
+
+            // Sets the Level Picker to the Character's level
+            LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
         }
 
         /// <summary>
