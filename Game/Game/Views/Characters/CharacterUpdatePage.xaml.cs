@@ -35,6 +35,30 @@ namespace Game.Views
             this.ViewModel.Title = "Character Update";
 
             LoadLevelPickerValues();
+
+            UpdatePageBindingContext();
+        }
+
+        /// <summary>
+        /// Redo the Binding to cause a refresh
+        /// </summary>
+        /// <returns></returns>
+        public bool UpdatePageBindingContext()
+        {
+            // Temp store off the Level
+            var data = this.ViewModel.Data;
+
+            // Clear the Binding and reset it
+            BindingContext = null;
+            this.ViewModel.Data = data;
+            this.ViewModel.Title = data.Name;
+
+            BindingContext = this.ViewModel;
+
+            // This resets the Picker to the Character's level
+            LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+
+            return true;
         }
 
         /// <summary>
