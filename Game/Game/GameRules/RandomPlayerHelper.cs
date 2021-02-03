@@ -196,11 +196,6 @@ namespace Game.GameRules
                 Name = GetCharacterName(),
                 Description = GetCharacterDescription(),
 
-                // Randomize the Attributes
-                Attack = GetAbilityValue(),
-                Speed = GetAbilityValue(),
-                Defense = GetAbilityValue(),
-
                 // Randomize an Item for Location
                 Head = GetItem(ItemLocationEnum.Head),
                 Necklass = GetItem(ItemLocationEnum.Necklass),
