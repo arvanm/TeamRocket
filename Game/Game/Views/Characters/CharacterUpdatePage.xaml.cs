@@ -122,11 +122,19 @@ namespace Game.Views
 
             var result = LevelPicker.SelectedIndex + 1;
 
-            // Only roll again for health if the level changed.
+            // When level changed, roll again for max health, and set attributes to follow the Level Table
             if (result != ViewModel.Data.Level)
             {
                 // Change the Level
                 ViewModel.Data.Level = result;
+
+                // Roll for new max health
+                ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
+
+                // Set attack, defense, speed to follow the Level Table
+                ViewModel.Data.Attack = LevelTableHelper.LevelDetailsList[result].Attack;
+                ViewModel.Data.Defense = LevelTableHelper.LevelDetailsList[result].Defense;
+                ViewModel.Data.Speed = LevelTableHelper.LevelDetailsList[result].Speed;
             }
         }
         #endregion Picker
