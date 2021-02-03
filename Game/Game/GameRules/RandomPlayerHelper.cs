@@ -207,8 +207,13 @@ namespace Game.GameRules
 
                 ImageURI = GetCharacterImage()
             };
-
+            // Roll Max health
             result.MaxHealth = DiceHelper.RollDice(MaxLevel, 10);
+
+            // Set attack, defense, speed to the values in the Level Table
+            result.Attack = LevelTableHelper.LevelDetailsList[result.Level].Attack;
+            result.Defense = LevelTableHelper.LevelDetailsList[result.Level].Defense;
+            result.Speed = LevelTableHelper.LevelDetailsList[result.Level].Speed;
 
             // Level up to the new level
             result.LevelUpToValue(result.Level);
