@@ -80,7 +80,6 @@
                     <Picker Grid.Row="3"
                             Grid.Column="1"
                             x:Name="LevelPicker"
-                            Title="Select a Level:"
                             SelectedItem="{Binding SelectedItemProperty}"
                             SelectedIndexChanged="LevelPicker_Changed" />
 
@@ -91,8 +90,7 @@
 
                     <Picker Grid.Row="4"
                             Grid.Column="1"
-                            x:Name="TrainerType"
-                            Title="Select a Type:">
+                            x:Name="TrainerType">
                         <Picker.ItemsSource>
                             <!--Need to add data binding-->
                             <x:Array Type="{x:Type x:String}">
