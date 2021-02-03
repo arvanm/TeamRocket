@@ -30,7 +30,7 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(20);
+            this.ViewModel.Data = RandomPlayerHelper.GetRandomCharacter(1);
 
             BindingContext = this.ViewModel;
 
