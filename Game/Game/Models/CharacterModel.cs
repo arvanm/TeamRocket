@@ -29,6 +29,11 @@ namespace Game.Models
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
 
+            // Read attack, defense, speed from LevelTable
+            Attack = LevelTableHelper.LevelDetailsList[Level].Attack;
+            Defense = LevelTableHelper.LevelDetailsList[Level].Defense;
+            Speed = LevelTableHelper.LevelDetailsList[Level].Speed;
+
             // Default to unknown, which is no special job
             Job = CharacterJobEnum.Unknown;
 
