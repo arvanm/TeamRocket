@@ -1,5 +1,6 @@
 ﻿using Game.Models;
 using Game.ViewModels;
+using Game.GameRules;
 
 using System;
 using System.ComponentModel;
@@ -35,6 +36,7 @@ namespace Game.Views
 
             this.ViewModel.Title = "Character Create";
 
+            LoadLevelPickerValues();
         }
 
         /// <summary>
@@ -74,5 +76,49 @@ namespace Game.Views
         {
 
         }
+
+        #region Picker
+
+        /// <summary>
+        /// Load the values for the Level Picker
+        /// </summary>
+        /// <returns></returns>
+        public bool LoadLevelPickerValues()
+        {
+            // Load the values for the Level into the Picker
+            for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
+            {
+                LevelPicker.Items.Add(i.ToString());
+            }
+
+            LevelPicker.SelectedIndex = -1;
+
+            return true;
+        }
+
+        /// <summary>
+        /// The Level selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void LevelPicker_Changed(object sender, EventArgs args)
+        {
+            // If the Picker is not set, then set it
+            if (LevelPicker.SelectedIndex == -1)
+            {
+                LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+                return;
+            }
+
+            var result = LevelPicker.SelectedIndex + 1;
+
+            // Only roll again for health if the level changed.
+            if (result != ViewModel.Data.Level)
+            {
+                // Change the Level
+                ViewModel.Data.Level = result;
+            }
+        }
+        #endregion Picker
     }
 }

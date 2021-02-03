@@ -64,8 +64,10 @@
                         Style="{StaticResource LabelStyle}"/>
 
                     <Picker Grid.Row="3" Grid.Column="1" 
-                        x:Name="TrainerLevel"
-                        Title="Select a Level:"/>
+                        x:Name="LevelPicker"
+                        Title="Select a Level:"
+                        SelectedItem="{Binding SelectedItemProperty}"
+                        SelectedIndexChanged="LevelPicker_Changed"/>
 
                     <Label Grid.Row="4" Grid.Column="0"
                         Text="Trainer Type:" 
