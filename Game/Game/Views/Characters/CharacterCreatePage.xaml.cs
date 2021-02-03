@@ -13,7 +13,7 @@ namespace Game.Views
     /// <summary>
     /// Create Item
     /// </summary>
-    [DesignTimeVisible(false)] 
+    [DesignTimeVisible(false)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterCreatePage : ContentPage
     {
@@ -21,7 +21,7 @@ namespace Game.Views
         public GenericViewModel<CharacterModel> ViewModel = new GenericViewModel<CharacterModel>();
 
         // Empty Constructor for UTs
-        public CharacterCreatePage(bool UnitTest){}
+        public CharacterCreatePage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor for Create makes a new model
@@ -53,7 +53,6 @@ namespace Game.Views
             await Navigation.PopModalAsync();
         }
 
-
         /// <summary>
         /// Save the character and close this page
         /// </summary>
@@ -81,8 +80,7 @@ namespace Game.Views
 
         }
 
-        #region Picker
-
+        #region LevelPicker
         /// <summary>
         /// Load the values for the Level Picker
         /// </summary>
@@ -131,6 +129,6 @@ namespace Game.Views
                 ViewModel.Data.Speed = LevelTableHelper.LevelDetailsList[result].Speed;
             }
         }
-        #endregion Picker
+        #endregion LevelPicker
     }
 }
