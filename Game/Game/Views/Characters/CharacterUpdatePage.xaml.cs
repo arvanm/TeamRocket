@@ -62,6 +62,20 @@ namespace Game.Views
         }
 
         /// <summary>
+        /// Change the attribute values after changing level in the Level Picker
+        /// </summary>
+        public void UpdateAttributeValues()
+        {
+            // Update the attributes
+            MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
+            CurrentHealthValue.Text = ViewModel.Data.CurrentHealth.ToString();
+            AttackValue.Text = ViewModel.Data.Attack.ToString();
+            DefenseValue.Text = ViewModel.Data.Defense.ToString();
+            SpeedValue.Text = ViewModel.Data.Speed.ToString();
+            TotalAttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
+        }
+
+        /// <summary>
         /// Save calls to Update
         /// </summary>
         /// <param name="sender"></param>
@@ -135,6 +149,9 @@ namespace Game.Views
                 ViewModel.Data.Attack = LevelTableHelper.LevelDetailsList[result].Attack;
                 ViewModel.Data.Defense = LevelTableHelper.LevelDetailsList[result].Defense;
                 ViewModel.Data.Speed = LevelTableHelper.LevelDetailsList[result].Speed;
+
+                // Update attribute values in the table
+                UpdateAttributeValues();
             }
         }
         #endregion Picker
