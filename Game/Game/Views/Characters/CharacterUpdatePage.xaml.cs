@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using Game.ViewModels;
 using Game.Models;
 using Game.GameRules;
-
 
 namespace Game.Views
 {
@@ -75,6 +76,25 @@ namespace Game.Views
             TotalAttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
         }
 
+        #region InputValueCheck
+        /// <summary>
+        /// Check whether the input name is empty or null.
+        /// If the input name is empty or null, display an alert says the name cannot be empty, and return false.
+        /// Otherwise return true
+        /// </summary>
+        /// <returns>Whether the input name is empty or null</returns>
+        private async Task<bool> CheckCharacterName()
+        {
+            if (string.IsNullOrEmpty(ViewModel.Data.Name))
+            {
+                await DisplayAlert("Alert", "Character name cannot be empty!", "OK");
+                return false;
+            }
+
+            return true;
+        }
+        #endregion InputValueCheck
+
         /// <summary>
         /// Save calls to Update
         /// </summary>
@@ -82,14 +102,20 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Save_Clicked(object sender, EventArgs e)
         {
-            // If the image in the data box is empty, use the default one..
-            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            // Only save when 
+            // the character name is not empty,
+            // otherwise display an alert.
+            if (await CheckCharacterName())
             {
-                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
-            }
+                // If the image in the data box is empty, use the default one..
+                if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+                {
+                    ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+                }
 
-            MessagingCenter.Send(this, "Update", ViewModel.Data);
-            await Navigation.PopModalAsync();
+                MessagingCenter.Send(this, "Update", ViewModel.Data);
+                await Navigation.PopModalAsync();
+            }
         }
 
         /// <summary>
