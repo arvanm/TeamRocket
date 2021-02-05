@@ -54,6 +54,7 @@ namespace Game.Views
             await Navigation.PopModalAsync();
         }
 
+        #region InputValueCheck
         /// <summary>
         /// Check whether the input name is empty or null.
         /// If the input name is empty or null, display an alert says the name cannot be empty, and return false.
@@ -70,6 +71,7 @@ namespace Game.Views
 
             return true;
         }
+        #endregion InputValueCheck
 
         /// <summary>
         /// Save the character and close this page
