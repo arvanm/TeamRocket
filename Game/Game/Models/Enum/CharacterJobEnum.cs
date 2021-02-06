@@ -82,5 +82,38 @@ namespace Game.Models
                 return myReturn;
             }
         }
+
+        /// <summary>
+        /// Given the String for an enum, return its value. That allows for the enums to be numbered 2,4,6 rather than 1,2,3 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static CharacterJobEnum ConvertStringToEnum(string value)
+        {
+            return (CharacterJobEnum)Enum.Parse(typeof(CharacterJobEnum), value);
+        }
+
+        /// <summary>
+        /// If asked for a character job number, return a character job.
+        /// This compsenstates for the enum #s not being sequential, 
+        /// but allows for calls to the postion for random allocation etc... 
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public static CharacterJobEnum GetCharacterJobByPosition(int position)
+        {
+            switch (position)
+            {
+                case 1:
+                    return CharacterJobEnum.PetLover;
+
+                case 2:
+                    return CharacterJobEnum.DojoMaster;
+
+                case 3:
+                default:
+                    return CharacterJobEnum.QuickAttacker;
+            }
+        }
     }
 }
