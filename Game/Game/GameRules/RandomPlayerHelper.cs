@@ -78,6 +78,18 @@ namespace Game.GameRules
         }
 
         /// <summary>
+        /// Randomly set the Character Job
+        /// </summary>
+        /// <returns></returns>
+        public static CharacterJobEnum GetCharacterJob()
+        {
+            var dice = DiceHelper.RollDice(1, 3);
+            var result = CharacterJobEnumHelper.GetCharacterJobByPosition(dice);
+
+            return result;
+        }
+
+        /// <summary>
         /// Get Name
         /// 
         /// Return a Random Name
@@ -190,9 +202,13 @@ namespace Game.GameRules
         {
             var result = new CharacterModel()
             {
+                // Randomize Level
                 Level = DiceHelper.RollDice(1, MaxLevel),
 
-                // Randomize Name
+                // Randomize Type
+                Job = GetCharacterJob(),
+
+                // Randomize Name and Description
                 Name = GetCharacterName(),
                 Description = GetCharacterDescription(),
 
@@ -207,6 +223,7 @@ namespace Game.GameRules
 
                 ImageURI = GetCharacterImage()
             };
+
             // Roll Max health
             result.MaxHealth = DiceHelper.RollDice(MaxLevel, 10);
 
