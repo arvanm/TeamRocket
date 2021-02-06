@@ -90,15 +90,9 @@
 
                     <Picker Grid.Row="4"
                             Grid.Column="1"
-                            x:Name="TrainerType">
-                        <Picker.ItemsSource>
-                            <!--Need to add data binding-->
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Pet Lover</x:String>
-                                <x:String>Dojo Master</x:String>
-                                <x:String>Quick Attack</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
+                            ItemsSource="{x:Static local:CharacterJobEnumHelper.GetList}"
+                            SelectedItem="{Binding Data.Job, Converter={StaticResource StringEnum}, Mode=TwoWay}}"
+                            x:Name="CharacterJobPicker">
                     </Picker>
                 </Grid>
             </StackLayout>
