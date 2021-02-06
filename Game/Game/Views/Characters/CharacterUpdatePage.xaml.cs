@@ -35,7 +35,7 @@ namespace Game.Views
 
             this.ViewModel.Title = "Character Update";
 
-            LoadLevelPickerValues();
+            LoadCharacterLevelPickerValues();
 
             UpdatePageBindingContext();
         }
@@ -57,7 +57,7 @@ namespace Game.Views
             BindingContext = this.ViewModel;
 
             // This resets the Picker to the Character's level
-            LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+            CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
             // Sets the Job Picker to the Character's Type
             CharacterJobPicker.SelectedItem = ViewModel.Data.Job.ToString();
@@ -173,15 +173,15 @@ namespace Game.Views
         /// Load the values for the Level Picker
         /// </summary>
         /// <returns></returns>
-        public bool LoadLevelPickerValues()
+        public bool LoadCharacterLevelPickerValues()
         {
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
             {
-                LevelPicker.Items.Add(i.ToString());
+                CharacterLevelPicker.Items.Add(i.ToString());
             }
 
-            LevelPicker.SelectedIndex = -1;
+            CharacterLevelPicker.SelectedIndex = -1;
 
             return true;
         }
@@ -191,16 +191,16 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public void LevelPicker_Changed(object sender, EventArgs args)
+        public void CharacterLevelPicker_Changed(object sender, EventArgs args)
         {
             // If the Picker is not set, then set it
-            if (LevelPicker.SelectedIndex == -1)
+            if (CharacterLevelPicker.SelectedIndex == -1)
             {
-                LevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+                CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
                 return;
             }
 
-            var result = LevelPicker.SelectedIndex + 1;
+            var result = CharacterLevelPicker.SelectedIndex + 1;
 
             // When level changed, roll again for max health, and set attributes to follow the Level Table
             if (result != ViewModel.Data.Level)
