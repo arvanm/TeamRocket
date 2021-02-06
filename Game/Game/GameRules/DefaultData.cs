@@ -88,7 +88,7 @@ namespace Game.GameRules
                     Location = ItemLocationEnum.PrimaryHand,
                     Attribute = AttributeEnum.Attack
                 };
-                item.Name = "I" + (datalist.Count+1).ToString();
+                item.Name = "I" + (datalist.Count + 1).ToString();
                 item.Description = item.Name;
 
                 datalist.Add(item);
@@ -97,14 +97,14 @@ namespace Game.GameRules
             return datalist;
         }
 
-    /// <summary>
-    /// Load Example Scores
-    /// </summary>
-    /// <param name="temp"></param>
-    /// <returns></returns>
-    public static List<ScoreModel> LoadData(ScoreModel temp)
-    {
-        var datalist = new List<ScoreModel>()
+        /// <summary>
+        /// Load Example Scores
+        /// </summary>
+        /// <param name="temp"></param>
+        /// <returns></returns>
+        public static List<ScoreModel> LoadData(ScoreModel temp)
+        {
+            var datalist = new List<ScoreModel>()
             {
                 new ScoreModel {
                     Name = "First Score",
@@ -117,31 +117,33 @@ namespace Game.GameRules
                 }
             };
 
-        return datalist;
-    }
+            return datalist;
+        }
 
-    /// <summary>
-    /// Load Characters
-    /// </summary>
-    /// <param name="temp"></param>
-    /// <returns></returns>
-    public static List<CharacterModel> LoadData(CharacterModel temp)
-    {
-        var HeadString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);
-        var NecklassString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Necklass);
-        var PrimaryHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.PrimaryHand);
-        var OffHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.OffHand);
-        var FeetString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Feet);
-        var RightFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
-        var LeftFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
+        /// <summary>
+        /// Load Characters
+        /// </summary>
+        /// <param name="temp"></param>
+        /// <returns></returns>
+        public static List<CharacterModel> LoadData(CharacterModel temp)
+        {
+            var HeadString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Head);
+            var NecklassString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Necklass);
+            var PrimaryHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.PrimaryHand);
+            var OffHandString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.OffHand);
+            var FeetString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Feet);
+            var RightFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
+            var LeftFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
 
-        var datalist = new List<CharacterModel>()
+            var datalist = new List<CharacterModel>()
             {
                 new CharacterModel {
                     Name = "Jessie",
                     Description = "The first Team Rocket member",
-                    Level = 1,
-                    MaxHealth = 5,
+                    Level = 5,
+                    MaxHealth = 49,
+                    CurrentHealth = 40,
+                    Job = CharacterJobEnum.DojoMaster,
                     ImageURI = "item.png",
                     Head = HeadString,
                     Necklass = NecklassString,
@@ -155,8 +157,10 @@ namespace Game.GameRules
                 new CharacterModel {
                     Name = "Giovanni",
                     Description = "An exper in ground-type Pokémon",
-                    Level = 1,
-                    MaxHealth = 5,
+                    Level = 10,
+                    MaxHealth = 98,
+                    CurrentHealth = 40,
+                    Job = CharacterJobEnum.DojoMaster,
                     ImageURI = "item.png",
                     Head = HeadString,
                     Necklass = NecklassString,
@@ -172,6 +176,8 @@ namespace Game.GameRules
                     Description = "Head team rocket scientist",
                     Level = 1,
                     MaxHealth = 5,
+                    CurrentHealth = 4,
+                    Job = CharacterJobEnum.QuickAttacker,
                     ImageURI = "item.png",
                     Head = HeadString,
                     Necklass = NecklassString,
@@ -185,8 +191,10 @@ namespace Game.GameRules
                 new CharacterModel {
                     Name = "Archer",
                     Description = "Team rocket admin",
-                    Level = 1,
-                    MaxHealth = 5,
+                    Level = 8,
+                    MaxHealth = 15,
+                    CurrentHealth = 13,
+                    Job = CharacterJobEnum.QuickAttacker,
                     ImageURI = "item.png",
                     Head = HeadString,
                     Necklass = NecklassString,
@@ -200,8 +208,10 @@ namespace Game.GameRules
                 new CharacterModel {
                     Name = "Proton",
                     Description = "Most ruthless of the trainer",
-                    Level = 1,
-                    MaxHealth = 5,
+                    Level = 20,
+                    MaxHealth = 150,
+                    CurrentHealth = 150,
+                    Job = CharacterJobEnum.PetLover,
                     ImageURI = "item.png",
                     Head = HeadString,
                     Necklass = NecklassString,
@@ -215,8 +225,10 @@ namespace Game.GameRules
                 new CharacterModel {
                     Name = "Petrel",
                     Description = "Master of disguise",
-                    Level = 1,
-                    MaxHealth = 5,
+                    Level = 15,
+                    MaxHealth = 132,
+                    CurrentHealth = 131,
+                    Job = CharacterJobEnum.PetLover,
                     ImageURI = "item.png",
                     Head = HeadString,
                     Necklass = NecklassString,
@@ -230,8 +242,10 @@ namespace Game.GameRules
                 new CharacterModel {
                     Name = "Ariana",
                     Description = "Interim leader",
-                    Level = 1,
-                    MaxHealth = 5,
+                    Level = 2,
+                    MaxHealth = 13,
+                    CurrentHealth = 12,
+                    Job = CharacterJobEnum.PetLover,
                     ImageURI = "item.png",
                     Head = HeadString,
                     Necklass = NecklassString,
@@ -243,17 +257,17 @@ namespace Game.GameRules
                 },
             };
 
-        return datalist;
-    }
+            return datalist;
+        }
 
-    /// <summary>
-    /// Load Characters
-    /// </summary>
-    /// <param name="temp"></param>
-    /// <returns></returns>
-    public static List<MonsterModel> LoadData(MonsterModel temp)
-    {
-        var datalist = new List<MonsterModel>()
+        /// <summary>
+        /// Load Characters
+        /// </summary>
+        /// <param name="temp"></param>
+        /// <returns></returns>
+        public static List<MonsterModel> LoadData(MonsterModel temp)
+        {
+            var datalist = new List<MonsterModel>()
             {
                 new MonsterModel {
                     Name = "M1",
@@ -298,7 +312,7 @@ namespace Game.GameRules
                 },
             };
 
-        return datalist;
+            return datalist;
+        }
     }
-}
 }
