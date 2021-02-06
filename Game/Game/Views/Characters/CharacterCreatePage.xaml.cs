@@ -150,6 +150,9 @@ namespace Game.Views
                 // Roll for new max health
                 ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
 
+                // Set current health as the new max health
+                ViewModel.Data.CurrentHealth = ViewModel.Data.MaxHealth;
+
                 // Set attack, defense, speed to follow the Level Table
                 ViewModel.Data.Attack = LevelTableHelper.LevelDetailsList[result].Attack;
                 ViewModel.Data.Defense = LevelTableHelper.LevelDetailsList[result].Defense;
