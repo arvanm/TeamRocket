@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel;
 
 using Xamarin.Forms;
@@ -40,9 +41,14 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public async void ReadCharacter_Clicked(object sender, EventArgs args)
         {
-            CharacterModel data = args.SelectedItem as CharacterModel;
+            // Get CharacterModel from the button clicked
+            var button = sender as ImageButton;
+            var characterId = button.CommandParameter as String;
+            var data = ViewModel.Dataset.FirstOrDefault(item => item.Id.Equals(characterId));
+
+            // Handle null data
             if (data == null)
             {
                 return;
@@ -50,9 +56,6 @@ namespace Game.Views
 
             // Open the Read Page
             await Navigation.PushAsync(new CharacterReadPage(new GenericViewModel<CharacterModel>(data)));
-
-            // Manually deselect item.
-            ItemsListView.SelectedItem = null;
         }
 
         /// <summary>
