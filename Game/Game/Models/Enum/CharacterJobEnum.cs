@@ -1,4 +1,8 @@
-﻿namespace Game.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Game.Models
 {
     /// <summary>
     /// The Types of Jobs a character can have
@@ -7,7 +11,7 @@
     public enum CharacterJobEnum
     {
         // Not specified
-        Unknown = 0,    
+        Unknown = 0,
 
         // Trainer with additional chance to capture the Pokemon
         PetLover = 10,
@@ -55,6 +59,28 @@
             }
 
             return Message;
+        }
+    }
+
+    /// <summary>
+    /// Helper for Character Jobs
+    /// </summary>
+    public static class CharacterJobEnumHelper
+    {
+        /// <summary>
+        /// Gets the list of jobs that an Character can have.
+        /// Not include the unknown
+        /// </summary>
+        public static List<string> GetList
+        {
+            get
+            {
+                var myList = Enum.GetNames(typeof(CharacterJobEnum)).ToList();
+                var myReturn = myList.Where(a => a.ToString() != CharacterJobEnum.Unknown.ToString())
+                                     .OrderBy(a => a)
+                                     .ToList();
+                return myReturn;
+            }
         }
     }
 }
