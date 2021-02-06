@@ -103,7 +103,9 @@
 
                         <Picker Grid.Column="1"
                                 Grid.Row="3"
-                                FontSize="Small" />
+                                ItemsSource="{x:Static local:CharacterJobEnumHelper.GetList}"
+                                SelectedItem="{Binding Data.Job, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                x:Name="CharacterJobPicker" />
 
                         <Button Grid.ColumnSpan="1"
                                 Grid.Row="4"
@@ -250,7 +252,7 @@
                            Text="Values"
                            FontAttributes="Bold"
                            VerticalOptions="CenterAndExpand" />
-                    
+
                     <Label Grid.Row="1"
                            Grid.Column="0"
                            Text="Current Health" />
@@ -258,7 +260,7 @@
                            Grid.Column="1"
                            x:Name="CurrentHealthValue"
                            Text="{Binding Data.CurrentHealth}" />
-                    
+
                     <Label Grid.Row="2"
                            Grid.Column="0"
                            Text="Max Health" />
@@ -266,7 +268,7 @@
                            Grid.Column="1"
                            x:Name="MaxHealthValue"
                            Text="{Binding Data.MaxHealth}" />
-                    
+
                     <Label Grid.Row="3"
                            Grid.Column="0"
                            Text="Attack" />
@@ -274,7 +276,7 @@
                            Grid.Column="1"
                            x:Name="AttackValue"
                            Text="{Binding Data.Attack}" />
-                    
+
                     <Label Grid.Row="4"
                            Grid.Column="0"
                            Text="Defense" />
@@ -282,7 +284,7 @@
                            Grid.Column="1"
                            x:Name="DefenseValue"
                            Text="{Binding Data.Defense}" />
-                    
+
                     <Label Grid.Row="5"
                            Grid.Column="0"
                            Text="Speed" />
@@ -290,7 +292,7 @@
                            Grid.Column="1"
                            x:Name="SpeedValue"
                            Text="{Binding Data.Speed}" />
-                    
+
                     <Label Grid.Row="6"
                            Grid.Column="0"
                            Text="Total Attack" />
@@ -298,7 +300,7 @@
                            Grid.Column="1"
                            x:Name="TotalAttackValue"
                            Text="{Binding Data.GetAttackTotal}" />
-                    
+
                 </Grid>
             </StackLayout>
         </ScrollView>
