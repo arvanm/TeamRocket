@@ -79,9 +79,9 @@
 
                     <Picker Grid.Row="3"
                             Grid.Column="1"
-                            x:Name="LevelPicker"
+                            x:Name="CharacterLevelPicker"
                             SelectedItem="{Binding SelectedItemProperty}"
-                            SelectedIndexChanged="LevelPicker_Changed" />
+                            SelectedIndexChanged="CharacterLevelPicker_Changed" />
 
                     <Label Grid.Row="4"
                            Grid.Column="0"
