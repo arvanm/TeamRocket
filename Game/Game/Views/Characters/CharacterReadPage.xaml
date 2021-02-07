@@ -104,94 +104,21 @@
                 </Grid>
             </Grid>
 
-            <Grid HorizontalOptions="CenterAndExpand"
-                  Padding="20"
-                  RowSpacing="5"
-                  ColumnSpacing="5">
+            <Grid Padding="20"
+                  HorizontalOptions="CenterAndExpand"
+                  RowSpacing="15"
+                  ColumnSpacing="5"
+                  x:Name="ItemGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="75" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="75" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-
-                <ImageButton Grid.Column="0"
-                             Grid.Row="0"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="0"
-                       Grid.Row="1"
-                       Text="Head"
-                       HorizontalTextAlignment="Center" />
-
-                <ImageButton Grid.Column="1"
-                             Grid.Row="0"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="1"
-                       Grid.Row="1"
-                       Text="Necklace"
-                       HorizontalTextAlignment="Center" />
-
-                <ImageButton Grid.Column="2"
-                             Grid.Row="0"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="2"
-                       Grid.Row="1"
-                       Text="Feet"
-                       HorizontalTextAlignment="Center" />
-
-                <ImageButton Grid.Column="3"
-                             Grid.Row="0"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="3"
-                       Grid.Row="1"
-                       Text="Unique"
-                       HorizontalTextAlignment="Center" />
-
-                <ImageButton Grid.Column="0"
-                             Grid.Row="2"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="0"
-                       Grid.Row="3"
-                       Text="Left Finger"
-                       HorizontalTextAlignment="Center" />
-
-                <ImageButton Grid.Column="1"
-                             Grid.Row="2"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="1"
-                       Grid.Row="3"
-                       Text="Right Finger"
-                       HorizontalTextAlignment="Center" />
-
-                <ImageButton Grid.Column="2"
-                             Grid.Row="2"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="2"
-                       Grid.Row="3"
-                       Text="Primary Hand"
-                       HorizontalTextAlignment="Center" />
-
-                <ImageButton Grid.Column="3"
-                             Grid.Row="2"
-                             Source="item.png"
-                             Style="{StaticResource ImageLargeStyle}" />
-                <Label Grid.Column="3"
-                       Grid.Row="3"
-                       Text="Off Hand"
-                       HorizontalTextAlignment="Center" />
             </Grid>
 
             <Grid HorizontalOptions="CenterAndExpand"
