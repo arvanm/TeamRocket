@@ -44,7 +44,7 @@ namespace Game.Views
             CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
             // Sets the Job Picker to the Character's Type
-            CharacterJobPicker.SelectedItem = ViewModel.Data.Job.ToString();
+            CharacterJobPicker.SelectedItem = ViewModel.Data.Job.ToMessage();
         }
 
         /// <summary>
