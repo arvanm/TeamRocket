@@ -18,7 +18,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
+            <local_helpers:MonsterTypeEnumConverterHelper x:Key="MonsterTypeEnumConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -42,7 +42,7 @@
                                 <Label Text="{Binding Name}"
                                        HorizontalTextAlignment="Center" />
 
-                                <Label Text="{Binding Job, Converter={StaticResource CharacterJobEnumConverter}}"
+                                <Label Text="{Binding MonsterType, Converter={StaticResource MonsterTypeEnumConverter}}"
                                        HorizontalTextAlignment="Center" />
 
                                 <StackLayout Orientation="Horizontal"
