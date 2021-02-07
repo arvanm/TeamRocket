@@ -42,15 +42,15 @@ namespace Game.Models
             switch (value)
             {
                 case MonsterTypeEnum.Fire:
-                    Message = "Pet Lover";
+                    Message = "Fire";
                     break;
 
                 case MonsterTypeEnum.Water:
-                    Message = "Dojo Master";
+                    Message = "Water";
                     break;
 
                 case MonsterTypeEnum.Posion:
-                    Message = "Quick Attacker";
+                    Message = "Posion";
                     break;
 
                 case MonsterTypeEnum.Unknown:

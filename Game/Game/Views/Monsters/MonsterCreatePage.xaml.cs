@@ -44,7 +44,7 @@ namespace Game.Views
             MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
             // Sets the Job Picker to the Monster's Type
-            MonsterTypePicker.SelectedItem = ViewModel.Data.Job.ToMessage();
+            MonsterTypePicker.SelectedItem = ViewModel.Data.MonsterType.ToMessage();
         }
 
         /// <summary>

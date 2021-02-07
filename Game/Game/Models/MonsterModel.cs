@@ -9,6 +9,8 @@ namespace Game.Models
     /// </summary>
     public class MonsterModel : BasePlayerModel<MonsterModel>
     {
+        public MonsterTypeEnum MonsterType { get; set; }
+
         /// <summary>
         /// Set Type to Monster
         /// 
@@ -28,7 +30,8 @@ namespace Game.Models
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
 
             // Default to unknown, which is no special job
-            Job = (CharacterJobEnum)MonsterTypeEnum.Unknown;
+            //Job = (CharacterJobEnum)MonsterTypeEnum.Unknown;
+            MonsterType = MonsterTypeEnum.Unknown;
         }
 
         /// <summary>
