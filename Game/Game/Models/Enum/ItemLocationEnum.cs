@@ -122,6 +122,28 @@ namespace Game.Models
         }
 
         /// <summary>
+        /// Gets the list of Message strings of the locations that an Item can have.
+        /// Does not include the Left and Right Finger 
+        /// </summary>
+        public static List<string> GetListItemMessage
+        {
+            get
+            {
+                var myList = new List<string>();
+                foreach (ItemLocationEnum item in Enum.GetValues(typeof(ItemLocationEnum)))
+                {
+                    if (item != ItemLocationEnum.Unknown &&
+                        item != ItemLocationEnum.LeftFinger &&
+                        item != ItemLocationEnum.RightFinger
+                    )
+                        myList.Add(item.ToMessage());
+                }
+
+                return myList;
+            }
+        }
+
+        /// <summary>
         ///  Gets the list of locations a character can use
         ///  Removes Finger for example, and allows for left and right finger
         /// </summary>
@@ -142,6 +164,27 @@ namespace Game.Models
         }
 
         /// <summary>
+        ///  Gets the list of locations a character can use
+        ///  Removes Finger for example, and allows for left and right finger
+        /// </summary>
+        public static List<string> GetListMessageCharacter
+        {
+            get
+            {
+                var myList = new List<string>();
+                foreach (ItemLocationEnum item in Enum.GetValues(typeof(ItemLocationEnum)))
+                {
+                    if (item != ItemLocationEnum.Unknown &&
+                        item != ItemLocationEnum.Finger
+                    )
+                        myList.Add(item.ToMessage());
+                }
+
+                return myList;
+            }
+        }
+
+        /// <summary>
         /// Given the String for an enum, return its value.  That allows for the enums to be numbered 2,4,6 rather than 1,2,3 
         /// </summary>
         /// <param name="value"></param>
@@ -149,6 +192,28 @@ namespace Game.Models
         public static ItemLocationEnum ConvertStringToEnum(string value)
         {
             return (ItemLocationEnum)Enum.Parse(typeof(ItemLocationEnum), value);
+        }
+
+        /// <summary>
+        /// Given the Message for an enum
+        /// Look it up and return the enum
+        /// 
+        /// Right Finger => RightFinger
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static ItemLocationEnum ConvertMessageToEnum(string value)
+        {
+            // Get the Message, Determine Which enum has that message, and return that enum.
+            foreach (ItemLocationEnum item in Enum.GetValues(typeof(ItemLocationEnum)))
+            {
+                if (item.ToMessage().Equals(value))
+                {
+                    return item;
+                }
+            }
+            return ItemLocationEnum.Unknown;
         }
 
         /// <summary>
