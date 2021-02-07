@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -61,6 +63,9 @@ namespace Game.Views
 
             // Sets the Job Picker to the Character's Type
             CharacterJobPicker.SelectedItem = ViewModel.Data.Job.ToMessage();
+
+            // Show the Character's Items
+            AddItemsToDisplay();
 
             return true;
         }
@@ -227,5 +232,105 @@ namespace Game.Views
         }
         #endregion LevelPicker
 
+
+        #region ManageItems
+
+        /// <summary>
+        /// Show the Items the Character has
+        /// </summary>
+        public void AddItemsToDisplay()
+        {
+            // Remove current data
+            var FlexList = ItemGrid.Children.ToList();
+            foreach (var data in FlexList)
+            {
+                ItemGrid.Children.Remove(data);
+            }
+
+            // Generate Layouts for Items
+            var ItemLayoutList = new List<StackLayout>();
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.Head));
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.Necklass));
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.PrimaryHand));
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.OffHand));
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.RightFinger));
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.LeftFinger));
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.Feet));
+            ItemLayoutList.Add(GetItemToDisplay(ItemLocationEnum.Pokeball));
+
+            // Add Item Layouts to the Grid
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    ItemGrid.Children.Add(ItemLayoutList[i * 4 + j]);
+                    Grid.SetRow(ItemLayoutList[i * 4 + j], i);
+                    Grid.SetColumn(ItemLayoutList[i * 4 + j], j);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Look up the Item to Display
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public StackLayout GetItemToDisplay(ItemLocationEnum location)
+        {
+            // Defualt Image is the Plus
+            var ImageSource = "icon_cancel.png";
+            var ClickableButton = true;
+
+            // Get ItemModel
+            var data = ViewModel.Data.GetItemByLocation(location);
+
+            // ItemModel is null, no item in the location
+            if (data == null)
+            {
+                // Show the Default Icon for the Location
+                data = new ItemModel { Location = location, ImageURI = ImageSource };
+
+                // Turn off click action
+                ClickableButton = false;
+            }
+
+            // Hookup the Image Button to show the Item picture
+            var ItemButton = new ImageButton
+            {
+                Style = (Style)Application.Current.Resources["ImageMediumStyle"],
+                Source = data.ImageURI
+            };
+
+            if (ClickableButton)
+            {
+                // Add a event to the user can click the item and see more
+                //ItemButton.Clicked += (sender, args) => ShowPopup(data);
+            }
+
+            // Add the Display Text for the item
+            var ItemLabel = new Label
+            {
+                Text = location.ToMessage(),
+                Style = (Style)Application.Current.Resources["ValueStyleMicro"],
+                HorizontalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+
+            // Put the Image Button and Text inside a layout
+            var ItemStack = new StackLayout
+            {
+                Padding = new Thickness(15, 12),
+                Style = (Style)Application.Current.Resources["ItemImageBox"],
+                HorizontalOptions = LayoutOptions.Center,
+                Children = {
+                    ItemButton,
+                    ItemLabel
+                },
+            };
+
+            return ItemStack;
+        }
+
+        #endregion ManageItems
     }
 }
