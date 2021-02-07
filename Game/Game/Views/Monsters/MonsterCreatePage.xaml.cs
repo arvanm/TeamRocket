@@ -38,7 +38,7 @@ namespace Game.Views
             this.ViewModel.Title = "Monster Create";
 
             // Load Level Values for the Level Picker
-            LoadCharacterLevelPickerValues();
+            LoadMonsterLevelPickerValues();
 
             // Sets the Level Picker to the Character's level
             CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
@@ -112,7 +112,7 @@ namespace Game.Views
         /// Load the values for the Level Picker
         /// </summary>
         /// <returns></returns>
-        public bool LoadCharacterLevelPickerValues()
+        public bool LoadMonsterLevelPickerValues()
         {
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
