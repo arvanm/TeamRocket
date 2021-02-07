@@ -58,22 +58,22 @@ namespace Game.ViewModels
             #region Messages
 
             // Register the Create Message
-            MessagingCenter.Subscribe<CharacterCreatePage, MonsterModel>(this, "Create", async (obj, data) =>
+            MessagingCenter.Subscribe<MonsterCreatePage, MonsterModel>(this, "Create", async (obj, data) =>
             {
                 await CreateAsync(data as MonsterModel);
             });
 
             // Register the Update Message
-            MessagingCenter.Subscribe<CharacterUpdatePage, MonsterModel>(this, "Update", async (obj, data) =>
+            MessagingCenter.Subscribe<MonsterUpdatePage, MonsterModel>(this, "Update", async (obj, data) =>
             {
-                // Have the character update itself
+                // Have the Monster update itself
                 data.Update(data);
 
                 await UpdateAsync(data as MonsterModel);
             });
 
             // Register the Delete Message
-            MessagingCenter.Subscribe<CharacterDeletePage, MonsterModel>(this, "Delete", async (obj, data) =>
+            MessagingCenter.Subscribe<MonsterDeletePage, MonsterModel>(this, "Delete", async (obj, data) =>
             {
                 await DeleteAsync(data as MonsterModel);
             });
@@ -98,7 +98,7 @@ namespace Game.ViewModels
         #region DataOperations_CRUDi
 
         /// <summary>
-        /// Returns the character passed in
+        /// Returns the Monster passed in
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -109,8 +109,8 @@ namespace Game.ViewModels
                 return null;
             }
 
-            // This will walk the characters and find if there is one that is the same.
-            // If so, it returns the character...
+            // This will walk the Monsters and find if there is one that is the same.
+            // If so, it returns the Monster...
             var myList = Dataset.Where(a =>
                                         a.Name == data.Name &&
                                         a.Description == data.Description
