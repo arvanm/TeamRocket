@@ -37,7 +37,7 @@ namespace Game.Views
 
             this.ViewModel.Title = "Monster Update";
 
-            LoadCharacterLevelPickerValues();
+            LoadMonsterLevelPickerValues();
 
             UpdatePageBindingContext();
         }
@@ -58,11 +58,11 @@ namespace Game.Views
 
             BindingContext = this.ViewModel;
 
-            // This resets the Picker to the Character's level
-            CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+            // This resets the Picker to the monster's level
+            MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
-            // Sets the Job Picker to the Character's Type
-            CharacterJobPicker.SelectedItem = ViewModel.Data.Job.ToMessage();
+            // Sets the Job Picker to the monster's Type
+            MonsterTypePicker.SelectedItem = ViewModel.Data.Job.ToMessage();
 
             return true;
         }
@@ -88,11 +88,11 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckCharacterName()
+        private async Task<bool> CheckMonsterName()
         {
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
-                await DisplayAlert("Alert", "Character name cannot be empty!", "OK");
+                await DisplayAlert("Alert", "Monster name cannot be empty!", "OK");
                 return false;
             }
 
@@ -106,11 +106,11 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckCharacterMaxHealth()
+        private async Task<bool> CheckMonsterMaxHealth()
         {
             if (ViewModel.Data.MaxHealth <= 0 || ViewModel.Data.MaxHealth > ViewModel.Data.Level * 10)
             {
-                await DisplayAlert("Alert", "Character max health must between 1 and Level x 10!", "OK");
+                await DisplayAlert("Alert", "Monster max health must between 1 and Level x 10!", "OK");
                 return false;
             }
 
@@ -124,11 +124,11 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckCharacterCurHealth()
+        private async Task<bool> CheckMonsterCurHealth()
         {
             if (ViewModel.Data.CurrentHealth < 0 || ViewModel.Data.CurrentHealth > ViewModel.Data.MaxHealth)
             {
-                await DisplayAlert("Alert", "Character current health must between 0 and Max Health!", "OK");
+                await DisplayAlert("Alert", "Monster current health must between 0 and Max Health!", "OK");
                 return false;
             }
 
@@ -144,10 +144,10 @@ namespace Game.Views
         public async void Save_Clicked(object sender, EventArgs e)
         {
             // Only save when 
-            // the character name is not empty,
+            // the Monster name is not empty,
             // the max health is not within [1, level * 10] range,
             // otherwise display an alert.
-            if (await CheckCharacterName() && await CheckCharacterMaxHealth() && await CheckCharacterCurHealth())
+            if (await CheckMonsterName() && await CheckMonsterMaxHealth() && await CheckMonsterCurHealth())
             {
                 // If the image in the data box is empty, use the default one..
                 if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
@@ -175,15 +175,15 @@ namespace Game.Views
         /// Load the values for the Level Picker
         /// </summary>
         /// <returns></returns>
-        public bool LoadCharacterLevelPickerValues()
+        public bool LoadMonsterLevelPickerValues()
         {
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
             {
-                CharacterLevelPicker.Items.Add(i.ToString());
+                MonsterLevelPicker.Items.Add(i.ToString());
             }
 
-            CharacterLevelPicker.SelectedIndex = -1;
+            MonsterLevelPicker.SelectedIndex = -1;
 
             return true;
         }
@@ -193,16 +193,16 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public void CharacterLevelPicker_Changed(object sender, EventArgs args)
+        public void MonsterLevelPicker_Changed(object sender, EventArgs args)
         {
             // If the Picker is not set, then set it
-            if (CharacterLevelPicker.SelectedIndex == -1)
+            if (MonsterLevelPicker.SelectedIndex == -1)
             {
-                CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+                MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
                 return;
             }
 
-            var result = CharacterLevelPicker.SelectedIndex + 1;
+            var result = MonsterLevelPicker.SelectedIndex + 1;
 
             // When level changed, roll again for max health, and set attributes to follow the Level Table
             if (result != ViewModel.Data.Level)

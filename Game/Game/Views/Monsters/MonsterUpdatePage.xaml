@@ -95,9 +95,9 @@
 
                         <Picker Grid.Column="1"
                                 Grid.Row="2"
-                                x:Name="CharacterLevelPicker"
+                                x:Name="MonsterLevelPicker"
                                 SelectedItem="{Binding SelectedItemProperty}"
-                                SelectedIndexChanged="CharacterLevelPicker_Changed" />
+                                SelectedIndexChanged="MonsterLevelPicker_Changed" />
 
                         <Label Grid.Column="0"
                                Grid.Row="3"
@@ -108,7 +108,7 @@
                                 Grid.Row="3"
                                 ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetListMessage}"
                                 SelectedItem="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}, Mode=TwoWay}"
-                                x:Name="CharacterJobPicker" />
+                                x:Name="MonsterTypePicker" />
                     </Grid>
                 </Grid>
 
