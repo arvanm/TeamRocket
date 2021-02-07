@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="using:Game.Models"
+             xmlns:local_helpers="clr-namespace:Game.Helpers"
+             xmlns:local_enum="clr-namespace:Game.Models"
+             x:Class="Game.Views.MonsterCreatePage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel"
+                     IconImageSource="icon_cancel.png"
+                     Clicked="Cancel_Clicked" />
+        <ToolbarItem Text="Save"
+                     IconImageSource="icon_save.png"
+                     Clicked="Save_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_helpers:StringEnumConverter x:Key="StringEnum" />
+            <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Always">
+            <StackLayout Style="{StaticResource OuterBoxStack}"
+                         Spacing="10">
+
+                <Image Source="{Binding Data.ImageURI}"
+                       Style="{StaticResource ImageLargeStyle}"
+                       HorizontalOptions="CenterAndExpand"
+                       HeightRequest="250"
+                       WidthRequest="200" />
+
+                <Button Text="Change Image"
+                        WidthRequest="200"
+                        Clicked="ChangeImage_Clicked" />
+
+                <Grid WidthRequest="400"
+                      RowSpacing="1"
+                      ColumnSpacing="2"
+                      VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Trainer Name:"
+                           Style="{StaticResource LabelStyle}" />
+
+                    <Entry Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Data.Name, Mode=TwoWay}"
+                           Style="{StaticResource EntryStyle}" />
+
+                    <Label Grid.Row="2"
+                           Grid.Column="0"
+                           Text="Description:"
+                           Style="{StaticResource LabelStyle}" />
+
+                    <Entry Grid.Row="2"
+                           Grid.Column="1"
+                           Text="{Binding Data.Description, Mode=TwoWay}"
+                           Style="{StaticResource EntryStyle}" />
+
+                    <Label Grid.Row="3"
+                           Grid.Column="0"
+                           Text="Trainer Level:"
+                           Style="{StaticResource LabelStyle}" />
+
+                    <Picker Grid.Row="3"
+                            Grid.Column="1"
+                            x:Name="CharacterLevelPicker"
+                            SelectedItem="{Binding SelectedItemProperty}"
+                            SelectedIndexChanged="CharacterLevelPicker_Changed" />
+
+                    <Label Grid.Row="4"
+                           Grid.Column="0"
+                           Text="Trainer Type:"
+                           Style="{StaticResource LabelStyle}" />
+
+                    <Picker Grid.Row="4"
+                            Grid.Column="1"
+                            ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetListMessage}"
+                            SelectedItem="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}, Mode=TwoWay}"
+                            x:Name="CharacterJobPicker">
+                    </Picker>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
