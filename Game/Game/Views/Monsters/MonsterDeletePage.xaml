@@ -20,7 +20,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
+            <local_helpers:MonsterTypeEnumConverterHelper x:Key="MonsterTypeEnumConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -93,7 +93,7 @@
 
                     <Label Grid.Column="1"
                            Grid.Row="3"
-                           Text="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}}"
+                           Text="{Binding Data.Job, Converter={StaticResource MonsterTypeEnumConverter}}"
                            Style="{StaticResource ValueStyle}" />
 
                 </Grid>
