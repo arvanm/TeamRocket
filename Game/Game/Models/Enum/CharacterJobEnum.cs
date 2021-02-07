@@ -68,7 +68,7 @@ namespace Game.Models
     public static class CharacterJobEnumHelper
     {
         /// <summary>
-        /// Gets the list of jobs that an Character can have.
+        /// Gets the list of jobs that a Character can have.
         /// Not include the unknown
         /// </summary>
         public static List<string> GetList
@@ -84,6 +84,27 @@ namespace Game.Models
         }
 
         /// <summary>
+        /// Gets the list of Message strings of jobs that a Character can have.
+        /// Not include the unknown
+        /// </summary>
+        public static List<string> GetListMessage
+        {
+            get
+            {
+                var myList = new List<string>();
+                foreach (CharacterJobEnum job in Enum.GetValues(typeof(CharacterJobEnum)))
+                {
+                    if (job != CharacterJobEnum.Unknown)
+                    {
+                        myList.Add(job.ToMessage());
+                    }
+                }
+
+                return myList;
+            }
+        }
+
+        /// <summary>
         /// Given the String for an enum, return its value. That allows for the enums to be numbered 2,4,6 rather than 1,2,3 
         /// </summary>
         /// <param name="value"></param>
@@ -91,6 +112,25 @@ namespace Game.Models
         public static CharacterJobEnum ConvertStringToEnum(string value)
         {
             return (CharacterJobEnum)Enum.Parse(typeof(CharacterJobEnum), value);
+        }
+
+        /// <summary>
+        /// Given the Message for an enum
+        /// Look it up and return the enum
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static CharacterJobEnum ConvertMessageToEnum(string value)
+        {
+            // Get the Message, Determine Which enum has that message, and return that enum.
+            foreach (CharacterJobEnum job in Enum.GetValues(typeof(CharacterJobEnum)))
+            {
+                if (job.ToMessage().Equals(value))
+                {
+                    return job;
+                }
+            }
+            return CharacterJobEnum.Unknown;
         }
 
         /// <summary>
