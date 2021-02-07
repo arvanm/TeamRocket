@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local_helpers="clr-namespace:Game.Helpers"
+             xmlns:local="using:Game.Models"
              x:Name="BrowseItemsPage"
              x:Class="Game.Views.CharacterIndexPage"
              Title="{Binding Title}">
@@ -14,6 +16,12 @@
                      IconImageSource="icon_add.png" />
     </ContentPage.ToolbarItems>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Always">
             <StackLayout Style="{StaticResource OuterBoxStack}">
@@ -32,7 +40,7 @@
 
                                 <Label Text="{Binding Name}" />
 
-                                <Label Text="{Binding Job}" />
+                                <Label Text="{Binding Job, Converter={StaticResource CharacterJobEnumConverter}}" />
 
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Level" />
