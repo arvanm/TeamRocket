@@ -93,7 +93,7 @@
                             Grid.Column="1"
                             ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetListMessage}"
                             SelectedItem="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}, Mode=TwoWay}"
-                            x:Name="CharacterJobPicker">
+                            x:Name="MonsterTypePicker">
                     </Picker>
                 </Grid>
             </StackLayout>
