@@ -19,7 +19,7 @@ namespace Game.Views
         public readonly GenericViewModel<ItemModel> ViewModel;
 
         // Empty Constructor for Tests
-        public ItemUpdatePage(bool UnitTest){ }
+        public ItemUpdatePage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor that takes and existing data item
@@ -33,7 +33,7 @@ namespace Game.Views
             this.ViewModel.Title = "Update " + data.Title;
 
             //Need to make the SelectedItem a string, so it can select the correct item.
-            LocationPicker.SelectedItem = data.Data.Location.ToString();
+            LocationPicker.SelectedItem = data.Data.Location.ToMessage();
             AttributePicker.SelectedItem = data.Data.Attribute.ToString();
         }
 
