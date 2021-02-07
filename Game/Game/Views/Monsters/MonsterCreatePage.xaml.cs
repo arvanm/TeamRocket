@@ -41,7 +41,7 @@ namespace Game.Views
             LoadMonsterLevelPickerValues();
 
             // Sets the Level Picker to the Character's level
-            CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+            MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
             // Sets the Job Picker to the Character's Type
             CharacterJobPicker.SelectedItem = ViewModel.Data.Job.ToMessage();
@@ -117,10 +117,10 @@ namespace Game.Views
             // Load the values for the Level into the Picker
             for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
             {
-                CharacterLevelPicker.Items.Add(i.ToString());
+                MonsterLevelPicker.Items.Add(i.ToString());
             }
 
-            CharacterLevelPicker.SelectedIndex = -1;
+            MonsterLevelPicker.SelectedIndex = -1;
 
             return true;
         }
@@ -130,16 +130,16 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public void CharacterLevelPicker_Changed(object sender, EventArgs args)
+        public void MonsterLevelPicker_Changed(object sender, EventArgs args)
         {
             // If the Picker is not set, then set it
-            if (CharacterLevelPicker.SelectedIndex == -1)
+            if (MonsterLevelPicker.SelectedIndex == -1)
             {
-                CharacterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
+                MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
                 return;
             }
 
-            var result = CharacterLevelPicker.SelectedIndex + 1;
+            var result = MonsterLevelPicker.SelectedIndex + 1;
 
             // When level changed, roll again for max health, and set attributes to follow the Level Table
             if (result != ViewModel.Data.Level)
