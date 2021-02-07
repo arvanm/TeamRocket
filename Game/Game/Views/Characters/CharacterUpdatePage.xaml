@@ -4,8 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local_helpers="clr-namespace:Game.Helpers"
              xmlns:local="using:Game.Models"
+             xmlns:local_enum="clr-namespace:Game.Models"
+             xmlns:local_helpers="clr-namespace:Game.Helpers"
              x:Class="Game.Views.CharacterUpdatePage"
              Title="{Binding Title}">
 
@@ -21,6 +22,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local_helpers:StringEnumConverter x:Key="StringEnum" />
+            <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -103,8 +105,8 @@
 
                         <Picker Grid.Column="1"
                                 Grid.Row="3"
-                                ItemsSource="{x:Static local:CharacterJobEnumHelper.GetList}"
-                                SelectedItem="{Binding Data.Job, Converter={StaticResource StringEnum}, Mode=TwoWay}"
+                                ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetListMessage}"
+                                SelectedItem="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}, Mode=TwoWay}"
                                 x:Name="CharacterJobPicker" />
 
                         <Button Grid.ColumnSpan="1"
