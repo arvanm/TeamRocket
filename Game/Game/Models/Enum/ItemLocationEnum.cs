@@ -37,6 +37,9 @@ namespace Game.Models
 
         // Boots, shoes, socks or anything else on the feet
         Feet = 40,
+
+        // Pokeball
+        Pokeball = 50,
     }
 
     /// <summary>
@@ -86,6 +89,10 @@ namespace Game.Models
 
                 case ItemLocationEnum.Feet:
                     Message = "Feet";
+                    break;
+
+                case ItemLocationEnum.Pokeball:
+                    Message = "Pokeball";
                     break;
 
                 case ItemLocationEnum.Unknown:
@@ -218,7 +225,7 @@ namespace Game.Models
 
         /// <summary>
         /// If asked for a position number, return a location.  Head as 1 etc. 
-        /// This compsenstates for the enum #s not being sequential, but allows for calls to the postion for random allocation etc (roll 1-7 dice and pick a item to equipt), etc... 
+        /// This compsenstates for the enum #s not being sequential, but allows for calls to the postion for random allocation etc (roll 1-8 dice and pick a item to equipt), etc... 
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
@@ -245,6 +252,9 @@ namespace Game.Models
                     return ItemLocationEnum.LeftFinger;
 
                 case 7:
+                    return ItemLocationEnum.Pokeball;
+
+                case 8:
                 default:
                     return ItemLocationEnum.Feet;
             }
