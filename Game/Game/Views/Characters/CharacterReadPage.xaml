@@ -16,7 +16,7 @@
                      IconImageSource="icon_delete.png" />
     </ContentPage.ToolbarItems>
 
-    <ScrollView>
+    <ScrollView VerticalScrollBarVisibility="Always">
         <StackLayout Style="{StaticResource OuterBoxStack}"
                      Spacing="10">
 
