@@ -45,8 +45,8 @@ namespace Game.Views
         {
             // Get MonsterModel from the button clicked
             var button = sender as ImageButton;
-            var characterId = button.CommandParameter as String;
-            var data = ViewModel.Dataset.FirstOrDefault(item => item.Id.Equals(characterId));
+            var monsterId = button.CommandParameter as String;
+            var data = ViewModel.Dataset.FirstOrDefault(item => item.Id.Equals(monsterId));
 
             // Handle null data
             if (data == null)
