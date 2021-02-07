@@ -40,15 +40,15 @@ namespace Game.Views
             // Load Level Values for the Level Picker
             LoadMonsterLevelPickerValues();
 
-            // Sets the Level Picker to the Character's level
+            // Sets the Level Picker to the Monster's level
             MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
 
-            // Sets the Job Picker to the Character's Type
+            // Sets the Job Picker to the Monster's Type
             MonsterTypePicker.SelectedItem = ViewModel.Data.Job.ToMessage();
         }
 
         /// <summary>
-        /// Cancel the character creation and close this page
+        /// Cancel the Monster creation and close this page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -64,11 +64,11 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckCharacterName()
+        private async Task<bool> CheckMonsterName()
         {
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
-                await DisplayAlert("Alert", "Character name cannot be empty!", "OK");
+                await DisplayAlert("Alert", "Monster name cannot be empty!", "OK");
                 return false;
             }
 
@@ -77,14 +77,14 @@ namespace Game.Views
         #endregion InputValueCheck
 
         /// <summary>
-        /// Save the character and close this page
+        /// Save the Monster and close this page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            // Only save when the character name is not empty, otherwise display an alert
-            if (await CheckCharacterName())
+            // Only save when the Monster name is not empty, otherwise display an alert
+            if (await CheckMonsterName())
             {
                 // If the image in the data box is empty, use the default one.
                 if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
@@ -98,7 +98,7 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Randomly change the image of the character
+        /// Randomly change the image of the Monster
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
