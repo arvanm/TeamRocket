@@ -25,7 +25,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Always">
             <StackLayout Style="{StaticResource OuterBoxStack}"
                          Spacing="10">
 
