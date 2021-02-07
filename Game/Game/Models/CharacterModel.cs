@@ -11,7 +11,7 @@ namespace Game.Models
     public class CharacterModel : BasePlayerModel<CharacterModel>
     {
         // List of Pokedex that stores captured Pokemons (Monsters)
-        public ArrayList Pokedex { get; set; }
+        public ArrayList Pokedex { get; set; } = new ArrayList();
 
         /// <summary>
         /// Default character
@@ -37,8 +37,6 @@ namespace Game.Models
             // Default to unknown, which is no special job
             Job = CharacterJobEnum.Unknown;
 
-            // Initial an empty Pokedex
-            Pokedex = new ArrayList();
         }
 
         /// <summary>
