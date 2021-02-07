@@ -21,7 +21,7 @@
             <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Always">
             <StackLayout Style="{StaticResource OuterBoxStack}">
@@ -32,21 +32,25 @@
                             JustifyContent="SpaceEvenly">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Padding="10">
+                            <StackLayout Padding="10"
+                                         HorizontalOptions="Center">
 
                                 <ImageButton Source="{Binding ImageURI}"
                                              Clicked="ReadCharacter_Clicked"
                                              CommandParameter="{Binding Id}" />
 
-                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding Name}"
+                                       HorizontalTextAlignment="Center" />
 
-                                <Label Text="{Binding Job, Converter={StaticResource CharacterJobEnumConverter}}" />
+                                <Label Text="{Binding Job, Converter={StaticResource CharacterJobEnumConverter}}"
+                                       HorizontalTextAlignment="Center" />
 
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Center">
                                     <Label Text="Level" />
                                     <Label Text="{Binding Level}" />
                                 </StackLayout>
-                                
+
                             </StackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
