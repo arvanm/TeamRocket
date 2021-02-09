@@ -335,7 +335,7 @@ namespace Game.GameRules
                 new MonsterModel {
                     Name = "Beedrill",
                     Description = "Beedrill is a Pokémon which mostly resembles a bipedal, yellow wasp",
-                    ImageURI = "item.png",
+                    ImageURI = "beedrill.png",
                     MonsterType = MonsterTypeEnum.Posion,
                 },
             };
