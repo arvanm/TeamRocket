@@ -165,7 +165,7 @@
                     <Label Grid.Row="1"
                            Grid.Column="0"
                            Text="Current Health" />
-                    <Entry Grid.Row="1"
+                    <Label Grid.Row="1"
                            Grid.Column="1"
                            x:Name="CurrentHealthValue"
                            Text="{Binding Data.CurrentHealth, Mode=TwoWay}" />
@@ -173,7 +173,7 @@
                     <Label Grid.Row="2"
                            Grid.Column="0"
                            Text="Max Health" />
-                    <Entry Grid.Row="2"
+                    <Label Grid.Row="2"
                            Grid.Column="1"
                            x:Name="MaxHealthValue"
                            Text="{Binding Data.MaxHealth, Mode=TwoWay}" />
