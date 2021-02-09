@@ -137,6 +137,18 @@ namespace Game.Views
         }
 
         /// <summary>
+        /// Refresh the page appearing
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            BindingContext = null;
+
+            BindingContext = ViewModel;
+        }
+
+        /// <summary>
         /// Cancel and close this page
         /// </summary>
         /// <param name="sender"></param>
