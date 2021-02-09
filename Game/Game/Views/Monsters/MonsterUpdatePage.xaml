@@ -22,7 +22,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local_helpers:StringEnumConverter x:Key="StringEnum" />
-            <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
+            <local_helpers:MonsterTypeEnumConverterHelper x:Key="MonsterTypeEnumConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -106,8 +106,8 @@
 
                         <Picker Grid.Column="1"
                                 Grid.Row="3"
-                                ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetListMessage}"
-                                SelectedItem="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}, Mode=TwoWay}"
+                                ItemsSource="{x:Static local_enum:MonsterTypeEnumHelper.GetListMessage}"
+                                SelectedItem="{Binding Data.MonsterType, Converter={StaticResource MonsterTypeEnumConverter}, Mode=TwoWay}"
                                 x:Name="MonsterTypePicker" />
                     </Grid>
                 </Grid>
