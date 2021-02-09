@@ -291,44 +291,44 @@ namespace Game.GameRules
             var datalist = new List<MonsterModel>()
             {
                 new MonsterModel {
-                    Name = "M1",
-                    Description = "M1",
+                    Name = "Squirtle",
+                    Description = "Squirtle is a small Pokémon that resembles a light-blue turtle",
                     ImageURI = "item.png",
                 },
 
                 new MonsterModel {
-                    Name = "M2",
-                    Description = "M2",
+                    Name = "Golduck",
+                    Description = "Golduck is a blue, bipedal, platypus-like Pokémon.",
                     ImageURI = "item.png",
                 },
 
                 new MonsterModel {
-                    Name = "M3",
-                    Description = "M3",
+                    Name = "Vaporeon",
+                    Description = "Vaporeon is a Pokémon that shares physical traits with both aquatic and land animals.",
                     ImageURI = "item.png",
                 },
 
                 new MonsterModel {
-                    Name = "M4",
-                    Description = "M4",
+                    Name = "Charmander",
+                    Description = "Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.",
                     ImageURI = "item.png",
                 },
 
                 new MonsterModel {
-                    Name = "M5",
-                    Description = "M5",
+                    Name = "Entei",
+                    Description = "Entei is a massive, leonine, quadrupedal Pokémon with some mastiff qualities.",
                     ImageURI = "item.png",
                 },
 
                 new MonsterModel {
-                    Name = "M6",
-                    Description = "M6",
+                    Name = "Moltres",
+                    Description = "Moltres is a large, avian Pokémon with golden plumage.",
                     ImageURI = "item.png",
                 },
 
                 new MonsterModel {
-                    Name = "M7",
-                    Description = "M7",
+                    Name = "Beedrill",
+                    Description = "Beedrill is a Pokémon which mostly resembles a bipedal, yellow wasp",
                     ImageURI = "item.png",
                 },
             };
