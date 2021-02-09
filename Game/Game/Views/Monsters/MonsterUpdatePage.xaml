@@ -52,6 +52,7 @@
                                Style="{StaticResource ImageLargeStyle}" />
                         <Button Grid.Column="0"
                                 Grid.Row="1"
+                                Clicked="ChangeImage_Clicked"
                                 Text="Change Image" />
                     </Grid>
 

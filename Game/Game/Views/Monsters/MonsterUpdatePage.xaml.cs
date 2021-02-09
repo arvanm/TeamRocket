@@ -81,6 +81,17 @@ namespace Game.Views
             TotalAttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
         }
 
+        /// <summary>
+        /// Change the image of the Monster
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void ChangeImage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new ImageChangePage(ViewModel)));
+            await Navigation.PopAsync();
+        }
+
         #region InputValueCheck
         /// <summary>
         /// Check whether the input name is empty or null.
