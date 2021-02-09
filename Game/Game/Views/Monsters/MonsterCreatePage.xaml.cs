@@ -92,6 +92,12 @@ namespace Game.Views
                     ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
                 }
 
+                if(MonsterTypePicker.SelectedIndex == -1)
+                {
+                    await DisplayAlert("Alert", "Monster type cannot be empty!", "OK");
+                    return;
+                }
+
                 MessagingCenter.Send(this, "Create", ViewModel.Data);
                 await Navigation.PopModalAsync();
             }
