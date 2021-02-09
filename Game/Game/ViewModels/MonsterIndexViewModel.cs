@@ -72,6 +72,15 @@ namespace Game.ViewModels
                 await UpdateAsync(data as MonsterModel);
             });
 
+            // Register the Update Message ************
+            MessagingCenter.Subscribe<ImageChangePage, MonsterModel>(this, "Update", async (obj, data) =>
+            {
+                // Have the Monster update itself
+                data.Update(data);
+
+                await UpdateAsync(data as MonsterModel);
+            });
+
             // Register the Delete Message
             MessagingCenter.Subscribe<MonsterDeletePage, MonsterModel>(this, "Delete", async (obj, data) =>
             {
