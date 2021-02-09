@@ -294,42 +294,49 @@ namespace Game.GameRules
                     Name = "Squirtle",
                     Description = "Squirtle is a small Pokémon that resembles a light-blue turtle",
                     ImageURI = "item.png",
-                },
+                    MonsterType = MonsterTypeEnum.Water,
+        },
 
                 new MonsterModel {
                     Name = "Golduck",
                     Description = "Golduck is a blue, bipedal, platypus-like Pokémon.",
                     ImageURI = "item.png",
+                    MonsterType = MonsterTypeEnum.Water,
                 },
 
                 new MonsterModel {
                     Name = "Vaporeon",
                     Description = "Vaporeon is a Pokémon that shares physical traits with both aquatic and land animals.",
                     ImageURI = "item.png",
+                    MonsterType = MonsterTypeEnum.Water,
                 },
 
                 new MonsterModel {
                     Name = "Charmander",
                     Description = "Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.",
                     ImageURI = "item.png",
+                    MonsterType = MonsterTypeEnum.Fire,
                 },
 
                 new MonsterModel {
                     Name = "Entei",
                     Description = "Entei is a massive, leonine, quadrupedal Pokémon with some mastiff qualities.",
                     ImageURI = "item.png",
+                    MonsterType = MonsterTypeEnum.Fire,
                 },
 
                 new MonsterModel {
                     Name = "Moltres",
                     Description = "Moltres is a large, avian Pokémon with golden plumage.",
                     ImageURI = "item.png",
+                    MonsterType = MonsterTypeEnum.Fire,
                 },
 
                 new MonsterModel {
                     Name = "Beedrill",
                     Description = "Beedrill is a Pokémon which mostly resembles a bipedal, yellow wasp",
                     ImageURI = "item.png",
+                    MonsterType = MonsterTypeEnum.Posion,
                 },
             };
 
