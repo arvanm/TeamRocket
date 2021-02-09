@@ -55,7 +55,7 @@
 
                     <Label Grid.Row="1"
                            Grid.Column="0"
-                           Text="Trainer Name:"
+                           Text="Pokémon Name:"
                            Style="{StaticResource LabelStyle}" />
 
                     <Entry Grid.Row="1"
@@ -75,7 +75,7 @@
 
                     <Label Grid.Row="3"
                            Grid.Column="0"
-                           Text="Trainer Level:"
+                           Text="Pokémon Level:"
                            Style="{StaticResource LabelStyle}" />
 
                     <Picker Grid.Row="3"
@@ -86,7 +86,7 @@
 
                     <Label Grid.Row="4"
                            Grid.Column="0"
-                           Text="Trainer Type:"
+                           Text="Pokémon Type:"
                            Style="{StaticResource LabelStyle}" />
 
                     <Picker Grid.Row="4"
