@@ -99,41 +99,6 @@ namespace Game.Views
             return true;
         }
 
-        /// <summary>
-        /// Check whether the input max health is in the correct range.
-        /// If the input max health is smaller or equal than 0 or larger than level times 10,
-        /// display an alert, and return false.
-        /// Otherwise return true
-        /// </summary>
-        /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckMonsterMaxHealth()
-        {
-            if (ViewModel.Data.MaxHealth <= 0 || ViewModel.Data.MaxHealth > ViewModel.Data.Level * 10)
-            {
-                await DisplayAlert("Alert", "Monster max health must between 1 and Level x 10!", "OK");
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Check whether the input current health is in the correct range.
-        /// If the input current health is smaller than 0 or larger than the max health,
-        /// display an alert, and return false.
-        /// Otherwise return true
-        /// </summary>
-        /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckMonsterCurHealth()
-        {
-            if (ViewModel.Data.CurrentHealth < 0 || ViewModel.Data.CurrentHealth > ViewModel.Data.MaxHealth)
-            {
-                await DisplayAlert("Alert", "Monster current health must between 0 and Max Health!", "OK");
-                return false;
-            }
-
-            return true;
-        }
         #endregion InputValueCheck
 
         /// <summary>
@@ -147,7 +112,7 @@ namespace Game.Views
             // the Monster name is not empty,
             // the max health is not within [1, level * 10] range,
             // otherwise display an alert.
-            if (await CheckMonsterName() && await CheckMonsterMaxHealth() && await CheckMonsterCurHealth())
+            if (await CheckMonsterName())
             {
                 // If the image in the data box is empty, use the default one..
                 if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
