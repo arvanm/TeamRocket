@@ -133,6 +133,9 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="beedrill.png" />
+    <Content Include="charmander.png" />
+    <Content Include="entei.png" />
+    <Content Include="golduck.png" />
     <Content Include="icon_add.png" />
     <Content Include="icon_cancel.png" />
     <Content Include="icon_delete.png" />
@@ -141,6 +144,7 @@
     <Content Include="icon_save.png" />
     <Content Include="item.png" />
     <Content Include="mapcell.png" />
+    <Content Include="moltres.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -169,6 +173,8 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="squirtle.png" />
+    <Content Include="vaporeon.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

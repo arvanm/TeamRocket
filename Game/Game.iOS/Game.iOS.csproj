@@ -177,4 +177,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\beedrill.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\charmander.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\entei.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\golduck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\moltres.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\squirtle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vaporeon.png" />
+  </ItemGroup>
 </Project>
