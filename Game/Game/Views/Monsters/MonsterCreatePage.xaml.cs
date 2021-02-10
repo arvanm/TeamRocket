@@ -108,9 +108,22 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ChangeImage_Clicked(object sender, EventArgs e)
+        private async void ChangeImage_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushModalAsync(new NavigationPage(new ImageChangePage(ViewModel)));
+            await Navigation.PopAsync();
+        }
 
+        /// <summary>
+        /// Refresh the page appearing
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            BindingContext = null;
+
+            BindingContext = ViewModel;
         }
 
         #region LevelPicker
