@@ -195,4 +195,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\vaporeon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\forest.jpg" />
+  </ItemGroup>
 </Project>
