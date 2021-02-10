@@ -73,7 +73,7 @@ namespace Game.ViewModels
             });
 
             // Register the Update Message ************
-            MessagingCenter.Subscribe<ImageChangePage, MonsterModel>(this, "Update", async (obj, data) =>
+            MessagingCenter.Subscribe<MonsterImageChangePage, MonsterModel>(this, "Update", async (obj, data) =>
             {
                 // Have the Monster update itself
                 data.Update(data);
