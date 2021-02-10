@@ -16,34 +16,33 @@ namespace Game.Views
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0019:Use pattern matching", Justification = "<Pending>")]
     [DesignTimeVisible(false)] 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ImageChangePage : ContentPage
+    public partial class MonsterImageChangePage : ContentPage
     {
-        // The view model, used for data binding
-        readonly MonsterIndexViewModel ViewModel = MonsterIndexViewModel.Instance;
+        // Hold the ViewModel that was passed in
         private GenericViewModel<MonsterModel> viewModel;
 
         // Empty Constructor for UTs
-        public ImageChangePage(bool UnitTest) { }
+        public MonsterImageChangePage(bool UnitTest) { }
 
         /// <summary>
         /// Constructor for Index Page
         /// 
         /// Get the ItemIndexView Model
         /// </summary>
-        public ImageChangePage()
+        public MonsterImageChangePage()
         {
             InitializeComponent();
 
-            BindingContext = ViewModel;
+            //BindingContext = ViewModel;
         }
 
-        public ImageChangePage(GenericViewModel<MonsterModel> viewModel)
+        public MonsterImageChangePage(GenericViewModel<MonsterModel> viewModel)
         {
             this.viewModel = viewModel;
 
             InitializeComponent();
 
-            BindingContext = ViewModel;
+           // BindingContext = ViewModel;
         }
 
         /// <summary>
@@ -55,8 +54,8 @@ namespace Game.Views
         {
             // Get MonsterModel from the button clicked
             var button = sender as ImageButton;
-            var monsterId = button.CommandParameter as String;
-            viewModel.Data.ImageURI = ViewModel.Dataset.FirstOrDefault(item => item.Id.Equals(monsterId)).ImageURI;
+            var imageSelected = button.CommandParameter as String;
+            viewModel.Data.ImageURI = imageSelected;
 
             // Handle null data
             if (viewModel == null)

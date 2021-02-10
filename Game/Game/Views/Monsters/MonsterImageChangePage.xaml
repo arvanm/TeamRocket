@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local_helpers="clr-namespace:Game.Helpers"
+             xmlns:local="using:Game.Models"
+             x:Name="BrowseItemsPage"
+             x:Class="Game.Views.MonsterImageChangePage"
+             Title="Select Monster">
+
+    <ContentPage.ToolbarItems>
+        
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_helpers:MonsterTypeEnumConverterHelper x:Key="MonsterTypeEnumConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Always">
+            <StackLayout Style="{StaticResource OuterBoxStack}">
+                <StackLayout Padding="10"            
+                             HorizontalOptions="Center">
+                    <ImageButton Source="beedrill.png"            
+                                 Clicked="SelectMonsterImage_Clicked"
+                                 CommandParameter="beedrill.png" />
+                    <ImageButton Source="charmander.png"
+                                 Clicked="SelectMonsterImage_Clicked"
+                                 CommandParameter="charmander.png" />
+                    <ImageButton Source="entei.png"           
+                                 Clicked="SelectMonsterImage_Clicked"
+                                 CommandParameter="entei.png" />
+                    <ImageButton Source="golduck.png"                                             
+                                 Clicked="SelectMonsterImage_Clicked"                                            
+                                 CommandParameter="golduck.png" />
+                    <ImageButton Source="moltres.png"                                             
+                                 Clicked="SelectMonsterImage_Clicked"                                             
+                                 CommandParameter="moltres.png" />
+                    <ImageButton Source="squirtle.png"                                             
+                                 Clicked="SelectMonsterImage_Clicked"           
+                                 CommandParameter="squirtle.png" />
+                    <ImageButton Source="vaporeon.png"                                             
+                                 Clicked="SelectMonsterImage_Clicked"           
+                                 CommandParameter="vaporeon.png" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
