@@ -88,7 +88,7 @@ namespace Game.Views
         /// <param name="e"></param>
         private async void ChangeImage_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ImageChangePage(ViewModel)));
+            await Navigation.PushModalAsync(new NavigationPage(new MonsterImageChangePage(ViewModel)));
             await Navigation.PopAsync();
         }
 
