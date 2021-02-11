@@ -198,4 +198,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\forest.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_score.png" />
+  </ItemGroup>
 </Project>

@@ -143,6 +143,7 @@
     <Content Include="icon_edit.png" />
     <Content Include="icon_new.png" />
     <Content Include="icon_save.png" />
+    <Content Include="icon_score.png" />
     <Content Include="item.png" />
     <Content Include="mapcell.png" />
     <Content Include="moltres.png" />
