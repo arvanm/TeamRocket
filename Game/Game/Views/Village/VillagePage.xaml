@@ -17,12 +17,12 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="item.png"
+                                Source="icon_trainers.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="CharactersButton_Clicked"/>
 
                     <Label 
-                                Text="Characters"
+                                Text="Trainers"
                                 Style="{StaticResource CenterMessageStyle}"/>
 
                 </StackLayout>
@@ -30,12 +30,12 @@
                 <StackLayout Style="{StaticResource CardImageTextBox}">
 
                     <ImageButton
-                                Source="item.png"
+                                Source="icon_monster.png"
                                 Style="{StaticResource ImageLargeStyle}"
                                 Clicked="MonstersButton_Clicked"/>
 
                     <Label 
-                                Text="Monsters"
+                                Text="Pokemons"
                                 Style="{StaticResource CenterMessageStyle}"/>
 
                 </StackLayout>

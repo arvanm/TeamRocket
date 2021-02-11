@@ -141,9 +141,11 @@
     <Content Include="icon_cancel.png" />
     <Content Include="icon_delete.png" />
     <Content Include="icon_edit.png" />
+    <Content Include="icon_monster.png" />
     <Content Include="icon_new.png" />
     <Content Include="icon_save.png" />
     <Content Include="icon_score.png" />
+    <Content Include="icon_trainers.png" />
     <Content Include="icon_village.png" />
     <Content Include="item.png" />
     <Content Include="mapcell.png" />
