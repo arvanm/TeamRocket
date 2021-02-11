@@ -201,4 +201,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_score.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_village.png" />
+  </ItemGroup>
 </Project>
