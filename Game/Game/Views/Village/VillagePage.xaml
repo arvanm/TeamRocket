@@ -23,7 +23,7 @@
 
                     <Label 
                                 Text="Trainers"
-                                Style="{StaticResource CenterMessageStyle}"/>
+                                Style="{StaticResource CenterMessageStyle}" FontAttributes="Bold"/>
 
                 </StackLayout>
 
@@ -35,8 +35,8 @@
                                 Clicked="MonstersButton_Clicked"/>
 
                     <Label 
-                                Text="Pokemons"
-                                Style="{StaticResource CenterMessageStyle}"/>
+                                Text="Pokémon"
+                                Style="{StaticResource CenterMessageStyle}" FontAttributes="Bold"/>
 
                 </StackLayout>
 
@@ -50,7 +50,7 @@
 
                     <Label 
                                 Text="Items"
-                                Style="{StaticResource CenterMessageStyle}"/>
+                                Style="{StaticResource CenterMessageStyle}" FontAttributes="Bold"/>
                 </StackLayout>
 
 
@@ -63,7 +63,7 @@
 
                     <Label 
                                 Text="Scores"
-                                Style="{StaticResource CenterMessageStyle}"/>
+                                Style="{StaticResource CenterMessageStyle}" FontAttributes="Bold"/>
 
                 </StackLayout>
 
