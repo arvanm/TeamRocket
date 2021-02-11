@@ -144,6 +144,7 @@
     <Content Include="icon_edit.png" />
     <Content Include="icon_monster.png" />
     <Content Include="icon_new.png" />
+    <Content Include="icon_pokeball.png" />
     <Content Include="icon_save.png" />
     <Content Include="icon_score.png" />
     <Content Include="icon_trainers.png" />

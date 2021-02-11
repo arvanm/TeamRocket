@@ -213,4 +213,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_dungeon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pokemon_home.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_pokeball.png" />
+  </ItemGroup>
 </Project>
