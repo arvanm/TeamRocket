@@ -38,8 +38,10 @@
                         />
                 </StackLayout>
 
-                <Button
-                    Text="Enter"
+                <ImageButton
+                    HeightRequest="30"
+                    WidthRequest="100"
+                    Source="icon_enter.png"
                     Clicked="GameButton_Clicked"/>
 
             </StackLayout>

@@ -231,4 +231,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\character_02.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_enter.png" />
+  </ItemGroup>
 </Project>
