@@ -41,7 +41,8 @@
 
                 <Grid RowSpacing="1"
                       ColumnSpacing="2"
-                      VerticalOptions="Center">
+                      VerticalOptions="Center"
+                      Padding="25">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -112,7 +113,8 @@
                 </Grid>
 
                 <StackLayout Style="{StaticResource VerticalStack}"
-                             HorizontalOptions="FillAndExpand">
+                             HorizontalOptions="FillAndExpand"
+                             Padding="25">
 
                     <Label Text="Range"
                            Style="{StaticResource LabelStyle}" />
