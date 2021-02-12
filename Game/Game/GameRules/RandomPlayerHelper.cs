@@ -220,6 +220,7 @@ namespace Game.GameRules
                 RightFinger = GetItem(ItemLocationEnum.Finger),
                 LeftFinger = GetItem(ItemLocationEnum.Finger),
                 Feet = GetItem(ItemLocationEnum.Feet),
+                Pokeball = GetItem(ItemLocationEnum.Pokeball),
 
                 ImageURI = GetCharacterImage()
             };
