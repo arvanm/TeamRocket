@@ -86,6 +86,7 @@ namespace Game.Models
             LeftFinger = newData.LeftFinger;
             Feet = newData.Feet;
             UniqueItem = newData.UniqueItem;
+            Pokeball = newData.Pokeball;
 
             // Update the Job
             Job = newData.Job;
