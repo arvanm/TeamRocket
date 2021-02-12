@@ -71,6 +71,27 @@ namespace Game.Views
         }
 
         /// <summary>
+        /// Change the image of the Character
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void ChangeImage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new CharacterImageChangePage(ViewModel)));
+            await Navigation.PopAsync();
+        }
+
+        /// <summary>
+        /// Refresh the page appearing
+        /// </summary>
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            UpdatePageBindingContext();
+        }
+
+        /// <summary>
         /// Change the attribute values after changing level in the Level Picker
         /// </summary>
         public void UpdateAttributeValues()
