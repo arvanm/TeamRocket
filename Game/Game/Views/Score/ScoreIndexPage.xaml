@@ -15,7 +15,7 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource OuterBoxStack}">
 
-            <Label Text="Score List Page" Style="{StaticResource HeaderStyle}"/>
+            <Label Text="Top Scores List" Style="{StaticResource HeaderStyle}" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
 
             <ListView x:Name="DataListView" 
                     ItemsSource="{Binding Dataset}"
@@ -24,14 +24,14 @@
                     CachingStrategy="RecycleElement"
                     ItemSelected="OnItemSelected"
                     HasUnevenRows="true"
-                    Margin="5,0,5,0"
+                    Margin="0,5,0,5"
                     RowHeight="80"
                     >
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid ColumnSpacing="1" RowSpacing="1">
+                            <Grid ColumnSpacing="1" RowSpacing="1" HorizontalOptions="CenterAndExpand" Padding="0,5,0,5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>

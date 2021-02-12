@@ -103,7 +103,7 @@
             <Style TargetType="Label"
                 x:Key="ListStyle"
                 BasedOn="{StaticResource LabelBaseStyle}">
-                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontSize" Value="Small" />
             </Style>
 
             <Style TargetType="Label"
