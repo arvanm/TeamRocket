@@ -63,6 +63,8 @@ namespace Game.Models
             Level = newData.Level;
             ImageURI = newData.ImageURI;
 
+            MonsterType = newData.MonsterType;
+
             Difficulty = newData.Difficulty;
 
             Speed = newData.Speed;
