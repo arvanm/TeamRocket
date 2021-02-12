@@ -144,6 +144,7 @@ namespace Game.GameRules
             var FeetString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Feet);
             var RightFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
             var LeftFingerString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Finger);
+            var PokeballString = ItemIndexViewModel.Instance.GetDefaultItemId(ItemLocationEnum.Pokeball);
 
             var datalist = new List<CharacterModel>()
             {
@@ -165,6 +166,7 @@ namespace Game.GameRules
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
+                    Pokeball = PokeballString,
                 },
 
                 new CharacterModel {
@@ -185,6 +187,7 @@ namespace Game.GameRules
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
+                    Pokeball = PokeballString,
                 },
 
                 new CharacterModel {
@@ -205,6 +208,7 @@ namespace Game.GameRules
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
+                    Pokeball = PokeballString,
                 },
 
                 new CharacterModel {
@@ -225,6 +229,7 @@ namespace Game.GameRules
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
+                    Pokeball = PokeballString,
                 },
 
                 new CharacterModel {
@@ -245,6 +250,7 @@ namespace Game.GameRules
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
+                    Pokeball = PokeballString,
                 },
 
                 new CharacterModel {
@@ -265,6 +271,7 @@ namespace Game.GameRules
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
+                    Pokeball = PokeballString,
                 },
 
                 new CharacterModel {
@@ -285,6 +292,7 @@ namespace Game.GameRules
                     Feet = FeetString,
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
+                    Pokeball = PokeballString,
                 },
             };
 
