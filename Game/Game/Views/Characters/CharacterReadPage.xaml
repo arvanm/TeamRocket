@@ -81,7 +81,8 @@
                             <Label Grid.Column="1"
                                    Grid.Row="1"
                                    Text="{Binding Data.Description}"
-                                   Style="{StaticResource ValueStyle}" />
+                                   Style="{StaticResource ValueStyle}"
+                                   LineBreakMode="WordWrap" />
 
                             <Label Grid.Column="0"
                                    Grid.Row="2"
