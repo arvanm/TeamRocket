@@ -68,7 +68,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Feet01",
                     Description = "Nike Air Max",
-                    ImageURI = "item.png",
+                    ImageURI = "item_airmax.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,

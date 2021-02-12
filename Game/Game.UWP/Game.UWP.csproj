@@ -155,6 +155,7 @@
     <Content Include="icon_trainers.png" />
     <Content Include="icon_village.png" />
     <Content Include="item.png" />
+    <Content Include="item_airmax.png" />
     <Content Include="mapcell.png" />
     <Content Include="moltres.png" />
     <Content Include="Properties\Default.rd.xml" />
