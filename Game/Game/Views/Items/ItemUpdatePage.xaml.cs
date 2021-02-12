@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -44,14 +46,18 @@ namespace Game.Views
         /// <param name="e"></param>
         public async void Save_Clicked(object sender, EventArgs e)
         {
-            // If the image in the data box is empty, use the default one..
-            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            // Check whether for the item name is empty. If not, pop a warning and not save
+            if (await CheckItemName())
             {
-                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
-            }
+                // If the image in the data box is empty, use the default one..
+                if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+                {
+                    ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+                }
 
-            MessagingCenter.Send(this, "Update", ViewModel.Data);
-            await Navigation.PopModalAsync();
+                MessagingCenter.Send(this, "Update", ViewModel.Data);
+                await Navigation.PopModalAsync();
+            }
         }
 
         /// <summary>
@@ -93,5 +99,24 @@ namespace Game.Views
         {
             DamageValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        #region InputValueCheck
+        /// <summary>
+        /// Check whether the input name is empty or null.
+        /// If the input name is empty or null, display an alert says the name cannot be empty, and return false.
+        /// Otherwise return true
+        /// </summary>
+        /// <returns>Whether the input name is empty or null</returns>
+        private async Task<bool> CheckItemName()
+        {
+            if (string.IsNullOrEmpty(ViewModel.Data.Name))
+            {
+                await DisplayAlert("Alert", "Item name cannot be empty!", "OK");
+                return false;
+            }
+
+            return true;
+        }
+        #endregion InputValueCheck
     }
 }
