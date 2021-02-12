@@ -20,16 +20,16 @@
                 <StackLayout Padding="10"            
                              HorizontalOptions="Center">
                     <ImageButton Source="character_01.png"            
-                                 Clicked="SelectMonsterImage_Clicked"
+                                 Clicked="SelectCharacterImage_Clicked"
                                  CommandParameter="beedrill.png" />
                     <ImageButton Source="character_02.png"
-                                 Clicked="SelectMonsterImage_Clicked"
+                                 Clicked="SelectCharacterImage_Clicked"
                                  CommandParameter="charmander.png" />
                     <ImageButton Source="character_03.png"           
-                                 Clicked="SelectMonsterImage_Clicked"
+                                 Clicked="SelectCharacterImage_Clicked"
                                  CommandParameter="entei.png" />
                     <ImageButton Source="character_04.png"
-                                 Clicked="SelectMonsterImage_Clicked"
+                                 Clicked="SelectCharacterImage_Clicked"
                                  CommandParameter="golduck.png" />
                 </StackLayout>
             </StackLayout>
