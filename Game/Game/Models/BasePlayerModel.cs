@@ -162,6 +162,9 @@ namespace Game.Models
 
         // Unique Drop Item for Monsters
         public string UniqueItem { get; set; } = null;
+
+        // Pokeball for Characters
+        public string Pokeball { get; set; } = null;
         #endregion Items
 
         #region AttributeDisplay
