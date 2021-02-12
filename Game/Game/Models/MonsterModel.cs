@@ -9,6 +9,7 @@ namespace Game.Models
     /// </summary>
     public class MonsterModel : BasePlayerModel<MonsterModel>
     {
+        // Type of monster
         public MonsterTypeEnum MonsterType { get; set; }
 
         /// <summary>
