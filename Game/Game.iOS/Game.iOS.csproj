@@ -240,4 +240,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\item_ring.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_hat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_necklace.png" />
+  </ItemGroup>
 </Project>

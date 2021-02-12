@@ -37,8 +37,8 @@ namespace Game.GameRules
                 },
                 new ItemModel {
                     Name = "Neck01",
-                    Description = "Shiny necklace",
-                    ImageURI = "item.png",
+                    Description = "Shiny Wakanda Forever necklace",
+                    ImageURI = "item_necklace.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
