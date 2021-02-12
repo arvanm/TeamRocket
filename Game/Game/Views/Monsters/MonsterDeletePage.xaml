@@ -69,7 +69,8 @@
                     <Label Grid.Column="0"
                            Grid.Row="1"
                            Text="Description: "
-                           Style="{StaticResource LabelStyle}" />
+                           Style="{StaticResource LabelStyle}"
+                           LineBreakMode="WordWrap" />
 
                     <Label Grid.Column="1"
                            Grid.Row="1"
