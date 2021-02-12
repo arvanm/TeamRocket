@@ -21,16 +21,16 @@
                              HorizontalOptions="Center">
                     <ImageButton Source="character_01.png"            
                                  Clicked="SelectCharacterImage_Clicked"
-                                 CommandParameter="beedrill.png" />
+                                 CommandParameter="character_01.png" />
                     <ImageButton Source="character_02.png"
                                  Clicked="SelectCharacterImage_Clicked"
-                                 CommandParameter="charmander.png" />
+                                 CommandParameter="character_02.png" />
                     <ImageButton Source="character_03.png"           
                                  Clicked="SelectCharacterImage_Clicked"
-                                 CommandParameter="entei.png" />
+                                 CommandParameter="character_03.png" />
                     <ImageButton Source="character_04.png"
                                  Clicked="SelectCharacterImage_Clicked"
-                                 CommandParameter="golduck.png" />
+                                 CommandParameter="character_04.png" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>
