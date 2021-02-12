@@ -114,7 +114,7 @@
 
                 <StackLayout Style="{StaticResource VerticalStack}"
                              HorizontalOptions="FillAndExpand"
-                             Padding="25">
+                             Padding="25,0,0,0">
 
                     <Label Text="Range"
                            Style="{StaticResource LabelStyle}" />
