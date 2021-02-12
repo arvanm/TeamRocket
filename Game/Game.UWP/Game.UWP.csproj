@@ -133,6 +133,10 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="beedrill.png" />
+    <Content Include="character_01.png" />
+    <Content Include="character_02.png" />
+    <Content Include="character_03.png" />
+    <Content Include="character_04.png" />
     <Content Include="charmander.png" />
     <Content Include="entei.png" />
     <Content Include="forest.jpg" />

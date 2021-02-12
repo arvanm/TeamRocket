@@ -219,4 +219,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_pokeball.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\character_02.png" />
+  </ItemGroup>
 </Project>
