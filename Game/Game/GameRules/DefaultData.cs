@@ -16,8 +16,8 @@ namespace Game.GameRules
             var datalist = new List<ItemModel>()
             {
                 new ItemModel {
-                    Name = "I1",
-                    Description = "I1",
+                    Name = "PrimaryHand01",
+                    Description = "Some random sword",
                     ImageURI = "item.png",
                     Range = 10,
                     Damage = 10,
@@ -26,38 +26,38 @@ namespace Game.GameRules
                     Attribute = AttributeEnum.Attack
                 },
                 new ItemModel {
-                    Name = "I2",
-                    Description = "I2",
+                    Name = "Head01",
+                    Description = "Cute little hat",
                     ImageURI = "item.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.Head,
-                    Attribute = AttributeEnum.Attack
+                    Attribute = AttributeEnum.Defense
                 },
                 new ItemModel {
-                    Name = "I3",
-                    Description = "I3",
+                    Name = "Neck01",
+                    Description = "Shiny necklace",
                     ImageURI = "item.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.Necklass,
-                    Attribute = AttributeEnum.Attack
+                    Attribute = AttributeEnum.Speed
                 },
                 new ItemModel {
-                    Name = "I4",
-                    Description = "I4",
+                    Name = "OffHand01",
+                    Description = "Some nice glove",
                     ImageURI = "item.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.OffHand,
-                    Attribute = AttributeEnum.Attack
+                    Attribute = AttributeEnum.Defense
                 },
                 new ItemModel {
-                    Name = "I5",
-                    Description = "I5",
+                    Name = "Finger01",
+                    Description = "Diamond ring",
                     ImageURI = "item.png",
                     Range = 10,
                     Damage = 10,
@@ -66,33 +66,43 @@ namespace Game.GameRules
                     Attribute = AttributeEnum.Attack
                 },
                 new ItemModel {
-                    Name = "I6",
-                    Description = "I6",
+                    Name = "Feet01",
+                    Description = "Nike Air Max",
                     ImageURI = "item.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Speed
+                },
+                new ItemModel {
+                    Name = "Pokeball01",
+                    Description = "Master ball",
+                    ImageURI = "item.png",
+                    Range = 10,
+                    Damage = 10,
+                    Value = 9,
+                    Location = ItemLocationEnum.Pokeball,
                     Attribute = AttributeEnum.Attack
                 },
             };
 
-            for (int i = 0; i < 20; i++)
-            {
-                var item = new ItemModel
-                {
-                    ImageURI = "item.png",
-                    Range = 2,
-                    Damage = 10,
-                    Value = 9,
-                    Location = ItemLocationEnum.PrimaryHand,
-                    Attribute = AttributeEnum.Attack
-                };
-                item.Name = "I" + (datalist.Count + 1).ToString();
-                item.Description = item.Name;
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    var item = new ItemModel
+            //    {
+            //        ImageURI = "item.png",
+            //        Range = 2,
+            //        Damage = 10,
+            //        Value = 9,
+            //        Location = ItemLocationEnum.PrimaryHand,
+            //        Attribute = AttributeEnum.Attack
+            //    };
+            //    item.Name = "I" + (datalist.Count + 1).ToString();
+            //    item.Description = item.Name;
 
-                datalist.Add(item);
-            }
+            //    datalist.Add(item);
+            //}
 
             return datalist;
         }
