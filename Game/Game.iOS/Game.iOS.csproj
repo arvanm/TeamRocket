@@ -237,4 +237,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\item_airmax.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_ring.png" />
+  </ItemGroup>
 </Project>

@@ -27,8 +27,8 @@ namespace Game.GameRules
                 },
                 new ItemModel {
                     Name = "Head01",
-                    Description = "Cute little hat",
-                    ImageURI = "item.png",
+                    Description = "Cute aviator hat",
+                    ImageURI = "item_hat.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
@@ -57,8 +57,8 @@ namespace Game.GameRules
                 },
                 new ItemModel {
                     Name = "Finger01",
-                    Description = "Diamond ring",
-                    ImageURI = "item.png",
+                    Description = "Green Power ring",
+                    ImageURI = "item_ring.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
