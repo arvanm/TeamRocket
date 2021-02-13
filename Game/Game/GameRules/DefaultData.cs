@@ -78,7 +78,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "Pokeball01",
                     Description = "Master ball",
-                    ImageURI = "item.png",
+                    ImageURI = "item_pokeball.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,

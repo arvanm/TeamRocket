@@ -252,4 +252,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\item_sword.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\item_pokeball.png" />
+  </ItemGroup>
 </Project>

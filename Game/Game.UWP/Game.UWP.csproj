@@ -159,6 +159,7 @@
     <Content Include="item_glove.png" />
     <Content Include="item_hat.png" />
     <Content Include="item_necklace.png" />
+    <Content Include="item_pokeball.png" />
     <Content Include="item_ring.png" />
     <Content Include="item_sword.png" />
     <Content Include="mapcell.png" />
