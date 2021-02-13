@@ -160,6 +160,7 @@
     <Content Include="item_hat.png" />
     <Content Include="item_necklace.png" />
     <Content Include="item_ring.png" />
+    <Content Include="item_sword.png" />
     <Content Include="mapcell.png" />
     <Content Include="moltres.png" />
     <Content Include="Properties\Default.rd.xml" />

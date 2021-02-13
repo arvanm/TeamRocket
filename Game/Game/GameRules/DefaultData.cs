@@ -18,7 +18,7 @@ namespace Game.GameRules
                 new ItemModel {
                     Name = "PrimaryHand01",
                     Description = "May the force be with you!",
-                    ImageURI = "item.png",
+                    ImageURI = "item_sword.png",
                     Range = 10,
                     Damage = 10,
                     Value = 9,
