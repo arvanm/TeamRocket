@@ -14,10 +14,10 @@ namespace Game.Models
         public List<MonsterModel> Pokedex { get; set; } = new List<MonsterModel>();
 
         // Attack from Pokedex
-        public int GetAttackPokedexBonus { get; set; } = 0;
+        public int GetAttackPokedexBonus { get; set; } = 10;
 
         // Damage from Pokedex
-        public int GetDamagePokedexBonus { get; set; } = 0;
+        public int GetDamagePokedexBonus { get; set; } = 20;
 
         /// <summary>
         /// Default character
@@ -121,6 +121,17 @@ namespace Game.Models
             myReturn += " , Damage : " + GetDamageTotalString;
 
             return myReturn;
+        }
+
+        /// <summary>
+        /// Return the Total Attack Value
+        /// </summary>
+        /// <returns></returns>
+        public override int GetAttack()
+        {
+            var result = base.GetAttack();
+            result = result + GetAttackPokedexBonus;
+            return result;
         }
     }
 }

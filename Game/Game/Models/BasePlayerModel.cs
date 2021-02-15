@@ -374,7 +374,7 @@ namespace Game.Models
         /// Return the Total Attack Value
         /// </summary>
         /// <returns></returns>
-        public int GetAttack()
+        public virtual int GetAttack()
         {
             // Base Attack
             var myReturn = Attack;
