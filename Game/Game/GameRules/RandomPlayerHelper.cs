@@ -286,7 +286,7 @@ namespace Game.GameRules
             result.Attack = result.Difficulty.ToModifier(result.Attack);
             result.Defense = result.Difficulty.ToModifier(result.Defense);
             result.Speed = result.Difficulty.ToModifier(result.Speed);
-            result.Level = result.Difficulty.ToModifier(result.Level);
+            //result.Level = result.Difficulty.ToModifier(result.Level);
 
             // Get the new Max Health
             result.MaxHealth = DiceHelper.RollDice(result.Level, 10);
