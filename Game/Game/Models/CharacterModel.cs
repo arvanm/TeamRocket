@@ -1,5 +1,5 @@
 ﻿using Game.GameRules;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Game.Models
 {
@@ -11,7 +11,7 @@ namespace Game.Models
     public class CharacterModel : BasePlayerModel<CharacterModel>
     {
         // List of Pokedex that stores captured Pokemons (Monsters)
-        public ArrayList Pokedex { get; set; } = new ArrayList();
+        public List<MonsterModel> Pokedex { get; set; } = new List<MonsterModel>();
 
         /// <summary>
         /// Default character
