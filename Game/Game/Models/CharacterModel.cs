@@ -16,6 +16,12 @@ namespace Game.Models
         // Special Item for Character: Pokeball
         public string Pokeball { get; set; } = null;
 
+        // Damage from Pokedex
+        public int GetAttackPokedexBonus { get; set; } = 0;
+
+        // Damage from Pokedex
+        public int GetDamagePokedexBonus { get; set; } = 0;
+
         /// <summary>
         /// Default character
         /// 
