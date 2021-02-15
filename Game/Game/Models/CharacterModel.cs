@@ -10,14 +10,6 @@ namespace Game.Models
     /// </summary>
     public class CharacterModel : BasePlayerModel<CharacterModel>
     {
-        // List of Pokedex that stores captured Pokemons (Monsters)
-        public List<MonsterModel> Pokedex { get; set; } = new List<MonsterModel>();
-
-        // Attack from Pokedex
-        public int GetAttackPokedexBonus { get; set; } = 10;
-
-        // Damage from Pokedex
-        public int GetDamagePokedexBonus { get; set; } = 20;
 
         /// <summary>
         /// Default character
@@ -34,6 +26,7 @@ namespace Game.Models
             ImageURI = "item.png";
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
+            Pokedex = new List<MonsterModel>();
 
             // Base attack, defense and speed not changable, always 0
             Attack = 0;
@@ -121,17 +114,6 @@ namespace Game.Models
             myReturn += " , Damage : " + GetDamageTotalString;
 
             return myReturn;
-        }
-
-        /// <summary>
-        /// Return the Total Attack Value
-        /// </summary>
-        /// <returns></returns>
-        public override int GetAttack()
-        {
-            var result = base.GetAttack();
-            result = result + GetAttackPokedexBonus;
-            return result;
         }
     }
 }

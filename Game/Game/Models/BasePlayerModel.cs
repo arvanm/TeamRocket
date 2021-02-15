@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using SQLite;
@@ -134,6 +135,9 @@ namespace Game.Models
         // The Job for the Player
         public CharacterJobEnum Job { get; set; } = CharacterJobEnum.Unknown;
 
+        // List of Pokedex that stores captured Pokemons (Monsters) - Only for Characters
+        public List<MonsterModel> Pokedex { get; set; } = null;
+
         #endregion PlayerAttributes
 
         #endregion Attributes
@@ -189,6 +193,24 @@ namespace Game.Models
                 var result = 0;
                 return result;
             }
+        }
+
+        [Ignore]
+        // Return the Attack with Pokedex Bonus
+        public int GetAttackPokedexBonus
+        {
+            get 
+            {
+                // If the model does not have a Pokedex (Not a Character), return 0
+                if (Pokedex == null)
+                {
+                    return 0;
+                }
+
+                // Return the attack as the sum of attack of Pokemons in Pokedex
+                var result = Pokedex.Sum(monster => monster.Attack);
+                return result;
+            } 
         }
 
         [Ignore]
@@ -374,7 +396,7 @@ namespace Game.Models
         /// Return the Total Attack Value
         /// </summary>
         /// <returns></returns>
-        public virtual int GetAttack()
+        public int GetAttack()
         {
             // Base Attack
             var myReturn = Attack;
@@ -390,6 +412,9 @@ namespace Game.Models
 
             // Add any Round Buffs
             myReturn += BuffAttackValue;
+
+            // Add Pokedex Bonus
+            myReturn += GetAttackPokedexBonus;
 
             return myReturn;
         }
