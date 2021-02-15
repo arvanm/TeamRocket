@@ -162,6 +162,9 @@ namespace Game.Models
 
         // Unique Drop Item for Monsters
         public string UniqueItem { get; set; } = null;
+
+        // Pokeball for Character
+        public string Pokeball { get; set; } = null;
         #endregion Items
 
         #region AttributeDisplay
@@ -760,6 +763,12 @@ namespace Game.Models
                 myReturn.Add(myItem);
             }
 
+            myItem = RemoveItem(ItemLocationEnum.Pokeball);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+
             return myReturn;
         }
 
@@ -801,6 +810,9 @@ namespace Game.Models
 
                 case ItemLocationEnum.Feet:
                     return GetItem(Feet);
+
+                case ItemLocationEnum.Pokeball:
+                    return GetItem(Pokeball);
             }
 
             return null;
@@ -843,6 +855,10 @@ namespace Game.Models
 
                 case ItemLocationEnum.LeftFinger:
                     LeftFinger = itemID;
+                    break;
+
+                case ItemLocationEnum.Pokeball:
+                    Pokeball = itemID;
                     break;
 
                 default:
@@ -924,6 +940,15 @@ namespace Game.Models
                 }
             }
 
+            myItem = GetItem(Pokeball);
+            if (myItem != null)
+            {
+                if (myItem.Attribute == attributeEnum)
+                {
+                    myReturn += myItem.Value;
+                }
+            }
+
             return myReturn;
         }
 
@@ -978,6 +1003,12 @@ namespace Game.Models
             }
 
             data = ItemIndexViewModel.Instance.GetItem(Feet);
+            if (data != null)
+            {
+                myReturn += data.FormatOutput();
+            }
+
+            data = ItemIndexViewModel.Instance.GetItem(Pokeball);
             if (data != null)
             {
                 myReturn += data.FormatOutput();
