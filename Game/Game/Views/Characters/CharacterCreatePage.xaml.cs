@@ -165,11 +165,6 @@ namespace Game.Views
 
                 // Set current health as the new max health
                 ViewModel.Data.CurrentHealth = ViewModel.Data.MaxHealth;
-
-                // Set attack, defense, speed to follow the Level Table
-                ViewModel.Data.Attack = LevelTableHelper.LevelDetailsList[result].Attack;
-                ViewModel.Data.Defense = LevelTableHelper.LevelDetailsList[result].Defense;
-                ViewModel.Data.Speed = LevelTableHelper.LevelDetailsList[result].Speed;
             }
         }
         #endregion LevelPicker

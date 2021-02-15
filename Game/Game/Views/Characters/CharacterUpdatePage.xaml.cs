@@ -242,11 +242,6 @@ namespace Game.Views
                 // Set a lower limit 1 to avoid the current health drop to too low
                 ViewModel.Data.CurrentHealth = Math.Max(1, ViewModel.Data.CurrentHealth + ViewModel.Data.MaxHealth - oldMaxHealth);
 
-                // Set attack, defense, speed to follow the Level Table
-                ViewModel.Data.Attack = LevelTableHelper.LevelDetailsList[result].Attack;
-                ViewModel.Data.Defense = LevelTableHelper.LevelDetailsList[result].Defense;
-                ViewModel.Data.Speed = LevelTableHelper.LevelDetailsList[result].Speed;
-
                 // Update attribute values in the table
                 UpdateAttributeValues();
             }
