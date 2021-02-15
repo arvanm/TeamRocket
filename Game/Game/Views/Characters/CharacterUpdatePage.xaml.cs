@@ -96,13 +96,37 @@ namespace Game.Views
         /// </summary>
         public void UpdateAttributeValues()
         {
-            // Update the attributes
-            MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
+            // Current Health
             CurrentHealthValue.Text = ViewModel.Data.CurrentHealth.ToString();
+            CurrentHealthValueItemBonus.Text = ViewModel.Data.GetCurrentHealthItemBonus.ToString();
+            CurrentHealthValueTotal.Text = ViewModel.Data.GetCurrentHealthTotal.ToString();
+
+            // Max Health
+            MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
+            MaxHealthValueItemBonus.Text = ViewModel.Data.GetMaxHealthItemBonus.ToString();
+            MaxHealthValueTotal.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
+
+            // Attack
             AttackValue.Text = ViewModel.Data.GetAttackLevelBonus.ToString();
+            AttackValueItemBonus.Text = ViewModel.Data.GetAttackItemBonus.ToString();
+            AttackValuePokedexBonus.Text = ViewModel.Data.GetAttackPokedexBonus.ToString();
+            AttackValueTotal.Text = ViewModel.Data.GetAttackTotal.ToString();
+
+            // Damage
+            DamageValue.Text = ViewModel.Data.GetDamageLevelBonus.ToString();
+            DamageValueItemBonus.Text = ViewModel.Data.GetDamageItemBonusString;
+            DamageValuePokedexBonus.Text = ViewModel.Data.GetAttackPokedexBonus.ToString();
+            DamageValueTotal.Text = ViewModel.Data.GetDamageTotalString;
+
+            // Defense
             DefenseValue.Text = ViewModel.Data.GetDefenseLevelBonus.ToString();
+            DefenseValueItemBonus.Text = ViewModel.Data.GetDefenseItemBonus.ToString();
+            DefenseValueTotal.Text = ViewModel.Data.GetDefenseTotal.ToString();
+
+            // Speed
             SpeedValue.Text = ViewModel.Data.GetSpeedLevelBonus.ToString();
-            TotalAttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
+            SpeedValueItemBonus.Text = ViewModel.Data.GetSpeedItemBonus.ToString();
+            SpeedValueTotal.Text = ViewModel.Data.GetSpeedTotal.ToString();
         }
 
         #region InputValueCheck
