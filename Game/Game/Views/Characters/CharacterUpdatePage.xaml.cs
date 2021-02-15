@@ -140,7 +140,7 @@ namespace Game.Views
         {
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
-                await DisplayAlert("Alert", "Character name cannot be empty!", "OK");
+                await DisplayAlert("Alert", "Character's Name cannot be empty!", "OK");
                 return false;
             }
 
@@ -158,7 +158,7 @@ namespace Game.Views
         {
             if (ViewModel.Data.MaxHealth <= 0 || ViewModel.Data.MaxHealth > ViewModel.Data.Level * 10)
             {
-                await DisplayAlert("Alert", "Character max health must between 1 and Level x 10!", "OK");
+                await DisplayAlert("Alert", "Character's Base Max Health must be between 1 and Level x 10!", "OK");
                 return false;
             }
 
@@ -176,7 +176,7 @@ namespace Game.Views
         {
             if (ViewModel.Data.CurrentHealth < 0 || ViewModel.Data.CurrentHealth > ViewModel.Data.MaxHealth)
             {
-                await DisplayAlert("Alert", "Character current health must between 0 and Max Health!", "OK");
+                await DisplayAlert("Alert", "Character's Base Current Health must be between 0 and Base Max Health!", "OK");
                 return false;
             }
 
