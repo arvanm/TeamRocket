@@ -162,9 +162,6 @@ namespace Game.Models
 
         // Unique Drop Item for Monsters
         public string UniqueItem { get; set; } = null;
-
-        // Pokeball for Characters
-        public string Pokeball { get; set; } = null;
         #endregion Items
 
         #region AttributeDisplay
@@ -187,19 +184,6 @@ namespace Game.Models
             get
             {
                 var result = 0;
-
-                //switch (Job)
-                //{
-                //    case CharacterJobEnum.Cleric:
-                //        result = -1;
-                //        break;
-                //    case CharacterJobEnum.Fighter:
-                //        result = +2;
-                //        break;
-                //    case CharacterJobEnum.Unknown:
-                //    default:
-                //        break;
-                //}
                 return result;
             }
         }
@@ -230,19 +214,6 @@ namespace Game.Models
             get
             {
                 var result = 0;
-
-                //switch (Job)
-                //{
-                //    case CharacterJobEnum.Cleric:
-                //        result = +2;
-                //        break;
-                //    case CharacterJobEnum.Fighter:
-                //        result = -1;
-                //        break;
-                //    case CharacterJobEnum.Unknown:
-                //    default:
-                //        break;
-                //}
                 return result;
             }
         }
@@ -270,19 +241,6 @@ namespace Game.Models
             get
             {
                 var result = 0;
-
-                //switch (Job)
-                //{
-                //    case CharacterJobEnum.Cleric:
-                //        result = 0;
-                //        break;
-                //    case CharacterJobEnum.Fighter:
-                //        result = +1;
-                //        break;
-                //    case CharacterJobEnum.Unknown:
-                //    default:
-                //        break;
-                //}
                 return result;
             }
         }
@@ -673,11 +631,6 @@ namespace Game.Models
                     // Calculate new current health
                     // old max was 10, current health 8, new max is 15 so (15-(10-8)) = current health
                     CurrentHealth = (MaxHealth - (OldMaxHealth - OldCurrentHealth));
-
-                    // Set attack, defense and speed from the Level Table
-                    Attack = LevelTableHelper.LevelDetailsList[i].Attack;
-                    Defense = LevelTableHelper.LevelDetailsList[i].Defense;
-                    Speed = LevelTableHelper.LevelDetailsList[i].Speed;
 
                     // Set the new level
                     Level = NewLevel;

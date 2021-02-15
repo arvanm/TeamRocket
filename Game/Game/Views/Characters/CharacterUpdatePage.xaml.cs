@@ -96,13 +96,37 @@ namespace Game.Views
         /// </summary>
         public void UpdateAttributeValues()
         {
-            // Update the attributes
-            MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
+            // Current Health
             CurrentHealthValue.Text = ViewModel.Data.CurrentHealth.ToString();
-            AttackValue.Text = ViewModel.Data.Attack.ToString();
-            DefenseValue.Text = ViewModel.Data.Defense.ToString();
-            SpeedValue.Text = ViewModel.Data.Speed.ToString();
-            TotalAttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
+            CurrentHealthValueItemBonus.Text = ViewModel.Data.GetCurrentHealthItemBonus.ToString();
+            CurrentHealthValueTotal.Text = ViewModel.Data.GetCurrentHealthTotal.ToString();
+
+            // Max Health
+            MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
+            MaxHealthValueItemBonus.Text = ViewModel.Data.GetMaxHealthItemBonus.ToString();
+            MaxHealthValueTotal.Text = ViewModel.Data.GetMaxHealthTotal.ToString();
+
+            // Attack
+            AttackValue.Text = ViewModel.Data.GetAttackLevelBonus.ToString();
+            AttackValueItemBonus.Text = ViewModel.Data.GetAttackItemBonus.ToString();
+            AttackValuePokedexBonus.Text = ViewModel.Data.GetAttackPokedexBonus.ToString();
+            AttackValueTotal.Text = ViewModel.Data.GetAttackTotal.ToString();
+
+            // Damage
+            DamageValue.Text = ViewModel.Data.GetDamageLevelBonus.ToString();
+            DamageValueItemBonus.Text = ViewModel.Data.GetDamageItemBonusString;
+            DamageValuePokedexBonus.Text = ViewModel.Data.GetAttackPokedexBonus.ToString();
+            DamageValueTotal.Text = ViewModel.Data.GetDamageTotalString;
+
+            // Defense
+            DefenseValue.Text = ViewModel.Data.GetDefenseLevelBonus.ToString();
+            DefenseValueItemBonus.Text = ViewModel.Data.GetDefenseItemBonus.ToString();
+            DefenseValueTotal.Text = ViewModel.Data.GetDefenseTotal.ToString();
+
+            // Speed
+            SpeedValue.Text = ViewModel.Data.GetSpeedLevelBonus.ToString();
+            SpeedValueItemBonus.Text = ViewModel.Data.GetSpeedItemBonus.ToString();
+            SpeedValueTotal.Text = ViewModel.Data.GetSpeedTotal.ToString();
         }
 
         #region InputValueCheck
@@ -116,7 +140,7 @@ namespace Game.Views
         {
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
-                await DisplayAlert("Alert", "Character name cannot be empty!", "OK");
+                await DisplayAlert("Alert", "Character's Name cannot be empty!", "OK");
                 return false;
             }
 
@@ -134,7 +158,7 @@ namespace Game.Views
         {
             if (ViewModel.Data.MaxHealth <= 0 || ViewModel.Data.MaxHealth > ViewModel.Data.Level * 10)
             {
-                await DisplayAlert("Alert", "Character max health must between 1 and Level x 10!", "OK");
+                await DisplayAlert("Alert", "Character's Base Max Health must be between 1 and Level x 10!", "OK");
                 return false;
             }
 
@@ -152,7 +176,7 @@ namespace Game.Views
         {
             if (ViewModel.Data.CurrentHealth < 0 || ViewModel.Data.CurrentHealth > ViewModel.Data.MaxHealth)
             {
-                await DisplayAlert("Alert", "Character current health must between 0 and Max Health!", "OK");
+                await DisplayAlert("Alert", "Character's Base Current Health must be between 0 and Base Max Health!", "OK");
                 return false;
             }
 
@@ -241,11 +265,6 @@ namespace Game.Views
                 // Add the different between old and new max health to the current health
                 // Set a lower limit 1 to avoid the current health drop to too low
                 ViewModel.Data.CurrentHealth = Math.Max(1, ViewModel.Data.CurrentHealth + ViewModel.Data.MaxHealth - oldMaxHealth);
-
-                // Set attack, defense, speed to follow the Level Table
-                ViewModel.Data.Attack = LevelTableHelper.LevelDetailsList[result].Attack;
-                ViewModel.Data.Defense = LevelTableHelper.LevelDetailsList[result].Defense;
-                ViewModel.Data.Speed = LevelTableHelper.LevelDetailsList[result].Speed;
 
                 // Update attribute values in the table
                 UpdateAttributeValues();

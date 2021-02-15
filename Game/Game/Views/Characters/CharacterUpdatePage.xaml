@@ -29,7 +29,7 @@
     <ContentPage.Content>
         <AbsoluteLayout HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
-            
+
             <StackLayout Style="{StaticResource VerticalStack}"
                          AbsoluteLayout.LayoutBounds="1,1,1,1"
                          AbsoluteLayout.LayoutFlags="All">
@@ -122,6 +122,7 @@
                             </Grid>
                         </Grid>
 
+                        <!--Items Table-->
                         <Grid Padding="20"
                               HorizontalOptions="CenterAndExpand"
                               RowSpacing="15"
@@ -139,9 +140,9 @@
                             </Grid.ColumnDefinitions>
                         </Grid>
 
+                        <!--Attribute Table-->
                         <Grid HorizontalOptions="CenterAndExpand"
-                              Padding="20"
-                              ColumnSpacing="5">
+                              Margin="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -152,91 +153,259 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200" />
-                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="75" />
                             </Grid.ColumnDefinitions>
 
-                            <BoxView Color="DimGray"
-                                     Grid.ColumnSpan="2"
+                            <BoxView Color="Gray"
+                                     Grid.ColumnSpan="5"
                                      Grid.Row="0" />
                             <BoxView Color="LightGreen"
-                                     Grid.ColumnSpan="2"
+                                     Grid.ColumnSpan="5"
                                      Grid.Row="1" />
                             <BoxView Color="Orange"
-                                     Grid.ColumnSpan="2"
+                                     Grid.ColumnSpan="5"
                                      Grid.Row="2" />
                             <BoxView Color="LightGreen"
-                                     Grid.ColumnSpan="2"
+                                     Grid.ColumnSpan="5"
                                      Grid.Row="3" />
                             <BoxView Color="Orange"
-                                     Grid.ColumnSpan="2"
+                                     Grid.ColumnSpan="5"
                                      Grid.Row="4" />
                             <BoxView Color="LightGreen"
-                                     Grid.ColumnSpan="2"
+                                     Grid.ColumnSpan="5"
                                      Grid.Row="5" />
                             <BoxView Color="Orange"
-                                     Grid.ColumnSpan="2"
+                                     Grid.ColumnSpan="5"
                                      Grid.Row="6" />
+                            <BoxView Color="#10000000"
+                                     Grid.RowSpan="7"
+                                     Grid.Column="1" />
+                            <BoxView Color="#10000000"
+                                     Grid.RowSpan="7"
+                                     Grid.Column="3" />
 
+                            <!--Attribute Table Headers-->
                             <Label Grid.Row="0"
                                    Grid.Column="0"
-                                   Text="Attribues"
+                                   Text="Attributes"
                                    FontAttributes="Bold"
-                                   VerticalOptions="CenterAndExpand" />
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                             <Label Grid.Row="0"
                                    Grid.Column="1"
-                                   Text="Values"
+                                   Text="Base"
                                    FontAttributes="Bold"
-                                   VerticalOptions="CenterAndExpand" />
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="Item"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="0"
+                                   Grid.Column="3"
+                                   Text="Pokedex"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="0"
+                                   Grid.Column="4"
+                                   Text="Total"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
 
+                            <!--Attribute Table Current Health-->
                             <Label Grid.Row="1"
                                    Grid.Column="0"
-                                   Text="Current Health" />
+                                   Text="Current Health"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                             <Entry Grid.Row="1"
                                    Grid.Column="1"
                                    x:Name="CurrentHealthValue"
-                                   Text="{Binding Data.CurrentHealth, Mode=TwoWay}" />
+                                   Text="{Binding Data.CurrentHealth, Mode=TwoWay}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="2"
+                                   x:Name="CurrentHealthValueItemBonus"
+                                   Text="{Binding Data.GetCurrentHealthItemBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="3"
+                                   Text="-"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="4"
+                                   x:Name="CurrentHealthValueTotal"
+                                   Text="{Binding Data.GetCurrentHealthTotal}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
 
+                            <!--Attribute Table Max Health-->
                             <Label Grid.Row="2"
                                    Grid.Column="0"
-                                   Text="Max Health" />
+                                   Text="Max Health"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                             <Entry Grid.Row="2"
                                    Grid.Column="1"
                                    x:Name="MaxHealthValue"
-                                   Text="{Binding Data.MaxHealth, Mode=TwoWay}" />
+                                   Text="{Binding Data.MaxHealth, Mode=TwoWay}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="2"
+                                   x:Name="MaxHealthValueItemBonus"
+                                   Text="{Binding Data.GetMaxHealthItemBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="3"
+                                   Text="-"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="2"
+                                   Grid.Column="4"
+                                   x:Name="MaxHealthValueTotal"
+                                   Text="{Binding Data.GetMaxHealthTotal}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
 
+                            <!--Attribute Table Attack-->
                             <Label Grid.Row="3"
                                    Grid.Column="0"
-                                   Text="Attack" />
+                                   Text="Attack"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                             <Label Grid.Row="3"
                                    Grid.Column="1"
                                    x:Name="AttackValue"
-                                   Text="{Binding Data.Attack}" />
+                                   Text="{Binding Data.GetAttackLevelBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="3"
+                                   Grid.Column="2"
+                                   x:Name="AttackValueItemBonus"
+                                   Text="{Binding Data.GetAttackItemBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="3"
+                                   Grid.Column="3"
+                                   x:Name="AttackValuePokedexBonus"
+                                   Text="{Binding Data.GetAttackPokedexBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="3"
+                                   Grid.Column="4"
+                                   x:Name="AttackValueTotal"
+                                   Text="{Binding Data.GetAttackTotal}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
 
+                            <!--Attribute Table Damage-->
                             <Label Grid.Row="4"
                                    Grid.Column="0"
-                                   Text="Defense" />
+                                   Text="Damage"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                             <Label Grid.Row="4"
+                                   Grid.Column="1"
+                                   x:Name="DamageValue"
+                                   Text="{Binding Data.GetDamageLevelBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="4"
+                                   Grid.Column="2"
+                                   x:Name="DamageValueItemBonus"
+                                   Text="{Binding Data.GetDamageItemBonusString}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="4"
+                                   Grid.Column="3"
+                                   x:Name="DamageValuePokedexBonus"
+                                   Text="{Binding Data.GetDamagePokedexBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="4"
+                                   Grid.Column="4"
+                                   x:Name="DamageValueTotal"
+                                   Text="{Binding Data.GetDamageTotalString}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+
+                            <!--Attribute Table Defense-->
+                            <Label Grid.Row="5"
+                                   Grid.Column="0"
+                                   Text="Defense"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="5"
                                    Grid.Column="1"
                                    x:Name="DefenseValue"
-                                   Text="{Binding Data.Defense}" />
+                                   Text="{Binding Data.GetDefenseLevelBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="5"
+                                   Grid.Column="2"
+                                   x:Name="DefenseValueItemBonus"
+                                   Text="{Binding Data.GetDefenseItemBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="5"
+                                   Grid.Column="3"
+                                   Text="-"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="5"
+                                   Grid.Column="4"
+                                   x:Name="DefenseValueTotal"
+                                   Text="{Binding Data.GetDefenseTotal}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
 
-                            <Label Grid.Row="5"
+                            <!--Attribute Table Speed-->
+                            <Label Grid.Row="6"
                                    Grid.Column="0"
-                                   Text="Speed" />
-                            <Label Grid.Row="5"
+                                   Text="Speed"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="6"
                                    Grid.Column="1"
                                    x:Name="SpeedValue"
-                                   Text="{Binding Data.Speed}" />
-
+                                   Text="{Binding Data.GetSpeedLevelBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                             <Label Grid.Row="6"
-                                   Grid.Column="0"
-                                   Text="Total Attack" />
+                                   Grid.Column="2"
+                                   x:Name="SpeedValueItemBonus"
+                                   Text="{Binding Data.GetSpeedItemBonus}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                             <Label Grid.Row="6"
-                                   Grid.Column="1"
-                                   x:Name="TotalAttackValue"
-                                   Text="{Binding Data.GetAttackTotal}" />
-
+                                   Grid.Column="3"
+                                   Text="-"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
+                            <Label Grid.Row="6"
+                                   Grid.Column="4"
+                                   x:Name="SpeedValueTotal"
+                                   Text="{Binding Data.GetSpeedTotal}"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center" />
                         </Grid>
                     </StackLayout>
                 </ScrollView>
@@ -293,7 +462,7 @@
                     </Frame>
                 </StackLayout>
             </StackLayout>
-            
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

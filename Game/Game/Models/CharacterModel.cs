@@ -1,5 +1,5 @@
 ﻿using Game.GameRules;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Game.Models
 {
@@ -11,7 +11,16 @@ namespace Game.Models
     public class CharacterModel : BasePlayerModel<CharacterModel>
     {
         // List of Pokedex that stores captured Pokemons (Monsters)
-        public ArrayList Pokedex { get; set; } = new ArrayList();
+        public List<MonsterModel> Pokedex { get; set; } = new List<MonsterModel>();
+
+        // Special Item for Character: Pokeball
+        public string Pokeball { get; set; } = null;
+
+        // Attack from Pokedex
+        public int GetAttackPokedexBonus { get; set; } = 0;
+
+        // Damage from Pokedex
+        public int GetDamagePokedexBonus { get; set; } = 0;
 
         /// <summary>
         /// Default character
@@ -29,10 +38,10 @@ namespace Game.Models
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
 
-            // Read attack, defense, speed from LevelTable
-            Attack = LevelTableHelper.LevelDetailsList[Level].Attack;
-            Defense = LevelTableHelper.LevelDetailsList[Level].Defense;
-            Speed = LevelTableHelper.LevelDetailsList[Level].Speed;
+            // Base attack, defense and speed not changable, always 0
+            Attack = 0;
+            Defense = 0;
+            Speed = 0;
 
             // Default to unknown, which is no special job
             Job = CharacterJobEnum.Unknown;
@@ -68,10 +77,9 @@ namespace Game.Models
             ImageURI = newData.ImageURI;
 
             // Difficulty = newData.Difficulty;
-
-            Speed = newData.Speed;
-            Defense = newData.Defense;
-            Attack = newData.Attack;
+            // Speed = newData.Speed;
+            // Defense = newData.Defense;
+            // Attack = newData.Attack;
 
             ExperienceTotal = newData.ExperienceTotal;
             ExperienceRemaining = newData.ExperienceRemaining;
