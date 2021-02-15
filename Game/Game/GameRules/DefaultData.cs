@@ -164,6 +164,12 @@ namespace Game.GameRules
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
                     Pokeball = PokeballString,
+                    Pokedex = new List<MonsterModel>()
+                    {
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20)
+                    }
                 },
 
                 new CharacterModel {
@@ -182,6 +188,12 @@ namespace Game.GameRules
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
                     Pokeball = PokeballString,
+                    Pokedex = new List<MonsterModel>()
+                    {
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20)
+                    }
                 },
 
                 new CharacterModel {
@@ -200,6 +212,14 @@ namespace Game.GameRules
                     RightFinger = RightFingerString,
                     LeftFinger = LeftFingerString,
                     Pokeball = PokeballString,
+                    Pokedex = new List<MonsterModel>()
+                    {
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20),
+                        RandomPlayerHelper.GetRandomMonster(20)
+                    }
                 },
 
                 new CharacterModel {
