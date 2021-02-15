@@ -32,10 +32,10 @@ namespace Game.Models
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
 
-            // Read attack, defense, speed from LevelTable
-            Attack = LevelTableHelper.LevelDetailsList[Level].Attack;
-            Defense = LevelTableHelper.LevelDetailsList[Level].Defense;
-            Speed = LevelTableHelper.LevelDetailsList[Level].Speed;
+            // Base attack, defense and speed not changable, always 0
+            Attack = 0;
+            Defense = 0;
+            Speed = 0;
 
             // Default to unknown, which is no special job
             Job = CharacterJobEnum.Unknown;
@@ -71,10 +71,9 @@ namespace Game.Models
             ImageURI = newData.ImageURI;
 
             // Difficulty = newData.Difficulty;
-
-            Speed = newData.Speed;
-            Defense = newData.Defense;
-            Attack = newData.Attack;
+            // Speed = newData.Speed;
+            // Defense = newData.Defense;
+            // Attack = newData.Attack;
 
             ExperienceTotal = newData.ExperienceTotal;
             ExperienceRemaining = newData.ExperienceRemaining;

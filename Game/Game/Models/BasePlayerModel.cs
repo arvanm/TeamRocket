@@ -632,11 +632,6 @@ namespace Game.Models
                     // old max was 10, current health 8, new max is 15 so (15-(10-8)) = current health
                     CurrentHealth = (MaxHealth - (OldMaxHealth - OldCurrentHealth));
 
-                    // Set attack, defense and speed from the Level Table
-                    Attack = LevelTableHelper.LevelDetailsList[i].Attack;
-                    Defense = LevelTableHelper.LevelDetailsList[i].Defense;
-                    Speed = LevelTableHelper.LevelDetailsList[i].Speed;
-
                     // Set the new level
                     Level = NewLevel;
 
