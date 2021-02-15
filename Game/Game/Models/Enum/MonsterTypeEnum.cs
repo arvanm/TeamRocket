@@ -134,13 +134,13 @@ namespace Game.Models
         }
 
         /// <summary>
-        /// If asked for a character job number, return a character job.
+        /// If asked for a monster type number, return a monster type
         /// This compsenstates for the enum #s not being sequential, 
         /// but allows for calls to the postion for random allocation etc... 
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
-        public static MonsterTypeEnum GetCharacterJobByPosition(int position)
+        public static MonsterTypeEnum GetMonsterTypeByPosition(int position)
         {
             switch (position)
             {
