@@ -175,6 +175,7 @@ namespace Game.Views
         public bool ShowPopupItem_Clicked(ItemModel data)
         {
             PopupItemView.IsVisible = true;
+            PopupItemDamage.IsVisible = false;
             PopupItemImage.Source = data.ImageURI;
 
             PopupItemName.Text = data.Name;
@@ -182,6 +183,13 @@ namespace Game.Views
             PopupItemLocation.Text = data.Location.ToMessage();
             PopupItemAttribute.Text = data.Attribute.ToMessage();
             PopupItemValue.Text = " + " + data.Value.ToString();
+
+            // If Primary Hand Item, display the damage
+            if (data.Location == ItemLocationEnum.PrimaryHand)
+            {
+                PopupItemDamage.IsVisible = true;
+                PopupItemDamageValue.Text = " + " + data.Damage.ToString();
+            }
 
             return true;
         }

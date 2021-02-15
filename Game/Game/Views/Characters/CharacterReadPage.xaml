@@ -428,6 +428,14 @@
                                    Style="{StaticResource ValueStyle}" />
                         </StackLayout>
 
+                        <StackLayout Style="{StaticResource HorizontalStack}"
+                                     x:Name="PopupItemDamage">
+                            <Label Text="Damage"
+                                   Style="{StaticResource LabelStyle}" />
+                            <Label x:Name="PopupItemDamageValue"
+                                   Style="{StaticResource ValueStyle}" />
+                        </StackLayout>
+
                         <Button x:Name="PopupItemCloseButton"
                                 Clicked="ClosePopupItem_Clicked"
                                 Text="Close" />
