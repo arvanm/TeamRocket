@@ -333,7 +333,7 @@
                             <Label Grid.Row="4"
                                    Grid.Column="3"
                                    x:Name="DamageValuePokedexBonus"
-                                   Text="{Binding Data.GetDamagePokedexBonus}"
+                                   Text="{Binding Data.GetDamagePokedexBonusString}"
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Center" />
                             <Label Grid.Row="4"

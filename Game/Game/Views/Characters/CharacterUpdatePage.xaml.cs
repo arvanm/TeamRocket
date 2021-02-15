@@ -115,7 +115,7 @@ namespace Game.Views
             // Damage
             DamageValue.Text = ViewModel.Data.GetDamageLevelBonus.ToString();
             DamageValueItemBonus.Text = ViewModel.Data.GetDamageItemBonusString;
-            DamageValuePokedexBonus.Text = ViewModel.Data.GetAttackPokedexBonus.ToString();
+            DamageValuePokedexBonus.Text = ViewModel.Data.GetDamagePokedexBonusString;
             DamageValueTotal.Text = ViewModel.Data.GetDamageTotalString;
 
             // Defense
