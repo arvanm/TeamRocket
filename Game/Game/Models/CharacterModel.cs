@@ -13,6 +13,9 @@ namespace Game.Models
         // List of Pokedex that stores captured Pokemons (Monsters)
         public List<MonsterModel> Pokedex { get; set; } = new List<MonsterModel>();
 
+        // Special Item for Character: Pokeball
+        public string Pokeball { get; set; } = null;
+
         /// <summary>
         /// Default character
         /// 
