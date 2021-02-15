@@ -21,6 +21,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
+            <local_helpers:MonsterTypeEnumConverterHelper x:Key="MonsterTypeEnumConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -109,7 +110,8 @@
 
                             <Button Grid.ColumnSpan="1"
                                     Grid.Row="4"
-                                    Text="Pokedex" />
+                                    Text="Pokedex"
+                                    Clicked="ShowPopupPokedex_Clicked" />
                         </Grid>
                     </Grid>
 
@@ -193,7 +195,7 @@
                                FontAttributes="Bold"
                                VerticalOptions="CenterAndExpand"
                                HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"/>
+                               VerticalTextAlignment="Center" />
                         <Label Grid.Row="0"
                                Grid.Column="2"
                                Text="Item"
@@ -383,7 +385,7 @@
         </StackLayout>
 
         <!--The Item Popup-->
-        <StackLayout x:Name="PopupLoadingView"
+        <StackLayout x:Name="PopupItemView"
                      BackgroundColor="{StaticResource PageBackgroundColor}"
                      IsVisible="false"
                      AbsoluteLayout.LayoutBounds=".5, .5,.5,.5"
@@ -413,7 +415,7 @@
                                LineBreakMode="WordWrap" />
 
                         <StackLayout Style="{StaticResource HorizontalStack}">
-                            <Label Text="Location : "
+                            <Label Text="Location: "
                                    Style="{StaticResource LabelStyle}" />
                             <Label x:Name="PopupItemLocation"
                                    Style="{StaticResource ValueStyle}" />
@@ -426,8 +428,63 @@
                                    Style="{StaticResource ValueStyle}" />
                         </StackLayout>
 
-                        <Button x:Name="PopupCloseButton"
-                                Clicked="ClosePopup_Clicked"
+                        <Button x:Name="PopupItemCloseButton"
+                                Clicked="ClosePopupItem_Clicked"
+                                Text="Close" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+
+        <!--The Pokedex Popup-->
+        <StackLayout x:Name="PopupPokedexView"
+                     BackgroundColor="{StaticResource PageBackgroundColor}"
+                     IsVisible="false"
+                     AbsoluteLayout.LayoutBounds=".5, .5,.5,.5"
+                     AbsoluteLayout.LayoutFlags="All">
+
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand"
+                         WidthRequest="300"
+                         HeightRequest="300">
+
+                <Frame BorderColor="{StaticResource TriciaryTextColor}"
+                       Padding="1">
+
+                    <StackLayout BackgroundColor="{StaticResource PageBackgroundColor}"
+                                 HorizontalOptions="CenterAndExpand"
+                                 Padding="2">
+
+                        <FlexLayout BindableLayout.ItemsSource="{Binding Data.Pokedex}"
+                                    Wrap="Wrap"
+                                    Direction="Row"
+                                    JustifyContent="SpaceEvenly">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="10"
+                                                 HorizontalOptions="Center">
+
+                                        <Image Source="{Binding ImageURI}" />
+
+                                        <Label Text="{Binding Name}"
+                                               HorizontalTextAlignment="Center" />
+
+                                        <Label Text="{Binding MonsterType, Converter={StaticResource MonsterTypeEnumConverter}}"
+                                               HorizontalTextAlignment="Center" />
+
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="Center">
+                                            <Label Text="Attack" />
+                                            <Label Text="{Binding Attack}" />
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+
+                        <Button x:Name="PopupPokedexButton"
+                                Clicked="ClosePopupPokedex_Clicked"
                                 Text="Close" />
                     </StackLayout>
                 </Frame>

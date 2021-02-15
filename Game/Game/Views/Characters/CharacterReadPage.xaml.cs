@@ -136,7 +136,7 @@ namespace Game.Views
             if (ClickableButton)
             {
                 // Add a event to the user can click the item and see more
-                ItemButton.Clicked += (sender, args) => ShowPopup(data);
+                ItemButton.Clicked += (sender, args) => ShowPopupItem_Clicked(data);
             }
 
             // Add the Display Text for the item
@@ -165,14 +165,15 @@ namespace Game.Views
 
         #region PopupManagement
 
+        #region PopupItem
         /// <summary>
         /// Show the Popup for the Item
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public bool ShowPopup(ItemModel data)
+        public bool ShowPopupItem_Clicked(ItemModel data)
         {
-            PopupLoadingView.IsVisible = true;
+            PopupItemView.IsVisible = true;
             PopupItemImage.Source = data.ImageURI;
 
             PopupItemName.Text = data.Name;
@@ -191,10 +192,35 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ClosePopup_Clicked(object sender, EventArgs e)
+        public void ClosePopupItem_Clicked(object sender, EventArgs e)
         {
-            PopupLoadingView.IsVisible = false;
+            PopupItemView.IsVisible = false;
         }
+        #endregion PopupItem
+
+        #region PopupPokedex
+        /// <summary>
+        /// Show the Popup for the Item
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public void ShowPopupPokedex_Clicked(object sender, EventArgs e)
+        {
+            PopupPokedexView.IsVisible = true;
+        }
+
+        /// <summary>
+        /// When the user clicks the close in the Popup
+        /// hide the view
+        /// show the scroll view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ClosePopupPokedex_Clicked(object sender, EventArgs e)
+        {
+            PopupPokedexView.IsVisible = false;
+        }
+        #endregion PopupPokedex
 
         #endregion PopupManagement
 
