@@ -115,10 +115,6 @@
                                         ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetListMessage}"
                                         SelectedItem="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}, Mode=TwoWay}"
                                         x:Name="CharacterJobPicker" />
-
-                                <Button Grid.ColumnSpan="1"
-                                        Grid.Row="4"
-                                        Text="Pokedex" />
                             </Grid>
                         </Grid>
 
