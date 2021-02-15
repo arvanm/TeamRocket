@@ -221,12 +221,12 @@
                                VerticalTextAlignment="Center" />
                         <Label Grid.Row="1"
                                Grid.Column="1"
-                               Text="-"
+                               Text="{Binding Data.CurrentHealth}"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center" />
                         <Label Grid.Row="1"
                                Grid.Column="2"
-                               Text="-"
+                               Text="{Binding Data.GetCurrentHealthItemBonus}"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center" />
                         <Label Grid.Row="1"
@@ -236,7 +236,7 @@
                                VerticalTextAlignment="Center" />
                         <Label Grid.Row="1"
                                Grid.Column="4"
-                               Text="{Binding Data.CurrentHealth}"
+                               Text="{Binding Data.GetCurrentHealthTotal}"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center" />
 
