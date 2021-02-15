@@ -12,6 +12,9 @@ namespace Game.Models
         // Type of monster
         public MonsterTypeEnum MonsterType { get; set; } = MonsterTypeEnum.Unknown;
 
+        // Speical attack value
+        public int SpecialAttack { get; set; } = 0;
+
         /// <summary>
         /// Set Type to Monster
         /// 
