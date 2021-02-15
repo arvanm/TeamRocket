@@ -162,6 +162,7 @@ namespace Game.Views
 
             return ItemStack;
         }
+        #endregion ManageItems
 
         #region PopupManagement
 
@@ -223,7 +224,6 @@ namespace Game.Views
         #endregion PopupPokedex
 
         #endregion PopupManagement
-
-        #endregion ManageItems
+        
     }
 }
