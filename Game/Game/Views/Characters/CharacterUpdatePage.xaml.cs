@@ -99,9 +99,9 @@ namespace Game.Views
             // Update the attributes
             MaxHealthValue.Text = ViewModel.Data.MaxHealth.ToString();
             CurrentHealthValue.Text = ViewModel.Data.CurrentHealth.ToString();
-            AttackValue.Text = ViewModel.Data.Attack.ToString();
-            DefenseValue.Text = ViewModel.Data.Defense.ToString();
-            SpeedValue.Text = ViewModel.Data.Speed.ToString();
+            AttackValue.Text = ViewModel.Data.GetAttackLevelBonus.ToString();
+            DefenseValue.Text = ViewModel.Data.GetDefenseLevelBonus.ToString();
+            SpeedValue.Text = ViewModel.Data.GetSpeedLevelBonus.ToString();
             TotalAttackValue.Text = ViewModel.Data.GetAttackTotal.ToString();
         }
 
