@@ -464,7 +464,7 @@
                                     <StackLayout Padding="10"
                                                  HorizontalOptions="Center">
 
-                                        <Image Source="{Binding ImageURI}" />
+                                        <Image Source="{Binding ImageURI}" Style="{StaticResource ImageSmallStyle}"/>
 
                                         <Label Text="{Binding Name}"
                                                HorizontalTextAlignment="Center" />
