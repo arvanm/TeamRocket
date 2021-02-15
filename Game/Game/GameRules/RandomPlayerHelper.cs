@@ -56,7 +56,7 @@ namespace Game.GameRules
         public static string GetMonsterImage()
         {
 
-            List<String> FirstNameList = new List<String> { "charmander.png", "entei.png", "forest.png", "golduck.png" };
+            List<String> FirstNameList = new List<String> { "charmander.png", "entei.png", "golduck.png", "moltres.png", "squirtle.png", "vaporeon.png" };
 
             var result = FirstNameList.ElementAt(DiceHelper.RollDice(1, FirstNameList.Count()) - 1);
 
