@@ -9,10 +9,10 @@ namespace Game.Models
     /// </summary>
     public class MonsterModel : BasePlayerModel<MonsterModel>
     {
-        // Type of monster
+        // Type of monster, default to Unknown
         public MonsterTypeEnum MonsterType { get; set; } = MonsterTypeEnum.Unknown;
 
-        // Speical attack value
+        // Speical attack value, default to 0
         public int SpecialAttack { get; set; } = 0;
 
         /// <summary>
@@ -24,17 +24,16 @@ namespace Game.Models
         {
             PlayerType = PlayerTypeEnum.Monster;
             Guid = Id;
-            Name = "Troll";
-            Description = "Angry Troll";
-            Attack = 1;
+            Name = "Charmander";
+            Description = "Cute but Deadly";
+            MonsterType = MonsterTypeEnum.Fire;
+            Attack = 5;
+            SpecialAttack = 10;
             Difficulty = DifficultyEnum.Average;
             UniqueItem = null;
-            ImageURI = "item.png";
+            ImageURI = "charmander.png";
             ExperienceTotal = 0;
             ExperienceRemaining = LevelTableHelper.LevelDetailsList[Level + 1].Experience - 1;
-
-            // Default to unknown, which is no special job
-            MonsterType = MonsterTypeEnum.Unknown;
         }
 
         /// <summary>
