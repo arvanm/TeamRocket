@@ -320,7 +320,25 @@ namespace Game.Models
         }
 
         [Ignore]
-        // Return the Damage Dice if there is one
+        // Return the Damage with Pokedex Bonus
+        public int GetDamagePokedexBonus
+        {
+            get
+            {
+                // If the model does not have a Pokedex (Not a Character), return 0
+                if (Pokedex == null)
+                {
+                    return 0;
+                }
+
+                // Return the damage as the sum of attack of Pokemons in Pokedex
+                var result = Pokedex.Sum(monster => monster.Attack);
+                return result;
+            }
+        }
+
+        [Ignore]
+        // Return the Damage Dice of item if there is one
         public string GetDamageItemBonusString
         {
             get
@@ -336,18 +354,42 @@ namespace Game.Models
         }
 
         [Ignore]
+        // Return the Damage Dice of Pokedex if there is one
+        public string GetDamagePokedexBonusString
+        {
+            get
+            {
+                var data = GetDamagePokedexBonus;
+                if (data == 0)
+                {
+                    return "-";
+                }
+
+                return string.Format("1D {0}", data);
+            }
+        }
+
+        [Ignore]
         // Return the Total of All Damage
         public string GetDamageTotalString
         {
             get
             {
+                var resultString = GetDamageLevelBonus.ToString();
 
-                if (GetDamageItemBonusString.Equals("-"))
+                // Add Item Bonus if there is one
+                if (!GetDamageItemBonusString.Equals("-"))
                 {
-                    return GetDamageLevelBonus.ToString();
+                    resultString += " + " + GetDamageItemBonusString;
                 }
 
-                return GetDamageLevelBonus.ToString() + " + " + GetDamageItemBonusString;
+                // Add Pokedex Bonus if there is one
+                if (!GetDamagePokedexBonusString.Equals("-"))
+                {
+                    resultString += " + " + GetDamagePokedexBonusString;
+                }
+
+                return resultString;
 
             }
         }
