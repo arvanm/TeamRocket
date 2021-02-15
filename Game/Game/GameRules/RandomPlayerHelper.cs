@@ -106,6 +106,18 @@ namespace Game.GameRules
         }
 
         /// <summary>
+        /// Randomly set the Monster Type
+        /// </summary>
+        /// <returns></returns>
+        public static MonsterTypeEnum GetMonsterType()
+        {
+            var dice = DiceHelper.RollDice(1, 3);
+            var result = MonsterTypeEnumHelper.GetMonsterTypeByPosition(dice);
+
+            return result;
+        }
+
+        /// <summary>
         /// Get Description
         /// 
         /// Return a random description
@@ -256,6 +268,9 @@ namespace Game.GameRules
                 // Randomize Name
                 Name = GetMonsterName(),
                 Description = GetMonsterDescription(),
+
+                // Randomize Type
+                MonsterType = GetMonsterType(),
 
                 // Randomize the Attributes
                 Attack = GetAbilityValue(),
