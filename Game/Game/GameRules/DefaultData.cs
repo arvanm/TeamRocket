@@ -312,13 +312,21 @@ namespace Game.GameRules
                     Description = "Squirtle is a small Pokémon that resembles a light-blue turtle",
                     ImageURI = "squirtle.png",
                     MonsterType = MonsterTypeEnum.Water,
-        },
+                    Attack = 5,
+                    SpecialAttack = 10,
+                    Defense = 10,
+                    Speed = 10
+                },
 
                 new MonsterModel {
                     Name = "Golduck",
                     Description = "Golduck is a blue, bipedal, platypus-like Pokémon.",
                     ImageURI = "golduck.png",
                     MonsterType = MonsterTypeEnum.Water,
+                    Attack = 8,
+                    SpecialAttack = 9,
+                    Defense = 50,
+                    Speed = 1
                 },
 
                 new MonsterModel {
@@ -326,6 +334,10 @@ namespace Game.GameRules
                     Description = "Vaporeon is a Pokémon that shares physical traits with both aquatic and land animals.",
                     ImageURI = "vaporeon.png",
                     MonsterType = MonsterTypeEnum.Water,
+                    Attack = 30,
+                    SpecialAttack = 35,
+                    Defense = 3,
+                    Speed = 3
                 },
 
                 new MonsterModel {
@@ -333,6 +345,10 @@ namespace Game.GameRules
                     Description = "Charmander is a bipedal, reptilian Pokémon with a primarily orange body and blue eyes.",
                     ImageURI = "charmander.png",
                     MonsterType = MonsterTypeEnum.Fire,
+                    Attack = 10,
+                    SpecialAttack = 15,
+                    Defense = 1,
+                    Speed = 10
                 },
 
                 new MonsterModel {
@@ -340,6 +356,10 @@ namespace Game.GameRules
                     Description = "Entei is a massive, leonine, quadrupedal Pokémon with some mastiff qualities.",
                     ImageURI = "entei.png",
                     MonsterType = MonsterTypeEnum.Fire,
+                    Attack = 20,
+                    SpecialAttack = 20,
+                    Defense = 10,
+                    Speed = 5
                 },
 
                 new MonsterModel {
@@ -347,6 +367,10 @@ namespace Game.GameRules
                     Description = "Moltres is a large, avian Pokémon with golden plumage.",
                     ImageURI = "moltres.png",
                     MonsterType = MonsterTypeEnum.Fire,
+                    Attack = 5,
+                    SpecialAttack = 15,
+                    Defense = 2,
+                    Speed = 2
                 },
 
                 new MonsterModel {
@@ -354,6 +378,10 @@ namespace Game.GameRules
                     Description = "Beedrill is a Pokémon which mostly resembles a bipedal, yellow wasp",
                     ImageURI = "beedrill.png",
                     MonsterType = MonsterTypeEnum.Posion,
+                    Attack = 5,
+                    SpecialAttack = 30,
+                    Defense = 0,
+                    Speed = 50
                 },
             };
 
