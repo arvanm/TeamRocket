@@ -276,6 +276,7 @@ namespace Game.GameRules
                 Attack = GetAbilityValue(),
                 Speed = GetAbilityValue(),
                 Defense = GetAbilityValue(),
+                SpecialAttack = GetAbilityValue(),
 
                 ImageURI = GetMonsterImage(),
 
