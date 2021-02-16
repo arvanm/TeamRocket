@@ -85,12 +85,6 @@ namespace Game.Views
                 {
                     ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
                 }
-                // Check to see if MonsterTypePicker has been set
-                if(MonsterTypePicker.SelectedIndex == -1)
-                {
-                    await DisplayAlert("Alert", "Monster type cannot be empty!", "OK");
-                    return;
-                }
 
                 MessagingCenter.Send(this, "Create", ViewModel.Data);
                 await Navigation.PopModalAsync();
