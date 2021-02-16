@@ -146,11 +146,11 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120" />
-                            <ColumnDefinition Width="75" />
-                            <ColumnDefinition Width="75" />
-                            <ColumnDefinition Width="75" />
-                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition Width="105" />
+                            <ColumnDefinition Width="45" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="140" />
                         </Grid.ColumnDefinitions>
 
                         <BoxView Color="Gray"
