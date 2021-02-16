@@ -87,7 +87,8 @@
                                    Grid.Row="1"
                                    Text="{Binding Data.Description}"
                                    Style="{StaticResource ValueStyle}"
-                                   LineBreakMode="WordWrap" />
+                                   LineBreakMode="WordWrap" 
+                                   WidthRequest="150"/>
 
                             <Label Grid.Column="0"
                                    Grid.Row="2"
