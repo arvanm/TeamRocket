@@ -25,13 +25,13 @@
                     ItemSelected="OnItemSelected"
                     HasUnevenRows="true"
                     Margin="5,0,5,0"
-                    RowHeight="80"
+                    RowHeight="100"
                     >
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid ColumnSpacing="5" RowSpacing="1" Padding="0,5,0,5">
+                            <Grid ColumnSpacing="5" RowSpacing="2" Padding="0,5,0,5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
