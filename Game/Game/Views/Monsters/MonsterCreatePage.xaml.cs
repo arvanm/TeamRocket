@@ -55,7 +55,7 @@ namespace Game.Views
         /// <summary>
         /// Check whether the input name is empty or null.
         /// If the input name is empty or null, display an alert says the name cannot be empty, and return false.
-        /// Otherwise return true
+        /// Otherwise return true.
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
         private async Task<bool> CheckMonsterName()
@@ -63,6 +63,41 @@ namespace Game.Views
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
                 await DisplayAlert("Alert", "Monster name cannot be empty!", "OK");
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check whether the attribute values are negative.
+        /// If any attribute value is empty or null, display an alert says the attribute value cannot be negative, and return false.
+        /// Otherwise return true.
+        /// </summary>
+        /// <returns></returns>
+        private async Task<bool> CheckAttributeValue()
+        {
+            if (ViewModel.Data.Attack < 0)
+            {
+                await DisplayAlert("Alert", "Monster attack cannot be negative!", "OK");
+                return false;
+            }
+
+            if (ViewModel.Data.SpecialAttack < 0)
+            {
+                await DisplayAlert("Alert", "Monster special attack cannot be negative!", "OK");
+                return false;
+            }
+
+            if (ViewModel.Data.Defense < 0)
+            {
+                await DisplayAlert("Alert", "Monster defense cannot be negative!", "OK");
+                return false;
+            }
+
+            if (ViewModel.Data.Speed < 0)
+            {
+                await DisplayAlert("Alert", "Monster speed cannot be negative!", "OK");
                 return false;
             }
 
@@ -78,7 +113,7 @@ namespace Game.Views
         private async void Save_Clicked(object sender, EventArgs e)
         {
             // Only save when the Monster name is not empty, otherwise display an alert
-            if (await CheckMonsterName())
+            if (await CheckMonsterName() && await CheckAttributeValue())
             {
                 // If the image in the data box is empty, use the default one.
                 if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))

@@ -91,6 +91,41 @@ namespace Game.Views
             return true;
         }
 
+        /// <summary>
+        /// Check whether the attribute values are negative.
+        /// If any attribute value is empty or null, display an alert says the attribute value cannot be negative, and return false.
+        /// Otherwise return true.
+        /// </summary>
+        /// <returns></returns>
+        private async Task<bool> CheckAttributeValue()
+        {
+            if (ViewModel.Data.Attack < 0)
+            {
+                await DisplayAlert("Alert", "Monster attack cannot be negative!", "OK");
+                return false;
+            }
+
+            if (ViewModel.Data.SpecialAttack < 0)
+            {
+                await DisplayAlert("Alert", "Monster special attack cannot be negative!", "OK");
+                return false;
+            }
+
+            if (ViewModel.Data.Defense < 0)
+            {
+                await DisplayAlert("Alert", "Monster defense cannot be negative!", "OK");
+                return false;
+            }
+
+            if (ViewModel.Data.Speed < 0)
+            {
+                await DisplayAlert("Alert", "Monster speed cannot be negative!", "OK");
+                return false;
+            }
+
+            return true;
+        }
+
         #endregion InputValueCheck
 
         /// <summary>
@@ -104,7 +139,7 @@ namespace Game.Views
             // the Monster name is not empty,
             // the max health is not within [1, level * 10] range,
             // otherwise display an alert.
-            if (await CheckMonsterName())
+            if (await CheckMonsterName() && await CheckAttributeValue())
             {
                 // If the image in the data box is empty, use the default one..
                 if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
