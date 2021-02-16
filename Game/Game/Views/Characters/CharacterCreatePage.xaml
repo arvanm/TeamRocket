@@ -53,43 +53,43 @@
                         <ColumnDefinition Width="200" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="1"
+                    <Label Grid.Row="0"
                            Grid.Column="0"
                            Text="Trainer Name:"
                            Style="{StaticResource LabelStyle}" />
 
-                    <Entry Grid.Row="1"
+                    <Entry Grid.Row="0"
                            Grid.Column="1"
                            Text="{Binding Data.Name, Mode=TwoWay}"
                            Style="{StaticResource EntryStyle}" />
 
-                    <Label Grid.Row="2"
+                    <Label Grid.Row="1"
                            Grid.Column="0"
                            Text="Description:"
                            Style="{StaticResource LabelStyle}" />
 
-                    <Entry Grid.Row="2"
+                    <Entry Grid.Row="1"
                            Grid.Column="1"
                            Text="{Binding Data.Description, Mode=TwoWay}"
                            Style="{StaticResource EntryStyle}" />
 
-                    <Label Grid.Row="3"
+                    <Label Grid.Row="2"
                            Grid.Column="0"
                            Text="Trainer Level:"
                            Style="{StaticResource LabelStyle}" />
 
-                    <Picker Grid.Row="3"
+                    <Picker Grid.Row="2"
                             Grid.Column="1"
                             x:Name="CharacterLevelPicker"
                             SelectedItem="{Binding SelectedItemProperty}"
                             SelectedIndexChanged="CharacterLevelPicker_Changed" />
 
-                    <Label Grid.Row="4"
+                    <Label Grid.Row="3"
                            Grid.Column="0"
                            Text="Trainer Type:"
                            Style="{StaticResource LabelStyle}" />
 
-                    <Picker Grid.Row="4"
+                    <Picker Grid.Row="3"
                             Grid.Column="1"
                             ItemsSource="{x:Static local_enum:CharacterJobEnumHelper.GetListMessage}"
                             SelectedItem="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}, Mode=TwoWay}"
