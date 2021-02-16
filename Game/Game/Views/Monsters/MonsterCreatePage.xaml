@@ -73,12 +73,12 @@
                            Text="{Binding Data.Description, Mode=TwoWay}"
                            Style="{StaticResource EntryStyle}" />
 
-                    <Label Grid.Row="4"
+                    <Label Grid.Row="3"
                            Grid.Column="0"
                            Text="Pokémon Type:"
                            Style="{StaticResource LabelStyle}" />
 
-                    <Picker Grid.Row="4"
+                    <Picker Grid.Row="3"
                             Grid.Column="1"
                             ItemsSource="{x:Static local_enum:MonsterTypeEnumHelper.GetListMessage}"
                             SelectedItem="{Binding Data.MonsterType, Converter={StaticResource MonsterTypeEnumConverter}, Mode=TwoWay}"
