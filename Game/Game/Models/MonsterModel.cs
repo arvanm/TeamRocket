@@ -71,6 +71,7 @@ namespace Game.Models
             Speed = newData.Speed;
             Defense = newData.Defense;
             Attack = newData.Attack;
+            SpecialAttack = newData.SpecialAttack;
 
             ExperienceTotal = newData.ExperienceTotal;
             ExperienceRemaining = newData.ExperienceRemaining;
