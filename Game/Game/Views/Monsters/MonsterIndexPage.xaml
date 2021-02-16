@@ -45,12 +45,6 @@
                                 <Label Text="{Binding MonsterType, Converter={StaticResource MonsterTypeEnumConverter}}"
                                        HorizontalTextAlignment="Center" />
 
-                                <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Center">
-                                    <Label Text="Level" />
-                                    <Label Text="{Binding Level}" />
-                                </StackLayout>
-
                             </StackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
