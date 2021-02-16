@@ -21,28 +21,31 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Always">
-            <StackLayout Style="{StaticResource OuterBoxStack}">
-                <StackLayout Padding="10"            
-                             HorizontalOptions="Center">
+        <ScrollView 
+            Orientation="Vertical"
+            VerticalScrollBarVisibility="Always">
+            <StackLayout>
+                <StackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
                     <ImageButton Source="beedrill.png"            
-                                 Clicked="SelectMonsterImage_Clicked"
-                                 CommandParameter="beedrill.png" />
+                                Clicked="SelectMonsterImage_Clicked"
+                                CommandParameter="beedrill.png" />
                     <ImageButton Source="charmander.png"
-                                 Clicked="SelectMonsterImage_Clicked"
-                                 CommandParameter="charmander.png" />
+                                Clicked="SelectMonsterImage_Clicked"
+                                CommandParameter="charmander.png" />
                     <ImageButton Source="entei.png"           
-                                 Clicked="SelectMonsterImage_Clicked"
-                                 CommandParameter="entei.png" />
+                                Clicked="SelectMonsterImage_Clicked"
+                                CommandParameter="entei.png" />
                     <ImageButton Source="golduck.png"                                             
-                                 Clicked="SelectMonsterImage_Clicked"                                            
-                                 CommandParameter="golduck.png" />
+                                Clicked="SelectMonsterImage_Clicked"                                            
+                                CommandParameter="golduck.png" />
                     <ImageButton Source="moltres.png"                                             
-                                 Clicked="SelectMonsterImage_Clicked"                                             
-                                 CommandParameter="moltres.png" />
+                                Clicked="SelectMonsterImage_Clicked"                                             
+                                CommandParameter="moltres.png" />
                     <ImageButton Source="squirtle.png"                                             
-                                 Clicked="SelectMonsterImage_Clicked"           
-                                 CommandParameter="squirtle.png" />
+                                Clicked="SelectMonsterImage_Clicked"           
+                                CommandParameter="squirtle.png" />
                     <ImageButton Source="vaporeon.png"                                             
                                  Clicked="SelectMonsterImage_Clicked"           
                                  CommandParameter="vaporeon.png" />
