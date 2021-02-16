@@ -37,12 +37,6 @@ namespace Game.Views
 
             this.ViewModel.Title = "Monster Create";
 
-            // Load Level Values for the Level Picker
-            LoadMonsterLevelPickerValues();
-
-            // Sets the Level Picker to the Monster's level
-            MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
-
             // Sets the Job Picker to the Monster's Type
             MonsterTypePicker.SelectedItem = ViewModel.Data.MonsterType.ToMessage();
         }
@@ -125,59 +119,5 @@ namespace Game.Views
 
             BindingContext = ViewModel;
         }
-
-        #region LevelPicker
-        /// <summary>
-        /// Load the values for the Level Picker
-        /// </summary>
-        /// <returns></returns>
-        public bool LoadMonsterLevelPickerValues()
-        {
-            // Load the values for the Level into the Picker
-            for (var i = 1; i <= LevelTableHelper.MaxLevel; i++)
-            {
-                MonsterLevelPicker.Items.Add(i.ToString());
-            }
-
-            MonsterLevelPicker.SelectedIndex = -1;
-
-            return true;
-        }
-
-        /// <summary>
-        /// The Level selected from the list
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        public void MonsterLevelPicker_Changed(object sender, EventArgs args)
-        {
-            // If the Picker is not set, then set it
-            if (MonsterLevelPicker.SelectedIndex == -1)
-            {
-                MonsterLevelPicker.SelectedIndex = ViewModel.Data.Level - 1;
-                return;
-            }
-
-            var result = MonsterLevelPicker.SelectedIndex + 1;
-
-            // When level changed, roll again for max health, and set attributes to follow the Level Table
-            if (result != ViewModel.Data.Level)
-            {
-                // Change the Level
-                ViewModel.Data.Level = result;
-
-                // Roll for new max health
-                ViewModel.Data.MaxHealth = RandomPlayerHelper.GetHealth(ViewModel.Data.Level);
-
-                // Set current health as the new max health
-                ViewModel.Data.CurrentHealth = ViewModel.Data.MaxHealth;
-
-                // Set attack, defense, speed to follow the Level Table
-                ViewModel.Data.Attack = LevelTableHelper.LevelDetailsList[result].Attack;
-                ViewModel.Data.Defense = LevelTableHelper.LevelDetailsList[result].Defense;
-                ViewModel.Data.Speed = LevelTableHelper.LevelDetailsList[result].Speed;
-            }
-        }
-        #endregion LevelPicker
     }
 }

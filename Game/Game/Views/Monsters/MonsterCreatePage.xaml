@@ -73,17 +73,6 @@
                            Text="{Binding Data.Description, Mode=TwoWay}"
                            Style="{StaticResource EntryStyle}" />
 
-                    <Label Grid.Row="3"
-                           Grid.Column="0"
-                           Text="Pokémon Level:"
-                           Style="{StaticResource LabelStyle}" />
-
-                    <Picker Grid.Row="3"
-                            Grid.Column="1"
-                            x:Name="MonsterLevelPicker"
-                            SelectedItem="{Binding SelectedItemProperty}"
-                            SelectedIndexChanged="MonsterLevelPicker_Changed" />
-
                     <Label Grid.Row="4"
                            Grid.Column="0"
                            Text="Pokémon Type:"
@@ -95,6 +84,81 @@
                             SelectedItem="{Binding Data.MonsterType, Converter={StaticResource MonsterTypeEnumConverter}, Mode=TwoWay}"
                             x:Name="MonsterTypePicker">
                     </Picker>
+                </Grid>
+
+                <Grid HorizontalOptions="CenterAndExpand"
+                      Padding="20"
+                      ColumnSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Color="DimGray"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="0" />
+                    <BoxView Color="LightGreen"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="1" />
+                    <BoxView Color="Orange"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="2" />
+                    <BoxView Color="LightGreen"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="3" />
+                    <BoxView Color="Orange"
+                             Grid.ColumnSpan="2"
+                             Grid.Row="4" />
+
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Attribues"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Text="Values"
+                           FontAttributes="Bold"
+                           VerticalOptions="CenterAndExpand" />
+
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Attack" />
+                    <Entry Grid.Row="1"
+                           Grid.Column="1"
+                           x:Name="AttackValue"
+                           Text="{Binding Data.Attack, Mode=TwoWay}" />
+
+                    <Label Grid.Row="2"
+                           Grid.Column="0"
+                           Text="Special Attack" />
+                    <Entry Grid.Row="2"
+                           Grid.Column="1"
+                           x:Name="SpecialAttackValue"
+                           Text="{Binding Data.SpecialAttack, Mode=TwoWay}" />
+
+                    <Label Grid.Row="3"
+                           Grid.Column="0"
+                           Text="Defense" />
+                    <Entry Grid.Row="3"
+                           Grid.Column="1"
+                           x:Name="DefenseValue"
+                           Text="{Binding Data.Defense, Mode=TwoWay}" />
+
+                    <Label Grid.Row="4"
+                           Grid.Column="0"
+                           Text="Speed" />
+                    <Entry Grid.Row="4"
+                           Grid.Column="1"
+                           x:Name="SpeedValue"
+                           Text="{Binding Data.Speed, Mode=TwoWay}" />
                 </Grid>
             </StackLayout>
         </ScrollView>
