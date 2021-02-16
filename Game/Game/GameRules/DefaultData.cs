@@ -117,13 +117,13 @@ namespace Game.GameRules
             var datalist = new List<ScoreModel>()
             {
                 new ScoreModel {
-                    Name = "First Score",
-                    Description = "Test Data",
+                    Name = "Trainer Bob",
+                    Description = "Bob the Pokemon master",
                 },
 
                 new ScoreModel {
-                    Name = "Second Score",
-                    Description = "Test Data",
+                    Name = "Trainer Tom",
+                    Description = "I should be one number!",
                 }
             };
 
