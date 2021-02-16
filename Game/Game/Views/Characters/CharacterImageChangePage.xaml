@@ -15,10 +15,13 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Always">
-            <StackLayout Style="{StaticResource OuterBoxStack}">
-                <StackLayout Padding="10"            
-                             HorizontalOptions="Center">
+        <ScrollView 
+            Orientation="Vertical"
+            VerticalScrollBarVisibility="Always">
+            <StackLayout>
+                <StackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
                     <ImageButton Source="character_01.png"            
                                  Clicked="SelectCharacterImage_Clicked"
                                  CommandParameter="character_01.png" />
