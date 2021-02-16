@@ -110,7 +110,7 @@
                                    Text="{Binding Data.Job, Converter={StaticResource CharacterJobEnumConverter}}"
                                    Style="{StaticResource ValueStyle}" />
 
-                            <Button Grid.ColumnSpan="1"
+                            <Button Grid.ColumnSpan="2"
                                     Grid.Row="4"
                                     Text="Pokedex"
                                     Clicked="ShowPopupPokedex_Clicked" />
