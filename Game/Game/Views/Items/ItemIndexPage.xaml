@@ -3,10 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Game.Helpers"
              mc:Ignorable="d"
              x:Name="BrowseItemsPage"
              x:Class="Game.Views.ItemIndexPage"
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ItemLocationToDamageBoolConverterHelper x:Key="ItemLocationToDamageBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
@@ -72,7 +79,8 @@
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal"
-                                                 Margin="10, 0, 0, 0">
+                                                 Margin="10, 0, 0, 0"
+                                                 IsVisible="{Binding Location, Converter={StaticResource ItemLocationToDamageBoolConverter}}">
                                         <Label Text="Damage"
                                                Style="{StaticResource ListStyle}" />
                                         <Label Text="+"
