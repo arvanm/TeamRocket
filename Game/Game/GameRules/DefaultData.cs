@@ -19,7 +19,7 @@ namespace Game.GameRules
                     Name = "PrimaryHand01",
                     Description = "May the force be with you!",
                     ImageURI = "item_sword.png",
-                    Range = 10,
+                    Range = 5,
                     Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.PrimaryHand,
@@ -29,8 +29,6 @@ namespace Game.GameRules
                     Name = "Head01",
                     Description = "Cute aviator hat",
                     ImageURI = "item_hat.png",
-                    Range = 10,
-                    Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.Head,
                     Attribute = AttributeEnum.Defense
@@ -39,8 +37,6 @@ namespace Game.GameRules
                     Name = "Neck01",
                     Description = "Shiny Wakanda Forever necklace",
                     ImageURI = "item_necklace.png",
-                    Range = 10,
-                    Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.Necklass,
                     Attribute = AttributeEnum.Speed
@@ -49,8 +45,6 @@ namespace Game.GameRules
                     Name = "OffHand01",
                     Description = "Some nice glove",
                     ImageURI = "item_glove.png",
-                    Range = 10,
-                    Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.OffHand,
                     Attribute = AttributeEnum.Defense
@@ -59,8 +53,6 @@ namespace Game.GameRules
                     Name = "Finger01",
                     Description = "Green Power ring",
                     ImageURI = "item_ring.png",
-                    Range = 10,
-                    Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.Finger,
                     Attribute = AttributeEnum.Attack
@@ -69,8 +61,6 @@ namespace Game.GameRules
                     Name = "Feet01",
                     Description = "Nike Air Max",
                     ImageURI = "item_airmax.png",
-                    Range = 10,
-                    Damage = 10,
                     Value = 9,
                     Location = ItemLocationEnum.Feet,
                     Attribute = AttributeEnum.Speed
@@ -79,8 +69,7 @@ namespace Game.GameRules
                     Name = "Pokeball01",
                     Description = "Master ball",
                     ImageURI = "item_pokeball.png",
-                    Range = 10,
-                    Damage = 10,
+                    Damage = 15,
                     Value = 9,
                     Location = ItemLocationEnum.Pokeball,
                     Attribute = AttributeEnum.Attack
