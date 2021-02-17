@@ -13,6 +13,7 @@
         <ResourceDictionary>
             <local_helpers:StringEnumConverter x:Key="StringEnum" />
             <local_helpers:ItemLocationEnumConverter x:Key="ItemLocationEnumConverter" />
+            <local_helpers:ItemLocationToDamageBoolConverterHelper x:Key="ItemLocationToDamageBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -65,7 +66,15 @@
                        Style="{StaticResource ValueStyle}" />
             </StackLayout>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
+            <StackLayout Style="{StaticResource HorizontalStack}" IsVisible="False">
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding Data.Location, Converter={StaticResource ItemLocationEnumConverter}}"
+                                 Value="Primary Hand">
+                        <Setter Property="IsVisible"
+                                Value="True"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
                 <Label Text="Range : "
                        Style="{StaticResource LabelStyle}" />
                 <Label Text="{Binding Data.Range}"
@@ -79,7 +88,8 @@
                        Style="{StaticResource ValueStyle}" />
             </StackLayout>
 
-            <StackLayout Style="{StaticResource HorizontalStack}">
+            <StackLayout Style="{StaticResource HorizontalStack}"
+                         IsVisible="{Binding Data.Location, Converter={StaticResource ItemLocationToDamageBoolConverter}}">
                 <Label Text="Damage : "
                        Style="{StaticResource LabelStyle}" />
                 <Label Text="{Binding Data.Damage}"
