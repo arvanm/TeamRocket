@@ -1,5 +1,6 @@
 ﻿using Game.Models;
 using Game.ViewModels;
+using Game.Helpers;
 
 using System;
 using System.ComponentModel;
@@ -154,5 +155,41 @@ namespace Game.Views
             return true;
         }
         #endregion InputValueCheck
+
+        #region LocationPicker
+        /// <summary>
+        /// The Level selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void LocationPicker_Changed(object sender, EventArgs args)
+        {
+            var selectedLocationString = (string) LocationPicker.SelectedItem;
+            var selectedLocation = ItemLocationEnumHelper.ConvertMessageToEnum(selectedLocationString);
+
+            // Set visibility of damage stepper
+            if (selectedLocation == ItemLocationEnum.PrimaryHand || selectedLocation == ItemLocationEnum.Pokeball)
+            {
+                DamageStack.IsVisible = true;
+            }
+            else
+            {
+                DamageStack.IsVisible = false;
+                ViewModel.Data.Damage = 0;
+            }
+            
+            // Set visibility of range stepper
+            if (selectedLocation == ItemLocationEnum.PrimaryHand)
+            {
+                RangeStack.IsVisible = true;
+                ViewModel.Data.Range = 1;
+            }
+            else
+            {
+                RangeStack.IsVisible = false;
+                ViewModel.Data.Range = 0;
+            }
+        }
+        #endregion LocationPicker
     }
 }
