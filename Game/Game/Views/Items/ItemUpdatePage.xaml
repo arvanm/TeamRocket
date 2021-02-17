@@ -80,6 +80,7 @@
                             Grid.Column="1"
                             ItemsSource="{x:Static local_enum:ItemLocationEnumHelper.GetListItemMessage}"
                             SelectedItem="{Binding Data.Location, Converter={StaticResource ItemLocationEnumConverter}, Mode=TwoWay}"
+                            SelectedIndexChanged="LocationPicker_Changed"
                             x:Name="LocationPicker" />
 
                     <Label Grid.Row="3"
@@ -116,62 +117,74 @@
                              HorizontalOptions="FillAndExpand"
                              Padding="25,0,0,0">
 
-                    <Label Text="Range"
-                           Style="{StaticResource LabelStyle}" />
+                    <StackLayout x:Name="RangeStack">
+                        <Label Text="Range"
+                               Style="{StaticResource LabelStyle}" />
 
-                    <StackLayout Style="{StaticResource HorizontalStack}"
-                                 Padding="10,0,10,0">
+                        <StackLayout Style="{StaticResource HorizontalStack}"
+                                     Padding="10,0,10,0">
 
-                        <Label Text="{Binding Data.Range}"
-                               x:Name="RangeValue"
-                               Style="{StaticResource ValueStyle}"
-                               Padding="0,0,10,0"
-                               HorizontalOptions="End"
-                               HorizontalTextAlignment="End" />
+                            <Label Text="{Binding Data.Range}"
+                                   x:Name="RangeValue"
+                                   Style="{StaticResource ValueStyle}"
+                                   Padding="0,0,10,0"
+                                   HorizontalOptions="End"
+                                   HorizontalTextAlignment="End" />
 
-                        <Stepper Value="{Binding Data.Range, Mode=TwoWay}"
-                                 ValueChanged="Range_OnStepperValueChanged"
-                                 Maximum="10" />
+                            <Stepper Value="{Binding Data.Range, Mode=TwoWay}"
+                                     x:Name="RangeStepper"
+                                     ValueChanged="Range_OnStepperValueChanged"
+                                     Minimum="1"
+                                     Maximum="5" />
 
+                        </StackLayout>
                     </StackLayout>
 
-                    <Label Text="Value"
-                           Style="{StaticResource LabelStyle}" />
+                    <StackLayout x:Name="ValueStack">
+                        <Label Text="Value"
+                               Style="{StaticResource LabelStyle}" />
 
-                    <StackLayout Style="{StaticResource HorizontalStack}"
-                                 Padding="10,0,10,0">
+                        <StackLayout Style="{StaticResource HorizontalStack}"
+                                     Padding="10,0,10,0">
 
-                        <Label Text="{Binding Data.Value}"
-                               x:Name="ValueValue"
-                               Style="{StaticResource ValueStyle}"
-                               Padding="0,0,10,0"
-                               HorizontalOptions="End"
-                               HorizontalTextAlignment="End" />
+                            <Label Text="{Binding Data.Value}"
+                                   x:Name="ValueValue"
+                                   Style="{StaticResource ValueStyle}"
+                                   Padding="0,0,10,0"
+                                   HorizontalOptions="End"
+                                   HorizontalTextAlignment="End" />
 
-                        <Stepper Value="{Binding Data.Value, Mode=TwoWay}"
-                                 ValueChanged="Value_OnStepperValueChanged"
-                                 Maximum="100" />
+                            <Stepper Value="{Binding Data.Value, Mode=TwoWay}"
+                                     ValueChanged="Value_OnStepperValueChanged"
+                                     Minimum="0"
+                                     Maximum="100"
+                                     x:Name="ValueStepper" />
 
+                        </StackLayout>
                     </StackLayout>
 
-                    <Label Text="Damage"
-                           Style="{StaticResource LabelStyle}" />
+                    <StackLayout x:Name="DamageStack">
+                        <Label Text="Damage"
+                               Style="{StaticResource LabelStyle}" />
 
-                    <StackLayout Style="{StaticResource HorizontalStack}"
-                                 Padding="10,0,10,0">
+                        <StackLayout Style="{StaticResource HorizontalStack}"
+                                     Padding="10,0,10,0">
 
-                        <Label Text="{Binding Data.Damage}"
-                               x:Name="DamageValue"
-                               Style="{StaticResource ValueStyle}"
-                               Padding="0,0,10,0"
-                               HorizontalOptions="End"
-                               HorizontalTextAlignment="End" />
+                            <Label Text="{Binding Data.Damage}"
+                                   x:Name="DamageValue"
+                                   Style="{StaticResource ValueStyle}"
+                                   Padding="0,0,10,0"
+                                   HorizontalOptions="End"
+                                   HorizontalTextAlignment="End" />
 
-                        <Stepper Value="{Binding Data.Damage, Mode=TwoWay}"
-                                 ValueChanged="Damage_OnStepperValueChanged"
-                                 Maximum="100" />
+                            <Stepper Value="{Binding Data.Damage, Mode=TwoWay}"
+                                     ValueChanged="Damage_OnStepperValueChanged"
+                                     Minimum="0"
+                                     Maximum="100" />
 
+                        </StackLayout>
                     </StackLayout>
+
                 </StackLayout>
             </StackLayout>
         </ScrollView>
