@@ -310,12 +310,23 @@ namespace Game.Models
         {
             get
             {
-                var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
-                if (myItem == null)
+                var result = 0;
+
+                // Get Primary Hand
+                var primaryHandItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
+                if (primaryHandItem != null)
                 {
-                    return 0;
+                    result += primaryHandItem.Damage;
                 }
-                return myItem.Damage;
+
+                // Get Pokeball
+                var pokeBallItem = ItemIndexViewModel.Instance.GetItem(Pokeball);
+                if (pokeBallItem != null)
+                {
+                    result += pokeBallItem.Damage;
+                }
+
+                return result;
             }
         }
 
