@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Elves vs Trolls")]
-[assembly: AssemblyDescription("Mike's Cool Game")]
+[assembly: AssemblyTitle("Pokemon Dungeon")]
+[assembly: AssemblyDescription("Pokemon Dungeon")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SU")]
-[assembly: AssemblyProduct("Elves vs Trolls")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCompany("Team Rocket")]
+[assembly: AssemblyProduct("Pokemon Dungeon")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
