@@ -14,7 +14,7 @@
 
                 <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="Center">
                     <Image
-                         Source="item.png"
+                         Source="icon_monster.png"
                          Style="{StaticResource ImageLargeStyle}"/>
                 
                 </StackLayout>
@@ -22,15 +22,14 @@
                 <StackLayout HorizontalOptions="Center" Padding="70,5,70,0"> 
                
                     <Label 
-                        Text="Your Game Iformation"
+                        Text="Pokemon Dungeon"
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"
                         MaxLines="5"
                         />
 
-                    <Label 
-                        Text="Help them on their mission."
+                    <Label Text="Go Team Rocket! &#10;Catch Many Pokemons!"
                         Style="{StaticResource CenterMessageStyle}"
                         FontSize="Micro"
                         LineBreakMode="WordWrap"
