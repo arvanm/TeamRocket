@@ -53,6 +53,9 @@ namespace Game.Models
             Name = "An Unknown Item";
             Description = "An Unknown Item";
             ImageURI = ItemService.DefaultImageURI;
+            Range = 0;
+            Damage = 0;
+            Value = 0;
         }
 
         /// <summary>
