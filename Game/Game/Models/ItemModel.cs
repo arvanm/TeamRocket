@@ -50,6 +50,8 @@ namespace Game.Models
         /// </summary>
         public ItemModel()
         {
+            Name = "An Unknown Item";
+            Description = "An Unknown Item";
             ImageURI = ItemService.DefaultImageURI;
         }
 
