@@ -130,7 +130,8 @@
                                HorizontalTextAlignment="End" />
 
                         <Stepper Value="{Binding Data.Range, Mode=TwoWay}"
-                                 ValueChanged="Range_OnStepperValueChanged" />
+                                 ValueChanged="Range_OnStepperValueChanged"
+                                 Maximum="10" />
 
                     </StackLayout>
 
@@ -148,7 +149,8 @@
                                HorizontalTextAlignment="End" />
 
                         <Stepper Value="{Binding Data.Value, Mode=TwoWay}"
-                                 ValueChanged="Value_OnStepperValueChanged" />
+                                 ValueChanged="Value_OnStepperValueChanged"
+                                 Maximum="100" />
 
                     </StackLayout>
 
@@ -166,7 +168,8 @@
                                HorizontalTextAlignment="End" />
 
                         <Stepper Value="{Binding Data.Damage, Mode=TwoWay}"
-                                 ValueChanged="Damage_OnStepperValueChanged" />
+                                 ValueChanged="Damage_OnStepperValueChanged"
+                                 Maximum="100" />
 
                     </StackLayout>
                 </StackLayout>
