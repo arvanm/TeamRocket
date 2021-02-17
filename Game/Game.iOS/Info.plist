@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Elves vs Trolls</string>
+	<string>Pokemon Dungeon</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.companyname.Game</string>
 	<key>CFBundleVersion</key>
