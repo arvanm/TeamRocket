@@ -32,10 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="Game.UWP.App">
       <uap:VisualElements
-        DisplayName="Elves vs Trolls"
+        DisplayName="Pokemon Dungeon"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Elves vs Trolls a great Moble Example"
+        Description="Pokemon Dungeon"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
@@ -44,7 +44,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#E8D0B6"/>
+        <uap:SplashScreen Image="forest.jpg" BackgroundColor="#FFDE00"/>
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape"/>
           <uap:Rotation Preference="portrait"/></uap:InitialRotationPreference>
