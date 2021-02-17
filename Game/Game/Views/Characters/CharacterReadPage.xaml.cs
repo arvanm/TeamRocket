@@ -184,8 +184,8 @@ namespace Game.Views
             PopupItemAttribute.Text = data.Attribute.ToMessage();
             PopupItemValue.Text = " + " + data.Value.ToString();
 
-            // If Primary Hand Item, display the damage
-            if (data.Location == ItemLocationEnum.PrimaryHand)
+            // If Primary Hand or Pokeball Item, display the damage
+            if (data.Location == ItemLocationEnum.PrimaryHand || data.Location == ItemLocationEnum.Pokeball)
             {
                 PopupItemDamage.IsVisible = true;
                 PopupItemDamageValue.Text = " + " + data.Damage.ToString();
