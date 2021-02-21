@@ -136,6 +136,7 @@ namespace Game.Models
         public CharacterJobEnum Job { get; set; } = CharacterJobEnum.Unknown;
 
         // List of Pokedex that stores captured Pokemons (Monsters) - Only for Characters
+        [Ignore]
         public List<MonsterModel> Pokedex { get; set; } = null;
 
         #endregion PlayerAttributes
