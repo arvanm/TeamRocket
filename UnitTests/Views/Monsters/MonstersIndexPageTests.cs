@@ -82,7 +82,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void MonsterIndexPage_OnMonsterSelected_Clicked_Default_Should_Pass()
+        public void MonsterIndexPage_ReadMonster_Clicked_Default_Should_Pass()
         {
             // Arrange
 
@@ -91,7 +91,7 @@ namespace UnitTests.Views
             var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(selectedMonster, 0);
 
             // Act
-            page.OnItemSelected(null, selectedMonsterChangedEventArgs);
+            page.ReadMonster_Clicked(null, selectedMonsterChangedEventArgs);
 
             // Reset
 
@@ -100,14 +100,14 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void MonsterIndexPage_OnMonsterSelected_Clicked_Invalid_Null_Should_Fail()
+        public void MonsterIndexPage_ReadMonster_Clicked_Invalid_Null_Should_Fail()
         {
             // Arrange
 
             var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(null, 0);
 
             // Act
-            page.OnItemSelected(null, selectedMonsterChangedEventArgs);
+            page.ReadMonster_Clicked(null, selectedMonsterChangedEventArgs);
 
             // Reset
 
@@ -149,11 +149,11 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void MonsterIndexPage_AddItemClicked_Valid_Should_Pass()
+        public void MonsterIndexPage_AddMonster_Clicked_Valid_Should_Pass()
         {
             // Arrange
             // Act
-            page.AddItem_Clicked(null, null);
+            page.AddMonster_Clicked(null, null);
 
             // Reset
 
