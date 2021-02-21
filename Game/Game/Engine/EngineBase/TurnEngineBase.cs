@@ -662,8 +662,10 @@ namespace Game.Engine.EngineBase
         /// <returns></returns>
         public virtual HitStatusEnum RollToHitTarget(int AttackScore, int DefenseScore)
         {
+            // Roll a 20 sided dice
             var d20 = DiceHelper.RollDice(1, 20);
 
+            // if dice roll is 1, automatic miss
             if (d20 == 1)
             {
                 EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
@@ -678,6 +680,7 @@ namespace Game.Engine.EngineBase
                 return EngineSettings.BattleMessagesModel.HitStatus;
             }
 
+            // if dice is 20, automatic hit
             if (d20 == 20)
             {
                 EngineSettings.BattleMessagesModel.AttackStatus = " rolls 20 for hit ";
@@ -691,6 +694,7 @@ namespace Game.Engine.EngineBase
                 return EngineSettings.BattleMessagesModel.HitStatus;
             }
 
+            // if hit score is less than defense, it's a miss
             var ToHitScore = d20 + AttackScore;
             if (ToHitScore < DefenseScore)
             {
