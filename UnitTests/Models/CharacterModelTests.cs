@@ -117,10 +117,10 @@ namespace UnitTests.Models
         {
             // ArDefense
             var dataOriginal = new CharacterModel();
-            dataOriginal.Attack = 1;
+            dataOriginal.MaxHealth = 10;
 
             var dataNew = new CharacterModel();
-            dataNew.Attack = 2;
+            dataNew.MaxHealth = 8;
 
             // Act
             var result = dataOriginal.Update(dataNew);
@@ -129,7 +129,7 @@ namespace UnitTests.Models
 
             // Assert 
             Assert.AreEqual(true, result);
-            Assert.AreEqual(2, dataOriginal.Attack);
+            Assert.AreEqual(8, dataOriginal.MaxHealth);
         }
 
         [Test]
@@ -161,7 +161,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert 
-            Assert.AreEqual(true, result.Contains("Elf"));
+            Assert.AreEqual(true, result.Contains("Beginner"));
         }
 
         [Test]
@@ -235,7 +235,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -250,7 +250,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -265,7 +265,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -280,7 +280,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -295,7 +295,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -325,7 +325,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -340,7 +340,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(1, result);
         }
 
         [Test]
@@ -460,7 +460,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(true, result.Contains("Elf"));
+            Assert.AreEqual(true, result.Contains("Beginner"));
         }
 
         [Test]
