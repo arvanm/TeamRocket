@@ -259,6 +259,21 @@ namespace UnitTests.Helpers
 
             // Act
             var Actual = ItemLocationEnumHelper.GetLocationByPosition(value);
+            var Expected = ItemLocationEnum.Pokeball;
+
+            // Assert
+            Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
+        }
+
+        [Test]
+        public void ItemLocationEnumHelper_GetLocationByPosition_8_Should_Pass()
+        {
+            // Arrange
+
+            var value = 8;
+
+            // Act
+            var Actual = ItemLocationEnumHelper.GetLocationByPosition(value);
             var Expected = ItemLocationEnum.Feet;
 
             // Assert
