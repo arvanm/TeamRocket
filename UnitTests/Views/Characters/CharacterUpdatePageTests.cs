@@ -323,7 +323,7 @@ namespace UnitTests.Views
                 Level = 10
             };
             
-            var control = (Picker)page.FindByName("LevelPicker");
+            var control = (Picker)page.FindByName("CharacterLevelPicker");
             control.SelectedIndex = -1;
 
             // Act
@@ -348,7 +348,7 @@ namespace UnitTests.Views
                 Level = 10
             };
 
-            var control = (Picker)page.FindByName("LevelPicker");
+            var control = (Picker)page.FindByName("CharacterLevelPicker");
             control.SelectedIndex = 10-1;
 
             // Act
@@ -374,7 +374,7 @@ namespace UnitTests.Views
                 Level = 1
             };
 
-            var control = (Picker)page.FindByName("LevelPicker");
+            var control = (Picker)page.FindByName("CharacterLevelPicker");
             control.SelectedIndex = 15;
 
             // Act
