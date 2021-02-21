@@ -26,10 +26,28 @@ namespace Game.GameRules
                     Attribute = AttributeEnum.Attack
                 },
                 new ItemModel {
+                    Name = "PrimaryHand02",
+                    Description = "A sharp sword",
+                    ImageURI = "item_sword.png",
+                    Range = 2,
+                    Damage = 15,
+                    Value = 20,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Attack
+                },
+                new ItemModel {
                     Name = "Head01",
                     Description = "Cute aviator hat",
                     ImageURI = "item_hat.png",
                     Value = 9,
+                    Location = ItemLocationEnum.Head,
+                    Attribute = AttributeEnum.Defense
+                },
+                new ItemModel {
+                    Name = "Head02",
+                    Description = "A hat that looks like a nest",
+                    ImageURI = "item_hat.png",
+                    Value = 2,
                     Location = ItemLocationEnum.Head,
                     Attribute = AttributeEnum.Defense
                 },
@@ -42,10 +60,26 @@ namespace Game.GameRules
                     Attribute = AttributeEnum.Speed
                 },
                 new ItemModel {
+                    Name = "Neck02",
+                    Description = "Warm red light",
+                    ImageURI = "item_necklace.png",
+                    Value = 15,
+                    Location = ItemLocationEnum.Necklass,
+                    Attribute = AttributeEnum.Defense
+                },
+                new ItemModel {
                     Name = "OffHand01",
                     Description = "Some nice glove",
                     ImageURI = "item_glove.png",
                     Value = 9,
+                    Location = ItemLocationEnum.OffHand,
+                    Attribute = AttributeEnum.Defense
+                },
+                new ItemModel {
+                    Name = "OffHand02",
+                    Description = "Paper glove",
+                    ImageURI = "item_glove.png",
+                    Value = 1,
                     Location = ItemLocationEnum.OffHand,
                     Attribute = AttributeEnum.Defense
                 },
@@ -58,12 +92,28 @@ namespace Game.GameRules
                     Attribute = AttributeEnum.Attack
                 },
                 new ItemModel {
+                    Name = "Finger02",
+                    Description = "You feel very light with the ring",
+                    ImageURI = "item_ring.png",
+                    Value = 15,
+                    Location = ItemLocationEnum.Finger,
+                    Attribute = AttributeEnum.Speed
+                },
+                new ItemModel {
                     Name = "Feet01",
                     Description = "Nike Air Max",
                     ImageURI = "item_airmax.png",
                     Value = 9,
                     Location = ItemLocationEnum.Feet,
                     Attribute = AttributeEnum.Speed
+                },
+                new ItemModel {
+                    Name = "Feet02",
+                    Description = "Boot your trip",
+                    ImageURI = "item_airmax.png",
+                    Value = 9,
+                    Location = ItemLocationEnum.Feet,
+                    Attribute = AttributeEnum.Defense
                 },
                 new ItemModel {
                     Name = "Pokeball01",
@@ -74,24 +124,16 @@ namespace Game.GameRules
                     Location = ItemLocationEnum.Pokeball,
                     Attribute = AttributeEnum.Attack
                 },
+                new ItemModel {
+                    Name = "Pokeball02",
+                    Description = "Newbie ball",
+                    ImageURI = "item_pokeball.png",
+                    Damage = 1,
+                    Value = 1,
+                    Location = ItemLocationEnum.Pokeball,
+                    Attribute = AttributeEnum.Attack
+                },
             };
-
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    var item = new ItemModel
-            //    {
-            //        ImageURI = "item.png",
-            //        Range = 2,
-            //        Damage = 10,
-            //        Value = 9,
-            //        Location = ItemLocationEnum.PrimaryHand,
-            //        Attribute = AttributeEnum.Attack
-            //    };
-            //    item.Name = "I" + (datalist.Count + 1).ToString();
-            //    item.Description = item.Name;
-
-            //    datalist.Add(item);
-            //}
 
             return datalist;
         }
