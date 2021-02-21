@@ -143,7 +143,7 @@ namespace UnitTests.Views
             // Arrange
 
             // Put some data into the box so it can be removed
-            FlexLayout itemBox = (FlexLayout)page.Content.FindByName("ItemBox");
+            Grid itemBox = (Grid)page.Content.FindByName("ItemGrid");
 
             itemBox.Children.Add(new Label());
             itemBox.Children.Add(new Label());
@@ -154,7 +154,7 @@ namespace UnitTests.Views
             // Reset
 
             // Assert
-            Assert.AreEqual(7, itemBox.Children.Count()); // Got to here, so it happened...
+            Assert.AreEqual(8, itemBox.Children.Count()); // Got to here, so it happened...
         }
 
         [Test]
