@@ -110,12 +110,12 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterReadPage_ShowPopup_Valid_Should_Pass()
+        public void CharacterReadPage_ShowPopupItem_Clicked_Valid_Should_Pass()
         {
             // Arrange
 
             // Act
-            page.ShowPopup(new ItemModel());
+            page.ShowPopupItem_Clicked(new ItemModel());
 
             // Reset
 
@@ -124,12 +124,12 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterReadPage_ClosePopup_Clicked_Default_Should_Pass()
+        public void CharacterReadPage_ClosePopupItem_Clicked_Default_Should_Pass()
         {
             // Arrange
 
             // Act
-            page.ClosePopup_Clicked(null, null);
+            page.ClosePopupItem_Clicked(null, null);
 
             // Reset
 
