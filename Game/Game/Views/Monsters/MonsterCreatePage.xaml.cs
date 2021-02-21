@@ -46,7 +46,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void Cancel_Clicked(object sender, EventArgs e)
+        public async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
@@ -58,7 +58,7 @@ namespace Game.Views
         /// Otherwise return true.
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckMonsterName()
+        public async Task<bool> CheckMonsterName()
         {
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
@@ -75,7 +75,7 @@ namespace Game.Views
         /// Otherwise return true.
         /// </summary>
         /// <returns></returns>
-        private async Task<bool> CheckAttributeValue()
+        public async Task<bool> CheckAttributeValue()
         {
             if (ViewModel.Data.Attack < 0)
             {
@@ -110,7 +110,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void Save_Clicked(object sender, EventArgs e)
+        public async void Save_Clicked(object sender, EventArgs e)
         {
             // Only save when the Monster name is not empty, otherwise display an alert
             if (await CheckMonsterName() && await CheckAttributeValue())
@@ -131,7 +131,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void ChangeImage_Clicked(object sender, EventArgs e)
+        public async void ChangeImage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new MonsterImageChangePage(ViewModel)));
             await Navigation.PopAsync();
