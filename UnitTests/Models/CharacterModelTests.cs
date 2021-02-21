@@ -224,10 +224,10 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void CharacterModel_GetAttack_Fighter_Should_Pass()
+        public void CharacterModel_GetAttack_DojoMaster_Should_Pass()
         {
             // ArDefense
-            var data = new CharacterModel { Job = CharacterJobEnum.Fighter };
+            var data = new CharacterModel { Job = CharacterJobEnum.DojoMaster };
 
             // Act
             var result = data.GetAttack();
@@ -239,10 +239,10 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void CharacterModel_GetDefense_Fighter_Should_Pass()
+        public void CharacterModel_GetDefense_DojoMaster_Should_Pass()
         {
             // ArDefense
-            var data = new CharacterModel { Job = CharacterJobEnum.Fighter };
+            var data = new CharacterModel { Job = CharacterJobEnum.DojoMaster };
 
             // Act
             var result = data.GetDefense();
@@ -254,10 +254,10 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void CharacterModel_GetSpeed_Fighter_Should_Pass()
+        public void CharacterModel_GetSpeed_DojoMaster_Should_Pass()
         {
             // ArDefense
-            var data = new CharacterModel { Job = CharacterJobEnum.Fighter };
+            var data = new CharacterModel { Job = CharacterJobEnum.DojoMaster };
 
             // Act
             var result = data.GetSpeed();
@@ -269,10 +269,10 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void CharacterModel_GetAttack_Cleric_Should_Pass()
+        public void CharacterModel_GetAttack_PetLover_Should_Pass()
         {
             // ArDefense
-            var data = new CharacterModel { Job = CharacterJobEnum.Cleric };
+            var data = new CharacterModel { Job = CharacterJobEnum.PetLover };
 
             // Act
             var result = data.GetAttack();
@@ -284,10 +284,10 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void CharacterModel_GetDefense_Cleric_Should_Pass()
+        public void CharacterModel_GetDefense_PetLover_Should_Pass()
         {
             // ArDefense
-            var data = new CharacterModel { Job = CharacterJobEnum.Cleric };
+            var data = new CharacterModel { Job = CharacterJobEnum.PetLover };
 
             // Act
             var result = data.GetDefense();
@@ -299,10 +299,10 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void CharacterModel_GetSpeed_Cleric_Should_Pass()
+        public void CharacterModel_GetSpeed_PetLover_Should_Pass()
         {
             // ArDefense
-            var data = new CharacterModel { Job = CharacterJobEnum.Cleric };
+            var data = new CharacterModel { Job = CharacterJobEnum.PetLover };
 
             // Act
             var result = data.GetSpeed();
@@ -312,6 +312,52 @@ namespace UnitTests.Models
             // Assert
             Assert.AreEqual(1, result);
         }
+
+        [Test]
+        public void CharacterModel_GetAttack_QuickAttacker_Should_Pass()
+        {
+            // ArDefense
+            var data = new CharacterModel { Job = CharacterJobEnum.QuickAttacker };
+
+            // Act
+            var result = data.GetAttack();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result);
+        }
+
+        [Test]
+        public void CharacterModel_GetDefense_QuickAttacker_Should_Pass()
+        {
+            // ArDefense
+            var data = new CharacterModel { Job = CharacterJobEnum.QuickAttacker };
+
+            // Act
+            var result = data.GetDefense();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(3, result);
+        }
+
+        [Test]
+        public void CharacterModel_GetSpeed_QuickAttacker_Should_Pass()
+        {
+            // ArDefense
+            var data = new CharacterModel { Job = CharacterJobEnum.QuickAttacker };
+
+            // Act
+            var result = data.GetSpeed();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(1, result);
+        }
+
         [Test]
         public void CharacterModel_GetAttack_Default_Should_Pass()
         {
