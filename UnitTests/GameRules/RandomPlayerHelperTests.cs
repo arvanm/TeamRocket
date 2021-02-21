@@ -77,7 +77,7 @@ namespace UnitTests.Helpers
             DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("Deg", result);
+            Assert.AreEqual("Ivysaur", result);
         }
 
         [Test]
@@ -94,7 +94,7 @@ namespace UnitTests.Helpers
             DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("the Elf hater", result);
+            Assert.AreEqual("Moves Quick", result);
         }
 
         [Test]
@@ -111,7 +111,7 @@ namespace UnitTests.Helpers
             DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("the awesome", result);
+            Assert.AreEqual("Never lost a battle", result);
         }
 
         [Test]
@@ -128,7 +128,7 @@ namespace UnitTests.Helpers
             DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("Doug", result);
+            Assert.AreEqual("Chase", result);
         }
 
         [Test]
@@ -179,7 +179,7 @@ namespace UnitTests.Helpers
             DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("item.png", result);
+            Assert.AreEqual("entei.png", result);
         }
 
         [Test]
@@ -196,7 +196,7 @@ namespace UnitTests.Helpers
             DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("item.png", result);
+            Assert.AreEqual("character_02.png", result);
         }
 
         [Test]
