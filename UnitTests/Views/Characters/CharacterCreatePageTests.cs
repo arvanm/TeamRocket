@@ -116,20 +116,20 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
-        //[Test]
-        //public void CharacterCreatePage_OnAppear_Clicked_Null_Image_Should_Pass()
-        //{
-        //    // Arrange
-        //    page.ViewModel.Data.ImageURI = null;
+        [Test]
+        public void CharacterCreatePage_OnAppear_Clicked_Null_Image_Should_Pass()
+        {
+            // Arrange
+            GenericViewModel<CharacterModel> ViewModel = new GenericViewModel<CharacterModel>();
 
-        //    // Act
-        //    page.OnAppearing();
+            // Act
+            OnAppearing();
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
 
         [Test]
         public void CharacterCreatePage_OnBackButtonPressed_Valid_Should_Pass()
