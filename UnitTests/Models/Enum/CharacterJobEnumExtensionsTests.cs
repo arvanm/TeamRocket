@@ -22,31 +22,45 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void CharacterJobEnumExtensionsTests_Fighter_Default_Should_Pass()
+        public void CharacterJobEnumExtensionsTests_DojoMaster_Default_Should_Pass()
         {
             // Arrange
 
             // Act
-            var result = CharacterJobEnum.Fighter.ToMessage();
+            var result = CharacterJobEnum.DojoMaster.ToMessage();
 
             // Reset
 
             // Assert
-            Assert.AreEqual("Fighter", result);
+            Assert.AreEqual("Dojo Master", result);
         }
 
         [Test]
-        public void CharacterJobEnumExtensionsTests_Cleric_Default_Should_Pass()
+        public void CharacterJobEnumExtensionsTests_PetLover_Default_Should_Pass()
         {
             // Arrange
 
             // Act
-            var result = CharacterJobEnum.Cleric.ToMessage();
+            var result = CharacterJobEnum.PetLover.ToMessage();
 
             // Reset
 
             // Assert
-            Assert.AreEqual("Cleric", result);
+            Assert.AreEqual("Pet Lover", result);
+        }
+
+        [Test]
+        public void CharacterJobEnumExtensionsTests_QuickAttacker_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = CharacterJobEnum.QuickAttacker.ToMessage();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("Quick Attacker", result);
         }
     }
 }
