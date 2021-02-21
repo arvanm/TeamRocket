@@ -15,14 +15,17 @@ namespace Scenario
         [SetUp]
         public void Setup()
         {
+            // Choose which engine to run
+            EngineViewModel.SetBattleEngineToKoenig();
+
             // Put seed data into the system for all tests
-            BattleEngineViewModel.Instance.Engine.Round.ClearLists();
+            EngineViewModel.Engine.Round.ClearLists();
 
             //Start the Engine in AutoBattle Mode
-            BattleEngineViewModel.Instance.Engine.StartBattle(false);
+            EngineViewModel.Engine.StartBattle(false);
 
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.CharacterHitEnum = HitStatusEnum.Default;
-            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum= HitStatusEnum.Default;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
 
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowCriticalHit = false;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowCriticalMiss = false;
@@ -66,7 +69,7 @@ namespace Scenario
             // Act
 
             // Assert
-           
+
 
             // Act
             var result = EngineViewModel;
