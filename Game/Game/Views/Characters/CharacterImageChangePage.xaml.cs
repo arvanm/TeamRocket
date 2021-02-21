@@ -19,7 +19,7 @@ namespace Game.Views
     public partial class CharacterImageChangePage : ContentPage
     {
         // Hold the ViewModel that was passed in
-        private GenericViewModel<CharacterModel> viewModel;
+        public GenericViewModel<CharacterModel> viewModel;
 
         // Empty Constructor for UTs
         public CharacterImageChangePage(bool UnitTest) { }

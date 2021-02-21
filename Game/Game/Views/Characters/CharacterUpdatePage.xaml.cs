@@ -81,7 +81,7 @@ namespace Game.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void ChangeImage_Clicked(object sender, EventArgs e)
+        public async void ChangeImage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new CharacterImageChangePage(ViewModel)));
             await Navigation.PopAsync();
@@ -142,7 +142,7 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckCharacterName()
+        public async Task<bool> CheckCharacterName()
         {
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
@@ -160,7 +160,7 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckCharacterMaxHealth()
+        public async Task<bool> CheckCharacterMaxHealth()
         {
             if (ViewModel.Data.MaxHealth <= 0 || ViewModel.Data.MaxHealth > ViewModel.Data.Level * 10)
             {
@@ -178,7 +178,7 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckCharacterCurHealth()
+        public async Task<bool> CheckCharacterCurHealth()
         {
             if (ViewModel.Data.CurrentHealth < 0 || ViewModel.Data.CurrentHealth > ViewModel.Data.MaxHealth)
             {
