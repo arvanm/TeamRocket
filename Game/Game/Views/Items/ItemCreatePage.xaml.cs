@@ -110,7 +110,7 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckItemName()
+        public async Task<bool> CheckItemName()
         {
             if (string.IsNullOrEmpty(ViewModel.Data.Name))
             {
@@ -127,7 +127,7 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckItemLocation()
+        public async Task<bool> CheckItemLocation()
         {
             if (ViewModel.Data.Location == ItemLocationEnum.Unknown)
             {
@@ -144,7 +144,7 @@ namespace Game.Views
         /// Otherwise return true
         /// </summary>
         /// <returns>Whether the input name is empty or null</returns>
-        private async Task<bool> CheckItemAttribute()
+        public async Task<bool> CheckItemAttribute()
         {
             if (ViewModel.Data.Attribute == AttributeEnum.Unknown)
             {
