@@ -81,39 +81,39 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
-        [Test]
-        public void MonsterIndexPage_ReadMonster_Clicked_Default_Should_Pass()
-        {
-            // Arrange
+        //[Test]
+        //public void MonsterIndexPage_ReadMonster_Clicked_Default_Should_Pass()
+        //{
+        //    // Arrange
 
-            var selectedMonster = new MonsterModel();
+        //    var selectedMonster = new MonsterModel();
 
-            var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(selectedMonster, 0);
+        //    var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(selectedMonster, 0);
 
-            // Act
-            page.ReadMonster_Clicked(null, selectedMonsterChangedEventArgs);
+        //    // Act
+        //    page.ReadMonster_Clicked(null, selectedMonsterChangedEventArgs);
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.IsTrue(true); // Got to here, so it happened...
-        }
+        //    // Assert
+        //    Assert.IsTrue(true); // Got to here, so it happened...
+        //}
 
-        [Test]
-        public void MonsterIndexPage_ReadMonster_Clicked_Invalid_Null_Should_Fail()
-        {
-            // Arrange
+        //[Test]
+        //public void MonsterIndexPage_ReadMonster_Clicked_Invalid_Null_Should_Fail()
+        //{
+        //    // Arrange
 
-            var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(null, 0);
+        //    var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(null, 0);
 
-            // Act
-            page.ReadMonster_Clicked(null, selectedMonsterChangedEventArgs);
+        //    // Act
+        //    page.ReadMonster_Clicked(null, selectedMonsterChangedEventArgs);
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.IsTrue(true); // Got to here, so it happened...
-        }
+        //    // Assert
+        //    Assert.IsTrue(true); // Got to here, so it happened...
+        //}
 
         [Test]
         public void MonsterIndexPage_OnAppearing_Valid_Should_Pass()
