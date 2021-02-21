@@ -102,6 +102,36 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void CharacterCreatePage_ChangeImage_Clicked_Null_Image_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.ImageURI = null;
+
+            // Act
+            page.ChangeImage_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        //[Test]
+        //public void CharacterCreatePage_OnAppear_Clicked_Null_Image_Should_Pass()
+        //{
+        //    // Arrange
+        //    page.ViewModel.Data.ImageURI = null;
+
+        //    // Act
+        //    page.OnAppearing();
+
+        //    // Reset
+
+        //    // Assert
+        //    Assert.IsTrue(true); // Got to here, so it happened...
+        //}
+
+        [Test]
         public void CharacterCreatePage_OnBackButtonPressed_Valid_Should_Pass()
         {
             // Arrange
