@@ -664,6 +664,25 @@ namespace UnitTests.Models
         }
 
         [Test]
+        public void BasePlayerModel_GetAttackPokedex_Null_Attack_Should_Return_0()
+        {
+            // Arrange
+            // Add each model here to warm up and load it.
+            var data = new BasePlayerModel<CharacterModel>();
+
+            // Add Pokedex
+            data.Pokedex = null;
+
+            // Act
+            var result = data.GetAttackPokedexBonus;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result);
+        }
+
+        [Test]
         public async Task BasePlayerModel_GetAttackTotal_Default_Attack_Should_Pass()
         {
             // Arrange
@@ -779,32 +798,39 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public async Task BasePlayerModel_GetDamageRollValue_Default_Speed_Should_Pass()
+        public async Task BasePlayerModel_GetDamageRollValue_Default_Damage_Should_Pass()
         {
             // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
 
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "head" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "necklass" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "Head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "Necklass" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 4000, Id = "OffHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 50000, Id = "RightFinger" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 600000, Id = "LeftFinger" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "Feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 80000000, Id = "Pokeball", Damage = 1 });
 
             var data = new BasePlayerModel<CharacterModel>();
             data.Level = 1;
 
             // Add the first item
-            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("head")).Id);
-            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("necklass")).Id);
+            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("Head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("Necklass")).Id);
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
             data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
             data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
             data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
-            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("Feet")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
+            // Add Pokedex
+            data.Pokedex = new List<MonsterModel>();
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+
+            // Enable Forced Rolls
             Game.Helpers.DiceHelper.EnableForcedRolls();
             Game.Helpers.DiceHelper.SetForcedRollValue(1);
 
@@ -817,59 +843,51 @@ namespace UnitTests.Models
             Game.Helpers.DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(3, result);
         }
 
         [Test]
-        public async Task BasePlayerModel_GetDamageItemBonus_Default_Speed_Should_Pass()
+        public async Task BasePlayerModel_GetDamageItemBonus_Default_Damage_Should_Pass()
         {
             // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
 
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" , Damage=1});
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "Pokeball" , Damage=1});
 
             var data = new BasePlayerModel<CharacterModel>();
             data.Level = 1;
 
-            // Add the first item
+            // Add items
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
-
-            Game.Helpers.DiceHelper.EnableForcedRolls();
-            Game.Helpers.DiceHelper.SetForcedRollValue(1);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
             // Act
-
-            // Add the second item, this will return the first item as the one replaced
             var result = data.GetDamageItemBonus;
 
             // Reset
-            Game.Helpers.DiceHelper.DisableForcedRolls();
-            
 
             // Assert
-            Assert.AreEqual(1, result);
+            Assert.AreEqual(2, result);
         }
 
         [Test]
-        public async Task BasePlayerModel_GetDamageItemBonusString_Default_Speed_Should_Pass()
+        public async Task BasePlayerModel_GetDamageItemBonusString_Default_Damage_Should_Pass()
         {
             // Arrange
             // Add each model here to warm up and load it.
-            DataSetsHelper.WarmUp();
-
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "Pokeball", Damage = 1 });
 
             var data = new BasePlayerModel<CharacterModel>
             {
                 Level = 1
             };
 
-            // Add the first item
+            // Add the items
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
-
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(1);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
             // Act
 
@@ -877,30 +895,111 @@ namespace UnitTests.Models
             var result = data.GetDamageItemBonusString;
 
             // Reset
-            DiceHelper.DisableForcedRolls();
-            
 
             // Assert
-            Assert.AreEqual("1D 1", result);
+            Assert.AreEqual("1D 2", result);
         }
 
         [Test]
-        public async Task BasePlayerModel_GetDamageTotalString_Default_Speed_Should_Pass()
+        public void BasePlayerModel_GetDamageItemBonusString_No_Item_Damage_Should_Pass()
+        {
+            // Arrange
+            var data = new BasePlayerModel<CharacterModel>
+            {
+                Level = 1
+            };
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.GetDamageItemBonusString;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("-", result);
+        }
+
+        [Test]
+        public void BasePlayerModel_GetDamagePokedexBonus_Default_Damage_Should_Pass()
+        {
+            // Arrange
+            var data = new BasePlayerModel<CharacterModel>();
+            data.Level = 1;
+
+            // Add Pokedex
+            data.Pokedex = new List<MonsterModel>();
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 10 });
+            data.Pokedex.Add(new MonsterModel { Attack = 25 });
+
+            // Act
+            var result = data.GetDamagePokedexBonus;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(40, result);
+        }
+
+        [Test]
+        public void BasePlayerModel_GetDamagePokedexBonusString_Default_Damage_Should_Pass()
+        {
+            // Arrange
+            var data = new BasePlayerModel<CharacterModel>();
+            data.Level = 1;
+
+            // Add Pokedex
+            data.Pokedex = new List<MonsterModel>();
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 10 });
+            data.Pokedex.Add(new MonsterModel { Attack = 25 });
+
+            // Act
+            var result = data.GetDamagePokedexBonusString;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("1D 40", result);
+        }
+
+        [Test]
+        public void BasePlayerModel_GetDamagePokedexBonusString_No_Pokedex_Damage_Should_Pass()
+        {
+            // Arrange
+            var data = new BasePlayerModel<CharacterModel>();
+            data.Level = 1;
+
+            // Act
+            var result = data.GetDamagePokedexBonusString;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("-", result);
+        }
+
+        [Test]
+        public async Task BasePlayerModel_GetDamageTotalString_Default_Damage_Should_Pass()
         {
             // Arrange
             // Add each model here to warm up and load it.
-            DataSetsHelper.WarmUp();
-
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "Pokeball", Damage = 1 });
 
             var data = new BasePlayerModel<CharacterModel>();
             data.Level = 1;
 
-            // Add the first item
+            // Add items
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
-            DiceHelper.EnableForcedRolls();
-            DiceHelper.SetForcedRollValue(1);
+            // Add Pokedex
+            data.Pokedex = new List<MonsterModel>();
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 10 });
+            data.Pokedex.Add(new MonsterModel { Attack = 25 });
 
             // Act
 
@@ -908,10 +1007,9 @@ namespace UnitTests.Models
             var result = data.GetDamageTotalString;
 
             // Reset
-            DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("1 + 1D 1", result);
+            Assert.AreEqual("1 + 1D 2 + 1D 40", result);
         }
 
         [Test]
