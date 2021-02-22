@@ -80,6 +80,9 @@ namespace Game.Views
             // Show the Character's Items
             AddItemsToDisplay();
 
+            // Update the attribute table
+            UpdateAttributeValues();
+
             return true;
         }
 
@@ -360,7 +363,7 @@ namespace Game.Views
             if (ClickableButton)
             {
                 // Add a event to the user can click the item and see more
-                ItemButton.Clicked += (sender, args) => ShowPopup(data);
+                ItemButton.Clicked += (sender, args) => ShowPopup(data, location);
             }
 
             // Add the Display Text for the item
@@ -393,14 +396,20 @@ namespace Game.Views
         /// Show the Popup for the Item
         /// </summary>
         /// <param name="data"></param>
+        /// <param name="location"></param>
         /// <returns></returns>
-        public bool ShowPopup(ItemModel data)
+        public bool ShowPopup(ItemModel data, ItemLocationEnum location)
         {
+            // Show the Popup View
             PopupLoadingView.IsVisible = true;
+
+            // Update the displayed selected item as the current item
             UpdatePopupSelectedItemValues(data);
 
-            // Get List of ItemModels for list
-            PopupListView.ItemsSource = new ObservableCollection<ItemModel>(ItemListModel.GetLocationItems(data.Location));
+            // Get List of ItemModels for list, and bind click function
+            PopupListView.ItemsSource = new ObservableCollection<ItemModel>(ItemListModel.GetLocationItems(location));
+            PopupListView.ItemSelected += (sender, args) => PopupItemSelected((ItemModel)args.SelectedItem, location);
+
             return true;
         }
 
@@ -441,37 +450,68 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// The row selected from the list
+        /// The item selected from the list. Set location to the item and update selected view.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public void PopupItemSelected(ItemModel data, ItemLocationEnum location)
         {
+            // If data is null, return
+            if (data == null)
+            {
+                return;
+            }
 
+            // Set item to corresponding location
+            switch (location)
+            {
+                case ItemLocationEnum.PrimaryHand:
+                    ViewModel.Data.PrimaryHand = data.Id;
+                    break;
+                case ItemLocationEnum.OffHand:
+                    ViewModel.Data.OffHand = data.Id;
+                    break;
+                case ItemLocationEnum.Necklass:
+                    ViewModel.Data.Necklass = data.Id;
+                    break;
+                case ItemLocationEnum.Feet:
+                    ViewModel.Data.Feet = data.Id;
+                    break;
+                case ItemLocationEnum.LeftFinger:
+                    ViewModel.Data.LeftFinger = data.Id;
+                    break;
+                case ItemLocationEnum.RightFinger:
+                    ViewModel.Data.RightFinger = data.Id;
+                    break;
+                case ItemLocationEnum.Head:
+                    ViewModel.Data.Head = data.Id;
+                    break;
+                case ItemLocationEnum.Pokeball:
+                    ViewModel.Data.Pokeball = data.Id;
+                    break;
+                default:
+                    break;
+            }
+
+            // Update selected view
+            UpdatePopupSelectedItemValues(data);
         }
 
         /// <summary>
         /// When the user clicks the Save botton in the Popup
         /// hide the view
         /// show the scroll view
+        /// refresh the page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void ClosePopupSave_Clicked(object sender, EventArgs e)
         {
+            // Set the popup view to invisible
             PopupLoadingView.IsVisible = false;
-        }
 
-        /// <summary>
-        /// When the user clicks the Cancel botton in the Popup
-        /// hide the view
-        /// show the scroll view
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void ClosePopupCancel_Clicked(object sender, EventArgs e)
-        {
-            PopupLoadingView.IsVisible = false;
+            // Refresh the character page to reveal changes
+            UpdatePageBindingContext();
         }
 
         #endregion PopupManagement

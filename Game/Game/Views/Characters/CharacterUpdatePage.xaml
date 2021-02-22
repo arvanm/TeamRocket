@@ -505,8 +505,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 VerticalScrollBarVisibility="Always"
                                 Padding="10">
-                        <ListView x:Name="PopupListView"
-                                  ItemSelected="OnItemSelected">
+                        <ListView x:Name="PopupListView">
                             
                             <!--Item List Template-->
                             <ListView.ItemTemplate>
@@ -591,19 +590,13 @@
 
                     <StackLayout Orientation="Horizontal"
                                  HorizontalOptions="CenterAndExpand">
-                        <!--The Cancel Button-->
-                        <Button x:Name="PopupCloseCancelButton"
-                                Clicked="ClosePopupCancel_Clicked"
-                                Text="Cancel"
-                                Padding="5"
-                                Margin="0, 5, 25, 5"/>
 
                         <!--The Save Button-->
                         <Button x:Name="PopupCloseSaveButton"
                                 Clicked="ClosePopupSave_Clicked"
                                 Text="Save"
                                 Padding="5"
-                                Margin="25, 5, 0, 5"/>
+                                Margin="0, 5, 0, 5"/>
                     </StackLayout>
                 </StackLayout>
 
