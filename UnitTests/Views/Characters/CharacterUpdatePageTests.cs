@@ -142,6 +142,24 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void CharacterUpdatePage_PopupItemSelected_Default_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Head";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.PrimaryHand;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void CharacterUpdatePage_UpdatePageBindingContext_Null_Image_Should_Pass()
         {
             // Arrange
