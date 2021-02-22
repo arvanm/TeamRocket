@@ -117,6 +117,21 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void CharacterCreatePage_CharacterLevelPicker_Changed_Null_Image_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Level = 0;
+
+            // Act
+            page.CharacterLevelPicker_Changed(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void CharacterCreatePage_OnAppear_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
