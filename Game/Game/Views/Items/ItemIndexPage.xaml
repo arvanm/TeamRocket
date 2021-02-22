@@ -11,7 +11,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:ItemLocationToDamageBoolConverterHelper x:Key="ItemLocationToDamageBoolConverter" />
+            <local:ItemLocationToHasDamageBoolConverterHelper x:Key="ItemLocationToHasDamageBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -80,7 +80,7 @@
 
                                     <StackLayout Orientation="Horizontal"
                                                  Margin="10, 0, 0, 0"
-                                                 IsVisible="{Binding Location, Converter={StaticResource ItemLocationToDamageBoolConverter}}">
+                                                 IsVisible="{Binding Location, Converter={StaticResource ItemLocationToHasDamageBoolConverter}}">
                                         <Label Text="Damage"
                                                Style="{StaticResource ListStyle}" />
                                         <Label Text="+"

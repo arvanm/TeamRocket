@@ -9,7 +9,7 @@ namespace Game.Helpers
     // Only primary hand and Pokeball have damaes
 
     // Converts a ItemLocationEnum to Boolean. If ItemLocation is PrimaryHand or Pokeball, return True. Otherwise False.
-    public class ItemLocationToDamageBoolConverterHelper : IValueConverter
+    public class ItemLocationToHasDamageBoolConverterHelper : IValueConverter
     {
         /// <summary>
         /// Converts a ItemLocationEnum to Boolean

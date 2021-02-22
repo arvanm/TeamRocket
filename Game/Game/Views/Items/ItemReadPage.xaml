@@ -13,7 +13,7 @@
         <ResourceDictionary>
             <local_helpers:StringEnumConverter x:Key="StringEnum" />
             <local_helpers:ItemLocationEnumConverter x:Key="ItemLocationEnumConverter" />
-            <local_helpers:ItemLocationToDamageBoolConverterHelper x:Key="ItemLocationToDamageBoolConverter" />
+            <local_helpers:ItemLocationToHasDamageBoolConverterHelper x:Key="ItemLocationToHasDamageBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -89,7 +89,7 @@
             </StackLayout>
 
             <StackLayout Style="{StaticResource HorizontalStack}"
-                         IsVisible="{Binding Data.Location, Converter={StaticResource ItemLocationToDamageBoolConverter}}">
+                         IsVisible="{Binding Data.Location, Converter={StaticResource ItemLocationToHasDamageBoolConverter}}">
                 <Label Text="Damage : "
                        Style="{StaticResource LabelStyle}" />
                 <Label Text="{Binding Data.Damage}"
