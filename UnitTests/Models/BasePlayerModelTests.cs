@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Game.Helpers;
 using Game.GameRules;
+using System.Collections.Generic;
 
 namespace UnitTests.Models
 {
@@ -641,6 +642,28 @@ namespace UnitTests.Models
         }
 
         [Test]
+        public void BasePlayerModel_GetAttackPokedex_Default_Attack_Should_Pass()
+        {
+            // Arrange
+            // Add each model here to warm up and load it.
+            var data = new BasePlayerModel<CharacterModel>();
+
+            // Add Pokedex
+            data.Pokedex = new List<MonsterModel>();
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 10 });
+            data.Pokedex.Add(new MonsterModel { Attack = 25 });
+
+            // Act
+            var result = data.GetAttackPokedexBonus;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(40, result);
+        }
+
+        [Test]
         public async Task BasePlayerModel_GetAttackTotal_Default_Attack_Should_Pass()
         {
             // Arrange
@@ -666,15 +689,19 @@ namespace UnitTests.Models
             data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
             data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
 
-            // Act
+            // Add Pokedex
+            data.Pokedex = new List<MonsterModel>();
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 10 });
+            data.Pokedex.Add(new MonsterModel { Attack = 25 });
 
-            // Add the second item, this will return the first item as the one replaced
+            // Act
             var result = data.GetAttackTotal;
 
             // Reset
 
             // Assert
-            Assert.AreEqual(7654321, result);
+            Assert.AreEqual(7654361, result);
         }
 
         [Test]
