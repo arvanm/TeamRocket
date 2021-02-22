@@ -141,6 +141,21 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        [Test]
+        public void CharacterUpdatePage_UpdatePageBindingContextd_Null_Image_Should_Pass()
+        {
+            // Arrange
+            GenericViewModel<CharacterModel> ViewModel = new GenericViewModel<CharacterModel>();
+
+            // Act
+            page.UpdatePageBindingContext();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         //[Test]
         //public void CharacterUpdatePage_Attack_OnStepperValueChanged_Default_Should_Pass()
         //{
