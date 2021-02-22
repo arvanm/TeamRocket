@@ -30,6 +30,7 @@
         <AbsoluteLayout HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
 
+            <!--Main Page-->
             <StackLayout Style="{StaticResource VerticalStack}"
                          AbsoluteLayout.LayoutBounds="1,1,1,1"
                          AbsoluteLayout.LayoutFlags="All">
@@ -37,6 +38,7 @@
                     <StackLayout Style="{StaticResource OuterBoxStack}"
                                  Spacing="10">
 
+                        <!--Image and basic information-->
                         <Grid HorizontalOptions="CenterAndExpand"
                               Padding="20"
                               RowSpacing="15"
@@ -412,60 +414,106 @@
             <StackLayout x:Name="PopupLoadingView"
                          BackgroundColor="{StaticResource PageBackgroundColor}"
                          IsVisible="false"
-                         AbsoluteLayout.LayoutBounds=".5, .5,.5,.5"
+                         AbsoluteLayout.LayoutBounds=".5, .5, .8, .8"
                          AbsoluteLayout.LayoutFlags="All">
 
                 <StackLayout VerticalOptions="CenterAndExpand"
                              HorizontalOptions="CenterAndExpand"
-                             WidthRequest="300"
-                             HeightRequest="300">
+                             Padding="5">
 
-                    <Frame BorderColor="{StaticResource TriciaryTextColor}"
-                           Padding="1">
+                    <!--The Item List-->
+                    <ScrollView BackgroundColor="{StaticResource PageBackgroundColor}"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalScrollBarVisibility="Always"
+                                Padding="2">
+                        <ListView x:Name="PopupListView">
+                            
+                            <!--Item List Template-->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnSpacing="15"
+                                              RowSpacing="2"
+                                              Padding="0,5,0,5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
 
-                        <StackLayout BackgroundColor="{StaticResource PageBackgroundColor}"
-                                     HorizontalOptions="CenterAndExpand"
-                                     Padding="2">
-                            <Image x:Name="PopupItemImage"
-                                   Style="{StaticResource ImageLargeStyle}" />
+                                            <Image Grid.Column="0"
+                                                   Grid.Row="0"
+                                                   Grid.RowSpan="3"
+                                                   Source="{Binding ImageURI}"
+                                                   Style="{StaticResource ImageMediumStyle}"
+                                                   VerticalOptions="CenterAndExpand" />
 
-                            <Label x:Name="PopupItemName"
-                                   Style="{StaticResource PopupItemTextStyle} "
-                                   MaxLines="2"
-                                   LineBreakMode="WordWrap" />
-                            <Label x:Name="PopupItemDescription"
-                                   Style="{StaticResource PopupItemTextStyle}"
-                                   MaxLines="2"
-                                   LineBreakMode="WordWrap" />
+                                            <Label Grid.Column="1"
+                                                   Grid.Row="0"
+                                                   Text="{Binding Name}"
+                                                   Style="{StaticResource ListStyle}" />
 
-                            <StackLayout Style="{StaticResource HorizontalStack}">
-                                <Label Text="Location : "
-                                       Style="{StaticResource LabelStyle}" />
-                                <Label x:Name="PopupItemLocation"
-                                       Style="{StaticResource ValueStyle}" />
-                            </StackLayout>
+                                            <StackLayout Grid.Column="1"
+                                                         Grid.Row="1"
+                                                         Orientation="Horizontal">
 
-                            <StackLayout Style="{StaticResource HorizontalStack}">
-                                <Label x:Name="PopupItemAttribute"
-                                       Style="{StaticResource LabelStyle}" />
-                                <Label x:Name="PopupItemValue"
-                                       Style="{StaticResource ValueStyle}" />
-                            </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Attribute}"
+                                                           Style="{StaticResource ListStyle}" />
+                                                    <Label Text="+"
+                                                           Style="{StaticResource ListStyle}" />
+                                                    <Label Text="{Binding Value}"
+                                                           Style="{StaticResource ListStyle}" />
+                                                </StackLayout>
 
-                            <StackLayout Style="{StaticResource HorizontalStack}"
-                                         x:Name="PopupItemDamage">
-                                <Label Text="Damage"
-                                       Style="{StaticResource LabelStyle}" />
-                                <Label x:Name="PopupItemDamageValue"
-                                       Style="{StaticResource ValueStyle}" />
-                            </StackLayout>
+                                                <StackLayout Orientation="Horizontal"
+                                                             Margin="10, 0, 0, 0"
+                                                             IsVisible="{Binding Location, Converter={StaticResource ItemLocationToDamageBoolConverter}}">
+                                                    <Label Text="Damage"
+                                                           Style="{StaticResource ListStyle}" />
+                                                    <Label Text="+"
+                                                           Style="{StaticResource ListStyle}" />
+                                                    <Label Text="{Binding Damage}"
+                                                           Style="{StaticResource ListStyle}" />
+                                                </StackLayout>
 
-                            <Button x:Name="PopupCloseButton"
-                                    Clicked="ClosePopup_Clicked"
-                                    Text="Close" />
-                        </StackLayout>
-                    </Frame>
+                                            </StackLayout>
+
+                                            <Label Grid.Column="1"
+                                                   Grid.Row="2"
+                                                   Text="{Binding Description}"
+                                                   Style="{StaticResource ListStyle}" />
+
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            
+                        </ListView>
+                    </ScrollView>
+
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="CenterAndExpand">
+                        <!--The Cancel Button-->
+                        <Button x:Name="PopupCloseCancelButton"
+                                Clicked="ClosePopupCancel_Clicked"
+                                Text="Cancel"
+                                Padding="5"
+                                Margin="0, 5, 25, 5"/>
+
+                        <!--The Save Button-->
+                        <Button x:Name="PopupCloseSaveButton"
+                                Clicked="ClosePopupSave_Clicked"
+                                Text="Save"
+                                Padding="5"
+                                Margin="25, 5, 0, 5"/>
+                    </StackLayout>
                 </StackLayout>
+
             </StackLayout>
 
         </AbsoluteLayout>

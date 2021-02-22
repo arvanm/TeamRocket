@@ -390,32 +390,30 @@ namespace Game.Views
         public bool ShowPopup(ItemModel data)
         {
             PopupLoadingView.IsVisible = true;
-            PopupItemImage.Source = data.ImageURI;
-
-            PopupItemName.Text = data.Name;
-            PopupItemDescription.Text = data.Description;
-            PopupItemLocation.Text = data.Location.ToMessage();
-            PopupItemAttribute.Text = data.Attribute.ToMessage();
-            PopupItemValue.Text = " + " + data.Value.ToString();
-
-            // If Primary Hand or Pokeball Item, display the damage
-            if (data.Location == ItemLocationEnum.PrimaryHand || data.Location == ItemLocationEnum.Pokeball)
-            {
-                PopupItemDamage.IsVisible = true;
-                PopupItemDamageValue.Text = " + " + data.Damage.ToString();
-            }
 
             return true;
         }
 
         /// <summary>
-        /// When the user clicks the close in the Popup
+        /// When the user clicks the Save botton in the Popup
         /// hide the view
         /// show the scroll view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ClosePopup_Clicked(object sender, EventArgs e)
+        public void ClosePopupSave_Clicked(object sender, EventArgs e)
+        {
+            PopupLoadingView.IsVisible = false;
+        }
+
+        /// <summary>
+        /// When the user clicks the Cancel botton in the Popup
+        /// hide the view
+        /// show the scroll view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ClosePopupCancel_Clicked(object sender, EventArgs e)
         {
             PopupLoadingView.IsVisible = false;
         }
