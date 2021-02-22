@@ -6,9 +6,9 @@ using Game.Models;
 namespace Game.Helpers
 { 
     // This converter is changing ItemLocationEnum to a boolean representing whether it has Range
-    // Only primary hand and Pokeball have damaes
+    // Only primary hand has range
 
-    // Converts a ItemLocationEnum to Boolean. If ItemLocation is PrimaryHand or Pokeball, return True. Otherwise False.
+    // Converts a ItemLocationEnum to Boolean. If ItemLocation is PrimaryHand, return True. Otherwise False.
     public class ItemLocationToHasRangeBoolConverterHelper : IValueConverter
     {
         /// <summary>
