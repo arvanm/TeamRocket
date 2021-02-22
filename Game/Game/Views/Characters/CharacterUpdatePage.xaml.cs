@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using Game.ViewModels;
 using Game.Models;
 using Game.GameRules;
+using System.Collections.ObjectModel;
 
 namespace Game.Views
 {
@@ -20,8 +21,11 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterUpdatePage : ContentPage
     {
-        // View Model for Item
+        // View Model for Character
         public readonly GenericViewModel<CharacterModel> ViewModel;
+
+        // ItemIndexViewModel for get items
+        public readonly ItemIndexViewModel ItemListModel;
 
         // Hold a copy of the original data for Cancel to use
         public CharacterModel DataCopy;
@@ -37,6 +41,9 @@ namespace Game.Views
             InitializeComponent();
 
             BindingContext = this.ViewModel = data;
+
+            // Get instance of ItemIndexViewModel
+            ItemListModel = ItemIndexViewModel.Instance;
 
             // Make a copy of the character for cancel to restore
             DataCopy = new CharacterModel(data.Data);
@@ -391,6 +398,9 @@ namespace Game.Views
         {
             PopupLoadingView.IsVisible = true;
             UpdatePopupSelectedItemValues(data);
+
+            // Get List of ItemModels for list
+            PopupListView.ItemsSource = new ObservableCollection<ItemModel>(ItemListModel.GetLocationItems(data.Location));
             return true;
         }
 
@@ -427,6 +437,16 @@ namespace Game.Views
             {
                 PopupSelectedItemRangeStack.IsVisible = false;
             }
+
+        }
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
 
         }
 

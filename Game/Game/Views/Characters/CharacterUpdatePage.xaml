@@ -23,6 +23,8 @@
         <ResourceDictionary>
             <local_helpers:StringEnumConverter x:Key="StringEnum" />
             <local_helpers:CharacterJobEnumConverterHelper x:Key="CharacterJobEnumConverter" />
+            <local_helpers:ItemLocationToHasDamageBoolConverterHelper x:Key="ItemLocationToHasDamageBoolConverter" />
+            <local_helpers:ItemLocationToHasRangeBoolConverterHelper x:Key="ItemLocationToHasRangeBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -502,8 +504,9 @@
                     <ScrollView BackgroundColor="{StaticResource PageBackgroundColor}"
                                 HorizontalOptions="CenterAndExpand"
                                 VerticalScrollBarVisibility="Always"
-                                Padding="2">
-                        <ListView x:Name="PopupListView">
+                                Padding="10">
+                        <ListView x:Name="PopupListView"
+                                  ItemSelected="OnItemSelected">
                             
                             <!--Item List Template-->
                             <ListView.ItemTemplate>
@@ -517,6 +520,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
                                                 <RowDefinition Height="auto" />
@@ -534,22 +538,23 @@
                                                    Text="{Binding Name}"
                                                    Style="{StaticResource ListStyle}" />
 
+                                            <StackLayout Orientation="Horizontal"
+                                                         Grid.Column="1"
+                                                         Grid.Row="1">
+                                                <Label Text="{Binding Attribute}"
+                                                       Style="{StaticResource ListStyle}" />
+                                                <Label Text="+"
+                                                       Style="{StaticResource ListStyle}" />
+                                                <Label Text="{Binding Value}"
+                                                       Style="{StaticResource ListStyle}" />
+                                            </StackLayout>
+                                            
                                             <StackLayout Grid.Column="1"
-                                                         Grid.Row="1"
+                                                         Grid.Row="2"
                                                          Orientation="Horizontal">
 
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Attribute}"
-                                                           Style="{StaticResource ListStyle}" />
-                                                    <Label Text="+"
-                                                           Style="{StaticResource ListStyle}" />
-                                                    <Label Text="{Binding Value}"
-                                                           Style="{StaticResource ListStyle}" />
-                                                </StackLayout>
-
                                                 <StackLayout Orientation="Horizontal"
-                                                             Margin="10, 0, 0, 0"
-                                                             IsVisible="{Binding Location, Converter={StaticResource ItemLocationToDamageBoolConverter}}">
+                                                             IsVisible="{Binding Location, Converter={StaticResource ItemLocationToHasDamageBoolConverter}}">
                                                     <Label Text="Damage"
                                                            Style="{StaticResource ListStyle}" />
                                                     <Label Text="+"
@@ -558,10 +563,21 @@
                                                            Style="{StaticResource ListStyle}" />
                                                 </StackLayout>
 
+                                                <StackLayout Orientation="Horizontal"
+                                                             Margin="10, 0, 0, 0"
+                                                             IsVisible="{Binding Location, Converter={StaticResource ItemLocationToHasRangeBoolConverter}}">
+                                                    <Label Text="Range"
+                                                           Style="{StaticResource ListStyle}" />
+                                                    <Label Text="+"
+                                                           Style="{StaticResource ListStyle}" />
+                                                    <Label Text="{Binding Range}"
+                                                           Style="{StaticResource ListStyle}" />
+                                                </StackLayout>
+                                                
                                             </StackLayout>
 
                                             <Label Grid.Column="1"
-                                                   Grid.Row="2"
+                                                   Grid.Row="3"
                                                    Text="{Binding Description}"
                                                    Style="{StaticResource ListStyle}" />
 
