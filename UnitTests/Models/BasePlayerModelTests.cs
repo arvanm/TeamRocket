@@ -70,6 +70,7 @@ namespace UnitTests.Models
             Assert.AreEqual(null, result.OffHand);
             Assert.AreEqual(null, result.RightFinger);
             Assert.AreEqual(null, result.LeftFinger);
+            Assert.AreEqual(CharacterJobEnum.Unknown, result.Job);
 
             Assert.AreEqual(DifficultyEnum.Unknown, result.Difficulty);
         }
@@ -104,6 +105,7 @@ namespace UnitTests.Models
             result.OffHand = "offhand";
             result.RightFinger ="rightfinger";
             result.LeftFinger = "leftfinger";
+            result.Job = CharacterJobEnum.Unknown;
 
             // Reset
 
@@ -131,6 +133,7 @@ namespace UnitTests.Models
             Assert.AreEqual("offhand", result.OffHand);
             Assert.AreEqual("rightfinger", result.RightFinger);
             Assert.AreEqual("leftfinger", result.LeftFinger);
+            Assert.AreEqual(CharacterJobEnum.Unknown, result.Job);
         }
 
         [Test]
@@ -1319,6 +1322,25 @@ namespace UnitTests.Models
             var Result = data.BuffAttack();
 
             Assert.AreEqual(data.BuffAttackValue, Result);
+        }
+
+        [Test]
+        public void BasePlayerModel_ClearBuffs_Default_Should_Pass()
+        {
+            var data = new BasePlayerModel<CharacterModel>();
+
+            // Add buffs
+            data.BuffAttack();
+            data.BuffDefense();
+            data.BuffHealth();
+            data.BuffSpeed();
+            data.ClearBuffs();
+
+            // Assert
+            Assert.AreEqual(data.BuffAttackValue, 0);
+            Assert.AreEqual(data.BuffDefenseValue, 0);
+            Assert.AreEqual(data.BuffHealthValue, 0);
+            Assert.AreEqual(data.BuffSpeedValue, 0);
         }
 
         [Test]
