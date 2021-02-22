@@ -22,7 +22,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_Constructor_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
 
             // Act
             var result = new CharacterModel();
@@ -36,7 +36,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_Constructor_New_Item_Should_Copy()
         {
-            // ArDefense
+            // Arrange
             var dataNew = new CharacterModel();
             dataNew.Attack = 2;
             dataNew.Id = "oldID";
@@ -53,7 +53,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_Get_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
 
             // Act
             var result = new CharacterModel();
@@ -69,7 +69,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_Set_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
 
             // Act
             var result = new CharacterModel();
@@ -115,7 +115,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_Update_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var dataOriginal = new CharacterModel();
             dataOriginal.MaxHealth = 10;
 
@@ -135,7 +135,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_Update_InValid_Null_Should_Fail()
         {
-            // ArDefense
+            // Arrange
             var dataOriginal = new CharacterModel();
             dataOriginal.Attack = 2;
 
@@ -152,7 +152,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_FormatOuput_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -167,7 +167,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_Set_Get_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var result = new CharacterModel();
 
             // Act
@@ -226,7 +226,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetAttack_DojoMaster_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.DojoMaster };
 
             // Act
@@ -241,7 +241,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetDefense_DojoMaster_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.DojoMaster };
 
             // Act
@@ -256,7 +256,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetSpeed_DojoMaster_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.DojoMaster };
 
             // Act
@@ -271,7 +271,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetAttack_PetLover_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.PetLover };
 
             // Act
@@ -286,7 +286,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetDefense_PetLover_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.PetLover };
 
             // Act
@@ -301,7 +301,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetSpeed_PetLover_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.PetLover };
 
             // Act
@@ -316,7 +316,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetAttack_QuickAttacker_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.QuickAttacker };
 
             // Act
@@ -331,7 +331,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetDefense_QuickAttacker_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.QuickAttacker };
 
             // Act
@@ -346,7 +346,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetSpeed_QuickAttacker_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel { Job = CharacterJobEnum.QuickAttacker };
 
             // Act
@@ -361,7 +361,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetAttack_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -376,7 +376,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetDefense_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -391,7 +391,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetSpeed_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -406,7 +406,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetHealthCurrent_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -421,7 +421,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetHealthMax_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -436,7 +436,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_CauseDeath_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -451,7 +451,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_FormatOutput_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -466,7 +466,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_AddExperience_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -481,7 +481,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_CalculateExperienceEarned_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -496,7 +496,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItem_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -511,7 +511,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_Head_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -526,7 +526,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_Feet_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -541,7 +541,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_Necklass_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -556,7 +556,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_PrimaryHand_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -571,7 +571,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_OffHand_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -586,7 +586,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_RightFinger_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -601,7 +601,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_LeftFinger_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -616,7 +616,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_GetItemByLocation_Unknown_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -636,7 +636,7 @@ namespace UnitTests.Models
 
             var item = ItemIndexViewModel.Instance.Dataset.FirstOrDefault();
 
-            // ArDefense
+            // Arrange
             var data = new CharacterModel
             {
                 Head = item.Id,
@@ -660,7 +660,7 @@ namespace UnitTests.Models
         [Test]
         public void CharacterModel_AddItem_Unknown_Should_Fail()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             // Act
@@ -675,7 +675,7 @@ namespace UnitTests.Models
         [Test]
         public async Task CharacterModel_AddItem_Default_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "head" });
@@ -697,7 +697,7 @@ namespace UnitTests.Models
         [Test]
         public async Task CharacterModel_AddItem_Default_Replace_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             var data = new CharacterModel();
 
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "head" });
@@ -724,103 +724,157 @@ namespace UnitTests.Models
         [Test]
         public async Task CharacterModel_GetItemBonus_Default_Attack_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
 
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id="head" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "necklass" });
+            // Create items
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "Head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "Necklass" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 4000, Id = "OffHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 50000, Id = "RightFinger" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 600000, Id = "LeftFinger" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "Feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 80000000, Id = "Pokeball" });
 
+            // Create CharacterModel
             var data = new CharacterModel();
+            data.Level = 1;
 
-            // Add the first item
-            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("head")).Id);
-            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("necklass")).Id);
+            // Add items
+            data.AddItem(ItemLocationEnum.Head, (await ItemIndexViewModel.Instance.ReadAsync("Head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("Necklass")).Id);
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
             data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
             data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
             data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
-            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("Feet")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
             // Act
-
-            // Add the second item, this will return the first item as the one replaced
             var result = data.GetItemBonus(AttributeEnum.Attack);
 
             // Reset
-            
 
             // Assert
-            Assert.AreEqual(7654320, result);
+            Assert.AreEqual(87654321, result);
+        }
+
+        [Test]
+        public void CharacterModel_GetAttackPokedexBonus_Default_Attack_Should_Pass()
+        {
+            // Arrange
+
+            // Create CharacterModel
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Add Pokedex
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 15 });
+
+            // Act
+            var result = data.GetAttackPokedexBonus;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(20, result);
+        }
+
+        [Test]
+        public void CharacterModel_GetAttackPokedexBonus_Empty_Attack_Should_Pass()
+        {
+            // Arrange
+
+            // Create CharacterModel
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Act
+            var result = data.GetAttackPokedexBonus;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, result);
         }
 
         [Test]
         public async Task CharacterModel_GetAttackTotal_Default_Attack_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
 
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "head" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "necklass" });
+            // Create items
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "Head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "Necklass" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 4000, Id = "OffHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 50000, Id = "RightFinger" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 600000, Id = "LeftFinger" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "Feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 80000000, Id = "Pokeball" });
 
+            // Create CharacterModel
             var data = new CharacterModel();
+            data.Level = 1;
 
-            // Add the first item
-            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("head")).Id);
-            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("necklass")).Id);
+            // Add items
+            data.AddItem(ItemLocationEnum.Head, (await ItemIndexViewModel.Instance.ReadAsync("Head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("Necklass")).Id);
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
             data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
             data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
             data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
-            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("Feet")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
+
+            // Add Pokedex
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 15 });
 
             // Act
-
-            // Add the second item, this will return the first item as the one replaced
             var result = data.GetAttackTotal;
 
             // Reset
 
             // Assert
-            Assert.AreEqual(7654321, result);
+            Assert.AreEqual(87654342, result);
         }
 
         [Test]
         public async Task CharacterModel_GetDefenseTotal_Default_Defense_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
 
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 1, Id = "head" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 20, Id = "necklass" });
+            // Create items
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 1, Id = "Head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 20, Id = "Necklass" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 300, Id = "PrimaryHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 4000, Id = "OffHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 50000, Id = "RightFinger" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 600000, Id = "LeftFinger" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 7000000, Id = "feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 7000000, Id = "Feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Defense, Value = 80000000, Id = "Pokeball" });
 
+            // Create CharacterModel
             var data = new CharacterModel();
+            data.Level = 1;
 
-            // Add the first item
-            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("head")).Id);
-            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("necklass")).Id);
+            // Add items
+            data.AddItem(ItemLocationEnum.Head, (await ItemIndexViewModel.Instance.ReadAsync("Head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("Necklass")).Id);
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
             data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
             data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
             data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
-            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("Feet")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
             // Act
 
@@ -830,34 +884,39 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(7654321, result);
+            Assert.AreEqual(87654322, result);
         }
 
         [Test]
-        public async Task CharacterModel_GetDamageTotal_Default_Speed_Should_Pass()
+        public async Task CharacterModel_GetSpeedTotal_Default_Speed_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
 
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 1, Id = "head" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 20, Id = "necklass" });
+            // Create items
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 1, Id = "Head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 20, Id = "Necklass" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 300, Id = "PrimaryHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 4000, Id = "OffHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 50000, Id = "RightFinger" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 600000, Id = "LeftFinger" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 7000000, Id = "feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 7000000, Id = "Feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Speed, Value = 80000000, Id = "Pokeball" });
 
+            // Create CharacterModel
             var data = new CharacterModel();
+            data.Level = 1;
 
-            // Add the first item
-            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("head")).Id);
-            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("necklass")).Id);
+            // Add items
+            data.AddItem(ItemLocationEnum.Head, (await ItemIndexViewModel.Instance.ReadAsync("Head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("Necklass")).Id);
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
             data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
             data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
             data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
-            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("Feet")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
             // Act
 
@@ -867,36 +926,92 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual(7654321, result);
+            Assert.AreEqual(87654322, result);
         }
 
         [Test]
-        public async Task CharacterModel_GetDamageRollAttack_Default_Speed_Should_Pass()
+        public async Task CharacterModel_GetDamageRollValue_With_Item_And_Pokedex_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
 
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "head" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "necklass" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" });
+            // Create items
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "Head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "Necklass" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 4000, Id = "OffHand" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 50000, Id = "RightFinger" });
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 600000, Id = "LeftFinger" });
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "Feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 80000000, Id = "Pokeball", Damage = 1 });
 
+            // Create CharacterModel
             var data = new CharacterModel();
             data.Level = 1;
 
-            // Add the first item
-            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("head")).Id);
-            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("necklass")).Id);
+            // Add items
+            data.AddItem(ItemLocationEnum.Head, (await ItemIndexViewModel.Instance.ReadAsync("Head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("Necklass")).Id);
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
             data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
             data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
             data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
-            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("feet")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("Feet")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
+            // Add Pokedex
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 15 });
+
+            // Set forced rolls
+            Game.Helpers.DiceHelper.EnableForcedRolls();
+            Game.Helpers.DiceHelper.SetForcedRollValue(1);
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.GetDamageRollValue();
+
+            // Reset
+            Game.Helpers.DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(3, result);
+        }
+
+        [Test]
+        public async Task CharacterModel_GetDamageRollValue_With_Item_Only_Should_Pass()
+        {
+            // Arrange
+            // Add each model here to warm up and load it.
+            Game.Helpers.DataSetsHelper.WarmUp();
+
+            // Create items
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 1, Id = "Head" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 20, Id = "Necklass" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 4000, Id = "OffHand" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 50000, Id = "RightFinger" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 600000, Id = "LeftFinger" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 7000000, Id = "Feet" });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 80000000, Id = "Pokeball", Damage = 1 });
+
+            // Create CharacterModel
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Add items
+            data.AddItem(ItemLocationEnum.Head, (await ItemIndexViewModel.Instance.ReadAsync("Head")).Id);
+            data.AddItem(ItemLocationEnum.Necklass, (await ItemIndexViewModel.Instance.ReadAsync("Necklass")).Id);
+            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
+            data.AddItem(ItemLocationEnum.OffHand, (await ItemIndexViewModel.Instance.ReadAsync("OffHand")).Id);
+            data.AddItem(ItemLocationEnum.RightFinger, (await ItemIndexViewModel.Instance.ReadAsync("RightFinger")).Id);
+            data.AddItem(ItemLocationEnum.LeftFinger, (await ItemIndexViewModel.Instance.ReadAsync("LeftFinger")).Id);
+            data.AddItem(ItemLocationEnum.Feet, (await ItemIndexViewModel.Instance.ReadAsync("Feet")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
+
+            // Set forced rolls
             Game.Helpers.DiceHelper.EnableForcedRolls();
             Game.Helpers.DiceHelper.SetForcedRollValue(1);
 
@@ -913,27 +1028,49 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public async Task CharacterModel_GetDamageItemBonus_Default_Speed_Should_Pass()
+        public void CharacterModel_GetDamageRollValue_With_Pokedex_Only_Should_Pass()
         {
-            // ArDefense
-            // Add each model here to warm up and load it.
-            Game.Helpers.DataSetsHelper.WarmUp();
-
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" , Damage=1});
-
+            // Arrange
+            // Create CharacterModel
             var data = new CharacterModel();
             data.Level = 1;
 
-            // Add the first item
-            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
+            // Set forced rolls
+            Game.Helpers.DiceHelper.EnableForcedRolls();
+            Game.Helpers.DiceHelper.SetForcedRollValue(1);
 
+            // Add Pokedex
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 15 });
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.GetDamageRollValue();
+
+            // Reset
+            Game.Helpers.DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(2, result);
+        }
+
+        [Test]
+        public void CharacterModel_GetDamageRollValue_Empty_Should_Pass()
+        {
+            // Arrange
+            // Create CharacterModel
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Set forced rolls
             Game.Helpers.DiceHelper.EnableForcedRolls();
             Game.Helpers.DiceHelper.SetForcedRollValue(1);
 
             // Act
 
             // Add the second item, this will return the first item as the one replaced
-            var result = data.GetDamageItemBonus;
+            var result = data.GetDamageRollValue();
 
             // Reset
             Game.Helpers.DiceHelper.DisableForcedRolls();
@@ -943,22 +1080,45 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public async Task CharacterModel_GetDamageItemBonusString_Default_Speed_Should_Pass()
+        public async Task CharacterModel_GetDamageItemBonus_Default_Damage_Should_Pass()
         {
-            // ArDefense
-            // Add each model here to warm up and load it.
+            // Arrange
             Game.Helpers.DataSetsHelper.WarmUp();
-
-            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand" , Damage = 1});
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "Pokeball", Damage = 1 });
 
             var data = new CharacterModel();
             data.Level = 1;
 
             // Add the first item
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
-            Game.Helpers.DiceHelper.EnableForcedRolls();
-            Game.Helpers.DiceHelper.SetForcedRollValue(1);
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.GetDamageItemBonus;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(2, result);
+        }
+
+        [Test]
+        public async Task CharacterModel_GetDamageItemBonusString_Default_Damage_Should_Pass()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "Pokeball", Damage = 1 });
+
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Add the first item
+            data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
             // Act
 
@@ -966,29 +1126,108 @@ namespace UnitTests.Models
             var result = data.GetDamageItemBonusString;
 
             // Reset
-            Game.Helpers.DiceHelper.DisableForcedRolls();
 
             // Assert
-            Assert.AreEqual("1D 1", result);
+            Assert.AreEqual("1D 2", result);
+        }
+
+        [Test]
+        public void CharacterModel_GetDamageItemBonusString_Empty_Damage_Should_Pass()
+        {
+            // Arrange
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.GetDamageItemBonusString;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("-", result);
+        }
+
+        [Test]
+        public void CharacterModel_GetDamagePokedexBonus_Default_Damage_Should_Pass()
+        {
+            // Arrange
+            // Create CharacterModel
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Add Pokedex
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 15 });
+
+            // Act
+            var result = data.GetDamagePokedexBonus;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(20, result);
+        }
+
+        [Test]
+        public void CharacterModel_GetDamagePokedexBonusString_Default_Damage_Should_Pass()
+        {
+            // Arrange
+            // Create CharacterModel
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Add Pokedex
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 15 });
+
+            // Act
+            var result = data.GetDamagePokedexBonusString;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("1D 20", result);
+        }
+
+        [Test]
+        public void CharacterModel_GetDamagePokedexBonusString_Empty_Damage_Should_Pass()
+        {
+            // Arrange
+            var data = new CharacterModel();
+            data.Level = 1;
+
+            // Act
+
+            // Add the second item, this will return the first item as the one replaced
+            var result = data.GetDamagePokedexBonusString;
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("-", result);
         }
 
         [Test]
         public async Task CharacterModel_GetDamageTotalString_Default_Speed_Should_Pass()
         {
-            // ArDefense
+            // Arrange
             // Add each model here to warm up and load it.
             Game.Helpers.DataSetsHelper.WarmUp();
-
             await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "PrimaryHand", Damage = 1 });
+            await ItemIndexViewModel.Instance.CreateAsync(new ItemModel { Attribute = AttributeEnum.Attack, Value = 300, Id = "Pokeball", Damage = 1 });
 
             var data = new CharacterModel();
             data.Level = 1;
 
-            // Add the first item
+            // Add items
             data.AddItem(ItemLocationEnum.PrimaryHand, (await ItemIndexViewModel.Instance.ReadAsync("PrimaryHand")).Id);
+            data.AddItem(ItemLocationEnum.Pokeball, (await ItemIndexViewModel.Instance.ReadAsync("Pokeball")).Id);
 
-            Game.Helpers.DiceHelper.EnableForcedRolls();
-            Game.Helpers.DiceHelper.SetForcedRollValue(1);
+            // Add Pokedex
+            data.Pokedex.Add(new MonsterModel { Attack = 5 });
+            data.Pokedex.Add(new MonsterModel { Attack = 15 });
 
             // Act
 
@@ -996,10 +1235,9 @@ namespace UnitTests.Models
             var result = data.GetDamageTotalString;
 
             // Reset
-            Game.Helpers.DiceHelper.DisableForcedRolls();
  
             // Assert
-            Assert.AreEqual("1 + 1D 1", result);
+            Assert.AreEqual("1 + 1D 2 + 1D 20", result);
         }
     }
 }
