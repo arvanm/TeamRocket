@@ -204,18 +204,18 @@ namespace UnitTests.Views
             Assert.AreNotEqual("No Results", result); // Got to here, so it happened...
         }
 
-        //[Test]
-        //public async Task AboutPage_GetItemsPost_Default_Should_Pass()
-        //{
-        //    // Arrange
-        //    // Act
-        //    var result = await page.GetItemsPost();
+        [Test]
+        public async Task AboutPage_GetItemsPost_Default_Should_Pass()
+        {
+            // Arrange
+            // Act
+            var result = await page.GetItemsPost();
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.AreNotEqual("No Results", result); // Got to here, so it happened...
-        //}
+            // Assert
+            Assert.AreNotEqual("No Results", result); // Got to here, so it happened...
+        }
 
         [Test]
         public void AboutPage_GetItemsGet_Clicked_Default_Should_Pass()

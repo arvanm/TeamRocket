@@ -68,6 +68,34 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void CharacterReadPage_ShowPopupPokedex_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.ShowPopupPokedex_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterReadPage_ClosePopupPokedex_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.ClosePopupPokedex_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void CharacterReadPage_Delete_Clicked_Default_Should_Pass()
         {
             // Arrange

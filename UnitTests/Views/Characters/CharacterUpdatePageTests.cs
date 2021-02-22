@@ -109,6 +109,53 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        [Test]
+        public void CharacterUpdatePage_ShowPopup_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Head";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.PrimaryHand;
+
+            // Act
+            page.ShowPopup(item);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_ClosePopup_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.ClosePopup_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_UpdatePageBindingContextd_Null_Image_Should_Pass()
+        {
+            // Arrange
+            GenericViewModel<CharacterModel> ViewModel = new GenericViewModel<CharacterModel>();
+
+            // Act
+            page.UpdatePageBindingContext();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         //[Test]
         //public void CharacterUpdatePage_Attack_OnStepperValueChanged_Default_Should_Pass()
         //{
