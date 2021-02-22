@@ -596,11 +596,18 @@ namespace Game.Models
         {
             var myReturn = 0;
 
-            var myItem = ItemIndexViewModel.Instance.GetItem(PrimaryHand);
-            if (myItem != null)
+            // Roll the dice for item damage, which are the damages from primary hand and Pokeball
+            var itemDamage = GetDamageItemBonus;
+            if (itemDamage != 0)
             {
-                // Dice of the weapon.  So sword of Damage 10 is d10
-                myReturn += DiceHelper.RollDice(1, myItem.Damage);
+                myReturn += DiceHelper.RollDice(1, itemDamage);
+            }
+
+            // Roll the dice for Pokedex damage
+            var pokedexDamage = GetDamagePokedexBonus;
+            if (pokedexDamage != 0)
+            {
+                myReturn += DiceHelper.RollDice(1, pokedexDamage);
             }
 
             // Add in the Level as extra damage per game rules
