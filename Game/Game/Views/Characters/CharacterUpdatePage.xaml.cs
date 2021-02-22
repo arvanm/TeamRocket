@@ -390,8 +390,44 @@ namespace Game.Views
         public bool ShowPopup(ItemModel data)
         {
             PopupLoadingView.IsVisible = true;
-
+            UpdatePopupSelectedItemValues(data);
             return true;
+        }
+
+        /// <summary>
+        /// Update the displayed information for selected item in Popup
+        /// </summary>
+        /// <param name="data"></param>
+        public void UpdatePopupSelectedItemValues(ItemModel data)
+        {
+            // Image, name, attribute, value
+            PopupSelectedItemImage.Source = data.ImageURI;
+            PopupSelectedItemName.Text = data.Name;
+            PopupSelectedItemAttribute.Text = data.Attribute.ToMessage();
+            PopupSelectedItemValue.Text = data.Value.ToString();
+
+            // Damage for Primary Hand and Pokeball
+            if (data.Location == ItemLocationEnum.PrimaryHand || data.Location == ItemLocationEnum.Pokeball)
+            {
+                PopupSelectedItemDamageStack.IsVisible = true;
+                PopupSelectedItemDamageValue.Text = data.Damage.ToString();
+            }
+            else
+            {
+                PopupSelectedItemDamageStack.IsVisible = false;
+            }
+
+            // Range for Primary Hand
+            if (data.Location == ItemLocationEnum.PrimaryHand)
+            {
+                PopupSelectedItemRangeStack.IsVisible = true;
+                PopupSelectedItemRangeValue.Text = data.Range.ToString();
+            }
+            else
+            {
+                PopupSelectedItemRangeStack.IsVisible = false;
+            }
+
         }
 
         /// <summary>

@@ -420,6 +420,83 @@
                 <StackLayout VerticalOptions="CenterAndExpand"
                              HorizontalOptions="CenterAndExpand"
                              Padding="5">
+                    
+                    <!--The Selected Item-->
+                    <Frame CornerRadius="10"
+                           OutlineColor="Red"
+                           Padding="1"
+                           Margin="10">
+                        <Grid ColumnSpacing="15"
+                              RowSpacing="2"
+                              Padding="5"
+                              BackgroundColor="{StaticResource PageBackgroundColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="3"
+                                   x:Name="PopupSelectedItemImage"
+                                   Margin="5, 0, 0, 0"
+                                   Style="{StaticResource ImageMediumStyle}"
+                                   VerticalOptions="CenterAndExpand" />
+
+                            <Label Grid.Column="1"
+                                   Grid.Row="0"
+                                   x:Name="PopupSelectedItemName"
+                                   Margin="10, 0, 0, 0"
+                                   Style="{StaticResource ListStyle}" />
+
+                            <StackLayout Orientation="Horizontal"
+                                         Grid.Column="1"
+                                         Grid.Row="1"
+                                         Margin="10, 0, 0, 0">
+                                <Label x:Name="PopupSelectedItemAttribute"
+                                       Style="{StaticResource ListStyle}" />
+                                <Label Text="+"
+                                       Style="{StaticResource ListStyle}" />
+                                <Label x:Name="PopupSelectedItemValue"
+                                       Style="{StaticResource ListStyle}" />
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="1"
+                                         Grid.Row="2"
+                                         Orientation="Horizontal">
+
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="10, 0, 0, 0"
+                                             x:Name="PopupSelectedItemDamageStack"
+                                             IsVisible="False">
+                                    <Label Text="Damage"
+                                           Style="{StaticResource ListStyle}" />
+                                    <Label Text="+"
+                                           Style="{StaticResource ListStyle}" />
+                                    <Label x:Name="PopupSelectedItemDamageValue"
+                                           Style="{StaticResource ListStyle}" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="10, 0, 0, 0"
+                                             x:Name="PopupSelectedItemRangeStack"
+                                             IsVisible="False">
+                                    <Label Text="Range"
+                                           Style="{StaticResource ListStyle}" />
+                                    <Label Text="+"
+                                           Style="{StaticResource ListStyle}" />
+                                    <Label x:Name="PopupSelectedItemRangeValue"
+                                           Style="{StaticResource ListStyle}" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
 
                     <!--The Item List-->
                     <ScrollView BackgroundColor="{StaticResource PageBackgroundColor}"
