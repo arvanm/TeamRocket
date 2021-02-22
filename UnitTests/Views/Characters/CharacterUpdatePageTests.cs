@@ -119,7 +119,7 @@ namespace UnitTests.Views
             item.Location = ItemLocationEnum.PrimaryHand;
 
             // Act
-            page.ShowPopup(item);
+            page.ShowPopup(item, ItemLocationEnum.PrimaryHand);
 
             // Reset
 
@@ -128,12 +128,12 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterUpdatePage_ClosePopup_Clicked_Default_Should_Pass()
+        public void CharacterUpdatePage_ClosePopupSave_Clicked_Default_Should_Pass()
         {
             // Arrange
 
             // Act
-            page.ClosePopup_Clicked(null, null);
+            page.ClosePopupSave_Clicked(null, null);
 
             // Reset
 
@@ -142,7 +142,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterUpdatePage_UpdatePageBindingContextd_Null_Image_Should_Pass()
+        public void CharacterUpdatePage_UpdatePageBindingContext_Null_Image_Should_Pass()
         {
             // Arrange
             GenericViewModel<CharacterModel> ViewModel = new GenericViewModel<CharacterModel>();
