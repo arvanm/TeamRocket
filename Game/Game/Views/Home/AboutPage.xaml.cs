@@ -95,6 +95,9 @@ namespace Game.Views
             }
         }
 
+        /// <summary>
+        /// Wipes the current data.
+        /// </summary>
         public void RunWipeData()
         {
             Task.Run(async () => { await DataSetsHelper.WipeDataInSequence(); });

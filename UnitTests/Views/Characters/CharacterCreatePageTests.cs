@@ -117,21 +117,6 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterCreatePage_CharacterLevelPicker_Changed_Null_Image_Should_Pass()
-        {
-            // Arrange
-            page.ViewModel.Data.Level = 0;
-
-            // Act
-            page.CharacterLevelPicker_Changed(null, null);
-
-            // Reset
-
-            // Assert
-            Assert.IsTrue(true); // Got to here, so it happened...
-        }
-
-        [Test]
         public void CharacterCreatePage_OnAppear_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
@@ -160,197 +145,82 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
-        //[Test]
-        //public void CharacterCreatePage_Attack_OnStepperAttackChanged_Default_Should_Pass()
-        //{
-        //    // Arrange
-        //    var data = new CharacterModel();
-        //    var ViewModel = new GenericViewModel<CharacterModel>(data);
+        #region LevelPicker_Changed
+        [Test]
+        public void CharacterCreatePage_LevelPicker_SelectedIndex_Neg1_Should_Return_Level()
+        {
+            // Arrange
 
-        //    page = new CharacterCreatePage(ViewModel);
-        //    double oldAttack = 0.0;
-        //    double newAttack = 1.0;
+            // Make a new Character to use for the Picker Tests
+            page.ViewModel.Data = new CharacterModel()
+            {
+                Id = "test",
+                Level = 10
+            };
 
-        //    var args = new ValueChangedEventArgs(oldAttack, newAttack);
+            var control = (Picker)page.FindByName("CharacterLevelPicker");
+            control.SelectedIndex = -1;
 
-        //    // Act
-        //    page.Attack_OnStepperValueChanged(null, args);
+            // Act
+            page.CharacterLevelPicker_Changed(null, null);
+            var result = control.SelectedIndex;
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
+            // Assert
+            Assert.AreEqual(10, result + 1);
+        }
 
-        //[Test]
-        //public void CharacterCreatePage_Speed_OnStepperValueChanged_Default_Should_Pass()
-        //{
-        //    // ArSpeed
-        //    var data = new CharacterModel();
-        //    var ViewModel = new GenericViewModel<CharacterModel>(data);
+        [Test]
+        public void CharacterCreatePage_LevelPicker_SelectedIndex_No_Change_Should_Skip()
+        {
+            // Arrange
 
-        //    page = new CharacterCreatePage(ViewModel);
-        //    double oldSpeed = 0.0;
-        //    double newSpeed = 1.0;
+            // Make a new Character to use for the Picker Tests
+            page.ViewModel.Data = new CharacterModel()
+            {
+                Id = "test",
+                Level = 10
+            };
 
-        //    var args = new ValueChangedEventArgs(oldSpeed, newSpeed);
+            var control = (Picker)page.FindByName("CharacterLevelPicker");
+            control.SelectedIndex = 10 - 1;
 
-        //    // Act
-        //    page.Speed_OnStepperValueChanged(null, args);
+            // Act
+            page.CharacterLevelPicker_Changed(null, null);
+            var result = control.SelectedIndex;
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
+            // Assert
+            Assert.AreEqual(10, result + 1);
+        }
 
-        //[Test]
-        //public void CharacterCreatePage_Defense_OnStepperDefenseChanged_Default_Should_Pass()
-        //{
-        //    // Arrange
-        //    var data = new CharacterModel();
-        //    var ViewModel = new GenericViewModel<CharacterModel>(data);
 
-        //    page = new CharacterCreatePage(ViewModel);
-        //    double oldDefense = 0.0;
-        //    double newDefense = 1.0;
+        [Test]
+        public void CharacterCreatePage_LevelPicker_SelectedIndex_Change_Should_Update_Picker_To_Level()
+        {
+            // Arrange
 
-        //    var args = new ValueChangedEventArgs(oldDefense, newDefense);
+            // Make a new Character to use for the Picker Tests
+            page.ViewModel.Data = new CharacterModel()
+            {
+                Id = "test",
+                Level = 1
+            };
 
-        //    // Act
-        //    page.Defense_OnStepperValueChanged(null, args);
+            var control = (Picker)page.FindByName("CharacterLevelPicker");
+            control.SelectedIndex = 15;
 
-        //    // Reset
+            // Act
+            page.CharacterLevelPicker_Changed(null, null);
+            var result = control.SelectedIndex;
 
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
+            // Reset
 
-        //[Test]
-        //public void CharacterCreatePage_RollDice_Clicked_Default_Should_Pass()
-        //{
-        //    // Arrange
-        //    page.ViewModel.Data = new CharacterModel();
-
-        //    // Act
-        //    page.RollDice_Clicked(null, null);
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
-        //[Test]
-        //public void CharacterCreatePage_ClosePopup_Default_Should_Pass()
-        //{
-        //    // Arrange
-
-        //    // Act
-        //    page.ClosePopup();
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
-        //[Test]
-        //public void CharacterCreatePage_ClosePopup_Clicked_Default_Should_Pass()
-        //{
-        //    // Arrange
-
-        //    // Act
-        //    page.ClosePopup_Clicked(null, null);
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
-        //[Test]
-        //public void CharacterCreatePage_ShowPopup_Default_Should_Pass()
-        //{
-        //    // Arrange
-        //    page.ViewModel.Data = new CharacterModel();
-
-        //    // Act
-        //    page.ShowPopup(ItemLocationEnum.PrimaryHand);
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
-        //[Test]
-        //public void CharacterCreatePage_OnPopupItemSelected_Clicked_Default_Should_Pass()
-        //{
-        //    // Arrange
-
-        //    var data = new ItemModel();
-
-        //    var selectedCharacterChangedEventArgs = new SelectedItemChangedEventArgs(data, 0);
-
-        //    // Act
-        //    page.OnPopupItemSelected(null, selectedCharacterChangedEventArgs);
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
-        //[Test]
-        //public void CharacterCreatePage_OnPopupItemSelected_Clicked_Null_Should_Fail()
-        //{
-        //    // Arrange
-
-        //    var selectedCharacterChangedEventArgs = new SelectedItemChangedEventArgs(null, 0);
-
-        //    // Act
-        //    page.OnPopupItemSelected(null, selectedCharacterChangedEventArgs);
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
-        //[Test]
-        //public void CharacterCreatePage_Item_ShowPopup_Default_Should_Pass()
-        //{
-        //    // Arrange
-
-        //    var item = page.GetItemToDisplay(ItemLocationEnum.PrimaryHand);
-
-        //    // Act
-        //    var itemButton = item.Children.FirstOrDefault(m => m.GetType().Name.Equals("Button"));
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
-        //[Test]
-        //public void CharacterCratePage_GetItemToDisplay_Click_Button_Valid_Should_Pass()
-        //{
-        //    // Arrange
-        //    var item = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.PrimaryHand);
-        //    page.ViewModel.Data.Head = item.Id;
-        //    var StackItem = page.GetItemToDisplay(ItemLocationEnum.PrimaryHand);
-        //    var dataImage = StackItem.Children[0];
-
-        //    // Act
-        //    ((ImageButton)dataImage).PropagateUpClicked();
-
-        //    // Reset
-
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
-
+            // Assert
+            Assert.AreEqual(16, result + 1);
+        }
+        #endregion LevelPicker_Changed
     }
 }

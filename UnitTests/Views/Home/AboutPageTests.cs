@@ -156,7 +156,7 @@ namespace UnitTests.Views
             // Reset
 
             // Assert
-            Assert.AreEqual(!current,result); 
+            Assert.AreEqual(!current, result);
         }
 
         [Test]
@@ -175,7 +175,7 @@ namespace UnitTests.Views
             // Reset
 
             // Assert
-            Assert.AreEqual(!current, result); 
+            Assert.AreEqual(!current, result);
         }
 
         [Test]
@@ -204,31 +204,31 @@ namespace UnitTests.Views
             Assert.AreNotEqual("No Results", result); // Got to here, so it happened...
         }
 
-        [Test]
-        public async Task AboutPage_GetItemsPost_Default_Should_Pass()
-        {
-            // Arrange
-            // Act
-            var result = await page.GetItemsPost();
+        //[Test]
+        //public async Task AboutPage_GetItemsPost_Default_Should_Pass()
+        //{
+        //    // Arrange
+        //    // Act
+        //    var result = await page.GetItemsPost();
 
-            // Reset
+        //    // Reset
 
-            // Assert
-            Assert.AreNotEqual("No Results", result); // Got to here, so it happened...
-        }
+        //    // Assert
+        //    Assert.AreNotEqual("No Results", result); // Got to here, so it happened...
+        //}
 
         [Test]
         public void AboutPage_GetItemsGet_Clicked_Default_Should_Pass()
         {
             // Arrange
-            
+
             // Act
-            page.GetItemsGet_Command(null,null);
+            page.GetItemsGet_Command(null, null);
 
             // Reset
 
             // Assert
-            Assert.AreEqual(true,true); // Got to here, so it happened...
+            Assert.AreEqual(true, true); // Got to here, so it happened...
         }
 
         [Test]
