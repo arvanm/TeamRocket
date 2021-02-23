@@ -490,6 +490,7 @@ namespace Game.Views
                     ViewModel.Data.Pokeball = data.Id;
                     break;
                 default:
+                    return;
                     break;
             }
 
