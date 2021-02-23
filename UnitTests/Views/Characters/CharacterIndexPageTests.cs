@@ -145,5 +145,22 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        [Test]
+        public void CharacterIndexPage_ReadCharacter_Clicked_InValid_Should_Pass()
+        {
+            // Arrange
+            CharacterIndexViewModel ViewModel = CharacterIndexViewModel.Instance;
+            ImageButton button = new ImageButton();
+            button.CommandParameter = "bf12cfee-dfc6-4e4f-8a9b-9570177628ba";
+
+            // Act
+            page.ReadCharacter_Clicked(button, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
     }
 }
