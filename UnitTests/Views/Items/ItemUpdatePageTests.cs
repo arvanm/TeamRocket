@@ -179,5 +179,20 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void ItemUpdatePage_LocationPicker_Changed_Null_Image_Should_Pass()
+        {
+            // Arrange
+
+
+            // Act
+            page.LocationPicker_Changed(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
