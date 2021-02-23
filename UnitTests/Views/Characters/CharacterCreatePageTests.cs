@@ -102,6 +102,21 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public async Task CharacterCreatePage_CheckCharacterName_Name_Should_Return_True()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = "test";
+
+            // Act
+            var Result = await page.CheckCharacterName();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(Result);
+        }
+
+        [Test]
         public void CharacterCreatePage_ChangeImage_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
