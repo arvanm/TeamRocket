@@ -126,6 +126,81 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void MonsterCreatePage_CheckAttributeValue_Attack_Valid_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Attack = -1;
+
+            // Act
+            _ = page.CheckAttributeValue();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterCreatePage_CheckAttributeValue_SpecialAttack_Valid_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.SpecialAttack = -1;
+
+            // Act
+            _ = page.CheckAttributeValue();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterCreatePage_CheckAttributeValue_Defense_Valid_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Defense = -1;
+
+            // Act
+            _ = page.CheckAttributeValue();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterCreatePage_CheckAttributeValue_Speed_Valid_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Speed = -1;
+
+            // Act
+            _ = page.CheckAttributeValue();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterCreatePage_CheckMonsterName_Valid_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = null;
+
+            // Act
+            _ = page.CheckMonsterName();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void MonsterCreatePage_OnBackButtonPressed_Valid_Should_Pass()
         {
             // Arrange
