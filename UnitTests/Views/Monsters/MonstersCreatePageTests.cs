@@ -82,6 +82,35 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void MonsterCreatePage_ChangeImage_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.ChangeImage_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void MonsterCreatePage_OnAppear_Clicked_Null_Image_Should_Pass()
+        {
+            // Arrange
+            GenericViewModel<MonsterModel> ViewModel = new GenericViewModel<MonsterModel>();
+
+            // Act
+            OnAppearing();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void MonsterCreatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
