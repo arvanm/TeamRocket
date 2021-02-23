@@ -76,20 +76,20 @@ namespace UnitTests.Helpers
             Assert.AreEqual(result, 0);
         }
 
-        //[Test]
-        //[ExpectedException("System.NotImplementedException")]
-        //public void ItemLocationEnumToHasDamageBoolConverterHelper_ConvertBack_Should_Throw_Exception()
-        //{
-        //    // Arrange
-        //    var myConverter = new ItemLocationToHasDamageBoolConverterHelper();
-        //    var myObject = true;
+        [Test]
+        public void ItemLocationEnumToHasDamageBoolConverterHelper_ConvertBack_Should_Return_Null()
+        {
+            // Arrange
+            var myConverter = new ItemLocationToHasDamageBoolConverterHelper();
+            var myObject = true;
 
-        //    // Act
-        //    var result = myConverter.ConvertBack(myObject, null, null, null);
+            // Act
+            var result = myConverter.ConvertBack(myObject, null, null, null);
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //}
+            // Assert
+            Assert.IsNull(result);
+        }
     }
 }
