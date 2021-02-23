@@ -96,6 +96,52 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void CharacterUpdatePage_ChangeImage_Clicked_Null_Image_Should_Pass()
+        {
+            // Arrange
+
+
+            // Act
+            page.ChangeImage_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_CheckCharacterCurHealth_Null_Image_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.CurrentHealth = 9;
+
+            // Act
+            var boolValue = page.CheckCharacterCurHealth();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+
+        [Test]
+        public void CharacterUpdatePage_CheckCharacterMaxHealth_Null_Image_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.MaxHealth = 10;
+
+            // Act
+            var boolValue = page.CheckCharacterMaxHealth();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void CharacterUpdatePage_OnBackButtonPressed_Valid_Should_Pass()
         {
             // Arrange
