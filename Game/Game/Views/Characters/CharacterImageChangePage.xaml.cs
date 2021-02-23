@@ -52,6 +52,12 @@ namespace Game.Views
         /// <param name="args"></param>
         public async void SelectCharacterImage_Clicked(object sender, EventArgs args)
         {
+            // Handle null input
+            if (sender == null)
+            {
+                return;
+            }
+
             // Get CharacterModel from the button clicked
             var button = sender as ImageButton;
             var imageSelected = button.CommandParameter as String;
