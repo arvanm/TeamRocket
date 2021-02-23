@@ -162,5 +162,24 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        [Test]
+        public void CharacterIndexPage_ReadCharacter_Clicked_Valid_Should_Pass()
+        {
+            // Arrange
+            var data = new CharacterModel();
+            CharacterIndexViewModel ViewModel = CharacterIndexViewModel.Instance;
+            ViewModel.Dataset.Add(data);
+            ImageButton button = new ImageButton();
+            button.CommandParameter = data.Id;
+
+            // Act
+            page.ReadCharacter_Clicked(button, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
     }
 }
