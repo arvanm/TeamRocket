@@ -109,6 +109,21 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        [Test]
+        public void MonsterUpdatePage_OnAppear_Clicked_Null_Image_Should_Pass()
+        {
+            // Arrange
+            GenericViewModel<MonsterModel> ViewModel = new GenericViewModel<MonsterModel>();
+
+            // Act
+            OnAppearing();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         //[Test]
         //public void MonsterUpdatePage_Attack_OnStepperValueChanged_Default_Should_Pass()
         //{
@@ -130,7 +145,7 @@ namespace UnitTests.Views
         //    // Assert
         //    Assert.IsTrue(true); // Got to here, so it happened...
         //}
-        
+
         //[Test]
         //public void MonsterUpdatePage_Defense_OnStepperValueChanged_Default_Should_Pass()
         //{
@@ -189,6 +204,6 @@ namespace UnitTests.Views
         //    Assert.IsTrue(true); // Got to here, so it happened...
         //}
 
- 
+
     }
 }
