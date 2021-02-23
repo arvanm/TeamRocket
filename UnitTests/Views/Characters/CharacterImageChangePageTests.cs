@@ -54,7 +54,7 @@ namespace UnitTests.Views
         }
 
         [Test]
-        public void CharacterImageChangePage_Update_Clicked_Default_Should_Pass()
+        public void CharacterImageChangePage_SelectCharacterImage_Clicked_Default_Should_Pass()
         {
             // Arrange
 
