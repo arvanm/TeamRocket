@@ -57,6 +57,27 @@ namespace UnitTests.Views
         public void CharacterImageChangePage_SelectCharacterImage_Clicked_Default_Should_Pass()
         {
             // Arrange
+            var data = new CharacterModel();
+            CharacterIndexViewModel ViewModel = CharacterIndexViewModel.Instance;
+            ViewModel.Dataset.Add(data);
+            data.ImageURI = "character_01.png";
+            ImageButton button = new ImageButton();
+            button.CommandParameter = data;
+            // Act
+            page.SelectCharacterImage_Clicked(button, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+
+
+        [Test]
+        public void CharacterImageChangePage_SelectCharacterImage_Clicked_Default_Invalid_Should_Pass()
+        {
+            // Arrange
 
             // Act
             page.SelectCharacterImage_Clicked(null, null);
