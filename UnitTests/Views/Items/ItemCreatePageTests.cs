@@ -102,7 +102,7 @@ namespace UnitTests.Views
 
 
         [Test]
-        public void ItemCreatePage_LocationPicker_Changed_Null_Image_Should_Pass()
+        public void ItemCreatePage_LocationPicker_Changed_Null_Should_Pass()
         {
             // Arrange
             
@@ -114,6 +114,66 @@ namespace UnitTests.Views
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void ItemCreatePage_LocationPicker_Changed_PrimaryHand_Should_Pass()
+        {
+            // Arrange
+            var myPicker = (Picker)page.FindByName("LocationPicker");
+            myPicker.SelectedItem = "Primary Hand";
+
+            // Act
+            page.LocationPicker_Changed(null, null);
+            var myDamageStack = (StackLayout)page.FindByName("DamageStack");
+            var myRangeStack = (StackLayout)page.FindByName("RangeStack");
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(myDamageStack.IsVisible);
+            Assert.IsTrue(myRangeStack.IsVisible);
+            Assert.AreEqual(page.ViewModel.Data.Range, 1);
+        }
+
+        [Test]
+        public void ItemCreatePage_LocationPicker_Changed_Pokeball_Should_Pass()
+        {
+            // Arrange
+            var myPicker = (Picker)page.FindByName("LocationPicker");
+            myPicker.SelectedItem = "Pokeball";
+
+            // Act
+            page.LocationPicker_Changed(null, null);
+            var myDamageStack = (StackLayout)page.FindByName("DamageStack");
+            var myRangeStack = (StackLayout)page.FindByName("RangeStack");
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(myDamageStack.IsVisible);
+            Assert.IsFalse(myRangeStack.IsVisible);
+            Assert.AreEqual(page.ViewModel.Data.Range, 0);
+        }
+
+        [Test]
+        public void ItemCreatePage_LocationPicker_Changed_Other_Location_Should_Pass()
+        {
+            // Arrange
+            var myPicker = (Picker)page.FindByName("LocationPicker");
+            myPicker.SelectedItem = "Head";
+
+            // Act
+            page.LocationPicker_Changed(null, null);
+            var myDamageStack = (StackLayout)page.FindByName("DamageStack");
+            var myRangeStack = (StackLayout)page.FindByName("RangeStack");
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(myDamageStack.IsVisible);
+            Assert.IsFalse(myRangeStack.IsVisible);
+            Assert.AreEqual(page.ViewModel.Data.Range, 0);
         }
 
         [Test]
