@@ -333,13 +333,31 @@ namespace UnitTests.Views
 
 
         [Test]
-        public void CharacterUpdatePage_PopupItemSelected_Invalid_Should_Pass()
+        public void CharacterUpdatePage_PopupItemSelected_Item_Null_Should_Pass()
         {
             // Arrange
             ItemModel item = null;
 
             // Act
             page.PopupItemSelected(item, ItemLocationEnum.Head);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_Location_Invalid_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Head";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.Head; ;
+
+            // Act
+            page.PopupItemSelected(item, ItemLocationEnum.Unknown);
 
             // Reset
 
