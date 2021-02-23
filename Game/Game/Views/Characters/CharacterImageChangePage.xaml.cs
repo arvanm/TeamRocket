@@ -63,11 +63,11 @@ namespace Game.Views
             var imageSelected = button.CommandParameter as String;
             viewModel.Data.ImageURI = imageSelected;
 
-            // Handle null data
-            if (viewModel == null)
-            {
-                return;
-            }
+            //// Handle null data
+            //if (viewModel == null)
+            //{
+            //    return;
+            //}
 
             MessagingCenter.Send(this, "Update", viewModel);
             await Navigation.PopModalAsync();
