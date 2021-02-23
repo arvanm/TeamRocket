@@ -37,11 +37,11 @@ namespace UnitTests.Helpers
             // Get Expected set
             var myList = Enum.GetNames(typeof(ItemLocationEnum)).ToList();
             var myExpectedList = myList.Where(a =>
-                                          a.ToString() != ItemLocationEnum.Unknown.ToString() &&
-                                           a.ToString() != ItemLocationEnum.Finger.ToString()
-                                            )
-                                            .OrderBy(a => a)
-                                            .ToList();
+                                              a.ToString() != ItemLocationEnum.Unknown.ToString() &&
+                                              a.ToString() != ItemLocationEnum.Finger.ToString()
+                                              )
+                                       .OrderBy(a => a)
+                                       .ToList();
 
             // Act
 
@@ -79,7 +79,6 @@ namespace UnitTests.Helpers
                 // Assert
                 Assert.AreEqual(true, found, "expected : " + expected + TestContext.CurrentContext.Test.Name);
             }
-
         }
 
         [Test]
@@ -93,12 +92,12 @@ namespace UnitTests.Helpers
             // Get Expected set
             var myList = Enum.GetNames(typeof(ItemLocationEnum)).ToList();
             var myExpectedList = myList.Where(a =>
-                                            a.ToString() != ItemLocationEnum.Unknown.ToString() &&
-                                            a.ToString() != ItemLocationEnum.LeftFinger.ToString() &&
-                                            a.ToString() != ItemLocationEnum.RightFinger.ToString()
-                                            )
-                                            .OrderBy(a => a)
-                                            .ToList();
+                                              a.ToString() != ItemLocationEnum.Unknown.ToString() &&
+                                              a.ToString() != ItemLocationEnum.LeftFinger.ToString() &&
+                                              a.ToString() != ItemLocationEnum.RightFinger.ToString()
+                                             )
+                                       .OrderBy(a => a)
+                                       .ToList();
 
             // Act
 
@@ -136,7 +135,117 @@ namespace UnitTests.Helpers
                 // Assert
                 Assert.AreEqual(true, found, "expected : " + expected + TestContext.CurrentContext.Test.Name);
             }
+        }
 
+        [Test]
+        public void ItemLocationEnumHelper_GetListCharacterMessage_Should_Pass()
+        {
+            // Arrange
+
+            // Instantiate a new ItemLocation Base, should have default of 1 for all values
+            var myDataList = ItemLocationEnumHelper.GetListCharacter;
+
+            // Get Expected set
+            var myList = Enum.GetNames(typeof(ItemLocationEnum)).ToList();
+            var myExpectedList = myList.Where(a =>
+                                              a.ToString() != ItemLocationEnum.Unknown.ToString() &&
+                                              a.ToString() != ItemLocationEnum.Finger.ToString()
+                                              )
+                                       .OrderBy(a => a)
+                                       .ToList();
+
+            // Act
+
+            // Make sure each item is in the list
+            foreach (var item in myDataList)
+            {
+                var found = false;
+                foreach (var expected in myExpectedList)
+                {
+                    if (item == expected)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                // Assert
+                Assert.AreEqual(true, found, "item : " + item + TestContext.CurrentContext.Test.Name);
+            }
+
+            // reverse it, to make sure the list has each item
+            // Make sure each item is in the list
+            foreach (var expected in myExpectedList)
+            {
+                var found = false;
+                {
+                    foreach (var item in myDataList)
+                        if (item == expected)
+                        {
+                            found = true;
+                            break;
+                        }
+                }
+
+                // Assert
+                Assert.AreEqual(true, found, "expected : " + expected + TestContext.CurrentContext.Test.Name);
+            }
+        }
+
+        [Test]
+        public void ItemLocationEnumHelper_GetListItemMessage_Should_Pass()
+        {
+            // Arrange
+
+            // Instantiate a new ItemLocation Base, should have default of 1 for all values
+            var myDataList = ItemLocationEnumHelper.GetListItem;
+
+            // Get Expected set
+            var myList = Enum.GetNames(typeof(ItemLocationEnum)).ToList();
+            var myExpectedList = myList.Where(a =>
+                                              a.ToString() != ItemLocationEnum.Unknown.ToString() &&
+                                              a.ToString() != ItemLocationEnum.LeftFinger.ToString() &&
+                                              a.ToString() != ItemLocationEnum.RightFinger.ToString()
+                                             )
+                                       .OrderBy(a => a)
+                                       .ToList();
+
+            // Act
+
+            // Make sure each item is in the list
+            foreach (var item in myDataList)
+            {
+                var found = false;
+                foreach (var expected in myExpectedList)
+                {
+                    if (item == expected)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                // Assert
+                Assert.AreEqual(true, found, "item : " + item + TestContext.CurrentContext.Test.Name);
+            }
+
+            // reverse it, to make sure the list has each item
+            // Make sure each item is in the list
+            foreach (var expected in myExpectedList)
+            {
+                var found = false;
+                {
+                    foreach (var item in myDataList)
+                        if (item == expected)
+                        {
+                            found = true;
+                            break;
+                        }
+                }
+
+                // Assert
+                Assert.AreEqual(true, found, "expected : " + expected + TestContext.CurrentContext.Test.Name);
+            }
         }
 
         [Test]

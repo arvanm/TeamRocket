@@ -174,7 +174,7 @@ namespace Game.Models
         ///  Gets the list of locations a character can use
         ///  Removes Finger for example, and allows for left and right finger
         /// </summary>
-        public static List<string> GetListMessageCharacter
+        public static List<string> GetListCharacterMessage
         {
             get
             {
