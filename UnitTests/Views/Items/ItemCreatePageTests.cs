@@ -100,6 +100,52 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+
+        [Test]
+        public void ItemCreatePage_LocationPicker_Changed_Null_Image_Should_Pass()
+        {
+            // Arrange
+            
+
+            // Act
+            page.LocationPicker_Changed(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void ItemCreatePage_CheckItemAttribute_Null_Image_Should_Pass()
+        {
+            // Arrange
+
+
+            // Act
+            _ = page.CheckItemAttribute();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void ItemCreatePage_CheckItemName_Null_Image_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = null;
+
+            // Act
+            _ = page.CheckItemAttribute();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         [Test]
         public void ItemCreatePage_OnBackButtonPressed_Valid_Should_Pass()
         {
