@@ -11,7 +11,7 @@ using Game.GameRules;
 namespace Game.ViewModels
 {
     /// <summary>
-    /// Monster View Model
+    /// Index View Model
     /// Manages the list of data records
     /// </summary>
     public class MonsterIndexViewModel : BaseViewModel<MonsterModel>
@@ -66,16 +66,7 @@ namespace Game.ViewModels
             // Register the Update Message
             MessagingCenter.Subscribe<MonsterUpdatePage, MonsterModel>(this, "Update", async (obj, data) =>
             {
-                // Have the Monster update itself
-                data.Update(data);
-
-                await UpdateAsync(data as MonsterModel);
-            });
-
-            // Register the Update Message ************
-            MessagingCenter.Subscribe<MonsterImageChangePage, MonsterModel>(this, "Update", async (obj, data) =>
-            {
-                // Have the Monster update itself
+                // Have the item update itself
                 data.Update(data);
 
                 await UpdateAsync(data as MonsterModel);
@@ -103,43 +94,20 @@ namespace Game.ViewModels
         }
 
         #endregion Constructor
-
+        
         #region DataOperations_CRUDi
 
         /// <summary>
-        /// Returns the Monster passed in
+        /// Returns the item passed in
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public override MonsterModel CheckIfExists(MonsterModel data)
-        {
-            if (data == null)
-            {
-                return null;
-            }
-
-            // This will walk the Monsters and find if there is one that is the same.
-            // If so, it returns the Monster...
-            var myList = Dataset.Where(a =>
-                                        a.Name == data.Name &&
-                                        a.Description == data.Description
-                                        )
-                                        .FirstOrDefault();
-
-            if (myList == null)
-            {
-                // it's not a match, return false;
-                return null;
-            }
-
-            return myList;
-        }
 
         /// <summary>
         /// Load the Default Data
         /// </summary>
         /// <returns></returns>
-        public override List<MonsterModel> GetDefaultData()
+        public override List<MonsterModel> GetDefaultData() 
         {
             return DefaultData.LoadData(new MonsterModel());
         }
@@ -162,5 +130,35 @@ namespace Game.ViewModels
         }
 
         #endregion SortDataSet
+
+        /// <summary>
+        /// Returns the item passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public override MonsterModel CheckIfExists(MonsterModel data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+
+            // This will walk the items and find if there is one that is the same.
+            // If so, it returns the item...
+
+            var myList = Dataset.Where(a =>
+                                        a.Name == data.Name &&
+                                        a.Description == data.Description
+                                        )
+                                        .FirstOrDefault();
+
+            if (myList == null)
+            {
+                // it's not a match, return false;
+                return null;
+            }
+
+            return myList;
+        }
     }
 }
