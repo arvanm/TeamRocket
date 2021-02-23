@@ -143,17 +143,17 @@ namespace UnitTests.Helpers
             // Arrange
 
             // Instantiate a new ItemLocation Base, should have default of 1 for all values
-            var myDataList = ItemLocationEnumHelper.GetListCharacter;
+            var myDataList = ItemLocationEnumHelper.GetListCharacterMessage;
 
             // Get Expected set
-            var myList = Enum.GetNames(typeof(ItemLocationEnum)).ToList();
+            var myList = Enum.GetValues(typeof(ItemLocationEnum)).Cast<ItemLocationEnum>().ToList();
             var myExpectedList = myList.Where(a =>
-                                              a.ToString() != ItemLocationEnum.Unknown.ToString() &&
-                                              a.ToString() != ItemLocationEnum.Finger.ToString()
-                                              )
-                                       .OrderBy(a => a)
-                                       .ToList();
-
+                                              a != ItemLocationEnum.Unknown &&
+                                              a != ItemLocationEnum.Finger
+                                             )
+                                        .Select(a => a.ToMessage())
+                                        .OrderBy(a => a)
+                                        .ToList();
             // Act
 
             // Make sure each item is in the list
@@ -198,17 +198,18 @@ namespace UnitTests.Helpers
             // Arrange
 
             // Instantiate a new ItemLocation Base, should have default of 1 for all values
-            var myDataList = ItemLocationEnumHelper.GetListItem;
+            var myDataList = ItemLocationEnumHelper.GetListItemMessage;
 
             // Get Expected set
-            var myList = Enum.GetNames(typeof(ItemLocationEnum)).ToList();
+            var myList = Enum.GetValues(typeof(ItemLocationEnum)).Cast<ItemLocationEnum>().ToList();
             var myExpectedList = myList.Where(a =>
-                                              a.ToString() != ItemLocationEnum.Unknown.ToString() &&
-                                              a.ToString() != ItemLocationEnum.LeftFinger.ToString() &&
-                                              a.ToString() != ItemLocationEnum.RightFinger.ToString()
+                                              a != ItemLocationEnum.Unknown &&
+                                              a != ItemLocationEnum.LeftFinger &&
+                                              a != ItemLocationEnum.RightFinger
                                              )
-                                       .OrderBy(a => a)
-                                       .ToList();
+                                        .Select(a => a.ToMessage())
+                                        .OrderBy(a => a)
+                                        .ToList();
 
             // Act
 
@@ -275,11 +276,11 @@ namespace UnitTests.Helpers
         {
             // Arrange
 
-            var value = 3;
+            var value = 1;
 
             // Act
             var Actual = ItemLocationEnumHelper.GetLocationByPosition(value);
-            var Expected = ItemLocationEnum.PrimaryHand;
+            var Expected = ItemLocationEnum.Head;
 
             // Assert
             Assert.AreEqual(Expected, Actual, TestContext.CurrentContext.Test.Name);
