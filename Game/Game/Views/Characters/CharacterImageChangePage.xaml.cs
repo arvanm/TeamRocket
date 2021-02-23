@@ -24,17 +24,17 @@ namespace Game.Views
         // Empty Constructor for UTs
         public CharacterImageChangePage(bool UnitTest) { }
 
-        /// <summary>
-        /// Constructor for Index Page
-        /// 
-        /// Get the ItemIndexView Model
-        /// </summary>
-        public CharacterImageChangePage()
-        {
-            InitializeComponent();
+        ///// <summary>
+        ///// Constructor for Index Page
+        ///// 
+        ///// Get the ItemIndexView Model
+        ///// </summary>
+        //public CharacterImageChangePage()
+        //{
+        //    InitializeComponent();
 
-            //BindingContext = ViewModel;
-        }
+        //    //BindingContext = ViewModel;
+        //}
 
         public CharacterImageChangePage(GenericViewModel<CharacterModel> viewModel)
         {
