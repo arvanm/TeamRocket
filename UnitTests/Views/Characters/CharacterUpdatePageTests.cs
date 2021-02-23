@@ -336,13 +336,10 @@ namespace UnitTests.Views
         public void CharacterUpdatePage_PopupItemSelected_Invalid_Should_Pass()
         {
             // Arrange
-            ItemModel item = new ItemModel();
-            item.Name = "Head";
-            item.ImageURI = "";
-            //item.Location = ItemLocationEnum.Head;
+            ItemModel item = null;
 
             // Act
-            page.PopupItemSelected(item, item.Location);
+            page.PopupItemSelected(item, ItemLocationEnum.Head);
 
             // Reset
 
@@ -561,23 +558,23 @@ namespace UnitTests.Views
         //    Assert.IsTrue(true); // Got to here, so it happened...
         //}
 
-        //[Test]
-        //public void CharacterUpdatePage_GetItemToDisplay_Click_Button_Valid_Should_Pass()
-        //{
-        //    // Arrange
-        //    var item = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Head);
-        //    page.ViewModel.Data.Head = item.Id;
-        //    var StackItem = page.GetItemToDisplay(ItemLocationEnum.Head);
-        //    var dataImage = StackItem.Children[0];
+        [Test]
+        public void CharacterUpdatePage_GetItemToDisplay_Click_Button_Valid_Should_Pass()
+        {
+            // Arrange
+            var item = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Head);
+            page.ViewModel.Data.Head = item.Id;
+            var StackItem = page.GetItemToDisplay(ItemLocationEnum.Head);
+            var dataImage = StackItem.Children[0];
 
-        //    // Act
-        //    ((ImageButton)dataImage).PropagateUpClicked();
+            // Act
+            ((ImageButton)dataImage).PropagateUpClicked();
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
 
 
         #region LevelPicker_Changed
