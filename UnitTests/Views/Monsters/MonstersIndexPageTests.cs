@@ -81,23 +81,41 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
-        //[Test]
-        //public void MonsterIndexPage_ReadMonster_Clicked_Default_Should_Pass()
-        //{
-        //    // Arrange
+        [Test]
+        public void MonsterIndexPage_ReadMonster_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+            var data = new MonsterModel();
+            MonsterIndexViewModel ViewModel = MonsterIndexViewModel.Instance;
+            ViewModel.Dataset.Add(data);
+            ImageButton button = new ImageButton();
+            button.CommandParameter = data.Id;
 
-        //    var selectedMonster = new MonsterModel();
 
-        //    var selectedMonsterChangedEventArgs = new SelectedItemChangedEventArgs(selectedMonster, 0);
+            // Act
+            page.ReadMonster_Clicked(button, null);
 
-        //    // Act
-        //    page.ReadMonster_Clicked(null, selectedMonsterChangedEventArgs);
+            // Reset
 
-        //    // Reset
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
 
-        //    // Assert
-        //    Assert.IsTrue(true); // Got to here, so it happened...
-        //}
+        [Test]
+        public void MonsterIndexPage_ReadMonster_Clicked_Invalid_Null_Should_Pass()
+        {
+            // Arrange
+            MonsterIndexViewModel ViewModel = MonsterIndexViewModel.Instance;
+            ImageButton button = new ImageButton();
+            button.CommandParameter = "bf12cfee-dfc6-4e4f-8a9b-9570177628ba";
+            // Act
+            page.ReadMonster_Clicked(button, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
 
         //[Test]
         //public void MonsterIndexPage_ReadMonster_Clicked_Invalid_Null_Should_Fail()
