@@ -408,7 +408,7 @@ namespace Game.GameRules
                     Name = "Beedrill",
                     Description = "Beedrill is a Pokémon which mostly resembles a bipedal, yellow wasp",
                     ImageURI = "beedrill.png",
-                    MonsterType = MonsterTypeEnum.Posion,
+                    MonsterType = MonsterTypeEnum.Poison,
                     Attack = 5,
                     SpecialAttack = 30,
                     Defense = 0,
