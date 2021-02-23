@@ -160,6 +160,151 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void CharacterUpdatePage_PopupItemSelected_OffHand_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Head";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.OffHand;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_Necklass_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Necklass";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.Necklass;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_Feet_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Feet";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.Feet;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_LeftFinger_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "LeftFinger";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.LeftFinger;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_RightFinger_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "RightFinger";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.RightFinger;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_Pokeball_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Pokeball";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.Pokeball;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_Head_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Head";
+            item.ImageURI = "";
+            item.Location = ItemLocationEnum.Head;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+
+        [Test]
+        public void CharacterUpdatePage_PopupItemSelected_Invalid_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel();
+            item.Name = "Head";
+            item.ImageURI = "";
+            //item.Location = ItemLocationEnum.Head;
+
+            // Act
+            page.PopupItemSelected(item, item.Location);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void CharacterUpdatePage_UpdatePageBindingContext_Null_Image_Should_Pass()
         {
             // Arrange
@@ -167,6 +312,20 @@ namespace UnitTests.Views
 
             // Act
             page.UpdatePageBindingContext();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void CharacterUpdatePage_GetItemToDisplay_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.GetItemToDisplay(ItemLocationEnum.Head);
 
             // Reset
 
