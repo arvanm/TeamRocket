@@ -20,7 +20,7 @@ namespace Game.Models
         Water = 12,
 
         // Trainer with 50% chance to do double damage
-        Posion = 14
+        Poison = 14
 
     }
 
@@ -49,8 +49,8 @@ namespace Game.Models
                     Message = "Water";
                     break;
 
-                case MonsterTypeEnum.Posion:
-                    Message = "Posion";
+                case MonsterTypeEnum.Poison:
+                    Message = "Poison";
                     break;
 
                 case MonsterTypeEnum.Unknown:
@@ -152,7 +152,7 @@ namespace Game.Models
 
                 case 3:
                 default:
-                    return MonsterTypeEnum.Posion;
+                    return MonsterTypeEnum.Poison;
             }
         }
     }
