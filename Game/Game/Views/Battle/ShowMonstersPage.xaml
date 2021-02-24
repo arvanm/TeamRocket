@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="BrowseItemsPage"
+             x:Class="Game.Views.ShowMonstersPage"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Style="{StaticResource OuterBoxStack}">
+
+                <Label Text="Fight these Monsters" Style="{StaticResource CenterMessageLargeStyle}"/>
+
+
+
+                <FlexLayout BindableLayout.ItemsSource="{Binding DatabaseCharacterList}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="SpaceEvenly">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10"
+                                         HorizontalOptions="Center">
+
+                                <ImageButton Source="{Binding ImageURI}"
+                                             CommandParameter="{Binding Id}"
+                                             HeightRequest="80" WidthRequest="80"/>
+
+                                <Label Text="{Binding Name}"
+                                       HorizontalTextAlignment="Center" />
+
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Center">
+                                    <Label Text="Level" />
+                                    <Label Text="{Binding Level}" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+                <StackLayout>
+                    <!--<StackLayout>
+                        <Label Text="Selected Trainers" Style="{StaticResource CenterMessageStyle}"/>
+                        <FlexLayout
+                            x:Name="PartyListView"
+                            BindableLayout.ItemsSource="{Binding PartyCharacterList}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="SpaceEvenly">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="10"
+                                         HorizontalOptions="Center">
+
+                                        <ImageButton Source="{Binding ImageURI}"
+                                             CommandParameter="{Binding Id}"
+                                             HeightRequest="80" WidthRequest="80"/>
+
+                                        <Label Text="{Binding Name}"
+                                       HorizontalTextAlignment="Center" />
+
+                                        <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Center">
+                                            <Label Text="Level" />
+                                            <Label Text="{Binding Level}" />
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                    </StackLayout>-->
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+
+                        <Label Text="Number of Trainers" Style="{StaticResource CenterMessageStyle}"/>
+
+                        <Label Style="{StaticResource CenterMessageStyle}" 
+                            x:Name="PartyCountLabel"
+                            Text="0"/>
+
+                        <Button 
+                            x:Name="BeginBattleButton"
+                            Clicked="BattleButton_Clicked" 
+                            Text="Ready for Begin"
+                            IsEnabled="False"/>
+
+                    </StackLayout>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
