@@ -26,7 +26,8 @@ namespace Game.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PickCharactersPage : ContentPage
     {
-
+        // The view model, used for data binding
+        readonly CharacterIndexViewModel ViewModel = CharacterIndexViewModel.Instance;
         // Empty Constructor for UTs
         public PickCharactersPage(bool UnitTest) { }
 
@@ -48,21 +49,18 @@ namespace Game.Views
             UpdateNextButtonState();
         }
 
-        /// <summary>
-        /// The row selected from the list
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        public void OnDatabaseCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
+        public void CharacterSelected(object sender, EventArgs e)
         {
-            CharacterModel data = args.SelectedItem as CharacterModel;
+            // Get CharacterModel from the button clicked
+            var button = sender as ImageButton;
+            var characterId = button.CommandParameter as String;
+            var data = ViewModel.Dataset.FirstOrDefault(item => item.Id.Equals(characterId));
+
+            //CharacterModel data = e.SelectedItem as CharacterModel;
             if (data == null)
             {
                 return;
             }
-
-            // Manually deselect Character.
-            CharactersListView.SelectedItem = null;
 
             // Don't add more than the party max
             if (BattleEngineViewModel.Instance.PartyCharacterList.Count() < BattleEngineViewModel.Instance.Engine.EngineSettings.MaxNumberPartyCharacters)
@@ -72,6 +70,31 @@ namespace Game.Views
 
             UpdateNextButtonState();
         }
+
+        /// <summary>
+        /// The row selected from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        //public void OnDatabaseCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
+        //{
+        //    CharacterModel data = args.SelectedItem as CharacterModel;
+        //    if (data == null)
+        //    {
+        //        return;
+        //    }
+
+        //    // Manually deselect Character.
+        //    CharactersListView.SelectedItem = null;
+
+        //    // Don't add more than the party max
+        //    if (BattleEngineViewModel.Instance.PartyCharacterList.Count() < BattleEngineViewModel.Instance.Engine.EngineSettings.MaxNumberPartyCharacters)
+        //    {
+        //        BattleEngineViewModel.Instance.PartyCharacterList.Add(data);
+        //    }
+
+        //    UpdateNextButtonState();
+        //}
 
         /// <summary>
         /// The row selected from the list

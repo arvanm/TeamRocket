@@ -12,15 +12,44 @@
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Style="{StaticResource OuterBoxStack}">
 
-                <Label Text="Battle Time" Style="{StaticResource CenterMessageLargeStyle}"/>
+                <Label Text="Pick Your Trainers" Style="{StaticResource CenterMessageLargeStyle}"/>
 
-                <StackLayout Style="{StaticResource HorizontalStack}" HorizontalOptions="CenterAndExpand">
 
-                    <StackLayout HorizontalOptions="Start">
 
-                        <Label Text="Characters" Style="{StaticResource CenterMessageStyle}"/>
+                <FlexLayout BindableLayout.ItemsSource="{Binding DatabaseCharacterList}"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="SpaceEvenly">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10"
+                                         HorizontalOptions="Center">
 
-                        <ListView 
+                                <ImageButton Source="{Binding ImageURI}"
+                                             CommandParameter="{Binding Id}"
+                                             HeightRequest="80" WidthRequest="80"
+                                             Clicked="CharacterSelected"/>
+
+                                <Label Text="{Binding Name}"
+                                       HorizontalTextAlignment="Center" />
+
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="Center">
+                                    <Label Text="Level" />
+                                    <Label Text="{Binding Level}" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+                <StackLayout>
+                    <!--<StackLayout>
+
+                        <Label Text="Trainers" Style="{StaticResource CenterMessageStyle}"/>
+                        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="StartAndExpand" >
+                            <ListView 
                                 x:Name="CharactersListView" 
                                 ItemsSource="{Binding DatabaseCharacterList}"
                                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
@@ -31,34 +60,35 @@
                                 Margin="5,0,5,0"
                                 RowHeight="80">
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Grid>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
 
-                                            <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                                                <Image  Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
                                                     Source="{Binding ImageURI}"
                                                     Style="{StaticResource ImageMediumStyle}"/>
 
-                                            <Label Grid.Column="1" Grid.Row="0"
+                                                <Label Grid.Column="1" Grid.Row="0"
                                                    Text="{Binding Name}" 
                                                    Style="{StaticResource ListStyle}"
                                                    FontAttributes="Bold"/>
 
-                                            <Label Grid.Column="1" Grid.Row="1"
+                                                <Label Grid.Column="1" Grid.Row="1"
                                                    Text="{Binding Path=Level, StringFormat='Level {0:G}'}" 
                                                    Style="{StaticResource ListStyle}"/>
 
-                                            <Label Grid.Column="1" Grid.Row="2"
+                                                <Label Grid.Column="1" Grid.Row="2"
                                                     Text="{Binding Path=MaxHealth, StringFormat= '{0:G} hp'}" 
                                                     Style="{StaticResource ListStyle}"/>
 
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>-->
 
                     <StackLayout HorizontalOptions="CenterAndExpand">
 
