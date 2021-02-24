@@ -42,56 +42,6 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
-
-                <StackLayout>
-                    <!--<StackLayout>
-                        <Label Text="Selected Trainers" Style="{StaticResource CenterMessageStyle}"/>
-                        <FlexLayout
-                            x:Name="PartyListView"
-                            BindableLayout.ItemsSource="{Binding PartyCharacterList}"
-                            Wrap="Wrap"
-                            Direction="Row"
-                            JustifyContent="SpaceEvenly">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout Padding="10"
-                                         HorizontalOptions="Center">
-
-                                        <ImageButton Source="{Binding ImageURI}"
-                                             CommandParameter="{Binding Id}"
-                                             HeightRequest="80" WidthRequest="80"/>
-
-                                        <Label Text="{Binding Name}"
-                                       HorizontalTextAlignment="Center" />
-
-                                        <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Center">
-                                            <Label Text="Level" />
-                                            <Label Text="{Binding Level}" />
-                                        </StackLayout>
-
-                                    </StackLayout>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </FlexLayout>
-                    </StackLayout>-->
-                    <StackLayout HorizontalOptions="CenterAndExpand">
-
-                        <Label Text="Number of Trainers" Style="{StaticResource CenterMessageStyle}"/>
-
-                        <Label Style="{StaticResource CenterMessageStyle}" 
-                            x:Name="PartyCountLabel"
-                            Text="0"/>
-
-                        <Button 
-                            x:Name="BeginBattleButton"
-                            Clicked="BattleButton_Clicked" 
-                            Text="Ready for Begin"
-                            IsEnabled="False"/>
-
-                    </StackLayout>
-
-                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

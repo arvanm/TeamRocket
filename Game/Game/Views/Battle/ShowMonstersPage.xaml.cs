@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 using Game.Models;
 using Game.ViewModels;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Game.Views
 {
@@ -44,44 +45,18 @@ namespace Game.Views
             //BindingContext = BattleEngineViewModel.Instance;
 
             // Clear the Database List and the Party List to start
-            BattleEngineViewModel.Instance.PartyCharacterList.Clear();
+            //BattleEngineViewModel.Instance.Clear();
 
            // UpdateNextButtonState();
         }
 
-
-
-        /// <summary>
-        /// Jump to the Battle
-        /// 
-        /// Its Modal because don't want user to come back...
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public async void BattleButton_Clicked(object sender, EventArgs e)
+        protected async override void OnAppearing()
         {
-            CreateEngineCharacterList();
-
-            //await Navigation.PushModalAsync(new NavigationPage(new ShowMonsterPage()));
-
+            base.OnAppearing();
+            await Task.Delay(5000);
             await Navigation.PushModalAsync(new NavigationPage(new BattlePage()));
             await Navigation.PopAsync();
         }
 
-        /// <summary>
-        /// Clear out the old list and make the new list
-        /// </summary>
-        public void CreateEngineCharacterList()
-        {
-            // Clear the currett list
-            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Clear();
-
-            // Load the Characters into the Engine
-            foreach (var data in BattleEngineViewModel.Instance.PartyCharacterList)
-            {
-                data.CurrentHealth = data.GetMaxHealthTotal;
-                BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(data));
-            }
-        }
     }
 }
