@@ -109,9 +109,6 @@ namespace Game.Views
                 return;
             }
 
-            // Manually deselect Character.
-            PartyListView.SelectedItem = null;
-
             // Remove the character from the list
             BattleEngineViewModel.Instance.PartyCharacterList.Remove(data);
 
