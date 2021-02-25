@@ -51,7 +51,8 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool CreateCharacterParty()
         {
-            throw new System.NotImplementedException();
+            return base.CreateCharacterParty();
+            //throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -60,7 +61,8 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool DetectInfinateLoop()
         {
-            throw new System.NotImplementedException();
+            return base.DetectInfinateLoop();
+            //throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -69,7 +71,8 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override Task<bool> RunAutoBattle()
         {
-            throw new System.NotImplementedException();
+            return base.RunAutoBattle();
+            //throw new System.NotImplementedException();
         }
     }
 }
