@@ -41,13 +41,11 @@ namespace Game.Views
         {
             InitializeComponent();
 
-            BindingContext = BattleEngineViewModel.Instance;
-            //BindingContext = BattleEngineViewModel.Instance;
+            // Start the Battle Engine
+            BattleEngineViewModel.Instance.Engine.StartBattle(false);
 
-            // Clear the Database List and the Party List to start
-            //BattleEngineViewModel.Instance.Clear();
+            DrawPlayerBoxes();
 
-           // UpdateNextButtonState();
         }
 
         protected async override void OnAppearing()
@@ -56,6 +54,54 @@ namespace Game.Views
             await Task.Delay(5000);
             await Navigation.PushModalAsync(new NavigationPage(new BattlePage()));
             await Navigation.PopAsync();
+        }
+
+        public void DrawPlayerBoxes()
+        {
+            var MonsterBoxList = MonsterBox.Children.ToList();
+            foreach (var data in MonsterBoxList)
+            {
+                MonsterBox.Children.Remove(data);
+            }
+
+            // Draw the Monsters
+            foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList())
+            {
+                MonsterBox.Children.Add(PlayerInfoDisplayBox(data));
+            }
+
+            // Add one black PlayerInfoDisplayBox to hold space incase the list is empty
+            MonsterBox.Children.Add(PlayerInfoDisplayBox(null));
+
+        }
+
+        public StackLayout PlayerInfoDisplayBox(PlayerInfoModel data)
+        {
+            if (data == null)
+            {
+                data = new PlayerInfoModel
+                {
+                    ImageURI = ""
+                };
+            }
+
+            // Hookup the image
+            var PlayerImage = new Image
+            {
+                Style = (Style)Application.Current.Resources["PlayerBattleMediumStyle"],
+                Source = data.ImageURI
+            };
+
+            // Put the Image Button and Text inside a layout
+            var PlayerStack = new StackLayout
+            {
+                Style = (Style)Application.Current.Resources["PlayerBattleDisplayBox"],
+                Children = {
+                    PlayerImage,
+                },
+            };
+
+            return PlayerStack;
         }
 
     }
