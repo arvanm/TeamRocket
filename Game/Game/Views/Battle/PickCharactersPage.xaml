@@ -87,7 +87,7 @@
                         <Button 
                             x:Name="BeginBattleButton"
                             Clicked="BattleButton_Clicked" 
-                            Text="Ready for Begin"
+                            Text="Trainers Selected"
                             IsEnabled="False"/>
 
                     </StackLayout>
