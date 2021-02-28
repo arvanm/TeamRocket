@@ -334,8 +334,8 @@
                 BasedOn="{StaticResource CardImageTextBox}">
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="HeightRequest" Value="150" />
-                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="HeightRequest" Value="180" />
+                <Setter Property="WidthRequest" Value="150" />
                 <Setter Property="Spacing" Value="0" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="0" />

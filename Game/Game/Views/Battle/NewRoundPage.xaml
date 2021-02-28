@@ -4,31 +4,31 @@
              x:Class="Game.Views.NewRoundPage">
 
     <ContentPage.Content>
-        <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+        <ScrollView VerticalScrollBarVisibility="Always" HorizontalScrollBarVisibility="Never">
 
             <StackLayout Style="{StaticResource VerticalStack}">
 
                 <Label Text="Beginning a Round" Style="{StaticResource CenterMessageLargeStyle}"/>
 
-                <Button Clicked="BeginButton_Clicked" Text="Begin"/>
+                <Label Text="A Group of Wild Pokemon Appears!"
+                       Style="{StaticResource MessageStyle}"
+                       HorizontalOptions="Center" />
 
-                <Label Text="Characters" Style="{StaticResource MessageLargeStyle}"/>
+                <FlexLayout x:Name="MonsterListFrame"
+                            JustifyContent="Start"
+                            AlignContent="Start"
+                            Wrap="Wrap" />
+
+                <Label Text="Team of Trainers" Style="{StaticResource MessageStyle}" HorizontalOptions="Center" Margin="0, 30, 0, 0"/>
 
                 <FlexLayout x:Name="PartyListFrame"
                                     JustifyContent="Start"
                                     AlignContent="Start"
                                     Wrap="Wrap"/>
 
-                <Label Text="Monsters" Style="{StaticResource MessageLargeStyle}"/>
-
-                <FlexLayout x:Name="MonsterListFrame"
-                                    JustifyContent="Start"
-                                    AlignContent="Start"
-                                    Wrap="Wrap"/>
-
                 <StackLayout Padding="1"></StackLayout>
 
-                <Button Clicked="BeginButton_Clicked" Text="Begin"/>
+                <Button Clicked="BeginButton_Clicked" Text="Start Round!" FontSize="Medium" HeightRequest="50"/>
                 
             </StackLayout>
         </ScrollView>
