@@ -302,6 +302,15 @@ namespace Game.Views
             DrawItemLists();
         }
 
+        public async void ManualAssignButton_Clicked(object sender, EventArgs e)
+        {
+            // Navigate to item pickup page
+            await Navigation.PushModalAsync(new PickItemsPage());
+
+            // Show what was picked up
+            DrawItemLists();
+        }
+
         /// <summary>
         /// Show the Page for New Round
         /// 
