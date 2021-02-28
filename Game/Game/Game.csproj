@@ -31,6 +31,9 @@
     <Compile Update="Views\Battle\NewRoundPage.xaml.cs">
       <DependentUpon>NewRoundPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Battle\BeginGame.xaml.cs">
+      <DependentUpon>BeginGame.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Battle\ScorePage.xaml.cs">
       <DependentUpon>ScorePage.xaml</DependentUpon>
     </Compile>

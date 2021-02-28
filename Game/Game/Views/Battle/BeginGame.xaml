@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Game.Views.BeginGame">
+
+    <ContentPage.Content>
+        <ScrollView HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Never"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand">
+            
+            <StackLayout Style="{StaticResource VerticalStack}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center">
+
+                <Image Source="icon_dungeon.png"
+                       VerticalOptions="CenterAndExpand"
+                       HeightRequest="300"
+                       WidthRequest="300" />
+                <Label Text="WELCOME TO THE POKEMON DUNGEON!"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="20"
+                       Style="{StaticResource CenterMessageStyle}" />
+                <Label Text="Enjoy the battle and catch Pokemons!"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="20"
+                       Style="{StaticResource CenterMessageStyle}" />
+                <ImageButton HeightRequest="30"
+                             WidthRequest="100"
+                             Margin="20"
+                             Source="icon_enter.png"
+                             Clicked="StartGame_Clicked" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
