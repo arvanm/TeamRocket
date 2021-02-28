@@ -324,6 +324,16 @@ namespace Game.GameRules
                     LeftFinger = LeftFingerString,
                     Pokeball = PokeballString,
                 },
+
+                new CharacterModel {
+                    Name = "Poor",
+                    Description = "Has Nothing",
+                    Level = 1,
+                    MaxHealth = 1,
+                    CurrentHealth = 1,
+                    Job = CharacterJobEnum.PetLover,
+                    ImageURI = "character_01.png",
+                },
             };
 
             return datalist;
