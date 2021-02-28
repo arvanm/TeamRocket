@@ -8,65 +8,73 @@
              x:Class="Game.Views.PickCharactersPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="GO!"
+                     IconImageSource="icon_go.png"
+                     Clicked="BattleButton_Clicked"
+                     x:Name="BeginBattleToolbarButton" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout Style="{StaticResource OuterBoxStack}">
 
-                <Label Text="Pick Your Trainers" Style="{StaticResource CenterMessageLargeStyle}"/>
+                <!-- Team Size and Button -->
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="CenterAndExpand">
+                    <Label Text="Team Size:"
+                           Style="{StaticResource CenterMessageLargeStyle}" />
+                    <Label Text="0"
+                           x:Name="PartyCountLabel"
+                           Style="{StaticResource CenterMessageLargeStyle}" />
+                    <Button Text="Go!"
+                            x:Name="BeginBattleButton"
+                            Clicked="BattleButton_Clicked"
+                            Margin="30, 0, 0, 0"
+                            Padding="30, 5, 30, 5"
+                            VerticalOptions="Center"
+                            BackgroundColor="{StaticResource PageBackgroundColor}" />
+                </StackLayout>
 
+                <!-- Party List and Database Candidate List -->
+                <Grid BackgroundColor="Red"
+                      RowSpacing="5">
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="350" />
+                        <RowDefinition Height="350" />
+                    </Grid.RowDefinitions>
 
-                <FlexLayout BindableLayout.ItemsSource="{Binding DatabaseCharacterList}"
-                            Wrap="Wrap"
-                            Direction="Row"
-                            JustifyContent="SpaceEvenly">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Padding="10"
-                                         HorizontalOptions="Center">
-
-                                <ImageButton Source="{Binding ImageURI}"
-                                             CommandParameter="{Binding Id}"
-                                             HeightRequest="80" WidthRequest="80"
-                                             Clicked="CharacterSelected"/>
-
-                                <Label Text="{Binding Name}"
-                                       HorizontalTextAlignment="Center" />
-
-                                <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Center">
-                                    <Label Text="Level" />
-                                    <Label Text="{Binding Level}" />
-                                </StackLayout>
-
-                            </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>
-
-                <StackLayout>
-                    <StackLayout>
-                        <Label Text="Selected Trainers" Style="{StaticResource CenterMessageStyle}"/>
-                        <FlexLayout
-                            x:Name="PartyListView"
-                            BindableLayout.ItemsSource="{Binding PartyCharacterList}"
-                            Wrap="Wrap"
-                            Direction="Row"
-                            JustifyContent="SpaceEvenly">
+                    <!-- Party List -->
+                    <StackLayout Grid.Row="0"
+                                 Grid.Column="0"
+                                 BackgroundColor="{StaticResource PageBackgroundColor}"
+                                 Padding="0, 15, 0, 0">
+                        <FlexLayout x:Name="PartyListView"
+                                    BindableLayout.ItemsSource="{Binding PartyCharacterList}"
+                                    Wrap="Wrap"
+                                    Direction="Row"
+                                    JustifyContent="SpaceEvenly">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout Padding="10"
-                                         HorizontalOptions="Center">
+                                                 HorizontalOptions="Center">
 
                                         <ImageButton Source="{Binding ImageURI}"
-                                             CommandParameter="{Binding Id}"
-                                             HeightRequest="80" WidthRequest="80"/>
+                                                     CommandParameter="{Binding Id}"
+                                                     HeightRequest="80"
+                                                     WidthRequest="80" />
 
                                         <Label Text="{Binding Name}"
-                                       HorizontalTextAlignment="Center" />
-
+                                               HorizontalTextAlignment="Center" Margin="0,0,0,-5" />
+                                        
+                                        <Label Text="{Binding Job}"
+                                               HorizontalTextAlignment="Center"
+                                               Margin="0,0,0,-5" />
+                                        
                                         <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Center">
+                                                     HorizontalOptions="Center"
+                                                     Margin="0,0,0,-5">
                                             <Label Text="Level" />
                                             <Label Text="{Binding Level}" />
                                         </StackLayout>
@@ -76,23 +84,52 @@
                             </BindableLayout.ItemTemplate>
                         </FlexLayout>
                     </StackLayout>
-                    <StackLayout HorizontalOptions="CenterAndExpand">
 
-                        <Label Text="Number of Trainers" Style="{StaticResource CenterMessageStyle}"/>
+                    <!-- Database List -->
+                    <StackLayout BackgroundColor="{StaticResource PageBackgroundColor}"
+                                 Grid.Row="1"
+                                 Grid.Column="0"
+                                 Padding="0, 20, 0, 0">
+                        <Label Text="Available Pokemon Trainers:"
+                               Style="{StaticResource CenterMessageStyle}" />
+                        <ScrollView VerticalScrollBarVisibility="Always">
+                            <FlexLayout BindableLayout.ItemsSource="{Binding DatabaseCharacterList}"
+                                        Wrap="Wrap"
+                                        Direction="Row"
+                                        JustifyContent="SpaceEvenly">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Padding="10"
+                                                     HorizontalOptions="Center">
 
-                        <Label Style="{StaticResource CenterMessageStyle}" 
-                            x:Name="PartyCountLabel"
-                            Text="0"/>
+                                            <ImageButton Source="{Binding ImageURI}"
+                                                         CommandParameter="{Binding Id}"
+                                                         HeightRequest="80"
+                                                         WidthRequest="80"
+                                                         Clicked="CharacterSelected" />
 
-                        <Button 
-                            x:Name="BeginBattleButton"
-                            Clicked="BattleButton_Clicked" 
-                            Text="Trainers Selected"
-                            IsEnabled="False"/>
+                                            <Label Text="{Binding Name}"
+                                                   HorizontalTextAlignment="Center"
+                                                   Margin="0,0,0,-5" />
+                                            
+                                            <Label Text="{Binding Job}"
+                                                   HorizontalTextAlignment="Center"
+                                                   Margin="0,0,0,-5" />
 
+                                            <StackLayout Orientation="Horizontal"
+                                                         HorizontalOptions="Center"
+                                                         Margin="0,0,0,-5">
+                                                <Label Text="Level" />
+                                                <Label Text="{Binding Level}" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </ScrollView>
                     </StackLayout>
-
-                </StackLayout>
+                    
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
