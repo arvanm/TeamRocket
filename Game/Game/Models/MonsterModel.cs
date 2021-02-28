@@ -9,8 +9,6 @@ namespace Game.Models
     /// </summary>
     public class MonsterModel : BasePlayerModel<MonsterModel>
     {
-        // Type of monster, default to Unknown
-        public MonsterTypeEnum MonsterType { get; set; } = MonsterTypeEnum.Unknown;
 
         // Speical attack value, default to 0
         public int SpecialAttack { get; set; } = 0;
