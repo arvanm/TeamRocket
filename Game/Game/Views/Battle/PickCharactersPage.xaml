@@ -63,7 +63,8 @@
                                         <ImageButton Source="{Binding ImageURI}"
                                                      CommandParameter="{Binding Id}"
                                                      HeightRequest="80"
-                                                     WidthRequest="80" />
+                                                     WidthRequest="80"
+                                                     Clicked="CharacterDeselected" />
 
                                         <Label Text="{Binding Name}"
                                                HorizontalTextAlignment="Center" Margin="0,0,0,-5" />
