@@ -445,7 +445,7 @@ namespace Game.Views
                     break;
                 case PlayerTypeEnum.Unknown:
                 default:
-                    BattleMapBackgroundColor = "BattleMapTransparentColor";
+                    BattleMapBackgroundColor = "BattleMapEmptyColor";
                     break;
             }
 
