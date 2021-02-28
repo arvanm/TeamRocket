@@ -147,6 +147,7 @@
     <Content Include="icon_dungeon.png" />
     <Content Include="icon_edit.png" />
     <Content Include="icon_enter.png" />
+    <Content Include="icon_go.png" />
     <Content Include="icon_monster.png" />
     <Content Include="icon_new.png" />
     <Content Include="icon_pokeball.png" />
