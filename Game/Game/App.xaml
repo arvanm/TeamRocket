@@ -344,8 +344,9 @@
             <Style TargetType="StackLayout"
                 x:Key="PlayerBattleDisplayBox"
                 BasedOn="{StaticResource PlayerInfoBox}">
-                <Setter Property="HeightRequest" Value="80" />
-                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="Padding" Value="0, 10, 0, 5" />
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="WidthRequest" Value="40" />
             </Style>
 
             <Style TargetType="StackLayout"

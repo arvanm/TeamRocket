@@ -120,8 +120,8 @@ namespace Game.Views
             // Hookup the image
             var PlayerImage = new Image
             {
-                Style = (Style)Application.Current.Resources["PlayerBattleMediumStyle"],
-                Source = data.ImageURI
+                Style = (Style)Application.Current.Resources["PlayerBattleSmallStyle"],
+                Source = data.ImageURI,
             };
 
             // Put the Image Button and Text inside a layout
@@ -276,7 +276,8 @@ namespace Game.Views
 
             // Set the Height for the MapGrid based on the number of rows * the height of the BattleMapFrame
 
-            var height = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapXAxiesCount * 60;
+            //var height = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapXAxiesCount * 50;
+            var height = this.FindByName<StackLayout>("BattleMapDisplay").Width;
 
             BattleMapDisplay.MinimumHeightRequest = height;
             BattleMapDisplay.HeightRequest = height;
@@ -933,7 +934,8 @@ namespace Game.Views
                 case BattleModeEnum.MapAbility:
                 case BattleModeEnum.MapFull:
                 case BattleModeEnum.MapNext:
-                    GamePlayersTopDisplay.IsVisible = false;
+                    CharacterDisplay.IsVisible = true;
+                    MonsterDisplay.IsVisible = true;
                     BattleMapDisplay.IsVisible = true;
                     break;
 
@@ -941,7 +943,8 @@ namespace Game.Views
                 case BattleModeEnum.SimpleNext:
                 case BattleModeEnum.Unknown:
                 default:
-                    GamePlayersTopDisplay.IsVisible = true;
+                    CharacterDisplay.IsVisible = true;
+                    MonsterDisplay.IsVisible = true;
                     BattleMapDisplay.IsVisible = false;
                     break;
             }
