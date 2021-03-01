@@ -1,4 +1,5 @@
 ﻿using Game.Models;
+using Game.Helpers;
 using Game.ViewModels;
 using System;
 using System.Linq;
@@ -256,6 +257,28 @@ namespace Game.Views
             PopupItemLocation.Text = data.Location.ToMessage();
             PopupItemAttribute.Text = data.Attribute.ToMessage();
             PopupItemValue.Text = " + " + data.Value.ToString();
+
+            // Display damage for Primary Hand and Pokeball
+            if (data.Location == ItemLocationEnum.PrimaryHand || data.Location == ItemLocationEnum.Pokeball)
+            {
+                PopupItemDamage.IsVisible = true;
+                PopupItemDamageValue.Text = " + " + data.Damage.ToString();
+            }
+            else
+            {
+                PopupItemDamage.IsVisible = false;
+            }
+
+            // Display range for Primary Hand
+            if (data.Location == ItemLocationEnum.PrimaryHand)
+            {
+                PopupItemRange.IsVisible = true;
+                PopupItemRangeValue.Text = " + " + data.Range.ToString();
+            }
+            else
+            {
+                PopupItemRange.IsVisible = false;
+            }
             return true;
         }
 

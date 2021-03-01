@@ -12,7 +12,7 @@
                          AbsoluteLayout.LayoutBounds="1,1,1,1"
                          AbsoluteLayout.LayoutFlags="All">
 
-                <ScrollView x:Name="ScrollView">
+                <ScrollView x:Name="ScrollView" VerticalScrollBarVisibility="Always">
 
                     <StackLayout Style="{StaticResource VerticalStack}">
 
@@ -33,6 +33,13 @@
                         <Label Text="Characters"
                                Style="{StaticResource MessageStyle}" />
                         <FlexLayout x:Name="CharacterListFrame"
+                                    JustifyContent="Start"
+                                    AlignContent="Start"
+                                    Wrap="Wrap" />
+
+                        <Label Text="Pokemons Captured"
+                               Style="{StaticResource MessageStyle}" />
+                        <FlexLayout x:Name="PokemonsListFrame"
                                     JustifyContent="Start"
                                     AlignContent="Start"
                                     Wrap="Wrap" />
@@ -122,6 +129,22 @@
                                        Style="{StaticResource ValueStyle}" />
                             </StackLayout>
 
+                            <StackLayout Style="{StaticResource HorizontalStack}"
+                                         x:Name="PopupItemDamage">
+                                <Label Text="Damage"
+                                       Style="{StaticResource LabelStyle}" />
+                                <Label x:Name="PopupItemDamageValue"
+                                       Style="{StaticResource ValueStyle}" />
+                            </StackLayout>
+
+                            <StackLayout Style="{StaticResource HorizontalStack}"
+                                         x:Name="PopupItemRange">
+                                <Label Text="Range"
+                                       Style="{StaticResource LabelStyle}" />
+                                <Label x:Name="PopupItemRangeValue"
+                                       Style="{StaticResource ListStyle}" />
+                            </StackLayout>
+                            
                             <Button x:Name="PopupCloseButton"
                                     Clicked="ClosePopup_Clicked"
                                     Text="Close" />
