@@ -562,13 +562,13 @@ namespace Game.Views
 
             // Show what action the Attacker used
             AttackerAttack.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.PreviousAction.ToImageURI();
-            
+
             var item = ItemIndexViewModel.Instance.GetItem(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PrimaryHand);
             if (item != null)
             {
                 AttackerAttack.Source = item.ImageURI;
             }
-            
+
             DefenderImage.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.ImageURI;
             DefenderName.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.Name;
             DefenderHealth.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.GetCurrentHealthTotal.ToString() + " / " + BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender.GetMaxHealthTotal.ToString();
@@ -719,9 +719,7 @@ namespace Game.Views
         /// </summary>
         public void GameOver()
         {
-            // Save the Score to the Score View Model, by sending a message to it.
-            var Score = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore;
-            MessagingCenter.Send(this, "AddData", Score);
+
 
             ShowBattleMode();
         }
@@ -765,8 +763,7 @@ namespace Game.Views
 
         /// <summary>
         /// Battle Over, so Exit Button
-        /// Need to show this for the user to click on.
-        /// The Quit does a prompt, exit just exits
+        /// Return to the Game Page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -809,6 +806,33 @@ namespace Game.Views
         {
             ShowBattleMode();
             await Navigation.PushModalAsync(new ScorePage());
+        }
+
+        /// <summary>
+        /// Save the score
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void SaveScoreButton_Clicked(object sender, EventArgs args)
+        {
+            // Save the Score to the Score View Model, by sending a message to it.
+            var Score = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore;
+            MessagingCenter.Send(this, "Create", Score);
+        }
+
+        /// <summary>
+        /// Update score name when entry changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void ScoreNameEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (e == null)
+            {
+                return;
+            }
+            var NewName = e.NewTextValue;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.Name = NewName;
         }
 
         /// <summary>
@@ -907,6 +931,13 @@ namespace Game.Views
 
                     // Show the Game Over Display
                     GameOverDisplay.IsVisible = true;
+                    ScoreNameEntry.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.Name;
+
+                    // Show remain Pokemons
+                    foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList())
+                    {
+                        AliveMonsterBox.Children.Add(PlayerInfoDisplayBox(data));
+                    }
                     break;
 
                 case BattleStateEnum.RoundOver:
