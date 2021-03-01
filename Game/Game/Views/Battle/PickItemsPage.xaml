@@ -6,9 +6,22 @@
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource VerticalStack}">
-            <Label Text="Pick Items Page..."></Label>
+            <Label Text="Select Items "></Label>
 
+            <FlexLayout x:Name="ItemListFoundFrame"
+                                    JustifyContent="Start"
+                                    AlignContent="Start"
+                                    Wrap="Wrap" />
+            <Label Text="Select Character "></Label>
+            <FlexLayout x:Name="CharacterListFrame"
+                                    JustifyContent="Start"
+                                    AlignContent="Start"
+                                    Wrap="Wrap" />
+            <Label x:Name="LabelActionTaken" Text="Action Taken:" IsVisible="False"/>
+            <Label x:Name="ActionDone" IsVisible="false"/>
+            <Button x:Name="SaveButton" Clicked="SaveButton_Clicked" Text="Save" IsEnabled="False"></Button>
             <Button Clicked="CloseButton_Clicked" Text="Close"></Button>
+            
         </StackLayout>
         
     </ContentPage.Content>
