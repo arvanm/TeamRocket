@@ -46,7 +46,7 @@ namespace Game.Views
                         break;
 
                     case (int)MenuItemEnum.Battle:
-                        MenuPages.Add(id, new NavigationPage(new PickCharactersPage()));
+                        MenuPages.Add(id, new NavigationPage(new BeginGame()));
                         break;
 
                     case (int)MenuItemEnum.About:
