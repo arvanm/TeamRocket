@@ -136,13 +136,43 @@ namespace Game.Views
             var ItemButton = new ImageButton
             {
                 Style = (Style)Application.Current.Resources["ImageMediumStyle"],
-                Source = data.ImageURI
+                Source = data.ImageURI,
             };
 
             if (ClickableButton)
             {
+                
                 // Add a event to the user can click the item and see more
-                ItemButton.Clicked += (sender, args) => SetItem(data);
+                ItemButton.Clicked += (sender, args) => {
+
+                    if (SelectedItem == data)
+                    {
+                        _ = ItemButton.IsFocused;
+                        ItemButton.BorderColor = Color.Transparent;
+                        ItemButton.BorderWidth = 0;
+                    }
+                    else
+                    {
+                        // Get focused on Item and create a border
+                        _ = ItemButton.IsFocused;
+                        ItemButton.BorderColor = Color.Red;
+                        ItemButton.BorderWidth = 2;
+                    }
+                    // Close manualy Item assign when items is zero
+                    if (AvailableItem.Count() == 0)
+                    {
+                        object s = new object();
+                        EventArgs e = new EventArgs();
+                        CloseButton_Clicked(s, e);
+                    }
+                    //set Item value
+                    SelectedItem = data;
+
+                    if (SelectedCharacter != null && SelectedItem != null)
+                    {
+                        SaveButton.IsEnabled = true;
+                    }
+                };
             }
 
             // Put the Image Button and Text inside a layout
@@ -157,22 +187,6 @@ namespace Game.Views
             };
 
             return ItemStack;
-        }
-
-        private void SetItem(ItemModel input)
-        {
-            if (AvailableItem.Count() == 0)
-            {
-                object s = new object();
-                EventArgs e = new EventArgs();
-                CloseButton_Clicked(s, e);
-            }
-            SelectedItem = input;
-
-            if (SelectedCharacter != null && SelectedItem != null)
-            {
-                SaveButton.IsEnabled = true;
-            }
         }
 
         private void SetCharacter(PlayerInfoModel input)
@@ -213,7 +227,20 @@ namespace Game.Views
             if (ClickableButton)
             {
                 // Add a event to the user can click the charcter image and see more
-                PlayerImage.Clicked += (sender, args) => SetCharacter(data);
+                PlayerImage.Clicked += (sender, args) => {
+
+                    // Get focused on Item and create a border
+                    _ = PlayerImage.IsFocused;
+                    PlayerImage.BorderColor = Color.Red;
+                    PlayerImage.BorderWidth = 2;
+
+                    SelectedCharacter = data;
+
+                    if (SelectedCharacter != null && SelectedItem != null)
+                    {
+                        SaveButton.IsEnabled = true;
+                    }
+                };
             }
 
             // Add the Level
