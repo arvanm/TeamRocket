@@ -24,19 +24,19 @@ namespace UnitTests.GameRules
             Assert.AreEqual(14, result.Count());
         }
 
-        //[Test]
-        //public void DefaultData_Valid_LoadData_Character_Should_Pass()
-        //{
-        //    // Arrange
+        [Test]
+        public void DefaultData_Valid_LoadData_Character_Should_Pass()
+        {
+            // Arrange
 
-        //    // Act
-        //    var result = DefaultData.LoadData(new CharacterModel());
+            // Act
+            var result = DefaultData.LoadData(new CharacterModel());
 
-        //    // Reset
+            // Reset
 
-        //    // Assert
-        //    Assert.AreEqual(7, result.Count());
-        //}
+            // Assert
+            Assert.AreEqual(8, result.Count());
+        }
 
         [Test]
         public void DefaultData_Valid_LoadData_Monster_Should_Pass()
