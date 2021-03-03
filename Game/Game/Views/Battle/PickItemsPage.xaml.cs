@@ -140,24 +140,25 @@ namespace Game.Views
             };
 
             if (ClickableButton)
-            {
-                
+            {            
                 // Add a event to the user can click the item and see more
-                ItemButton.Clicked += (sender, args) => {
+                ItemButton.Clicked += (sender, args) =>
+                {
 
                     if (SelectedItem == data)
                     {
                         _ = ItemButton.IsFocused;
                         ItemButton.BorderColor = Color.Transparent;
                         ItemButton.BorderWidth = 0;
+                        SelectedItem = null;
+                        return;
                     }
-                    else
-                    {
-                        // Get focused on Item and create a border
-                        _ = ItemButton.IsFocused;
-                        ItemButton.BorderColor = Color.Red;
-                        ItemButton.BorderWidth = 2;
-                    }
+
+                    // Get focused on Item and create a border
+                    _ = ItemButton.IsFocused;
+                    ItemButton.BorderColor = Color.Red;
+                    ItemButton.BorderWidth = 2;
+
                     // Close manualy Item assign when items is zero
                     if (AvailableItem.Count() == 0)
                     {
@@ -168,6 +169,7 @@ namespace Game.Views
                     //set Item value
                     SelectedItem = data;
 
+                    //Check to see if we can enable the save button
                     if (SelectedCharacter != null && SelectedItem != null)
                     {
                         SaveButton.IsEnabled = true;
@@ -187,16 +189,6 @@ namespace Game.Views
             };
 
             return ItemStack;
-        }
-
-        private void SetCharacter(PlayerInfoModel input)
-        {
-            SelectedCharacter = input;
-
-            if (SelectedCharacter != null && SelectedItem != null)
-            {
-                SaveButton.IsEnabled = true;
-            }
         }
 
         /// <summary>
@@ -227,12 +219,22 @@ namespace Game.Views
             if (ClickableButton)
             {
                 // Add a event to the user can click the charcter image and see more
-                PlayerImage.Clicked += (sender, args) => {
+                PlayerImage.Clicked += (sender, args) =>
+                {
+                    if (SelectedCharacter == data)
+                    {
+                        _ = PlayerImage.IsFocused;
+                        PlayerImage.BorderColor = Color.Transparent;
+                        PlayerImage.BorderWidth = 0;
+                        SelectedCharacter = null;
+                        return;
+                    }
 
                     // Get focused on Item and create a border
                     _ = PlayerImage.IsFocused;
                     PlayerImage.BorderColor = Color.Red;
                     PlayerImage.BorderWidth = 2;
+
 
                     SelectedCharacter = data;
 
@@ -302,9 +304,9 @@ namespace Game.Views
             return PlayerStack;
         }
 
-        public async void SaveButton_Clicked(object sender, EventArgs e)
+        public void SaveButton_Clicked(object sender, EventArgs e)
         {
-            if(SelectedCharacter != null && SelectedItem != null)
+            if (SelectedCharacter != null && SelectedItem != null)
             {
                 // Update the character with Item attributes
                 UpdateAttributeValues();
@@ -331,7 +333,7 @@ namespace Game.Views
                 SaveButton.IsEnabled = false;
 
                 OnAppearing();
-                
+
             }
         }
 
