@@ -138,7 +138,11 @@ namespace Game.Engine.EngineGame
             // In Auto Battle this happens and the characters get their items
             // When called manualy, make sure to do the character pickup before calling EndRound
 
-            throw new System.NotImplementedException();
+            // Have each character pickup items...
+            foreach (var character in EngineSettings.CharacterList)
+            {
+                PickupItemsFromPool(character);
+            }
         }
 
         /// <summary>
