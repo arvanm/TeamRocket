@@ -48,17 +48,45 @@ namespace Game.Engine.EngineGame
 
             // INFO: Teams, if you have other actions they would go here.
 
+            bool result = false;
+
             // If the action is not set, then try to set it or use Attact
+            if (EngineSettings.CurrentAction == ActionEnum.Unknown)
+            {
+                // Set the action if one is not set
+                EngineSettings.CurrentAction = DetermineActionChoice(Attacker);
 
-            // Based on the current action...
+                // When in doubt, attack...
+                if (EngineSettings.CurrentAction == ActionEnum.Unknown)
+                {
+                    EngineSettings.CurrentAction = ActionEnum.Attack;
+                }
+            }
 
-            // Increment Turn Count so you know what turn number
+            switch (EngineSettings.CurrentAction)
+            {
+                case ActionEnum.Attack:
+                    result = Attack(Attacker);
+                    break;
+
+                case ActionEnum.Ability:
+                    result = UseAbility(Attacker);
+                    break;
+
+                case ActionEnum.Move:
+                    result = MoveAsTurn(Attacker);
+                    break;
+            }
+
+            EngineSettings.BattleScore.TurnCount++;
 
             // Save the Previous Action off
+            EngineSettings.PreviousAction = EngineSettings.CurrentAction;
 
             // Reset the Action to unknown for next time
+            EngineSettings.CurrentAction = ActionEnum.Unknown;
 
-            throw new System.NotImplementedException();
+            return result;
         }
 
         /// <summary>
