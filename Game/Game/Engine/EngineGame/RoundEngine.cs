@@ -196,10 +196,12 @@ namespace Game.Engine.EngineGame
         public override PlayerInfoModel GetNextPlayerTurn()
         {
             // Remove the Dead
+            RemoveDeadPlayersFromList();
 
             // Get Next Player
+            var PlayerCurrent = GetNextPlayerInList();
 
-            throw new System.NotImplementedException();
+            return PlayerCurrent;
         }
 
         /// <summary>
