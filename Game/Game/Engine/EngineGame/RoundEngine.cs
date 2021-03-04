@@ -233,14 +233,42 @@ namespace Game.Engine.EngineGame
         public override List<PlayerInfoModel> MakePlayerList()
         {
             // Start from a clean list of players
+            EngineSettings.PlayerList.Clear();
 
             // Remember the Insert order, used for Sorting
+            var ListOrder = 0;
 
-            // Add the Characters
+            foreach (var data in EngineSettings.CharacterList)
+            {
+                if (data.Alive)
+                {
+                    EngineSettings.PlayerList.Add(
+                        new PlayerInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
 
-            // Add the Monsters
+                    ListOrder++;
+                }
+            }
 
-            throw new System.NotImplementedException();
+            foreach (var data in EngineSettings.MonsterList)
+            {
+                if (data.Alive)
+                {
+                    EngineSettings.PlayerList.Add(
+                        new PlayerInfoModel(data)
+                        {
+                            // Remember the order
+                            ListOrder = ListOrder
+                        });
+
+                    ListOrder++;
+                }
+            }
+
+            return EngineSettings.PlayerList;
         }
 
         /// <summary>
