@@ -209,7 +209,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override List<PlayerInfoModel> RemoveDeadPlayersFromList()
         {
-            throw new System.NotImplementedException();
+            return base.RemoveDeadPlayersFromList();
         }
 
         /// <summary>
@@ -219,7 +219,12 @@ namespace Game.Engine.EngineGame
         {
             // TODO Teams: Implement the order
 
-            throw new System.NotImplementedException();
+            EngineSettings.PlayerList = EngineSettings.PlayerList.OrderByDescending(a => a.Level)
+                .ThenByDescending(a => a.GetSpeed())
+                .ThenBy(a => a.Name)
+                .ToList();
+
+            return EngineSettings.PlayerList;
         }
 
         /// <summary>
