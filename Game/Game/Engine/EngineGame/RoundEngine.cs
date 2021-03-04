@@ -276,21 +276,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override PlayerInfoModel GetNextPlayerInList()
         {
-            // Walk the list from top to bottom
-            // If Player is found, then see if next player exist, if so return that.
-            // If not, return first player (looped)
-
-            // If List is empty, return null
-
-            // No current player, so set the first one
-
-            // Find current player in the list
-
-            // If at the end of the list, return the first element
-
-            // Return the next element
-
-            throw new System.NotImplementedException();
+            return base.GetNextPlayerInList();
         }
 
         /// <summary>
@@ -323,7 +309,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override ItemModel SwapCharacterItem(PlayerInfoModel character, ItemLocationEnum setLocation, ItemModel PoolItem)
         {
-            throw new System.NotImplementedException();
+            return base.SwapCharacterItem(character,setLocation,PoolItem);
         }
 
         /// <summary>
@@ -331,7 +317,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool RemoveCharacterBuffs()
         {
-            throw new System.NotImplementedException();
+            return base.RemoveCharacterBuffs();
         }
     }
 }
