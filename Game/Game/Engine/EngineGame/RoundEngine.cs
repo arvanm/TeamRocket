@@ -156,15 +156,38 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override RoundEnum RoundNextTurn()
         {
-            // No characters, game is over..
+            // No characters, game is over...
+            if (EngineSettings.CharacterList.Count < 1)
+            {
+                // Game Over
+                EngineSettings.RoundStateEnum = RoundEnum.GameOver;
+                return EngineSettings.RoundStateEnum;
+            }
 
             // Check if round is over
+            if (EngineSettings.MonsterList.Count < 1)
+            {
+                // If over, New Round
+                EngineSettings.RoundStateEnum = RoundEnum.NewRound;
+                return RoundEnum.NewRound;
+            }
 
-            // If in Auto Battle pick the next attacker
+            if (EngineSettings.BattleScore.AutoBattle)
+            {
+                // Decide Who gets next turn
+                // Remember who just went...
+                EngineSettings.CurrentAttacker = GetNextPlayerTurn();
 
-            // Do the turn..
+                // Only Attack for now
+                EngineSettings.CurrentAction = ActionEnum.Attack;
+            }
 
-            throw new System.NotImplementedException();
+            // Do the turn....
+            Turn.TakeTurn(EngineSettings.CurrentAttacker);
+
+            EngineSettings.RoundStateEnum = RoundEnum.NextTurn;
+
+            return EngineSettings.RoundStateEnum;
         }
 
         /// <summary>
