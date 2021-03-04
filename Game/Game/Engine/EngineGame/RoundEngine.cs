@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Game.Engine.EngineBase;
 using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
+using Game.GameRules;
 using Game.Models;
 
 namespace Game.Engine.EngineGame
@@ -86,7 +89,26 @@ namespace Game.Engine.EngineGame
         {
             // TODO: Teams, You need to implement your own Logic can not use mine.
 
-            throw new System.NotImplementedException();
+            int TargetLevel = 1;
+
+            if (EngineSettings.CharacterList.Count() > 0)
+            {
+                // Get the Avg Character Level (linq is soo cool....)
+                TargetLevel = Convert.ToInt32(EngineSettings.CharacterList.Average(m => m.Level));
+            }
+
+            // get the same amount of monster of characters in game
+            for (var i = 0; i < EngineSettings.CharacterList.Count(); i++)
+            {
+                var data = RandomPlayerHelper.GetRandomMonster(TargetLevel, EngineSettings.BattleSettingsModel.AllowMonsterItems);
+
+                // Help identify which Monster it is
+                data.Name += " " + EngineSettings.MonsterList.Count() + 1;
+
+                EngineSettings.MonsterList.Add(new PlayerInfoModel(data));
+            }
+
+            return EngineSettings.MonsterList.Count();
         }
 
         /// <summary>
