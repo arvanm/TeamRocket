@@ -5,6 +5,7 @@ using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
 using Game.Engine.EngineBase;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Game.Engine.EngineGame
 {
@@ -250,7 +251,24 @@ namespace Game.Engine.EngineGame
 
             // TODO: Teams, You need to implement your own Logic can not use mine.
 
-            throw new System.NotImplementedException();
+            if (EngineSettings.PlayerList == null)
+            {
+                return null;
+            }
+
+            if (EngineSettings.PlayerList.Count < 1)
+            {
+                return null;
+            }
+
+            // Select first in the list
+
+            // TODO: Teams, You need to implement your own Logic can not use mine.
+            var Defender = EngineSettings.PlayerList
+                .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character)
+                .OrderBy(m => m.Difficulty).FirstOrDefault();
+
+            return Defender;
         }
 
         /// <summary>
@@ -263,7 +281,26 @@ namespace Game.Engine.EngineGame
 
             // TODO: Teams, You need to implement your own Logic can not use mine.
 
-            throw new System.NotImplementedException();
+            if (EngineSettings.PlayerList == null)
+            {
+                return null;
+            }
+
+            if (EngineSettings.PlayerList.Count < 1)
+            {
+                return null;
+            }
+
+            // Select first one to hit in the list for now...
+            // Attack the Weakness (lowest HP) MonsterModel first 
+
+            // TODO: Teams, You need to implement your own Logic can not use mine.
+
+            var Defender = EngineSettings.PlayerList
+                .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster)
+                .OrderBy(m => m.Difficulty).FirstOrDefault();
+
+            return Defender;
 
         }
 
