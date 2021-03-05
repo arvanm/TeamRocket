@@ -289,7 +289,15 @@ namespace Game.Engine.EngineGame
 
             // I use the same logic for Auto Battle as I do for Manual Battle
 
-            throw new System.NotImplementedException();
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.OffHand);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.RightFinger);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.LeftFinger);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
+        
+            return true;
         }
 
         /// <summary>
