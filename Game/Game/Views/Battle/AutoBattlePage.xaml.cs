@@ -46,7 +46,8 @@ namespace Game.Views
 			var CharacterPlayer = new PlayerInfoModel(Character);
 
 			// Turn on the Koenig version for now...
-			BattleEngineViewModel.Instance.SetBattleEngineToKoenig();
+			//BattleEngineViewModel.Instance.SetBattleEngineToKoenig();
+			BattleEngineViewModel.Instance.SetBattleEngineToGame();
 
 			BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
 
