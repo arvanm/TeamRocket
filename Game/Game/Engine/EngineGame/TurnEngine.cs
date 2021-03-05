@@ -502,7 +502,7 @@ namespace Game.Engine.EngineGame
 
             // Add to ScoreModel
 
-            throw new System.NotImplementedException();
+            return base.DropItems(Target);
         }
 
         /// <summary>
@@ -512,7 +512,55 @@ namespace Game.Engine.EngineGame
         /// <param name="DefenseScore"></param>
         public override HitStatusEnum RollToHitTarget(int AttackScore, int DefenseScore)
         {
-            throw new System.NotImplementedException();
+            // Roll a 20 sided dice
+            var d20 = DiceHelper.RollDice(1, 20);
+
+            // if dice roll is 1, automatic miss
+            if (d20 == 1)
+            {
+                EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
+                EngineSettings.BattleMessagesModel.AttackStatus = " rolls 1 to miss ";
+
+                if (EngineSettings.BattleSettingsModel.AllowCriticalMiss)
+                {
+                    EngineSettings.BattleMessagesModel.AttackStatus = " rolls 1 to completly miss ";
+                    EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalMiss;
+                }
+
+                return EngineSettings.BattleMessagesModel.HitStatus;
+            }
+
+            // if dice is 20, automatic hit
+            if (d20 == 20)
+            {
+                EngineSettings.BattleMessagesModel.AttackStatus = " rolls 20 for hit ";
+                EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
+
+                if (EngineSettings.BattleSettingsModel.AllowCriticalHit)
+                {
+                    EngineSettings.BattleMessagesModel.AttackStatus = " rolls 20 for lucky hit ";
+                    EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.CriticalHit;
+                }
+                return EngineSettings.BattleMessagesModel.HitStatus;
+            }
+
+            // if hit score is less than defense, it's a miss
+            var ToHitScore = d20 + AttackScore;
+            if (ToHitScore < DefenseScore)
+            {
+                EngineSettings.BattleMessagesModel.AttackStatus = " rolls " + d20 + " and misses ";
+
+                // Miss
+                EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Miss;
+                EngineSettings.BattleMessagesModel.DamageAmount = 0;
+                return EngineSettings.BattleMessagesModel.HitStatus;
+            }
+
+            EngineSettings.BattleMessagesModel.AttackStatus = " rolls " + d20 + " and hits ";
+
+            // Hit
+            EngineSettings.BattleMessagesModel.HitStatus = HitStatusEnum.Hit;
+            return EngineSettings.BattleMessagesModel.HitStatus;
         }
 
         /// <summary>
