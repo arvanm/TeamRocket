@@ -7,6 +7,9 @@ using Game.Engine.EngineBase;
 using System.Diagnostics;
 using System.Linq;
 using Game.Helpers;
+using Game.ViewModels;
+using Game.GameRules;
+using System;
 
 namespace Game.Engine.EngineGame
 {
@@ -574,8 +577,21 @@ namespace Game.Engine.EngineGame
 
             // The Number drop can be Up to the Round Count, but may be less.  
             // Negative results in nothing dropped
+            
+            Random rnd = new Random();
 
-            throw new System.NotImplementedException();
+            var NumberToDrop = rnd.Next(1,6);
+
+            var result = new List<ItemModel>();
+
+            for (var i = 0; i < NumberToDrop; i++)
+            {
+                // Get a random Unique Item
+                var data = ItemIndexViewModel.Instance.GetItem(RandomPlayerHelper.GetMonsterUniqueItem());
+                result.Add(data);
+            }
+
+            return result;
         }
 
         /// <summary>
