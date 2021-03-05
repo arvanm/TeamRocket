@@ -44,7 +44,7 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool StartBattle(bool isAutoBattle)
         {
-            // Reset the Score so it is fresh
+            // Reset the Score so it is fresh 
             EngineSettings.BattleScore = new ScoreModel
             {
                 AutoBattle = isAutoBattle
