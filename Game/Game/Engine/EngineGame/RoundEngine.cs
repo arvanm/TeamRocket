@@ -299,7 +299,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool GetItemFromPoolIfBetter(PlayerInfoModel character, ItemLocationEnum setLocation)
         {
-            throw new System.NotImplementedException();
+            return base.GetItemFromPoolIfBetter(character, setLocation);
         }
 
         /// <summary>
