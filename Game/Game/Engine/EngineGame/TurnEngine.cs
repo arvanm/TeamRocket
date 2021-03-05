@@ -311,7 +311,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override HitStatusEnum BattleSettingsOverride(PlayerInfoModel Attacker)
         {
-            throw new System.NotImplementedException();
+            return base.BattleSettingsOverride(Attacker);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace Game.Engine.EngineGame
         {
             // Based on the Hit Status, establish a message
 
-            throw new System.NotImplementedException();
+            return base.BattleSettingsOverrideHitStatusEnum(myEnum);
         }
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override void ApplyDamage(PlayerInfoModel Target)
         {
-            throw new System.NotImplementedException();
+             base.ApplyDamage(Target);
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override HitStatusEnum CalculateAttackStatus(PlayerInfoModel Attacker, PlayerInfoModel Target)
         {
-            throw new System.NotImplementedException();
+            return base.CalculateAttackStatus(Attacker, Target);
         }
 
         /// <summary>
@@ -346,7 +346,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool CalculateExperience(PlayerInfoModel Attacker, PlayerInfoModel Target)
         {
-            throw new System.NotImplementedException();
+            return base.CalculateExperience(Attacker, Target);
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool RemoveIfDead(PlayerInfoModel Target)
         {
-            throw new System.NotImplementedException();
+            return base.RemoveIfDead(Target);
         }
 
         /// <summary>
@@ -366,20 +366,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool TargetDied(PlayerInfoModel Target)
         {
-            // Mark Status in output
-
-            // Removing the 
-
-            // INFO: Teams, Hookup your Boss if you have one...
-
-            // Using a switch so in the future additional PlayerTypes can be added (Boss...)
-            // Add the Character to the killed list
-
-            // Add one to the monsters killed count...
-
-            // Add the MonsterModel to the killed list
-
-            throw new System.NotImplementedException();
+            return base.TargetDied(Target); 
         }
 
         /// <summary>
@@ -427,7 +414,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool DetermineCriticalMissProblem(PlayerInfoModel attacker)
         {
-            throw new System.NotImplementedException();
+            return base.DetermineCriticalMissProblem();
         }
     }
 }
