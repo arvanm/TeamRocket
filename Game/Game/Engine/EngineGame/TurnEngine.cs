@@ -147,19 +147,9 @@ namespace Game.Engine.EngineGame
         {
 
             /*
-             * TODO: TEAMS Work out your own move logic if you are implementing move
-             * 
-             * Mike's Logic
-             * The monster or charcter will move to a different square if one is open
-             * Find the Desired Target
-             * Jump to the closest space near the target that is open
-             * 
-             * If no open spaces, return false
-             * 
+             * Both monster and characters can move 
              */
 
-            //if (Attacker.PlayerType == PlayerTypeEnum.Monster)
-            //{
             // For Attack, Choose Who
             EngineSettings.CurrentDefender = AttackChoice(Attacker);
 
@@ -191,9 +181,7 @@ namespace Game.Engine.EngineGame
             EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + " moves closer to " + EngineSettings.CurrentDefender.Name;
 
             return EngineSettings.MapModel.MovePlayerOnMap(locationAttacker, openSquare);
-            //}
 
-            //return true;
         }
 
         /// <summary>
