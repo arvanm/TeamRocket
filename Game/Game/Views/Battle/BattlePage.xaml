@@ -170,8 +170,13 @@
 
                         <Button x:Name="AttackButton"
                                 Clicked="AttackButton_Clicked"
-                                Text="Next Attack"
+                                Text="Attack"
                                 IsVisible="False" />
+                        <Button x:Name="MoveButton"
+                                Clicked="MoveButton_Clicked"
+                                Text="Move"
+                                IsVisible="False"
+                                Margin="15"/>
                         <Button x:Name="NextRoundButton"
                                 Clicked="NextRoundButton_Clicked"
                                 Text="Next Round"
