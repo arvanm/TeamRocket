@@ -216,8 +216,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override List<PlayerInfoModel> OrderPlayerListByTurnOrder()
         {
-            // TODO Teams: Implement the order
-
+            // Players are order by speed and name.
             EngineSettings.PlayerList = EngineSettings.PlayerList.OrderByDescending(a => a.Level)
                 .ThenByDescending(a => a.GetSpeed())
                 .ThenBy(a => a.Name)
