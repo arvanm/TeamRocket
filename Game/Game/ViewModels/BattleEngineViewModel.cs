@@ -80,7 +80,8 @@ namespace Game.ViewModels
         /// </summary>
         public BattleEngineViewModel()
         {
-            SetBattleEngineToKoenig();
+            //SetBattleEngineToKoenig();
+            SetBattleEngineToGame();
         }
 
         /// <summary>
