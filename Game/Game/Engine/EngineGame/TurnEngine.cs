@@ -296,9 +296,7 @@ namespace Game.Engine.EngineGame
         public override PlayerInfoModel SelectMonsterToAttack()
         {
             // Select first one to hit in the list for now...
-            // Attack the Weakness (lowest HP) MonsterModel first 
-
-            // TODO: Teams, You need to implement your own Logic can not use mine.
+            // Attack the Hardest MonsterModel first 
 
             if (EngineSettings.PlayerList == null)
             {
@@ -309,11 +307,6 @@ namespace Game.Engine.EngineGame
             {
                 return null;
             }
-
-            // Select first one to hit in the list for now...
-            // Attack the Weakness (lowest HP) MonsterModel first 
-
-            // TODO: Teams, You need to implement your own Logic can not use mine.
 
             var Defender = EngineSettings.PlayerList
                 .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster)
