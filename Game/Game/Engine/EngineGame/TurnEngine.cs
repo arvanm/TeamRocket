@@ -266,9 +266,8 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override PlayerInfoModel SelectCharacterToAttack()
         {
-            // Select first in the list
-
-            // TODO: Teams, You need to implement your own Logic can not use mine.
+            // Select first one to hit in the list for now...
+            // Attack the Hardest MonsterModel first 
 
             if (EngineSettings.PlayerList == null)
             {
@@ -280,9 +279,6 @@ namespace Game.Engine.EngineGame
                 return null;
             }
 
-            // Select first in the list
-
-            // TODO: Teams, You need to implement your own Logic can not use mine.
             var Defender = EngineSettings.PlayerList
                 .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character)
                 .OrderBy(m => m.Difficulty).FirstOrDefault();
