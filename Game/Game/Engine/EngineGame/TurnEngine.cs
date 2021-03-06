@@ -57,8 +57,8 @@ namespace Game.Engine.EngineGame
             bool result = false;
 
             // If the action is not set, then try to set it or use Attact
-            if (EngineSettings.CurrentAction == ActionEnum.Unknown)
-            {
+            //if (EngineSettings.CurrentAction == ActionEnum.Unknown)
+            //{
                 // Set the action if one is not set
                 EngineSettings.CurrentAction = DetermineActionChoice(Attacker);
 
@@ -67,7 +67,7 @@ namespace Game.Engine.EngineGame
                 {
                     EngineSettings.CurrentAction = ActionEnum.Attack;
                 }
-            }
+            //}
 
             switch (EngineSettings.CurrentAction)
             {
