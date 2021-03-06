@@ -87,7 +87,6 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override int AddMonstersToRound()
         {
-            // TODO: Teams, You need to implement your own Logic can not use mine.
 
             int TargetLevel = 1;
 
