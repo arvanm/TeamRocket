@@ -167,7 +167,11 @@
 
                     <StackLayout Style="{StaticResource HorizontalStack}"
                                  HorizontalOptions="CenterAndExpand">
-
+                        <Button x:Name="CaptureButton"
+                                Clicked="CaptureButton_Clicked"
+                                Text="Capture"
+                                IsVisible="False"
+                                Margin="15"/>
                         <Button x:Name="AttackButton"
                                 Clicked="AttackButton_Clicked"
                                 Text="Attack"

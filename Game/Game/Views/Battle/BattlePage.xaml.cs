@@ -613,13 +613,25 @@ namespace Game.Views
 
 
         /// <summary>
-        /// Attack Action
+        /// Move Action
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void MoveButton_Clicked(object sender, EventArgs e)
         {
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
+
+            NextAttackExample();
+        }
+
+        /// <summary>
+        /// Capture Action
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void CaptureButton_Clicked(object sender, EventArgs e)
+        {
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Ability;
 
             NextAttackExample();
         }
@@ -892,6 +904,7 @@ namespace Game.Views
             StartBattleButton.IsVisible = false;
             AttackButton.IsVisible = false;
             MoveButton.IsVisible = false;
+            CaptureButton.IsVisible = false;
             MessageDisplayBox.IsVisible = false;
             BattlePlayerInfomationBox.IsVisible = false;
         }
@@ -963,6 +976,7 @@ namespace Game.Views
                     MessageDisplayBox.IsVisible = true;
                     AttackButton.IsVisible = true;
                     MoveButton.IsVisible = true;
+                    CaptureButton.IsVisible = true;
                     break;
 
                 // Based on the State disable buttons
