@@ -16,7 +16,10 @@
         Move = 10,
 
         // Ability
-        Ability = 20
+        Ability = 20,
+
+        // Capture
+        Capture = 30
     }
 
     /// <summary>
@@ -48,6 +51,10 @@
                     Message = " Uses Ability ";
                     break;
 
+                case ActionEnum.Capture:
+                    Message = " Captures ";
+                    break;
+
                 case ActionEnum.Unknown:
                 default:
                     break;
@@ -77,6 +84,10 @@
                     break;
 
                 case ActionEnum.Ability:
+                    Message = "item.png";
+                    break;
+
+                case ActionEnum.Capture:
                     Message = "item.png";
                     break;
 
