@@ -213,6 +213,13 @@ namespace Game.Models
 
                 // Return the attack as the sum of attack of Pokemons in Pokedex
                 var result = Pokedex.Sum(monster => monster.Attack);
+
+                // For Dojo master, return 1.25 times the value
+                if (Job == CharacterJobEnum.DojoMaster)
+                {
+                    result = (int)(result * 1.25);
+                }
+
                 return result;
             } 
         }
@@ -348,6 +355,13 @@ namespace Game.Models
 
                 // Return the damage as the sum of attack of Pokemons in Pokedex
                 var result = Pokedex.Sum(monster => monster.Attack);
+
+                // For Dojo master, return 1.25 times the value
+                if (Job == CharacterJobEnum.DojoMaster)
+                {
+                    result = (int)(result * 1.25);
+                }
+
                 return result;
             }
         }
