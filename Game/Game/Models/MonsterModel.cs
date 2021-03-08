@@ -10,9 +10,6 @@ namespace Game.Models
     public class MonsterModel : BasePlayerModel<MonsterModel>
     {
 
-        // Speical attack value, default to 0
-        public int SpecialAttack { get; set; } = 0;
-
         /// <summary>
         /// Set Type to Monster
         /// 

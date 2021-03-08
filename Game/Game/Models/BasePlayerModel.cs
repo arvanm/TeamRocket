@@ -126,6 +126,9 @@ namespace Game.Models
         // The Attack score to be used when attacking
         public int Attack { get; set; } = 0;
 
+        // Speical attack value, default to 0
+        public int SpecialAttack { get; set; } = 0;
+
         // The natural range for this Player, 1 is normal
         public int Range { get; set; } = 1;
 
@@ -253,7 +256,6 @@ namespace Game.Models
                 return result;
             }
         }
-
 
         #endregion Defense
 
