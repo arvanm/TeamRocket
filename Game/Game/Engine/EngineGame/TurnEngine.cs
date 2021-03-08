@@ -395,15 +395,22 @@ namespace Game.Engine.EngineGame
                 case HitStatusEnum.Hit:
                     // It's a Hit
 
-                    //Calculate Damage
+                    // Calculate Damage
                     EngineSettings.BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
 
-                    // If critical Hit, double the damage
-                    if (EngineSettings.BattleMessagesModel.HitStatus == HitStatusEnum.CriticalHit)
+                    // If Quick Attacker, 50% chance to deal critical Hit, double the damage
+                    if (Attacker.PlayerType == PlayerTypeEnum.Character && Attacker.Job == CharacterJobEnum.QuickAttacker)
                     {
-                        EngineSettings.BattleMessagesModel.DamageAmount *= 2;
-                    }
+                        // Roll Dice
+                        var d = DiceHelper.RollDice(1, 10);
 
+                        // 50% to double the damage
+                        if (d <= 5)
+                        {
+                            EngineSettings.BattleMessagesModel.DamageAmount *= 2;
+                        }
+                    }
+                        
                     // Apply the Damage
                     ApplyDamage(Target);
 
