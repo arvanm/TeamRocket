@@ -42,6 +42,7 @@ namespace Game.Models
             Range = data.Range;
             Defense = data.Defense;
             Attack = data.Attack;
+            SpecialAttack = data.SpecialAttack;
             MaxHealth = data.MaxHealth;
             CurrentHealth = data.CurrentHealth;
 
@@ -63,6 +64,7 @@ namespace Game.Models
             MonsterType = data.MonsterType;
 
             AbilityTracker = data.AbilityTracker;
+            Pokedex = data.Pokedex;
         }
 
         /// <summary>
@@ -103,7 +105,7 @@ namespace Game.Models
             Difficulty = data.Difficulty;
 
             Job = data.Job;
-            MonsterType = data.MonsterType;
+            Pokedex = data.Pokedex;
 
             // Give the copy a differet quid, so it can be used in the battles as a copy
             Guid = System.Guid.NewGuid().ToString();
@@ -169,6 +171,7 @@ namespace Game.Models
             Range = data.Range;
             Defense = data.Defense;
             Attack = data.Attack;
+            SpecialAttack = data.SpecialAttack;
             MaxHealth = data.MaxHealth;
             CurrentHealth = data.CurrentHealth;
 
@@ -185,7 +188,6 @@ namespace Game.Models
 
             Difficulty = data.Difficulty;
 
-            Job = data.Job;
             MonsterType = data.MonsterType;
 
             // Give the copy a differet quid, so it can be used in the battles as a copy
