@@ -41,6 +41,15 @@ namespace Game.Models
         }
 
         /// <summary>
+        /// Make a copy
+        /// </summary>
+        /// <param name="data"></param>
+        public MonsterModel(PlayerInfoModel data)
+        {
+            Update(data);
+        }
+
+        /// <summary>
         /// Update
         /// </summary>
         /// <param name="newData"></param>
@@ -82,7 +91,50 @@ namespace Game.Models
             Feet = newData.Feet;
             UniqueItem = newData.UniqueItem;
 
-            Job = newData.Job;
+            return true;
+        }
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="newData"></param>
+        /// <returns></returns>
+        public bool Update(PlayerInfoModel newData)
+        {
+            if (newData == null)
+            {
+                return false;
+            }
+
+            PlayerType = newData.PlayerType;
+            Guid = newData.Guid;
+            Name = newData.Name;
+            Description = newData.Description;
+            Level = newData.Level;
+            ImageURI = newData.ImageURI;
+
+            MonsterType = newData.MonsterType;
+
+            Difficulty = newData.Difficulty;
+
+            Speed = newData.Speed;
+            Defense = newData.Defense;
+            Attack = newData.Attack;
+            SpecialAttack = newData.SpecialAttack;
+
+            ExperienceTotal = newData.ExperienceTotal;
+            ExperienceRemaining = newData.ExperienceRemaining;
+            CurrentHealth = newData.CurrentHealth;
+            MaxHealth = newData.MaxHealth;
+
+            Head = newData.Head;
+            Necklass = newData.Necklass;
+            PrimaryHand = newData.PrimaryHand;
+            OffHand = newData.OffHand;
+            RightFinger = newData.RightFinger;
+            LeftFinger = newData.LeftFinger;
+            Feet = newData.Feet;
+            UniqueItem = newData.UniqueItem;
 
             return true;
         }
