@@ -239,6 +239,25 @@ namespace Game.Engine.EngineGame
         }
 
         /// <summary>
+        /// Get Pokemon's name from Monster
+        /// </summary>
+        /// <param name="Pokemon"></param>
+        /// <returns></returns>
+        public string GetPokemonName(PlayerInfoModel Pokemon)
+        {
+            if (Pokemon.PlayerType != PlayerTypeEnum.Monster)
+            {
+                return "";
+            }
+
+            // Get Pokemon's actual name (remove the number at the end)
+            var PokemonNameArr = Pokemon.Name.Trim().Split(' ');
+            PokemonNameArr = PokemonNameArr.Where((o, i) => i != PokemonNameArr.Length - 1).ToArray();
+            var PokemonName = string.Join(" ", PokemonNameArr);
+            return PokemonName;
+        }
+
+        /// <summary>
         /// Decide to use Capture or not
         /// 
         /// </summary>
@@ -257,7 +276,7 @@ namespace Game.Engine.EngineGame
             }
 
             // If a Pokemon with the same name already in Pokedex, and the attack is higher than the current target, skip
-            var MonsterInPokedex = Attacker.Pokedex.FirstOrDefault(m => m.Name == Defender.Name);
+            var MonsterInPokedex = Attacker.Pokedex.Where(m => m.Name == GetPokemonName(Defender)).FirstOrDefault();
             if (MonsterInPokedex != null && MonsterInPokedex.Attack >= Defender.Attack)
             {
                 return false;
@@ -479,8 +498,13 @@ namespace Game.Engine.EngineGame
             // Set Messages to empty
             EngineSettings.BattleMessagesModel.ClearMessages();
 
+            // Remove Pokemon with the same name in Pokedex
+            Attacker.Pokedex.RemoveAll(m => m.Name == GetPokemonName(Target));
+
             // Do the capture
-            Attacker.Pokedex.Add(new MonsterModel(Target));
+            var PokemonToCapture = new MonsterModel(Target);
+            PokemonToCapture.Name = GetPokemonName(Target);
+            Attacker.Pokedex.Add(PokemonToCapture);
 
             // Set Monster to not alive, remove
             Target.Alive = false;
