@@ -347,7 +347,7 @@ namespace Game.Engine.EngineGame
         public override PlayerInfoModel SelectCharacterToAttack()
         {
             // Select first one to hit in the list for now...
-            // Attack the Hardest MonsterModel first 
+            // Attack the Most leveled character
 
             if (EngineSettings.PlayerList == null)
             {
@@ -361,7 +361,7 @@ namespace Game.Engine.EngineGame
 
             var Defender = EngineSettings.PlayerList
                 .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Character)
-                .OrderBy(m => m.Difficulty).FirstOrDefault();
+                .OrderBy(m => m.Level).FirstOrDefault();
 
             return Defender;
         }
