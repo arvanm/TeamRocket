@@ -372,7 +372,7 @@ namespace Game.Engine.EngineGame
         public override PlayerInfoModel SelectMonsterToAttack()
         {
             // Select first one to hit in the list for now...
-            // Attack the Hardest MonsterModel first 
+            // Attack the Monster with the most current health first 
 
             if (EngineSettings.PlayerList == null)
             {
@@ -386,7 +386,7 @@ namespace Game.Engine.EngineGame
 
             var Defender = EngineSettings.PlayerList
                 .Where(m => m.Alive && m.PlayerType == PlayerTypeEnum.Monster)
-                .OrderByDescending(m => m.Difficulty).FirstOrDefault();
+                .OrderByDescending(m => m.CurrentHealth).FirstOrDefault();
 
             return Defender;
 
