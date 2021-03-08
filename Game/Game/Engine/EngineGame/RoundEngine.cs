@@ -294,7 +294,8 @@ namespace Game.Engine.EngineGame
             GetItemFromPoolIfBetter(character, ItemLocationEnum.RightFinger);
             GetItemFromPoolIfBetter(character, ItemLocationEnum.LeftFinger);
             GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
-        
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.Pokeball);
+
             return true;
         }
 
