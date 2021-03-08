@@ -112,23 +112,26 @@ namespace Game.Engine.EngineGame
              * The following is Used for Monsters, and Auto Battle Characters
              * 
              * Order of Priority
-             * If can attack Then Attack
-             * Next use Ability or Move
+             * If within Range
+             * If can capture Then capture
+             * Next Attack
+             * If not within Range Then Move
              */
 
             // Assume Move if nothing else happens
             EngineSettings.CurrentAction = ActionEnum.Move;
 
-            // Check to see if capture is available
-            if (ChooseToUseCapture(Attacker, AttackChoice(Attacker)))
-            {
-                EngineSettings.CurrentAction = ActionEnum.Capture;
-                return EngineSettings.CurrentAction;
-            }
-
-            // See if Desired Target is within Range, and if so attack away
+            // See if Desired Target is within Range, and if so capture or attack 
             if (EngineSettings.MapModel.IsTargetInRange(Attacker, AttackChoice(Attacker)))
             {
+                // Check to see if capture is available
+                if (ChooseToUseCapture(Attacker, AttackChoice(Attacker)))
+                {
+                    EngineSettings.CurrentAction = ActionEnum.Capture;
+                    return EngineSettings.CurrentAction;
+                }
+
+                // Otherwise Attack
                 EngineSettings.CurrentAction = ActionEnum.Attack;
             }
 
@@ -193,8 +196,7 @@ namespace Game.Engine.EngineGame
         }
 
         /// <summary>
-        /// Decide to use an Ability or not
-        /// No ability in our design, Don't try
+        /// Decide to use Capture or not
         /// 
         /// </summary>
         public bool ChooseToUseCapture(PlayerInfoModel Attacker, PlayerInfoModel Defender)
@@ -263,8 +265,8 @@ namespace Game.Engine.EngineGame
                 }
             }
 
-            // Do Attack
-            TurnAsAttack(Attacker, EngineSettings.CurrentDefender);
+            // Do Capture
+            TurnAsCapture(Attacker, EngineSettings.CurrentDefender);
 
             return true;
         }
