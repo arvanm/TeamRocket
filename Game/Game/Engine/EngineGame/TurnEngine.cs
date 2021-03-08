@@ -10,6 +10,9 @@ using Game.Helpers;
 using Game.ViewModels;
 using Game.GameRules;
 using System;
+using Game.Services;
+using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace Game.Engine.EngineGame
 {
@@ -42,6 +45,46 @@ namespace Game.Engine.EngineGame
 
         // Hold the BaseEngine
         public new EngineSettingsModel EngineSettings = EngineSettingsModel.Instance;
+
+        // Datastore for Character
+        public IDataStore<CharacterModel> CharacterDataStore = MockDataStore<CharacterModel>.Instance;
+
+        public TurnEngine()
+        {
+            // Register the Update Character Message
+            MessagingCenter.Subscribe<TurnEngine, CharacterModel>(this, "UpdateCharacter", async (obj, data) =>
+            {
+                // Have the character update itself
+                data.Update(data);
+                await UpdateCharacterAsync(data as CharacterModel);
+            });
+        }
+
+        /// <summary>
+        /// Update the Character data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateCharacterAsync(CharacterModel data)
+        {
+            if (data == null)
+            {
+                return false;
+            }
+
+            // Check that the record exists, if it does not, then exit with false
+            var BaseDataId = ((BaseModel<CharacterModel>)(object)data).Id;
+            var record = await CharacterDataStore.ReadAsync(BaseDataId);
+            if (record == null)
+            {
+                return false;
+            }
+
+            // Save the change to the Data Store
+            var result = await CharacterDataStore.UpdateAsync(data);
+
+            return result;
+        }
 
         /// <summary>
         /// CharacterModel Attacks...
@@ -445,9 +488,10 @@ namespace Game.Engine.EngineGame
 
             // Apply the experience earned
             CalculateExperience(Attacker, Target);
-            
+
             // Message
-            EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + EngineSettings.BattleMessagesModel.CaptureStatus + Target.Name + EngineSettings.BattleMessagesModel.TurnMessageSpecial + EngineSettings.BattleMessagesModel.ExperienceEarned;
+            EngineSettings.BattleMessagesModel.CaptureStatus = " captures ";
+            EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + EngineSettings.BattleMessagesModel.CaptureStatus + Target.Name + EngineSettings.BattleMessagesModel.ExperienceEarned;
             Debug.WriteLine(EngineSettings.BattleMessagesModel.TurnMessage);
 
             return true;
@@ -514,6 +558,10 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool TargetDied(PlayerInfoModel Target)
         {
+            if (Target.PlayerType == PlayerTypeEnum.Character)
+            {
+                MessagingCenter.Send(this, "UpdateCharacter", new CharacterModel(Target));
+            }
             return base.TargetDied(Target); 
         }
 
