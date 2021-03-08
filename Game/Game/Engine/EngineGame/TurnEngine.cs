@@ -663,20 +663,12 @@ namespace Game.Engine.EngineGame
         }
 
         /// <summary>
-        /// Will drop between 1 and 4 items from the ItemModel set...
+        /// Will drop between 1 and number of (round // 10 + 1) items from the ItemModel set...
         /// </summary>
         public override List<ItemModel> GetRandomMonsterItemDrops(int round)
         {
-            // TODO: Teams, You need to implement your own modification to the Logic cannot use mine as is.
-
-            // You decide how to drop monster items, level, etc.
-
-            // The Number drop can be Up to the Round Count, but may be less.  
-            // Negative results in nothing dropped
-            
-            Random rnd = new Random();
-
-            var NumberToDrop = rnd.Next(1,6);
+            // Roll dice to drop number of items between 1 and number of (rounds divide by 10 + 1)
+            var NumberToDrop = DiceHelper.RollDice(1, round / 10 + 1);
 
             var result = new List<ItemModel>();
 
