@@ -428,7 +428,7 @@ namespace Game.Engine.EngineGame
                 return false;
             }
 
-            if (Attacker.PlayerType != PlayerTypeEnum.Monster)
+            if (Target.PlayerType != PlayerTypeEnum.Monster)
             {
                 return false;
             }
