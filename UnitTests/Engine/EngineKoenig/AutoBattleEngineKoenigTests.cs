@@ -112,8 +112,8 @@ namespace UnitTests.Engine.EngineKoenig
                             new CharacterModel
                             {
                                 Speed = -1,
-                                Level = 10,
-                                CurrentHealth = 11,
+                                Level = 1,
+                                CurrentHealth = 1,
                                 ExperienceTotal = 1,
                                 ExperienceRemaining = 1,
                                 Name = "Mike",
