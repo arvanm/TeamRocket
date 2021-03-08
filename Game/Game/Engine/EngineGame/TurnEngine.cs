@@ -31,7 +31,7 @@ namespace Game.Engine.EngineGame
     public class TurnEngine : TurnEngineBase, ITurnEngineInterface
     {
         #region Algrorithm
-        // Attack or Move
+        // Capture or Attack or Move
         // Roll To Hit
         // Decide Hit or Miss
         // Decide Damage
@@ -335,30 +335,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target)
         {
-            // Set Messages to empty
-
-            // Do the Attack
-
-            // Hackathon
-            // ?? Hackathon Scenario ?? 
-
-            // See if the Battle Settings Overrides the Roll
-
-            // Based on the Hit Status, what to do...
-            // It's a Miss
-
-            // It's a Hit
-
-            //Calculate Damage
-
-            // Apply the Damage
-
-            // Check if Dead and Remove
-
-            // If it is a character apply the experience earned
-
-            // Battle Message 
-
+            // Check Null inputs
             if (Attacker == null)
             {
                 return false;
@@ -382,19 +359,16 @@ namespace Game.Engine.EngineGame
             {
                 case HitStatusEnum.Miss:
                     // It's a Miss
-
                     break;
 
                 case HitStatusEnum.CriticalMiss:
                     // It's a Critical Miss, so Bad things may happen
                     DetermineCriticalMissProblem(Attacker);
-
                     break;
 
                 case HitStatusEnum.CriticalHit:
                 case HitStatusEnum.Hit:
                     // It's a Hit
-
                     // Calculate Damage
                     EngineSettings.BattleMessagesModel.DamageAmount = Attacker.GetDamageRollValue();
 
@@ -425,6 +399,7 @@ namespace Game.Engine.EngineGame
                     break;
             }
 
+            // Turn Message
             EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + EngineSettings.BattleMessagesModel.AttackStatus + Target.Name + EngineSettings.BattleMessagesModel.TurnMessageSpecial + EngineSettings.BattleMessagesModel.ExperienceEarned;
             Debug.WriteLine(EngineSettings.BattleMessagesModel.TurnMessage);
 
