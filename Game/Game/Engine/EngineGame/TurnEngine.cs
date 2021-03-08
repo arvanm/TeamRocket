@@ -56,18 +56,15 @@ namespace Game.Engine.EngineGame
 
             bool result = false;
 
-            // If the action is not set, then try to set it or use Attact
-            //if (EngineSettings.CurrentAction == ActionEnum.Unknown)
-            //{
-                // Set the action if one is not set
-                EngineSettings.CurrentAction = DetermineActionChoice(Attacker);
+            // Set the action if one is not set
+            EngineSettings.CurrentAction = DetermineActionChoice(Attacker);
 
-                // When in doubt, attack...
-                if (EngineSettings.CurrentAction == ActionEnum.Unknown)
-                {
-                    EngineSettings.CurrentAction = ActionEnum.Attack;
-                }
-            //}
+            // When in doubt, attack...
+            // We do not use ability here, so if ability, also attack
+            if (EngineSettings.CurrentAction == ActionEnum.Unknown || EngineSettings.CurrentAction == ActionEnum.Ability)
+            {
+                EngineSettings.CurrentAction = ActionEnum.Attack;
+            }
 
             switch (EngineSettings.CurrentAction)
             {
@@ -75,12 +72,12 @@ namespace Game.Engine.EngineGame
                     result = Attack(Attacker);
                     break;
 
-                case ActionEnum.Ability:
-                    result = UseAbility(Attacker);
-                    break;
-
                 case ActionEnum.Move:
                     result = MoveAsTurn(Attacker);
+                    break;
+
+                case ActionEnum.Capture:
+                    result = Capture(Attacker);
                     break;
             }
 
@@ -122,10 +119,10 @@ namespace Game.Engine.EngineGame
             // Assume Move if nothing else happens
             EngineSettings.CurrentAction = ActionEnum.Move;
 
-            // Check to see if ability is avaiable
-            if (ChooseToUseAbility(Attacker))
+            // Check to see if capture is available
+            if (ChooseToUseCapture(Attacker, AttackChoice(Attacker)))
             {
-                EngineSettings.CurrentAction = ActionEnum.Ability;
+                EngineSettings.CurrentAction = ActionEnum.Capture;
                 return EngineSettings.CurrentAction;
             }
 
@@ -186,55 +183,49 @@ namespace Game.Engine.EngineGame
 
         /// <summary>
         /// Decide to use an Ability or not
+        /// No ability in our design, Don't try
         /// 
-        /// Set the Ability
         /// </summary>
         public override bool ChooseToUseAbility(PlayerInfoModel Attacker)
         {
-            // See if healing is needed.
-
-            // If not needed, then role dice to see if other ability should be used
-            // Choose the % chance
-            // Select the ability
-
-            // Don't try
-
-            // See if healing is needed.
-            EngineSettings.CurrentActionAbility = Attacker.SelectHealingAbility();
-            if (EngineSettings.CurrentActionAbility != AbilityEnum.Unknown)
-            {
-                EngineSettings.CurrentAction = ActionEnum.Ability;
-                return true;
-            }
-
-            // If not needed, then role dice to see if other ability should be used
-            // <30% chance
-            if (DiceHelper.RollDice(1, 10) < 3)
-            {
-                EngineSettings.CurrentActionAbility = Attacker.SelectAbilityToUse();
-
-                if (EngineSettings.CurrentActionAbility != AbilityEnum.Unknown)
-                {
-                    // Ability can , switch to unknown to exit
-                    EngineSettings.CurrentAction = ActionEnum.Ability;
-                    return true;
-                }
-
-                // No ability available
-                return false;
-            }
-
             // Don't try
             return false;
         }
 
         /// <summary>
-        /// Use the Ability
+        /// Decide to use an Ability or not
+        /// No ability in our design, Don't try
+        /// 
         /// </summary>
-        public override bool UseAbility(PlayerInfoModel Attacker)
+        public bool ChooseToUseCapture(PlayerInfoModel Attacker, PlayerInfoModel Defender)
         {
-            EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + " Uses Ability " + EngineSettings.CurrentActionAbility.ToMessage();
-            return (Attacker.UseAbility(EngineSettings.CurrentActionAbility));
+            // Only character can capture
+            if (Attacker.PlayerType != PlayerTypeEnum.Character)
+            {
+                return false;
+            }
+
+            // Only monster can be captured
+            if (Defender.PlayerType != PlayerTypeEnum.Monster)
+            {
+                return false;
+            }
+
+            // If a Pokemon with the same name already in Pokedex, and the attack is higher than the current target, skip
+            var MonsterInPokedex = Attacker.Pokedex.FirstOrDefault(m => m.Name == Defender.Name);
+            if (MonsterInPokedex != null && MonsterInPokedex.Attack >= Defender.Attack)
+            {
+                return false;
+            }
+
+            // Roll dice to see whether to capture, 20% chance
+            if (DiceHelper.RollDice(1, 10) <= 2)
+            {
+                return true;
+            }
+
+            // Don't try
+            return false;
         }
 
         /// <summary>
@@ -251,6 +242,31 @@ namespace Game.Engine.EngineGame
         public override bool Attack(PlayerInfoModel Attacker)
         {
             return base.Attack(Attacker);
+        }
+
+        /// Do the Capture
+        /// 
+        /// </summary>
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
+        public virtual bool Capture(PlayerInfoModel Attacker)
+        {
+            // AttackChoice will auto pick the target, good for auto battle
+            if (EngineSettings.BattleScore.AutoBattle)
+            {
+                // For Capture, Choose Who
+                EngineSettings.CurrentDefender = AttackChoice(Attacker);
+
+                if (EngineSettings.CurrentDefender == null)
+                {
+                    return false;
+                }
+            }
+
+            // Do Attack
+            TurnAsAttack(Attacker, EngineSettings.CurrentDefender);
+
+            return true;
         }
 
         /// <summary>
@@ -401,6 +417,53 @@ namespace Game.Engine.EngineGame
             }
 
             EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + EngineSettings.BattleMessagesModel.AttackStatus + Target.Name + EngineSettings.BattleMessagesModel.TurnMessageSpecial + EngineSettings.BattleMessagesModel.ExperienceEarned;
+            Debug.WriteLine(EngineSettings.BattleMessagesModel.TurnMessage);
+
+            return true;
+        }
+
+        /// <summary>
+        /// CharacterModel captures MonsterModel
+        /// </summary>
+        public bool TurnAsCapture(PlayerInfoModel Attacker, PlayerInfoModel Target)
+        {
+            // Check for null
+            if (Attacker == null)
+            {
+                return false;
+            }
+
+            if (Target == null)
+            {
+                return false;
+            }
+
+            // Check for PlayerType
+            if (Attacker.PlayerType != PlayerTypeEnum.Character)
+            {
+                return false;
+            }
+
+            if (Attacker.PlayerType != PlayerTypeEnum.Monster)
+            {
+                return false;
+            }
+
+            // Set Messages to empty
+            EngineSettings.BattleMessagesModel.ClearMessages();
+
+            // Do the capture
+            Attacker.Pokedex.Add(new MonsterModel(Target));
+
+            // Set Monster to not alive, remove
+            Target.Alive = false;
+            RemoveIfDead(Target);
+
+            // Apply the experience earned
+            CalculateExperience(Attacker, Target);
+            
+            // Message
+            EngineSettings.BattleMessagesModel.TurnMessage = Attacker.Name + EngineSettings.BattleMessagesModel.CaptureStatus + Target.Name + EngineSettings.BattleMessagesModel.TurnMessageSpecial + EngineSettings.BattleMessagesModel.ExperienceEarned;
             Debug.WriteLine(EngineSettings.BattleMessagesModel.TurnMessage);
 
             return true;

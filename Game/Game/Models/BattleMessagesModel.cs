@@ -20,6 +20,9 @@
         // The status of the Attack
         public string AttackStatus = string.Empty;
 
+        // The status of the Capture
+        public string CaptureStatus = string.Empty;
+
         // Turn Message
         public string TurnMessage = string.Empty;
 
