@@ -90,7 +90,6 @@ namespace Game.ViewModels
             SetBattleEngineToGame();
 
             // Set Datastore
-            CharacterDataStore = MockDataStore<CharacterModel>.Instance;
             ScoreDataStore = MockDataStore<ScoreModel>.Instance;
 
             // Register the Update Score Message

@@ -746,12 +746,6 @@ namespace Game.Views
         /// </summary>
         public void GameOver()
         {
-            // Update all characters
-            foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).ToList())
-            {
-                MessagingCenter.Send(this, "UpdateCharacter", data);
-            }
-
             // Show end battle
             ShowBattleMode();
         }
