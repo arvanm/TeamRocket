@@ -6,6 +6,10 @@ using Game.Models;
 using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
 using Game.Engine.EngineBase;
+using Xamarin.Forms;
+using Game.Views;
+using Game.Services;
+using System.Threading.Tasks;
 
 namespace Game.ViewModels
 {
@@ -72,7 +76,12 @@ namespace Game.ViewModels
         //// Have the Database Character List point to the Character View Model List
         public ObservableCollection<CharacterModel> DatabaseCharacterList { get; set; } = CharacterIndexViewModel.Instance.Dataset;
 
-     
+        // Datastore for Characters
+        public IDataStore<CharacterModel> CharacterDataStore;
+
+        // Datastore for Scores
+        public IDataStore<ScoreModel> ScoreDataStore;
+
         #region Constructor
 
         /// <summary>
@@ -82,6 +91,24 @@ namespace Game.ViewModels
         {
             //SetBattleEngineToKoenig();
             SetBattleEngineToGame();
+
+            // Set Datastore
+            CharacterDataStore = MockDataStore<CharacterModel>.Instance;
+            ScoreDataStore = MockDataStore<ScoreModel>.Instance;
+
+            // Register the Update Character Message
+            MessagingCenter.Subscribe<BattlePage, CharacterModel>(this, "UpdateCharacter", async (obj, data) =>
+            {
+                // Have the character update itself
+                data.Update(data);
+                await UpdateCharacterAsync(data as CharacterModel);
+            });
+
+            // Register the Update Score Message
+            MessagingCenter.Subscribe<BattlePage, ScoreModel>(this, "CreateScore", async (obj, data) =>
+            {
+                await CreateScoreAsync(data as ScoreModel);
+            });
         }
 
         /// <summary>
@@ -107,5 +134,56 @@ namespace Game.ViewModels
         }
 
         #endregion Constructor
+
+        /// <summary>
+        /// Update the Character data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateCharacterAsync(CharacterModel data)
+        {
+            if (data == null)
+            {
+                return false;
+            }
+
+            // Check that the record exists, if it does not, then exit with false
+            var BaseDataId = ((BaseModel<CharacterModel>)(object)data).Id;
+            var record = await CharacterDataStore.ReadAsync(BaseDataId);
+            if (record == null)
+            {
+                return false;
+            }
+
+            // Save the change to the Data Store
+            var result = await CharacterDataStore.UpdateAsync(data);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Create the Score data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public async Task<bool> CreateScoreAsync(ScoreModel data)
+        {
+            if (data == null)
+            {
+                return false;
+            }
+
+            // Check that the record exists, if it does not, then exit with false
+            var BaseDataId = ((BaseModel<ScoreModel>)(object)data).Id;
+            var record = await ScoreDataStore.ReadAsync(BaseDataId);
+            if (record != null)
+            {
+                return false;
+            }
+
+            var result = await ScoreDataStore.CreateAsync(data);
+
+            return result;
+        }
     }
 }

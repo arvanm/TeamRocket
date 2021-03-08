@@ -631,7 +631,7 @@ namespace Game.Views
         /// <param name="e"></param>
         public void CaptureButton_Clicked(object sender, EventArgs e)
         {
-            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Ability;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Capture;
 
             NextAttackExample();
         }
@@ -746,8 +746,13 @@ namespace Game.Views
         /// </summary>
         public void GameOver()
         {
+            // Update all characters
+            foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).ToList())
+            {
+                MessagingCenter.Send(this, "UpdateCharacter", data);
+            }
 
-
+            // Show end battle
             ShowBattleMode();
         }
         #endregion BasicBattleMode
@@ -844,7 +849,7 @@ namespace Game.Views
         {
             // Save the Score to the Score View Model, by sending a message to it.
             var Score = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore;
-            MessagingCenter.Send(this, "Create", Score);
+            MessagingCenter.Send(this, "CreateScore", Score);
         }
 
         /// <summary>
@@ -963,6 +968,7 @@ namespace Game.Views
                     ScoreNameEntry.Text = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.Name;
 
                     // Show remain Pokemons
+                    AliveMonsterBox.Children.Clear();
                     foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Monster).ToList())
                     {
                         AliveMonsterBox.Children.Add(PlayerInfoDisplayBox(data));
