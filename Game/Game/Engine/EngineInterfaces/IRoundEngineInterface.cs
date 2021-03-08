@@ -41,7 +41,7 @@ namespace Game.Engine.EngineInterfaces
         /// <summary>
         /// Items that were picked up by Characters
         /// </summary>
-        void PickupItemsForAllCharacters();
+        bool PickupItemsForAllCharacters();
 
         /// <summary>
         /// Set the Current Attacker

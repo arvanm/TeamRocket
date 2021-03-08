@@ -96,7 +96,7 @@ namespace Game.Engine.EngineInterfaces
         /// Add the Damage from the hit to target
         /// </summary>
         /// <param name="Target"></param>
-        void ApplyDamage(PlayerInfoModel Target);
+        int ApplyDamage(PlayerInfoModel Target);
 
         /// <summary>
         /// Calculate the Attack, return if it hit or missed.
