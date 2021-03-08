@@ -1,9 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Game.Engine.EngineBase;
 using Game.Engine.EngineInterfaces;
 using Game.GameRules;
+using Game.Models;
+using Game.Services;
 using Game.ViewModels;
+using Xamarin.Forms;
 
 namespace Game.Engine.EngineGame
 {
@@ -15,6 +19,10 @@ namespace Game.Engine.EngineGame
     /// </summary>
     public class AutoBattleEngine : AutoBattleEngineBase, IAutoBattleInterface
     {
+
+        // Datastore for Scores
+        public IDataStore<ScoreModel> ScoreDataStore = MockDataStore<ScoreModel>.Instance;
+
         #region Algrorithm
         // Prepare for Battle
         // Pick 6 Characters
@@ -31,6 +39,31 @@ namespace Game.Engine.EngineGame
         // Save Score
         // Output Score
         #endregion Algrorithm
+
+        /// <summary>
+        /// Create the Score data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public async Task<bool> CreateScoreAsync(ScoreModel data)
+        {
+            if (data == null)
+            {
+                return false;
+            }
+
+            // Check that the record exists, if it does not, then exit with false
+            var BaseDataId = ((BaseModel<ScoreModel>)(object)data).Id;
+            var record = await ScoreDataStore.ReadAsync(BaseDataId);
+            if (record != null)
+            {
+                return false;
+            }
+
+            var result = await ScoreDataStore.CreateAsync(data);
+
+            return result;
+        }
 
         /// <summary>
         /// Define the Battle variable 
@@ -94,10 +127,16 @@ namespace Game.Engine.EngineGame
         /// Start the automatic battle
         /// </summary>
         /// <returns></returns>
-        public override Task<bool> RunAutoBattle()
+        public override async Task<bool> RunAutoBattle()
         {
-            return base.RunAutoBattle();
-            //throw new System.NotImplementedException();
+            var BattleResult = await base.RunAutoBattle();
+
+            // Save score
+            var Score = Battle.EngineSettings.BattleScore;
+            Score.Name = "AutoBattle " + DateTime.Now.ToString("G");
+            var ScoreResult = await CreateScoreAsync(Score);
+
+            return (BattleResult && ScoreResult);
         }
     }
 }
