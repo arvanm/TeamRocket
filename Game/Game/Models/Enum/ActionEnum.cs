@@ -76,11 +76,11 @@
             switch (value)
             {
                 case ActionEnum.Attack:
-                    Message = "item.png";
+                    Message = "item_sword.png";
                     break;
 
                 case ActionEnum.Move:
-                    Message = "item.png";
+                    Message = "item_airmax.png";
                     break;
 
                 case ActionEnum.Ability:
@@ -88,7 +88,7 @@
                     break;
 
                 case ActionEnum.Capture:
-                    Message = "item.png";
+                    Message = "item_pokeball.png";
                     break;
 
                 case ActionEnum.Unknown:
