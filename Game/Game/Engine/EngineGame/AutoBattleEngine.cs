@@ -87,7 +87,7 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override bool CreateCharacterParty()
         {
-            // Picks 6 or less Characters
+            // Picks 6 or less Characters, no repeat ones
 
             // Will pull from existing characters
             foreach (var data in CharacterIndexViewModel.Instance.Dataset)
