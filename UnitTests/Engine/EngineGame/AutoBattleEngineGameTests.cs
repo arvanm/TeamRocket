@@ -263,27 +263,6 @@ namespace UnitTests.Engine.EngineGame
             Assert.IsFalse(result);
         }
 
-        [Test]
-        public async Task AutoBattleEngine_CreateScore_Existed_Should_Fail()
-        {
-            //Arrange
-            ScoreIndexViewModel.Instance.Dataset.Clear();
-
-            var data = new ScoreModel { Name = "Test" };
-
-            await ScoreIndexViewModel.Instance.CreateAsync(data);
-
-            ScoreIndexViewModel.Instance.ForceDataRefresh();
-
-            //Act
-            var result = await AutoBattleEngine.CreateScoreAsync(data);
-
-            //Reset
-            ScoreIndexViewModel.Instance.ForceDataRefresh();
-
-            //Assert
-            Assert.IsFalse(result);
-        }
         #endregion CreateScore
 
     }
