@@ -8,6 +8,7 @@ using Game.Helpers;
 using Game.ViewModels;
 using Game.Engine.EngineGame;
 using Game.Engine.EngineModels;
+using System.Threading.Tasks;
 
 namespace UnitTests.Engine.EngineGame
 {
@@ -669,6 +670,35 @@ namespace UnitTests.Engine.EngineGame
         }
 
         [Test]
+        public void TurnEngine_TakeTurn_Capture_Should_Pass()
+        {
+            // Arrange
+
+            Engine.EngineSettings.CurrentAction = ActionEnum.Capture;
+
+            Engine.EngineSettings.PlayerList.Clear();
+            var character = new PlayerInfoModel(new CharacterModel());
+            var monster = new PlayerInfoModel(new MonsterModel());
+
+            Engine.EngineSettings.PlayerList.Add(character);
+            Engine.EngineSettings.PlayerList.Add(monster);
+
+            Engine.EngineSettings.MapModel.PopulateMapModel(Engine.EngineSettings.PlayerList);
+            Engine.EngineSettings.CurrentDefender = monster;
+
+            // Act
+            var result = Engine.Round.Turn.TakeTurn(character);
+
+            // Reset
+            Engine.EngineSettings.PlayerList.Clear();
+            Engine.StartBattle(false);
+
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
         public void TurnEngine_TakeTurn_InValid_ActionEnum_Unknown_Should_Set_Action_To_Attack()
         {
             // Arrange
@@ -892,6 +922,32 @@ namespace UnitTests.Engine.EngineGame
             // Forece a Miss
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(20);
+
+            // Act
+            var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsAttack_Valid_Character_QuickAttacker_Attacks_Monster_Hit_DoubleDamage_Should_Pass()
+        {
+            // Arrange
+            // Dice Force double damage
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(5);
+
+            var Character = new CharacterModel { Level = 1, Job = CharacterJobEnum.QuickAttacker };
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.EngineSettings.MonsterList.Add(MonsterPlayer);
 
             // Act
             var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer, MonsterPlayer);
@@ -1132,7 +1188,7 @@ namespace UnitTests.Engine.EngineGame
 
         #region TurnAsCapture
         [Test]
-        public void TurnEngine_TurnAsAttack_Null_Captures_Null_Should_Fail()
+        public void TurnEngine_TurnAsCapture_Null_Captures_Null_Should_Fail()
         {
             // Arrange
             var Character = new CharacterModel();
@@ -1153,7 +1209,7 @@ namespace UnitTests.Engine.EngineGame
         }
 
         [Test]
-        public void TurnEngine_TurnAsAttack_Character_Captures_Null_Should_Fail()
+        public void TurnEngine_TurnAsCapture_Character_Captures_Null_Should_Fail()
         {
             // Arrange
             var Character = new CharacterModel();
@@ -1174,7 +1230,7 @@ namespace UnitTests.Engine.EngineGame
         }
 
         [Test]
-        public void TurnEngine_TurnAsAttack_Monster_Captures_Character_Should_Fail()
+        public void TurnEngine_TurnAsCapture_Monster_Captures_Character_Should_Fail()
         {
             // Arrange
             var Character = new CharacterModel();
@@ -1195,7 +1251,7 @@ namespace UnitTests.Engine.EngineGame
         }
 
         [Test]
-        public void TurnEngine_TurnAsAttack_Character_Captures_Character_Should_Fail()
+        public void TurnEngine_TurnAsCapture_Character_Captures_Character_Should_Fail()
         {
             // Arrange
             var Character = new CharacterModel();
@@ -1216,7 +1272,7 @@ namespace UnitTests.Engine.EngineGame
         }
 
         [Test]
-        public void TurnEngine_TurnAsAttack_Character_Captures_Monster_Should_Pass()
+        public void TurnEngine_TurnAsCapture_Character_Captures_Monster_Should_Pass()
         {
             // Arrange
             var Character = new CharacterModel();
@@ -1238,7 +1294,7 @@ namespace UnitTests.Engine.EngineGame
         }
 
         [Test]
-        public void TurnEngine_TurnAsAttack_Character_Captures_Monster_Pokedex_Size_Equal_1_Should_Pass()
+        public void TurnEngine_TurnAsCapture_Character_Captures_Monster_Pokedex_Size_Equal_1_Should_Pass()
         {
             // Arrange
             var Character = new CharacterModel();
@@ -1256,6 +1312,29 @@ namespace UnitTests.Engine.EngineGame
 
             // Assert
             Assert.AreEqual(CharacterPlayer.Pokedex.Count(), 1);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsCapture_Character_Captures_Monster_Pokedex_Replacement_Should_Pass()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            Character.Pokedex.Add(new MonsterModel { Name = "Test", Attack = 1 });
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel { Name = "Test", Attack = 200 };
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+            Engine.EngineSettings.MonsterList.Add(MonsterPlayer);
+
+            // Act
+            Engine.Round.Turn.TurnAsCapture(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(CharacterPlayer.Pokedex.Count(), 1);
+            Assert.AreEqual(CharacterPlayer.Pokedex.FirstOrDefault().Attack, 200);
         }
 
         #endregion TurnAsCapture
@@ -1505,9 +1584,12 @@ namespace UnitTests.Engine.EngineGame
         public void TurnEngine_MoveAsTurn_Valid_Character_Should_Pass()
         {
             // Arrange
+            Engine.EngineSettings.PlayerList.Clear();
+            
+            var MonsterPlayer = new PlayerInfoModel(new MonsterModel());
+            Engine.EngineSettings.PlayerList.Add(MonsterPlayer);
 
             var CharacterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.DojoMaster });
-
             Engine.EngineSettings.PlayerList.Add(CharacterPlayer);
 
             Engine.EngineSettings.MapModel.PopulateMapModel(Engine.EngineSettings.PlayerList);
@@ -1519,6 +1601,7 @@ namespace UnitTests.Engine.EngineGame
             var result = Engine.Round.Turn.MoveAsTurn(CharacterPlayer);
 
             // Reset
+            Engine.EngineSettings.PlayerList.Clear();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -1528,6 +1611,7 @@ namespace UnitTests.Engine.EngineGame
         public void TurnEngine_MoveAsTurn_Valid_Monster_Should_Pass()
         {
             // Arrange
+            Engine.EngineSettings.PlayerList.Clear();
 
             var MonsterPlayer = new PlayerInfoModel(new MonsterModel());
             Engine.EngineSettings.PlayerList.Add(MonsterPlayer);
@@ -1544,6 +1628,7 @@ namespace UnitTests.Engine.EngineGame
             var result = Engine.Round.Turn.MoveAsTurn(MonsterPlayer);
 
             // Reset
+            Engine.EngineSettings.PlayerList.Clear();
 
             // Assert
             Assert.AreEqual(true, result);
@@ -1570,6 +1655,7 @@ namespace UnitTests.Engine.EngineGame
             var result = Engine.Round.Turn.MoveAsTurn(MonsterPlayer);
 
             // Reset
+            Engine.EngineSettings.PlayerList.Clear();
 
             // Assert
             Assert.AreEqual(false, result);
@@ -1579,6 +1665,35 @@ namespace UnitTests.Engine.EngineGame
         public void TurnEngine_MoveAsTurn_Invalid_Monster_InValid_Defender_Not_On_Map_Should_Fail()
         {
             // Arrange
+            Engine.EngineSettings.PlayerList.Clear();
+            var MonsterPlayer = new PlayerInfoModel(new MonsterModel());
+            Engine.EngineSettings.PlayerList.Add(MonsterPlayer);
+
+            // Not on map.... 
+            Engine.EngineSettings.MapModel.PopulateMapModel(Engine.EngineSettings.PlayerList);
+
+            var CharacterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.DojoMaster });
+            Engine.EngineSettings.PlayerList.Add(CharacterPlayer);
+
+            Engine.EngineSettings.CurrentAction = ActionEnum.Move;
+            Engine.EngineSettings.BattleScore.AutoBattle = true;
+
+            // Act
+            var result = Engine.Round.Turn.MoveAsTurn(MonsterPlayer);
+
+            // Reset
+            Engine.EngineSettings.PlayerList.Clear();
+
+            // Assert
+            Assert.AreEqual(false, result);
+        }
+
+
+        [Test]
+        public void TurnEngine_MoveAsTurn_Invalid_Monster_InValid_Attacker_Not_On_Map_Should_Fail()
+        {
+            // Arrange
+            Engine.EngineSettings.PlayerList.Clear();
             var CharacterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.DojoMaster });
             Engine.EngineSettings.PlayerList.Add(CharacterPlayer);
 
@@ -1588,13 +1703,14 @@ namespace UnitTests.Engine.EngineGame
             var MonsterPlayer = new PlayerInfoModel(new MonsterModel());
             Engine.EngineSettings.PlayerList.Add(MonsterPlayer);
 
-            Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            Engine.EngineSettings.CurrentAction = ActionEnum.Move;
             Engine.EngineSettings.BattleScore.AutoBattle = true;
 
             // Act
             var result = Engine.Round.Turn.MoveAsTurn(MonsterPlayer);
 
             // Reset
+            Engine.EngineSettings.PlayerList.Clear();
 
             // Assert
             Assert.AreEqual(false, result);
@@ -1621,5 +1737,310 @@ namespace UnitTests.Engine.EngineGame
         }
         #endregion ChooseToUseAbility
 
+        #region ChooseToUseCapture
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Null_Attacker_Should_Fail()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(null, MonsterPlayer);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Null_Defender_Should_Fail()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(CharacterPlayer, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Attacker_MonsterType_Should_Fail()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(MonsterPlayer, MonsterPlayer);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Defender_CharacterType_Should_Fail()
+        {
+            // Arrange
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(CharacterPlayer, CharacterPlayer);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Empty_Pokedex_Dice_Roll_2_Should_Pass()
+        {
+            // Arrange
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(2);
+
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Empty_Pokedex_Dice_Roll_3_Should_Fail()
+        {
+            // Arrange
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(3);
+
+            var Character = new CharacterModel();
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel();
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Pokedex_With_Lower_Attack_Dice_Roll_2_Should_Pass()
+        {
+            // Arrange
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(2);
+
+            var Character = new CharacterModel();
+            Character.Pokedex.Add(new MonsterModel { Name = "Test", Attack = 1 });
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel { Name = "Test", Attack = 10 };
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Pokedex_With_Higher_Attack_Dice_Roll_2_Should_Fail()
+        {
+            // Arrange
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(2);
+
+            var Character = new CharacterModel();
+            Character.Pokedex.Add(new MonsterModel { Name = "Test", Attack = 10 });
+            var CharacterPlayer = new PlayerInfoModel(Character);
+            var Monster = new MonsterModel { Name = "Test", Attack = 1 };
+            var MonsterPlayer = new PlayerInfoModel(Monster);
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(CharacterPlayer, MonsterPlayer);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        #endregion ChooseToUseCapture
+
+        #region GetPokemonName
+        [Test]
+        public void TurnEngine_GetPokemonName_Null_Should_Fail()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.Round.Turn.GetPokemonName(null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, "");
+        }
+
+        [Test]
+        public void TurnEngine_GetPokemonName_Unknown_Should_Fail()
+        {
+            // Arrange
+            var Player = new PlayerInfoModel();
+
+            // Act
+            var result = Engine.Round.Turn.GetPokemonName(Player);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, "");
+        }
+
+        [Test]
+        public void TurnEngine_GetPokemonName_CharacterType_Should_Fail()
+        {
+            // Arrange
+            var Player = new PlayerInfoModel(new CharacterModel());
+
+            // Act
+            var result = Engine.Round.Turn.GetPokemonName(Player);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, "");
+        }
+
+        [Test]
+        public void TurnEngine_GetPokemonName_MonsterType_With_Last_Number_Should_Remove()
+        {
+            // Arrange
+            var Player = new PlayerInfoModel(new MonsterModel { Name = "Test 1234" });
+
+            // Act
+            var result = Engine.Round.Turn.GetPokemonName(Player);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, "Test");
+        }
+
+        [Test]
+        public void TurnEngine_GetPokemonName_MonsterType_With_Last_NotNumber_Should_Keep()
+        {
+            // Arrange
+            var Player = new PlayerInfoModel(new MonsterModel { Name = "Test Test" });
+
+            // Act
+            var result = Engine.Round.Turn.GetPokemonName(Player);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(result, "Test Test");
+        }
+        #endregion GetPokemonName
+
+        #region UpdateCharacterPokedexAsync
+        [Test]
+        public async Task TurnEngine_UpdateCharacterPokedexAsync_Null_Should_Fail()
+        {
+            // Arrange
+
+            // Act
+            var result = await Engine.Round.Turn.UpdateCharacterPokedexAsync(null);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public async Task TurnEngine_UpdateCharacterPokedexAsync_Not_CharacterType_Should_Fail()
+        {
+            // Arrange
+            var Player = new PlayerInfoModel(new MonsterModel());
+
+            // Act
+            var result = await Engine.Round.Turn.UpdateCharacterPokedexAsync(Player);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public async Task TurnEngine_UpdateCharacterPokedexAsync_Not_Existing_Character_Should_Fail()
+        {
+            // Arrange
+            var Player = new PlayerInfoModel(new CharacterModel { Name = "Some Long And Weired Test Name Definitly Not In DataBase" });
+
+            // Act
+            var result = await Engine.Round.Turn.UpdateCharacterPokedexAsync(Player);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public async Task TurnEngine_UpdateCharacterPokedexAsync_Existing_Character_Should_Pass()
+        {
+            // Arrange
+            var Player = new PlayerInfoModel(new CharacterModel { Name = "Giovanni" });
+            Player.Pokedex.Add(new MonsterModel());
+
+            // Act
+            var result = await Engine.Round.Turn.UpdateCharacterPokedexAsync(Player);
+            var CharacterInDatabase = CharacterIndexViewModel.Instance.Dataset.Where(m => m.Name == "Giovanni").FirstOrDefault();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(result);
+            Assert.AreEqual(CharacterInDatabase.Pokedex.Count(), 1);
+        }
+
+        #endregion UpdateCharacterPokedexAsync
     }
 }
