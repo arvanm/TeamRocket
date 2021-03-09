@@ -13,6 +13,7 @@ using System;
 using Game.Services;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Game.Engine.EngineGame
 {
@@ -51,7 +52,7 @@ namespace Game.Engine.EngineGame
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateCharacterPokedexAsync(PlayerInfoModel data)
+        public override async Task<bool> UpdateCharacterPokedexAsync(PlayerInfoModel data)
         {
             if (data == null)
             {
@@ -62,6 +63,12 @@ namespace Game.Engine.EngineGame
             {
                 // Get the character from list
                 var Character = CharacterIndexViewModel.Instance.Dataset.Where(m => m.Name.Equals(data.Name)).FirstOrDefault();
+
+                // If no character, return false
+                if (Character == null)
+                {
+                    return false;
+                }
 
                 // Set pokedex of the character
                 Character.Pokedex = data.Pokedex;
@@ -236,16 +243,18 @@ namespace Game.Engine.EngineGame
         /// </summary>
         /// <param name="Pokemon"></param>
         /// <returns></returns>
-        public string GetPokemonName(PlayerInfoModel Pokemon)
+        public override string GetPokemonName(PlayerInfoModel Pokemon)
         {
-            if (Pokemon.PlayerType != PlayerTypeEnum.Monster)
+            if (Pokemon == null || Pokemon.PlayerType != PlayerTypeEnum.Monster)
             {
                 return "";
             }
 
             // Get Pokemon's actual name (remove the number at the end)
             var PokemonNameArr = Pokemon.Name.Trim().Split(' ');
-            PokemonNameArr = PokemonNameArr.Where((o, i) => i != PokemonNameArr.Length - 1).ToArray();
+            PokemonNameArr = PokemonNameArr
+                .Where((o, i) => ((i != PokemonNameArr.Length - 1) || ((i == PokemonNameArr.Length - 1) && !Regex.IsMatch(o, @"^\d+$"))))
+                .ToArray();
             var PokemonName = string.Join(" ", PokemonNameArr);
             return PokemonName;
         }
@@ -254,8 +263,14 @@ namespace Game.Engine.EngineGame
         /// Decide to use Capture or not
         /// 
         /// </summary>
-        public bool ChooseToUseCapture(PlayerInfoModel Attacker, PlayerInfoModel Defender)
+        public override bool ChooseToUseCapture(PlayerInfoModel Attacker, PlayerInfoModel Defender)
         {
+            // Null
+            if (Attacker == null || Defender == null)
+            {
+                return false;
+            }
+
             // Only character can capture
             if (Attacker.PlayerType != PlayerTypeEnum.Character)
             {
