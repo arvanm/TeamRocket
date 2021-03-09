@@ -8,6 +8,7 @@ using Game.Helpers;
 using Game.ViewModels;
 using Game.Engine.EngineBase;
 using Game.Engine.EngineModels;
+using System.Threading.Tasks;
 
 namespace UnitTests.Engine.EngineBase
 {
@@ -431,7 +432,7 @@ namespace UnitTests.Engine.EngineBase
 
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(3); // Always roll a 3.
-            
+
             // Act
             var result = Engine.Round.Turn.RollToHitTarget(AttackScore, DefenseScore);
 
@@ -593,8 +594,8 @@ namespace UnitTests.Engine.EngineBase
 
             Engine.EngineSettings.CurrentAction = ActionEnum.Move;
 
-            var character  = new PlayerInfoModel(new CharacterModel());
-            var monster   = new PlayerInfoModel(new CharacterModel());
+            var character = new PlayerInfoModel(new CharacterModel());
+            var monster = new PlayerInfoModel(new CharacterModel());
 
             Engine.EngineSettings.PlayerList.Add(character);
             Engine.EngineSettings.PlayerList.Add(monster);
@@ -698,9 +699,9 @@ namespace UnitTests.Engine.EngineBase
             var PlayerInfo = new PlayerInfoModel(player);
 
             DiceHelper.EnableForcedRolls();
-            
+
             // Drop is 0-Number, so 2 will yield 1
-            DiceHelper.SetForcedRollValue(2);   
+            DiceHelper.SetForcedRollValue(2);
 
             // Act
             var result = Engine.Round.Turn.DropItems(PlayerInfo);
@@ -995,7 +996,7 @@ namespace UnitTests.Engine.EngineBase
             {
                 CurrentHealth = 1,
                 Alive = true,
-                Guid="me"
+                Guid = "me"
             };
 
             var PlayerInfo = new PlayerInfoModel(Monster);
@@ -1062,7 +1063,7 @@ namespace UnitTests.Engine.EngineBase
             DiceHelper.SetForcedRollValue(20);
 
             // Act
-            var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer,MonsterPlayer);
+            var result = Engine.Round.Turn.TurnAsAttack(CharacterPlayer, MonsterPlayer);
 
             // Reset
             DiceHelper.DisableForcedRolls();
@@ -1079,8 +1080,8 @@ namespace UnitTests.Engine.EngineBase
         {
             // Arrange
             Engine.EngineSettings.CurrentActionAbility = AbilityEnum.Unknown;
-            
-            var characterPlayer = new PlayerInfoModel(new CharacterModel { Job=CharacterJobEnum.Unknown});
+
+            var characterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.Unknown });
 
             // remove it so it is not found
             characterPlayer.AbilityTracker.Remove(AbilityEnum.Unknown);
@@ -1142,7 +1143,7 @@ namespace UnitTests.Engine.EngineBase
             var characterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.Unknown });
 
             // remove it so it is not found
-            characterPlayer.AbilityTracker.Add(AbilityEnum.Toughness,1);
+            characterPlayer.AbilityTracker.Add(AbilityEnum.Toughness, 1);
             Engine.EngineSettings.CurrentActionAbility = AbilityEnum.Toughness;
 
             // Act
@@ -1334,7 +1335,7 @@ namespace UnitTests.Engine.EngineBase
             // Arrange
 
             var CharacterPlayer = new PlayerInfoModel(new CharacterModel());
-            
+
             // Get the longest range weapon in stock.
             var weapon = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault();
             CharacterPlayer.PrimaryHand = weapon.Id;
@@ -1456,7 +1457,7 @@ namespace UnitTests.Engine.EngineBase
         {
             // Arrange
 
-            var CharacterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.DojoMaster});
+            var CharacterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.DojoMaster });
 
             // Get the longest range weapon in stock.
             var weapon = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault();
@@ -1627,5 +1628,77 @@ namespace UnitTests.Engine.EngineBase
         }
 
         #endregion DetermineCriticalMissProblem
+
+        #region NotImplementedMethods
+        [Test]
+        public void TurnEngine_Capture_Should_Return_True()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.Round.Turn.Capture(null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_ChooseToUseCapture_Should_Return_True()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.Round.Turn.ChooseToUseCapture(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void TurnEngine_GetPokemonName_Should_Return_Empty()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.Round.Turn.GetPokemonName(null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("", result);
+        }
+
+        [Test]
+        public void TurnEngine_TurnAsCapture_Should_Return_True()
+        {
+            // Arrange
+
+            // Act
+            var result = Engine.Round.Turn.TurnAsCapture(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public async Task TurnEngine_UpdateCharacterPokedexAsync_Should_Return_True()
+        {
+            // Arrange
+
+            // Act
+            var result = await Engine.Round.Turn.UpdateCharacterPokedexAsync(null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(true, result);
+        }
+        #endregion NotImplementedMethods
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using System.Threading.Tasks;
 using Game.Models;
 
 namespace Game.Engine.EngineInterfaces
@@ -167,5 +167,25 @@ namespace Game.Engine.EngineInterfaces
         /// <param name="attacker"></param>
         /// <returns></returns>
         bool DetermineCriticalMissProblem(PlayerInfoModel attacker);
+
+        /// <summary>
+        /// Decide to use Capture or not
+        /// 
+        /// </summary>
+        bool ChooseToUseCapture(PlayerInfoModel Attacker, PlayerInfoModel Defender);
+
+        /// <summary>
+        /// Get Pokemon's name from Monster
+        /// </summary>
+        /// <param name="Pokemon"></param>
+        /// <returns></returns>
+        string GetPokemonName(PlayerInfoModel Pokemon);
+
+        /// <summary>
+        /// Update the Character Pokedex data
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        Task<bool> UpdateCharacterPokedexAsync(PlayerInfoModel player);
     }
 }

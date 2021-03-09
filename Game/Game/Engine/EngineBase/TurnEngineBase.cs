@@ -8,6 +8,7 @@ using Game.ViewModels;
 using Game.GameRules;
 using Game.Engine.EngineModels;
 using Game.Engine.EngineInterfaces;
+using System.Threading.Tasks;
 
 namespace Game.Engine.EngineBase
 {
@@ -757,12 +758,46 @@ namespace Game.Engine.EngineBase
         /// </summary>
         public virtual bool TurnAsCapture(PlayerInfoModel Attacker, PlayerInfoModel Target)
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
+        /// </summary>
+        /// Do the Capture
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
         public virtual bool Capture(PlayerInfoModel Attacker)
         {
-            throw new System.NotImplementedException();
+            return true;
+        }
+
+        /// <summary>
+        /// Decide to use Capture or not
+        /// 
+        /// </summary>
+        public virtual bool ChooseToUseCapture(PlayerInfoModel Attacker, PlayerInfoModel Defender)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Get Pokemon's name from Monster
+        /// </summary>
+        /// <param name="Pokemon"></param>
+        /// <returns></returns>
+        public virtual string GetPokemonName(PlayerInfoModel Pokemon)
+        {
+            return "";
+        }
+
+        /// <summary>
+        /// Update the Character Pokedex data
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        
+        public virtual async Task<bool> UpdateCharacterPokedexAsync(PlayerInfoModel player)
+        {
+            return true;
         }
     }
 }
