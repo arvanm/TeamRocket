@@ -751,5 +751,18 @@ namespace Game.Engine.EngineBase
         {
             return true;
         }
+
+        /// <summary>
+        /// CharacterModel captures MonsterModel
+        /// </summary>
+        public virtual bool TurnAsCapture(PlayerInfoModel Attacker, PlayerInfoModel Target)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual bool Capture(PlayerInfoModel Attacker)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

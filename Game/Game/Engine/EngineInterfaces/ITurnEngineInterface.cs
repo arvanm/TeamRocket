@@ -51,6 +51,12 @@ namespace Game.Engine.EngineInterfaces
         /// <returns></returns>
         bool Attack(PlayerInfoModel Attacker);
 
+        /// </summary>
+        /// Do the Capture
+        /// <param name="Attacker"></param>
+        /// <returns></returns>
+        bool Capture(PlayerInfoModel Attacker);
+
         /// <summary>
         /// Player chooses attack
         /// </summary>
@@ -77,6 +83,11 @@ namespace Game.Engine.EngineInterfaces
         /// <param name="Target"></param>
         /// <returns></returns>
         bool TurnAsAttack(PlayerInfoModel Attacker, PlayerInfoModel Target);
+
+        /// <summary>
+        /// CharacterModel captures MonsterModel
+        /// </summary>
+        public bool TurnAsCapture(PlayerInfoModel Attacker, PlayerInfoModel Target);
 
         /// <summary>
         /// See if the Battle Settings will Override the Hit
