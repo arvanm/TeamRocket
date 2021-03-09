@@ -46,44 +46,35 @@ namespace Game.Engine.EngineGame
         // Hold the BaseEngine
         public new EngineSettingsModel EngineSettings = EngineSettingsModel.Instance;
 
-        // Datastore for Character
-        public IDataStore<CharacterModel> CharacterDataStore = MockDataStore<CharacterModel>.Instance;
-
-        public TurnEngine()
-        {
-            // Register the Update Character Message
-            MessagingCenter.Subscribe<TurnEngine, CharacterModel>(this, "UpdateCharacter", async (obj, data) =>
-            {
-                // Have the character update itself
-                data.Update(data);
-                await UpdateCharacterAsync(data as CharacterModel);
-            });
-        }
-
         /// <summary>
-        /// Update the Character data
+        /// Update the Character Pokedex data
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateCharacterAsync(CharacterModel data)
+        public async Task<bool> UpdateCharacterPokedexAsync(PlayerInfoModel data)
         {
             if (data == null)
             {
                 return false;
             }
 
-            // Check that the record exists, if it does not, then exit with false
-            var BaseDataId = ((BaseModel<CharacterModel>)(object)data).Id;
-            var record = await CharacterDataStore.ReadAsync(BaseDataId);
-            if (record == null)
+            if (data.PlayerType == PlayerTypeEnum.Character)
             {
-                return false;
+                // Get the character from list
+                var Character = CharacterIndexViewModel.Instance.Dataset.Where(m => m.Name.Equals(data.Name)).FirstOrDefault();
+
+                // Set pokedex of the character
+                Character.Pokedex = data.Pokedex;
+
+                // Save the change to the Data Store
+                var result = await CharacterIndexViewModel.Instance.UpdateAsync(Character);
+
+                return result;
             }
 
-            // Save the change to the Data Store
-            var result = await CharacterDataStore.UpdateAsync(data);
-
-            return result;
+            // Not Character
+            return false;
+            
         }
 
         /// <summary>
@@ -131,6 +122,8 @@ namespace Game.Engine.EngineGame
 
             // Reset the Action to unknown for next time
             EngineSettings.CurrentAction = ActionEnum.Unknown;
+
+
 
             return result;
         }
@@ -503,6 +496,9 @@ namespace Game.Engine.EngineGame
             PokemonToCapture.Name = GetPokemonName(Target);
             Attacker.Pokedex.Add(PokemonToCapture);
 
+            // Save Pokedex to Character
+            UpdateCharacterPokedexAsync(Attacker).Wait();
+
             // Set Monster to not alive, remove
             Target.Alive = false;
             RemoveIfDead(Target);
@@ -579,10 +575,6 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool TargetDied(PlayerInfoModel Target)
         {
-            if (Target.PlayerType == PlayerTypeEnum.Character)
-            {
-                MessagingCenter.Send(this, "UpdateCharacter", new CharacterModel(Target));
-            }
             return base.TargetDied(Target); 
         }
 
