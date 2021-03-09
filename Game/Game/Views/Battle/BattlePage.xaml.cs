@@ -843,7 +843,7 @@ namespace Game.Views
         {
             // Save the Score to the Score View Model, by sending a message to it.
             var Score = BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore;
-            MessagingCenter.Send(this, "CreateScore", Score);
+            MessagingCenter.Send(this, "Create", Score);
         }
 
         /// <summary>

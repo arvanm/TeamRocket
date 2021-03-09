@@ -76,9 +76,6 @@ namespace Game.ViewModels
         //// Have the Database Character List point to the Character View Model List
         public ObservableCollection<CharacterModel> DatabaseCharacterList { get; set; } = CharacterIndexViewModel.Instance.Dataset;
 
-        // Datastore for Scores
-        public IDataStore<ScoreModel> ScoreDataStore;
-
         #region Constructor
 
         /// <summary>
@@ -88,15 +85,6 @@ namespace Game.ViewModels
         {
             //SetBattleEngineToKoenig();
             SetBattleEngineToGame();
-
-            // Set Datastore
-            ScoreDataStore = MockDataStore<ScoreModel>.Instance;
-
-            // Register the Update Score Message
-            MessagingCenter.Subscribe<BattlePage, ScoreModel>(this, "CreateScore", async (obj, data) =>
-            {
-                await CreateScoreAsync(data as ScoreModel);
-            });
         }
 
         /// <summary>
@@ -123,29 +111,6 @@ namespace Game.ViewModels
 
         #endregion Constructor
 
-        /// <summary>
-        /// Create the Score data
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public async Task<bool> CreateScoreAsync(ScoreModel data)
-        {
-            if (data == null)
-            {
-                return false;
-            }
 
-            // Check that the record exists, if it does not, then exit with false
-            var BaseDataId = ((BaseModel<ScoreModel>)(object)data).Id;
-            var record = await ScoreDataStore.ReadAsync(BaseDataId);
-            if (record != null)
-            {
-                return false;
-            }
-
-            var result = await ScoreDataStore.CreateAsync(data);
-
-            return result;
-        }
     }
 }
