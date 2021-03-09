@@ -308,12 +308,11 @@ namespace Game.Engine.EngineGame
             return base.Attack(Attacker);
         }
 
-        /// Do the Capture
-        /// 
         /// </summary>
+        /// Do the Capture
         /// <param name="Attacker"></param>
         /// <returns></returns>
-        public virtual bool Capture(PlayerInfoModel Attacker)
+        public override bool Capture(PlayerInfoModel Attacker)
         {
             // AttackChoice will auto pick the target, good for auto battle
             if (EngineSettings.BattleScore.AutoBattle)
@@ -328,9 +327,7 @@ namespace Game.Engine.EngineGame
             }
 
             // Do Capture
-            TurnAsCapture(Attacker, EngineSettings.CurrentDefender);
-
-            return true;
+            return TurnAsCapture(Attacker, EngineSettings.CurrentDefender); ;
         }
 
         /// <summary>
@@ -471,7 +468,7 @@ namespace Game.Engine.EngineGame
         /// <summary>
         /// CharacterModel captures MonsterModel
         /// </summary>
-        public bool TurnAsCapture(PlayerInfoModel Attacker, PlayerInfoModel Target)
+        public override bool TurnAsCapture(PlayerInfoModel Attacker, PlayerInfoModel Target)
         {
             // Check for null
             if (Attacker == null)
