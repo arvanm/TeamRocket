@@ -35,21 +35,7 @@ namespace Game.Views
 		{
 			// Call into Auto Battle from here to do the Battle...
 
-			// To See Level UP happening, a character needs to be close to the next level
-			var Character = new CharacterModel
-			{
-				ExperienceTotal = 300,    // Enough for next level
-				Name = "Mike Level Example",
-				Speed = 100,	// Go first
-			};
-
-			var CharacterPlayer = new PlayerInfoModel(Character);
-
-			// Turn on the Koenig version for now...
-			//BattleEngineViewModel.Instance.SetBattleEngineToKoenig();
 			BattleEngineViewModel.Instance.SetBattleEngineToGame();
-
-			BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
 
 			await BattleEngineViewModel.Instance.AutoBattleEngine.RunAutoBattle();
 			
