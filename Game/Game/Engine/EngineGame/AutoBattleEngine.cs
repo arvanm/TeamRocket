@@ -20,8 +20,6 @@ namespace Game.Engine.EngineGame
     public class AutoBattleEngine : AutoBattleEngineBase, IAutoBattleInterface
     {
 
-        // Datastore for Scores
-        public IDataStore<ScoreModel> ScoreDataStore = MockDataStore<ScoreModel>.Instance;
 
         #region Algrorithm
         // Prepare for Battle
@@ -52,15 +50,7 @@ namespace Game.Engine.EngineGame
                 return false;
             }
 
-            // Check that the record exists, if it does not, then exit with false
-            var BaseDataId = ((BaseModel<ScoreModel>)(object)data).Id;
-            var record = await ScoreDataStore.ReadAsync(BaseDataId);
-            if (record != null)
-            {
-                return false;
-            }
-
-            var result = await ScoreDataStore.CreateAsync(data);
+            var result = await ScoreIndexViewModel.Instance.CreateAsync(data);
 
             return result;
         }
