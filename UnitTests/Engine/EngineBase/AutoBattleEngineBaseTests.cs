@@ -116,7 +116,7 @@ namespace UnitTests.Engine.EngineBase
                             {
                                 Speed = -1,
                                 Level = 10,
-                                CurrentHealth = 11,
+                                CurrentHealth = 1,
                                 ExperienceTotal = 1,
                                 ExperienceRemaining = 1,
                                 Name = "Mike",
