@@ -3,6 +3,7 @@
 using Game.Models;
 using System.Threading.Tasks;
 using Game.ViewModels;
+using Game.Helpers;
 
 namespace Scenario
 {
@@ -16,7 +17,7 @@ namespace Scenario
         public void Setup()
         {
             // Choose which engine to run
-            EngineViewModel.SetBattleEngineToKoenig();
+            EngineViewModel.SetBattleEngineToGame();
 
             // Put seed data into the system for all tests
             EngineViewModel.Engine.Round.ClearLists();
@@ -139,6 +140,78 @@ namespace Scenario
 
             // Monsters always hit
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Hit;
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(3);
+
+            //Act
+            var result = await EngineViewModel.AutoBattleEngine.RunAutoBattle();
+
+            //Reset
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
+            DiceHelper.DisableForcedRolls();
+
+            //Assert
+            Assert.AreEqual(true, result);
+            Assert.AreEqual(null, EngineViewModel.Engine.EngineSettings.PlayerList.Find(m => m.Name.Equals("Mike")));
+            Assert.AreEqual(1, EngineViewModel.Engine.EngineSettings.BattleScore.RoundCount);
+        }
+        #endregion Scenario1
+
+        #region Scenario2
+        [Test]
+        public async Task HackathonScenario_Scenario_2_Valid_Default_Should_Pass()
+        {
+            /* 
+            * Scenario Number:  
+            *      2
+            *      
+            * Description: 
+            *      2.	Bob always Misses
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      Check for name bob
+            * 
+            * Test Algrorithm:
+            *      Create Character named Bob
+            *      Check for name Bob When attack is set to miss
+            *      Startup Battle
+            *      Run Auto Battle
+            * 
+            * Test Conditions:
+            *      Bob never hits and never gains experiences
+            * 
+            * Validation:
+            *      Total Experience Gain is zero
+            *  
+            */
+
+            //Arrange
+
+            // Set Character Conditions
+
+            EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
+            var Character = new CharacterModel
+            {
+                Speed = -1, // Will go last...
+                Level = 1,
+                CurrentHealth = 9,
+                ExperienceTotal = 4,
+                ExperienceRemaining = 5,
+                Name = "Bob",
+            };
+
+            var CharacterPlayerBob = new PlayerInfoModel(Character);
+
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerBob);
+
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerBob);
+
+            // Set Monster Conditions
+
+            // Auto Battle will add the monsters
+
+            // Monsters always hit
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Hit;
 
             //Act
             var result = await EngineViewModel.AutoBattleEngine.RunAutoBattle();
@@ -148,9 +221,9 @@ namespace Scenario
 
             //Assert
             Assert.AreEqual(true, result);
-            Assert.AreEqual(null, EngineViewModel.Engine.EngineSettings.PlayerList.Find(m => m.Name.Equals("Mike")));
-            Assert.AreEqual(1, EngineViewModel.Engine.EngineSettings.BattleScore.RoundCount);
+            Assert.AreEqual(null, EngineViewModel.Engine.EngineSettings.PlayerList.Find(m => m.Name.Equals("Bob")));
+            Assert.AreEqual(0, EngineViewModel.Engine.EngineSettings.BattleScore.ScoreTotal);
         }
-        #endregion Scenario1
+        #endregion Scenario2
     }
 }
