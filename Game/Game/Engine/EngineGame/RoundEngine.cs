@@ -113,79 +113,114 @@ namespace Game.Engine.EngineGame
             return EngineSettings.MonsterList.Count();
         }
 
-
-        public ItemModel GetNullOrBetterItem(PlayerInfoModel Character, ItemLocationEnum Location) 
+        /// <summary>
+        /// Get the current item on given location on given Character
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        public ItemModel GetLocationItem(PlayerInfoModel Character, ItemLocationEnum Location)
         {
-            // Get the current item on Character
-            ItemModel CurrentItem = null;
-
             switch (Location)
             {
                 case ItemLocationEnum.Feet:
-                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.Feet);
-                    break;
+                    return ItemIndexViewModel.Instance.GetItem(Character.Feet);
                 case ItemLocationEnum.Head:
-                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.Head);
-                    break;
+                    return ItemIndexViewModel.Instance.GetItem(Character.Head);
                 case ItemLocationEnum.LeftFinger:
-                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.LeftFinger);
-                    break;
+                    return ItemIndexViewModel.Instance.GetItem(Character.LeftFinger);
                 case ItemLocationEnum.RightFinger:
-                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.RightFinger);
-                    break;
+                    return ItemIndexViewModel.Instance.GetItem(Character.RightFinger);
                 case ItemLocationEnum.PrimaryHand:
-                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.PrimaryHand);
-                    break;
+                    return ItemIndexViewModel.Instance.GetItem(Character.PrimaryHand);
                 case ItemLocationEnum.OffHand:
-                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.OffHand);
-                    break;
+                    return ItemIndexViewModel.Instance.GetItem(Character.OffHand);
                 case ItemLocationEnum.Necklass:
-                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.Necklass);
-                    break;
+                    return ItemIndexViewModel.Instance.GetItem(Character.Necklass);
                 default:
-                    break;
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Get an item from the server for a loaction if the character does not have item in the location
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        public ItemModel GetDeliveryForNullItem(PlayerInfoModel Character, ItemLocationEnum Location)
+        {
+            // Get the current item on Character
+            ItemModel CurrentItem = GetLocationItem(Character, Location);
+
+            // Not null, return
+            if (CurrentItem != null)
+            {
+                return null;
             }
 
-            // Location adjust for Finger
+            // Location adjustment for Finger
+            if (Location == ItemLocationEnum.LeftFinger || Location == ItemLocationEnum.RightFinger)
+            {
+                Location = ItemLocationEnum.Finger;
+            }
+
+            // Get an item of given location from server
+            var task = ItemService.GetItemsFromServerPostAsync(1, 20, AttributeEnum.Unknown, Location, 0, true, true);
+            task.Wait();
+
+            // Does not return items from server
+            if (task.Result == null || task.Result.Count() == 0)
+            {
+                return null;
+            }
+
+            // Return the item
+            return task.Result[0];
+        }
+        
+        /// <summary>
+        /// Get a better item from the server for a loaction if the character havs item in the location
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        public ItemModel GetDeliveryForBetterItem(PlayerInfoModel Character, ItemLocationEnum Location) 
+        {
+            // Get the current item on Character
+            ItemModel CurrentItem = GetLocationItem(Character, Location);
+
+            // Null, return
+            if (CurrentItem == null)
+            {
+                return null;
+            }
+
+            // Location adjustment for Finger
             if (Location == ItemLocationEnum.LeftFinger || Location == ItemLocationEnum.RightFinger)
             { 
                 Location = ItemLocationEnum.Finger;
             }
 
-            // If null, Character not having it
-            if (CurrentItem == null)
+            // Best item, no need
+            if (CurrentItem.Value == 20)
             {
-                var task = ItemService.GetItemsFromServerPostAsync(1, 20, AttributeEnum.Unknown, Location, 0, true, true);
-                task.Wait();
-                // Does not return items from server
-                if (task.Result == null || task.Result.Count() == 0)
-                {
-                    return null;
-                }
-                // Return the item
-                return task.Result[0];
+                return null;
             }
 
-            // Chararcter has it, need a better item
-            else
-            {
-                // Best item, no need
-                if (CurrentItem.Value == 20)
-                {
-                    return null;
-                }
+            // Get a better one by value + 1
+            var task = ItemService.GetItemsFromServerPostAsync(1, CurrentItem.Value + 1, CurrentItem.Attribute, Location, 0, false, true);
+            task.Wait();
 
-                // Get a better one by value + 1
-                var task = ItemService.GetItemsFromServerPostAsync(1, CurrentItem.Value + 1, CurrentItem.Attribute, Location, 0, false, true);
-                task.Wait();
-                // Does not return items from server
-                if (task.Result == null || task.Result.Count() == 0)
-                {
-                    return null;
-                }
-                // Return the item
-                return task.Result[0];
+            // Does not return items from server
+            if (task.Result == null || task.Result.Count() == 0)
+            {
+                return null;
             }
+
+            // Return the item
+            return task.Result[0];
+            
         }
         /// <summary>
         /// At the end of the round
@@ -194,25 +229,51 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool EndRound()
         {
-            // Add needed item for each character
-            var LocationList = Enum.GetValues(typeof(ItemLocationEnum))
-                                   .Cast<ItemLocationEnum>()
-                                   .Where(a =>
-                                        a.ToString() != ItemLocationEnum.Unknown.ToString() &&
-                                        a.ToString() != ItemLocationEnum.Finger.ToString() &&
-                                        a.ToString() != ItemLocationEnum.Pokeball.ToString()
-                                     )
-                                   .ToList();
+            // Deliver from amazon for each round
+            if (EngineSettings.AmazonDeliver)
+            { 
+                // Get locations
+                var LocationList = Enum.GetValues(typeof(ItemLocationEnum))
+                                       .Cast<ItemLocationEnum>()
+                                       .Where(a =>
+                                            a.ToString() != ItemLocationEnum.Unknown.ToString() &&
+                                            a.ToString() != ItemLocationEnum.Finger.ToString() &&
+                                            a.ToString() != ItemLocationEnum.Pokeball.ToString()
+                                         )
+                                       .ToList();
 
-            foreach (PlayerInfoModel Character in EngineSettings.CharacterList)
-            {
-                foreach (ItemLocationEnum Location in LocationList)
+                // Add one needed / better item for each character
+                foreach (PlayerInfoModel Character in EngineSettings.CharacterList)
                 {
-                    ItemModel item = GetNullOrBetterItem(Character, Location);
-                    if (item != null)
-                    {                        EngineSettings.ItemPool.Add(item);
-                        Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Value);
-                        break;
+                    bool HasDelivered = false;
+
+                    // Check each location for empty
+                    foreach (ItemLocationEnum Location in LocationList)
+                    {
+                        ItemModel item = GetDeliveryForNullItem(Character, Location);
+                        if (item != null)
+                        {
+                            EngineSettings.ItemPool.Add(item);
+                            Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Attribute, item.Value);
+                            HasDelivered = true;
+                            break;
+                        }
+                    }
+
+                    // Check each location for better item
+                    if (!HasDelivered)
+                    {
+                        foreach (ItemLocationEnum Location in LocationList)
+                        {
+                            ItemModel item = GetDeliveryForBetterItem(Character, Location);
+                            if (item != null)
+                            {
+                                EngineSettings.ItemPool.Add(item);
+                                Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Attribute, item.Value);
+                                HasDelivered = true;
+                                break;
+                            }
+                        }
                     }
                 }
             }

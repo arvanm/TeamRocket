@@ -101,5 +101,8 @@ namespace Game.Engine.EngineModels
         // Hold the Battle State, Unknown is default
          public BattleStateEnum BattleStateEnum { get; set; } = BattleStateEnum.Unknown;
 
+        // Amazon Deliver on
+        public bool AmazonDeliver { get; set; } = false;
+
     }
 }
