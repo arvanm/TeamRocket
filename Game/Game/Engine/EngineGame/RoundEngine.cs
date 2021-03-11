@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Game.Engine.EngineBase;
 using Game.Engine.EngineInterfaces;
 using Game.Engine.EngineModels;
 using Game.GameRules;
 using Game.Models;
+using Game.Services;
+using Game.ViewModels;
 
 namespace Game.Engine.EngineGame
 {
@@ -110,6 +113,80 @@ namespace Game.Engine.EngineGame
             return EngineSettings.MonsterList.Count();
         }
 
+
+        public ItemModel GetNullOrBetterItem(PlayerInfoModel Character, ItemLocationEnum Location) 
+        {
+            // Get the current item on Character
+            ItemModel CurrentItem = null;
+
+            switch (Location)
+            {
+                case ItemLocationEnum.Feet:
+                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.Feet);
+                    break;
+                case ItemLocationEnum.Head:
+                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.Head);
+                    break;
+                case ItemLocationEnum.LeftFinger:
+                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.LeftFinger);
+                    break;
+                case ItemLocationEnum.RightFinger:
+                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.RightFinger);
+                    break;
+                case ItemLocationEnum.PrimaryHand:
+                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.PrimaryHand);
+                    break;
+                case ItemLocationEnum.OffHand:
+                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.OffHand);
+                    break;
+                case ItemLocationEnum.Necklass:
+                    CurrentItem = ItemIndexViewModel.Instance.GetItem(Character.Necklass);
+                    break;
+                default:
+                    break;
+            }
+
+            // Location adjust for Finger
+            if (Location == ItemLocationEnum.LeftFinger || Location == ItemLocationEnum.RightFinger)
+            { 
+                Location = ItemLocationEnum.Finger;
+            }
+
+            // If null, Character not having it
+            if (CurrentItem == null)
+            {
+                var task = ItemService.GetItemsFromServerPostAsync(1, 20, AttributeEnum.Unknown, Location, 0, true, true);
+                task.Wait();
+                // Does not return items from server
+                if (task.Result == null || task.Result.Count() == 0)
+                {
+                    return null;
+                }
+                // Return the item
+                return task.Result[0];
+            }
+
+            // Chararcter has it, need a better item
+            else
+            {
+                // Best item, no need
+                if (CurrentItem.Value == 20)
+                {
+                    return null;
+                }
+
+                // Get a better one by value + 1
+                var task = ItemService.GetItemsFromServerPostAsync(1, CurrentItem.Value + 1, CurrentItem.Attribute, Location, 0, false, true);
+                task.Wait();
+                // Does not return items from server
+                if (task.Result == null || task.Result.Count() == 0)
+                {
+                    return null;
+                }
+                // Return the item
+                return task.Result[0];
+            }
+        }
         /// <summary>
         /// At the end of the round
         /// Clear the ItemModel List
@@ -117,6 +194,29 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool EndRound()
         {
+            // Add needed item for each character
+            var LocationList = Enum.GetValues(typeof(ItemLocationEnum))
+                                   .Cast<ItemLocationEnum>()
+                                   .Where(a =>
+                                        a.ToString() != ItemLocationEnum.Unknown.ToString() &&
+                                        a.ToString() != ItemLocationEnum.Finger.ToString() &&
+                                        a.ToString() != ItemLocationEnum.Pokeball.ToString()
+                                     )
+                                   .ToList();
+
+            foreach (PlayerInfoModel Character in EngineSettings.CharacterList)
+            {
+                foreach (ItemLocationEnum Location in LocationList)
+                {
+                    ItemModel item = GetNullOrBetterItem(Character, Location);
+                    if (item != null)
+                    {                        EngineSettings.ItemPool.Add(item);
+                        Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Value);
+                        break;
+                    }
+                }
+            }
+
             // In Auto Battle this happens and the characters get their items, In manual mode need to do it manualy
             if (EngineSettings.BattleScore.AutoBattle)
             {

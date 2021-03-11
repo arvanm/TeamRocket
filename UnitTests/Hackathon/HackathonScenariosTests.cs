@@ -225,5 +225,68 @@ namespace Scenario
             Assert.AreEqual(0, EngineViewModel.Engine.EngineSettings.BattleScore.ScoreTotal);
         }
         #endregion Scenario2
+
+        #region Scenario9
+        [Test]
+        public async Task HackathonScenario_Scenario_9_Valid_Default_Should_Pass()
+        {
+            /* 
+            * Scenario Number:  
+            *      9
+            *      
+            * Description: 
+            *      9.	Just in Time Delivery
+            * 
+            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
+            *      add code to RoundEngine to add new items from Database
+            * 
+            * Test Algrorithm:
+            *      Create Character named Bob
+            *      Check for name Bob When attack is set to miss
+            *      Startup Battle
+            *      Run Auto Battle
+            * 
+            * Test Conditions:
+            *      Bob never hits and never gains experiences
+            * 
+            * Validation:
+            *      Total Experience Gain is zero
+            *  
+            */
+
+            //Arrange
+
+            // Set Character Conditions
+
+            EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
+            var Character = new CharacterModel
+            {
+                Speed = 10, 
+                Level = 20,
+                CurrentHealth = 1000,
+                ExperienceTotal = 4,
+                ExperienceRemaining = 5,
+                Name = "Test",
+            };
+
+            var CharacterPlayerBob = new PlayerInfoModel(Character);
+
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerBob);
+
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerBob);
+
+            // Set Monster Conditions
+
+            // Auto Battle will add the monsters
+
+            //Act
+            var result = await EngineViewModel.AutoBattleEngine.RunAutoBattle();
+
+            //Reset
+
+            //Assert
+            Assert.AreEqual(true, result);
+        }
+        #endregion Scenario9
     }
 }
