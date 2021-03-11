@@ -4,6 +4,7 @@ using Game.Models;
 using System.Threading.Tasks;
 using Game.ViewModels;
 using Game.Helpers;
+using System.Linq;
 
 namespace Scenario
 {
@@ -228,7 +229,7 @@ namespace Scenario
 
         #region Scenario9
         [Test]
-        public async Task HackathonScenario_Scenario_9_Valid_Default_Should_Pass()
+        public async Task HackathonScenario_Scenario_9_Valid_No_Head_Should_Added()
         {
             /* 
             * Scenario Number:  
@@ -237,55 +238,69 @@ namespace Scenario
             * Description: 
             *      9.	Just in Time Delivery
             * 
-            * Changes Required (Classes, Methods etc.)  List Files, Methods, and Describe Changes: 
-            *      add code to RoundEngine to add new items from Database
+            * Changes Required (Classes, Methods etc.) :
+            *      Modifies EndRound() in RoundEngine.cs
             * 
             * Test Algrorithm:
-            *      Create Character named Bob
-            *      Check for name Bob When attack is set to miss
+            *      Add one character with 7 items, no head
+            *      Run 1 round to make sure everything delivers
             *      Startup Battle
             *      Run Auto Battle
             * 
             * Test Conditions:
-            *      Bob never hits and never gains experiences
+            *      Head Item the test character have
             * 
             * Validation:
-            *      Total Experience Gain is zero
-            *  
+            *      Test character should have Head 
             */
 
             //Arrange
 
-            // Set Character Conditions
-
+            // Max Character Size is 1
             EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
-            var Character = new CharacterModel
+            
+            // Make sure all items (except Pokeball) are delivered
+            EngineViewModel.Engine.EngineSettings.MaxRoundCount = 1; 
+
+            // Monster always miss
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Miss;
+
+            // Amazon delivers
+            EngineViewModel.Engine.EngineSettings.AmazonDeliver = true;
+
+            // Add Character
+            var CharacterPlayer = new PlayerInfoModel(new CharacterModel
             {
-                Speed = 10, 
+                Speed = 10,
                 Level = 20,
                 CurrentHealth = 1000,
                 ExperienceTotal = 4,
                 ExperienceRemaining = 5,
                 Name = "Test",
-            };
+                Feet = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Feet).Id,
+                Necklass = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Necklass).Id,
+                PrimaryHand = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.PrimaryHand).Id,
+                OffHand = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.OffHand).Id,
+                LeftFinger = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Finger).Id,
+                RightFinger = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Finger).Id,
+                Pokeball = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Pokeball).Id
+            });
 
-            var CharacterPlayerBob = new PlayerInfoModel(Character);
+            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
+            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayer);
 
-            EngineViewModel.Engine.EngineSettings.CharacterList.Add(CharacterPlayerBob);
-
-            EngineViewModel.Engine.EngineSettings.PlayerList.Add(CharacterPlayerBob);
-
-            // Set Monster Conditions
-
-            // Auto Battle will add the monsters
 
             //Act
             var result = await EngineViewModel.AutoBattleEngine.RunAutoBattle();
+            var headItem = EngineViewModel.Engine.EngineSettings.PlayerList.Where(m => m.Name == "Test").FirstOrDefault().DropAllItems().Where(m => m.Location == ItemLocationEnum.Head).FirstOrDefault();
 
             //Reset
+            EngineViewModel.Engine.EngineSettings.MaxRoundCount = 100;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
+            EngineViewModel.Engine.EngineSettings.AmazonDeliver = false;
 
             //Assert
-            Assert.AreEqual(true, result);
+            Assert.NotNull(headItem);
         }
         #endregion Scenario9
     }
