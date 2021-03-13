@@ -222,6 +222,47 @@ namespace Game.Engine.EngineGame
             return task.Result[0];
             
         }
+
+        public bool GetDeliveryForCharacter(PlayerInfoModel Character)
+        {
+            // Get all locations except for Pokeball
+            var LocationList = Enum.GetValues(typeof(ItemLocationEnum))
+                                   .Cast<ItemLocationEnum>()
+                                   .Where(a =>
+                                          a.ToString() != ItemLocationEnum.Unknown.ToString() &&
+                                          a.ToString() != ItemLocationEnum.Finger.ToString() &&
+                                          a.ToString() != ItemLocationEnum.Pokeball.ToString()
+                                          )
+                                   .ToList();
+
+            // Check each location for empty
+            foreach (ItemLocationEnum Location in LocationList)
+            {
+                ItemModel item = GetDeliveryForNullItem(Character, Location);
+                if (item != null)
+                {
+                    EngineSettings.ItemPool.Add(item);
+                    Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Attribute, item.Value);
+                    
+                }
+            }
+
+            // Check each location for better item
+            foreach (ItemLocationEnum Location in LocationList)
+            {
+                ItemModel item = GetDeliveryForBetterItem(Character, Location);
+                if (item != null)
+                {
+                    EngineSettings.ItemPool.Add(item);
+                    Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Attribute, item.Value);
+                    return true;
+                }
+            }
+
+            // Get nothing
+            return false;
+        }
+
         /// <summary>
         /// At the end of the round
         /// Clear the ItemModel List
@@ -229,53 +270,10 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool EndRound()
         {
-            // Deliver from amazon for each round
+            // Deliver from amazon for each round, add one needed / better item for each character
             if (EngineSettings.AmazonDeliver)
-            { 
-                // Get locations
-                var LocationList = Enum.GetValues(typeof(ItemLocationEnum))
-                                       .Cast<ItemLocationEnum>()
-                                       .Where(a =>
-                                            a.ToString() != ItemLocationEnum.Unknown.ToString() &&
-                                            a.ToString() != ItemLocationEnum.Finger.ToString() &&
-                                            a.ToString() != ItemLocationEnum.Pokeball.ToString()
-                                         )
-                                       .ToList();
-
-                // Add one needed / better item for each character
-                foreach (PlayerInfoModel Character in EngineSettings.CharacterList)
-                {
-                    bool HasDelivered = false;
-
-                    // Check each location for empty
-                    foreach (ItemLocationEnum Location in LocationList)
-                    {
-                        ItemModel item = GetDeliveryForNullItem(Character, Location);
-                        if (item != null)
-                        {
-                            EngineSettings.ItemPool.Add(item);
-                            Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Attribute, item.Value);
-                            HasDelivered = true;
-                            break;
-                        }
-                    }
-
-                    // Check each location for better item
-                    if (!HasDelivered)
-                    {
-                        foreach (ItemLocationEnum Location in LocationList)
-                        {
-                            ItemModel item = GetDeliveryForBetterItem(Character, Location);
-                            if (item != null)
-                            {
-                                EngineSettings.ItemPool.Add(item);
-                                Debug.WriteLine("Amazon delivers {0} for {1}, {2}, {3} +{4}", item.Name, Character.Name, item.Location.ToString(), item.Attribute, item.Value);
-                                HasDelivered = true;
-                                break;
-                            }
-                        }
-                    }
-                }
+            {
+                EngineSettings.CharacterList.ForEach(x => GetDeliveryForCharacter(x));
             }
 
             // In Auto Battle this happens and the characters get their items, In manual mode need to do it manualy
