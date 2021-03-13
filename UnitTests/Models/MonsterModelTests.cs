@@ -127,18 +127,36 @@ namespace UnitTests.Models
         }
 
         [Test]
-        public void MonsterModel_Update_InValid_Null_Should_Fail()
+        public void MonsterModel_Update_InValid_MonsterModel_Null_Should_Fail()
         {
             // Arrange
             var dataOriginal = new MonsterModel();
             dataOriginal.Attack = 2;
 
             // Act
-            var result = dataOriginal.Update(null);
+            var result = dataOriginal.Update((MonsterModel)null);
 
             // Reset
 
             // Assert 
+            Assert.IsFalse(result);
+            Assert.AreEqual(2, dataOriginal.Attack);
+        }
+
+        [Test]
+        public void MonsterModel_Update_InValid_PlayerInfoModel_Null_Should_Fail()
+        {
+            // Arrange
+            var dataOriginal = new MonsterModel();
+            dataOriginal.Attack = 2;
+
+            // Act
+            var result = dataOriginal.Update((PlayerInfoModel)null);
+
+            // Reset
+
+            // Assert 
+            Assert.IsFalse(result);
             Assert.AreEqual(2, dataOriginal.Attack);
         }
 
