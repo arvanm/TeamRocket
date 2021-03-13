@@ -205,7 +205,6 @@ namespace UnitTests.Engine.EngineGame
         public async Task RoundEngine_GetDeliveryForNullItem_No_Head_Should_Return_Head()
         {
             // Arrange
-            Game.Helpers.DataSetsHelper.WarmUp();
             var Character = new PlayerInfoModel(new CharacterModel
             {
                 Speed = 20,
@@ -231,7 +230,6 @@ namespace UnitTests.Engine.EngineGame
         public void RoundEngine_GetDeliveryForNullItem_Invalid_Location_Should_Null()
         {
             // Arrange
-            Game.Helpers.DataSetsHelper.WarmUp();
             var Character = new PlayerInfoModel(new CharacterModel
             {
                 Speed = 20,
@@ -255,7 +253,6 @@ namespace UnitTests.Engine.EngineGame
         public async Task RoundEngine_GetDeliveryForBetterItem_Has_No_Item_Should_Return_Null()
         {
             // Arrange
-            Game.Helpers.DataSetsHelper.WarmUp();
             var Character = new PlayerInfoModel(new CharacterModel
             {
                 Speed = 20,
@@ -280,8 +277,7 @@ namespace UnitTests.Engine.EngineGame
         public async Task RoundEngine_GetDeliveryForBetterItem_Not_Perfect_Head_Should_Return_Better_Head()
         {
             // Arrange
-            Game.Helpers.DataSetsHelper.WarmUp();
-            var HeadItem = new ItemModel { Name = "TestHead", Value = 19, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.Head };
+            var HeadItem = new ItemModel { Name = "TestHead", Value = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.Head };
             await ItemIndexViewModel.Instance.CreateAsync(HeadItem);
 
             var Character = new PlayerInfoModel(new CharacterModel
@@ -305,7 +301,7 @@ namespace UnitTests.Engine.EngineGame
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Location, ItemLocationEnum.Head);
-            Assert.AreEqual(result.Value, 20);
+            Assert.AreEqual(result.Value, 1);
         }
 
         [Test]
