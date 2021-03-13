@@ -252,11 +252,22 @@ namespace Game.Engine.EngineGame
 
             // Get Pokemon's actual name (remove the number at the end)
             var PokemonNameArr = Pokemon.Name.Trim().Split(' ');
-            PokemonNameArr = PokemonNameArr
-                .Where((o, i) => ((i != PokemonNameArr.Length - 1) || ((i == PokemonNameArr.Length - 1) && !Regex.IsMatch(o, @"^\d+$"))))
-                .ToArray();
-            var PokemonName = string.Join(" ", PokemonNameArr);
-            return PokemonName;
+
+            // Only one part
+            if (PokemonNameArr.Length == 1)
+            {
+                return PokemonNameArr[0];
+            }
+            
+            // More than one parts
+            // If the last part is digit, remove
+            if (Regex.IsMatch(PokemonNameArr[PokemonNameArr.Length - 1], @"^\d+$"))
+            {
+                return string.Join(" ", PokemonNameArr.Take(PokemonNameArr.Count() - 1));
+            }
+
+            // Not digit, return origin name
+            return Pokemon.Name;
         }
 
         /// <summary>
