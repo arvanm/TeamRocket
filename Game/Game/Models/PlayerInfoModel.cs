@@ -101,6 +101,7 @@ namespace Game.Models
             LeftFinger = data.LeftFinger;
             Feet = data.Feet;
             UniqueItem = data.UniqueItem;
+            Pokeball = data.Pokeball;
 
             Difficulty = data.Difficulty;
 
