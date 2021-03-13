@@ -1240,5 +1240,103 @@ namespace UnitTests.Engine.EngineBase
             Assert.AreEqual(true, result);
         }
         #endregion SetCurrentDefender
+
+        #region ItemDelivery
+        [Test]
+        public void RoundEngine_GetLocationItem_Should_Return_null()
+        { 
+            // Arrange
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+            });
+
+            // Act
+            var result = Engine.Round.GetLocationItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public void RoundEngine_GetDeliveryForNullItem_Should_Return_Null()
+        {
+            // Arrange
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+                Head = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Head).Id
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForNullItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public void RoundEngine_GetDeliveryForBetterItem_Should_Return_Null()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForBetterItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public void RoundEngine_GetDeliveryForCharacter_Should_Return_False()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForCharacter(Character);
+
+            // Reset
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        #endregion ItemDelivery
     }
 }
