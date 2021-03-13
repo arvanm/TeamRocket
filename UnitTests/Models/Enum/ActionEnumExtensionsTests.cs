@@ -64,6 +64,20 @@ namespace UnitTests.Models
         }
 
         [Test]
+        public void ActionEnumExtensionsTests_Capture_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = ActionEnum.Capture.ToMessage();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(" Captures ", result);
+        }
+
+        [Test]
         public void ActionEnumExtensionsTests_ToImage_Attack_Default_Should_Pass()
         {
             // Arrange
@@ -103,6 +117,20 @@ namespace UnitTests.Models
 
             // Assert
             Assert.AreEqual("item_airmax.png", result);
+        }
+
+        [Test]
+        public void ActionEnumExtensionsTests_ToImage_Capture_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            var result = ActionEnum.Capture.ToImageURI();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual("item_pokeball.png", result);
         }
 
         [Test]
