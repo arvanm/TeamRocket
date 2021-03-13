@@ -124,5 +124,243 @@ namespace UnitTests.Engine.EngineGame
         }
 
         #endregion RoundNextTurn
+
+        #region ItemDelivery
+        [Test]
+        public void RoundEngine_GetLocationItem_Head_Should_Return_Head()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var HeadItem = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Head);
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+                Head = HeadItem.Id
+            });
+
+            // Act
+            var result = Engine.Round.GetLocationItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(HeadItem, result);
+        }
+
+        [Test]
+        public void RoundEngine_GetLocationItem_Unknown_Should_Return_Null()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+            });
+
+            // Act
+            var result = Engine.Round.GetLocationItem(Character, ItemLocationEnum.Unknown);
+
+            // Reset
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public void RoundEngine_GetDeliveryForNullItem_Has_Item_Should_Return_Null()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+                Head = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Head).Id
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForNullItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public async Task RoundEngine_GetDeliveryForNullItem_No_Head_Should_Return_Head()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForNullItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+            await ItemIndexViewModel.Instance.DeleteAsync(result);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Location, ItemLocationEnum.Head);
+        }
+
+        [Test]
+        public void RoundEngine_GetDeliveryForNullItem_Invalid_Location_Should_Null()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForNullItem(Character, ItemLocationEnum.Pokeball);
+
+            // Reset
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public async Task RoundEngine_GetDeliveryForBetterItem_Has_No_Item_Should_Return_Null()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForBetterItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+            await ItemIndexViewModel.Instance.DeleteAsync(result);
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public async Task RoundEngine_GetDeliveryForBetterItem_Not_Perfect_Head_Should_Return_Better_Head()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var HeadItem = new ItemModel { Name = "TestHead", Value = 19, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.Head };
+            await ItemIndexViewModel.Instance.CreateAsync(HeadItem);
+
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+                Head = HeadItem.Id
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForBetterItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+            await ItemIndexViewModel.Instance.DeleteAsync(HeadItem);
+            await ItemIndexViewModel.Instance.DeleteAsync(result);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Location, ItemLocationEnum.Head);
+            Assert.AreEqual(result.Value, 20);
+        }
+
+        [Test]
+        public async Task RoundEngine_GetDeliveryForBetterItem_Perfect_Head_Should_Return_Null()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var HeadItem = new ItemModel { Name = "TestHead", Value = 20, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.Head };
+            await ItemIndexViewModel.Instance.CreateAsync(HeadItem);
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+                Head = HeadItem.Id
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForBetterItem(Character, ItemLocationEnum.Head);
+
+            // Reset
+            await ItemIndexViewModel.Instance.DeleteAsync(HeadItem);
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public void RoundEngine_GetDeliveryForBetterItem_Invalid_Location_Should_Null()
+        {
+            // Arrange
+            Game.Helpers.DataSetsHelper.WarmUp();
+            var Character = new PlayerInfoModel(new CharacterModel
+            {
+                Speed = 20,
+                Level = 1,
+                CurrentHealth = 1,
+                ExperienceTotal = 1,
+                Name = "Characer",
+                ListOrder = 1,
+                Pokeball = ItemIndexViewModel.Instance.GetDefaultItem(ItemLocationEnum.Pokeball).Id
+            });
+
+            // Act
+            var result = Engine.Round.GetDeliveryForBetterItem(Character, ItemLocationEnum.Pokeball);
+
+            // Reset
+
+            // Assert
+            Assert.IsNull(result);
+        }
+        #endregion ItemDelivery
+
     }
 }
