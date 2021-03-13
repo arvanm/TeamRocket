@@ -137,6 +137,8 @@ namespace Game.Engine.EngineGame
                     return ItemIndexViewModel.Instance.GetItem(Character.OffHand);
                 case ItemLocationEnum.Necklass:
                     return ItemIndexViewModel.Instance.GetItem(Character.Necklass);
+                case ItemLocationEnum.Pokeball:
+                    return ItemIndexViewModel.Instance.GetItem(Character.Pokeball);
                 default:
                     return null;
             }
@@ -164,7 +166,7 @@ namespace Game.Engine.EngineGame
             task.Wait();
 
             // Does not return items from server
-            if (task.Result == null || task.Result.Count() == 0)
+            if (task.Result.Count() == 0)
             {
                 return null;
             }
@@ -201,7 +203,7 @@ namespace Game.Engine.EngineGame
             task.Wait();
 
             // Does not return items from server
-            if (task.Result == null || task.Result.Count() == 0)
+            if (task.Result.Count() == 0)
             {
                 return null;
             }
