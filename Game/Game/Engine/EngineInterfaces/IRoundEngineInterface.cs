@@ -128,5 +128,36 @@ namespace Game.Engine.EngineInterfaces
         /// </summary>
         /// <returns></returns>
         List<PlayerInfoModel> PlayerList();
+
+        /// <summary>
+        /// Get the current item on given location on given Character
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        ItemModel GetLocationItem(PlayerInfoModel Character, ItemLocationEnum Location);
+
+        /// <summary>
+        /// Get an item from the server for a loaction if the character does not have item in the location
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        ItemModel GetDeliveryForNullItem(PlayerInfoModel Character, ItemLocationEnum Location);
+
+        /// <summary>
+        /// Get a better item from the server for a loaction if the character havs item in the location
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        ItemModel GetDeliveryForBetterItem(PlayerInfoModel Character, ItemLocationEnum Location);
+
+        /// <summary>
+        /// Get a new / better item from the server for a loaction for the character
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <returns></returns>
+        bool GetDeliveryForCharacter(PlayerInfoModel Character);
     }
 }

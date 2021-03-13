@@ -507,5 +507,48 @@ namespace Game.Engine.EngineBase
             }
             return true;
         }
+
+        /// <summary>
+        /// Get the current item on given location on given Character
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        public virtual ItemModel GetLocationItem(PlayerInfoModel Character, ItemLocationEnum Location)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Get an item from the server for a loaction if the character does not have item in the location
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        public virtual ItemModel GetDeliveryForNullItem(PlayerInfoModel Character, ItemLocationEnum Location)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Get a better item from the server for a loaction if the character havs item in the location
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        public virtual ItemModel GetDeliveryForBetterItem(PlayerInfoModel Character, ItemLocationEnum Location)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Get a new / better item from the server for a loaction for the character
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <returns></returns>
+        public virtual bool GetDeliveryForCharacter(PlayerInfoModel Character)
+        {
+            return false;
+        }
     }
 }
