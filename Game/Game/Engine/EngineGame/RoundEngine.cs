@@ -119,7 +119,7 @@ namespace Game.Engine.EngineGame
         /// <param name="Character"></param>
         /// <param name="Location"></param>
         /// <returns></returns>
-        public ItemModel GetLocationItem(PlayerInfoModel Character, ItemLocationEnum Location)
+        public override ItemModel GetLocationItem(PlayerInfoModel Character, ItemLocationEnum Location)
         {
             switch (Location)
             {
@@ -148,7 +148,7 @@ namespace Game.Engine.EngineGame
         /// <param name="Character"></param>
         /// <param name="Location"></param>
         /// <returns></returns>
-        public ItemModel GetDeliveryForNullItem(PlayerInfoModel Character, ItemLocationEnum Location)
+        public override ItemModel GetDeliveryForNullItem(PlayerInfoModel Character, ItemLocationEnum Location)
         {
             // Get the current item on Character
             ItemModel CurrentItem = GetLocationItem(Character, Location);
@@ -157,12 +157,6 @@ namespace Game.Engine.EngineGame
             if (CurrentItem != null)
             {
                 return null;
-            }
-
-            // Location adjustment for Finger
-            if (Location == ItemLocationEnum.LeftFinger || Location == ItemLocationEnum.RightFinger)
-            {
-                Location = ItemLocationEnum.Finger;
             }
 
             // Get an item of given location from server
@@ -185,7 +179,7 @@ namespace Game.Engine.EngineGame
         /// <param name="Character"></param>
         /// <param name="Location"></param>
         /// <returns></returns>
-        public ItemModel GetDeliveryForBetterItem(PlayerInfoModel Character, ItemLocationEnum Location) 
+        public override ItemModel GetDeliveryForBetterItem(PlayerInfoModel Character, ItemLocationEnum Location) 
         {
             // Get the current item on Character
             ItemModel CurrentItem = GetLocationItem(Character, Location);
@@ -194,12 +188,6 @@ namespace Game.Engine.EngineGame
             if (CurrentItem == null)
             {
                 return null;
-            }
-
-            // Location adjustment for Finger
-            if (Location == ItemLocationEnum.LeftFinger || Location == ItemLocationEnum.RightFinger)
-            { 
-                Location = ItemLocationEnum.Finger;
             }
 
             // Best item, no need
@@ -223,7 +211,12 @@ namespace Game.Engine.EngineGame
             
         }
 
-        public bool GetDeliveryForCharacter(PlayerInfoModel Character)
+        /// <summary>
+        /// Get a new / better item from the server for a loaction for the character
+        /// </summary>
+        /// <param name="Character"></param>
+        /// <returns></returns>
+        public override bool GetDeliveryForCharacter(PlayerInfoModel Character)
         {
             // Get all locations except for Pokeball
             var LocationList = Enum.GetValues(typeof(ItemLocationEnum))
