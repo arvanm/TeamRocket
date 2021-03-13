@@ -152,7 +152,7 @@ namespace UnitTests.ViewModels
         }
 
         [Test]
-        public void ScoreIndexViewModel_Message_Create_Valid_Should_Pass()
+        public void ScoreIndexViewModel_Message_Create_By_ScoreCreatePage_Valid_Should_Pass()
         {
             // Arrange
 
@@ -161,6 +161,29 @@ namespace UnitTests.ViewModels
 
             // Make a Delete Page
             var myPage = new Game.Views.ScoreCreatePage(true);
+
+            var countBefore = ViewModel.Dataset.Count();
+
+            // Act
+            MessagingCenter.Send(myPage, "Create", data);
+            var countAfter = ViewModel.Dataset.Count();
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(countBefore + 1, countAfter); // Count of 0 for the load was skipped
+        }
+
+        [Test]
+        public void ScoreIndexViewModel_Message_Create_By_BattlePage_Valid_Should_Pass()
+        {
+            // Arrange
+
+            // Make a new Score
+            var data = new ScoreModel();
+
+            // Make a Delete Page
+            var myPage = new Game.Views.BattlePage(true);
 
             var countBefore = ViewModel.Dataset.Count();
 
