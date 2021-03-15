@@ -48,9 +48,12 @@ namespace Game.Views
             }
 
             // Draw the Characters
-            foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList)
+            foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList)
             {
-                CharacterListFrame.Children.Add(CreatePlayerDisplayBox(data));
+                if (data.PlayerType == PlayerTypeEnum.Character)
+                {
+                    CharacterListFrame.Children.Add(CreatePlayerDisplayBox(data));
+                }
             }
         }
 
