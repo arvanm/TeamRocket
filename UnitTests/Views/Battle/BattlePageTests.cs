@@ -94,6 +94,35 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+
+        [Test]
+        public void BattlePage_MoveButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.MoveButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void BattlePage_CaptureButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+
+            // Act
+            page.CaptureButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         [Test]
         public void BattlePage_ShowScoreButton_Clicked_Default_Should_Pass()
         {
