@@ -77,10 +77,10 @@ namespace Game.Views
                 Source = data.ImageURI
             };
 
-            // Add the Level
-            var PlayerLevelLabel = new Label
+            // Add the Name
+            var PlayerNameLabel = new Label
             {
-                Text = "Level : " + data.Level,
+                Text = "Name : " + data.Name,
                 Style = (Style)Application.Current.Resources["ValueStyleMicro"],
                 HorizontalOptions = LayoutOptions.Center,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -100,7 +100,7 @@ namespace Game.Views
                 Spacing = 0,
                 Children = {
                     PlayerImage,
-                    PlayerLevelLabel,
+                    PlayerNameLabel,
                 },
             };
 
