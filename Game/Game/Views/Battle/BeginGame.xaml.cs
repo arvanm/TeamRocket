@@ -22,7 +22,7 @@ namespace Game.Views
             InitializeComponent();
         }
 
-        private async void StartGame_Clicked(object sender, EventArgs e)
+        public async void StartGame_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PickCharactersPage());
         }
