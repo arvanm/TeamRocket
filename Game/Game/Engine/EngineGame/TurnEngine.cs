@@ -130,8 +130,6 @@ namespace Game.Engine.EngineGame
             // Reset the Action to unknown for next time
             EngineSettings.CurrentAction = ActionEnum.Unknown;
 
-
-
             return result;
         }
 
@@ -142,7 +140,7 @@ namespace Game.Engine.EngineGame
         /// <returns></returns>
         public override ActionEnum DetermineActionChoice(PlayerInfoModel Attacker)
         {
-            // If it is the characters turn, and NOT auto battle, use what was sent into the engine
+            // If it is the characters turn, use whatever passed in if not autobattle
             if (Attacker.PlayerType == PlayerTypeEnum.Character)
             {
                 if (EngineSettings.BattleScore.AutoBattle == false)
@@ -151,16 +149,7 @@ namespace Game.Engine.EngineGame
                 }
             }
 
-            /*
-             * The following is Used for Monsters, and Auto Battle Characters
-             * 
-             * Order of Priority
-             * If within Range
-             * If can capture Then capture
-             * Next Attack
-             * If not within Range Then Move
-             */
-
+            // If its autobattle or monster
             // Assume Move if nothing else happens
             EngineSettings.CurrentAction = ActionEnum.Move;
 
@@ -177,7 +166,6 @@ namespace Game.Engine.EngineGame
                 // Otherwise Attack
                 EngineSettings.CurrentAction = ActionEnum.Attack;
             }
-
             return EngineSettings.CurrentAction;
         }
 
@@ -302,12 +290,15 @@ namespace Game.Engine.EngineGame
             }
 
             // Roll dice to see whether to capture, 20% chance
-            if (DiceHelper.RollDice(1, 10) <= 2)
+            var dice = DiceHelper.RollDice(1, 10);
+            if (dice <= 2)
             {
+                Debug.WriteLine(string.Format("{0} rolls {1} and choose to capture", Attacker.Name, dice));
                 return true;
             }
 
             // Don't try
+            Debug.WriteLine(string.Format("{0} rolls {1} and choose to not capture", Attacker.Name, dice));
             return false;
         }
 
@@ -536,6 +527,7 @@ namespace Game.Engine.EngineGame
             RemoveIfDead(Target);
 
             // Apply the experience earned
+            EngineSettings.BattleMessagesModel.DamageAmount = Target.CurrentHealth;
             CalculateExperience(Attacker, Target);
 
             // Message
