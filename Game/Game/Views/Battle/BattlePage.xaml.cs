@@ -600,13 +600,13 @@ namespace Game.Views
         }
 
         /// <summary>
-        /// Attack Action
+        /// Attack Action, Fallback to move if out of range
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void AttackButton_Clicked(object sender, EventArgs e)
         {
-            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
 
             NextAttackExample();
         }
@@ -620,18 +620,6 @@ namespace Game.Views
         public void MoveButton_Clicked(object sender, EventArgs e)
         {
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
-
-            NextAttackExample();
-        }
-
-        /// <summary>
-        /// Capture Action
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void CaptureButton_Clicked(object sender, EventArgs e)
-        {
-            BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Capture;
 
             NextAttackExample();
         }
@@ -665,6 +653,27 @@ namespace Game.Views
 
             // Get the turn, set the current player and attacker to match
             SetAttackerAndDefender();
+
+            // Determin the action if unknown
+            if (BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction == ActionEnum.Unknown)
+            {
+                BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Move;
+
+                // See if Desired Target is within Range, and if so capture or attack 
+                if (BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.IsTargetInRange(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker, BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender))
+                {
+                    // Check to see if capture is available
+                    if (BattleEngineViewModel.Instance.Engine.Round.Turn.ChooseToUseCapture(BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker, BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentDefender))
+                    {
+                        BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Capture;
+                    }
+                    // Otherwise Attack
+                    else
+                    {
+                        BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAction = ActionEnum.Attack;
+                    }
+                }
+            }
 
             // Hold the current state
             var RoundCondition = BattleEngineViewModel.Instance.Engine.Round.RoundNextTurn();
@@ -903,7 +912,6 @@ namespace Game.Views
             StartBattleButton.IsVisible = false;
             AttackButton.IsVisible = false;
             MoveButton.IsVisible = false;
-            CaptureButton.IsVisible = false;
             MessageDisplayBox.IsVisible = false;
             BattlePlayerInfomationBox.IsVisible = false;
         }
@@ -976,7 +984,6 @@ namespace Game.Views
                     MessageDisplayBox.IsVisible = true;
                     AttackButton.IsVisible = true;
                     MoveButton.IsVisible = true;
-                    CaptureButton.IsVisible = true;
                     break;
 
                 // Based on the State disable buttons
