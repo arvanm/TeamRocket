@@ -212,12 +212,9 @@ namespace Game.GameRules
                     Job = CharacterJobEnum.DojoMaster,
                     ImageURI = "character_02.png",
                     Head = HeadString,
-                    Necklass = NecklassString,
                     PrimaryHand = PrimaryHandString,
                     OffHand = OffHandString,
-                    Feet = FeetString,
                     RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
                     Pokeball = PokeballString,
                 },
 
@@ -229,14 +226,10 @@ namespace Game.GameRules
                     CurrentHealth = 4,
                     Job = CharacterJobEnum.QuickAttacker,
                     ImageURI = "character_03.png",
-                    Head = HeadString,
                     Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
                     OffHand = OffHandString,
                     Feet = FeetString,
                     RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
-                    Pokeball = PokeballString,
                     Pokedex = new List<MonsterModel>()
                 },
 
@@ -279,19 +272,17 @@ namespace Game.GameRules
                 new CharacterModel {
                     Name = "Petrel",
                     Description = "Master of disguise",
-                    Level = 15,
-                    MaxHealth = 132,
-                    CurrentHealth = 131,
+                    Level = 2,
+                    MaxHealth = 19,
+                    CurrentHealth = 19,
                     Job = CharacterJobEnum.PetLover,
                     ImageURI = "character_03.png",
-                    Head = HeadString,
-                    Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    Feet = FeetString,
-                    RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
-                    Pokeball = PokeballString,
+                    Pokedex = new List<MonsterModel>()
+                    {
+                        RandomPlayerHelper.GetRandomMonster(5),
+                        RandomPlayerHelper.GetRandomMonster(5),
+                        RandomPlayerHelper.GetRandomMonster(5)
+                    }
                 },
 
                 new CharacterModel {
