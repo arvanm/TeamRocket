@@ -67,6 +67,12 @@ namespace Game.Views
                 return;
             }
 
+            // Don't add if character already selected
+            if (BattleEngineViewModel.Instance.PartyCharacterList.Where(m => m.Id == data.Id).FirstOrDefault() != null)
+            {
+                return;
+            }
+
             // Don't add more than the party max
             if (BattleEngineViewModel.Instance.PartyCharacterList.Count() < BattleEngineViewModel.Instance.Engine.EngineSettings.MaxNumberPartyCharacters)
             {
