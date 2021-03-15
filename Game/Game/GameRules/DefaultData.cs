@@ -304,11 +304,6 @@ namespace Game.GameRules
                     ImageURI = "character_01.png",
                     Head = HeadString,
                     Necklass = NecklassString,
-                    PrimaryHand = PrimaryHandString,
-                    OffHand = OffHandString,
-                    Feet = FeetString,
-                    RightFinger = RightFingerString,
-                    LeftFinger = LeftFingerString,
                     Pokeball = PokeballString,
                 },
 
@@ -316,10 +311,11 @@ namespace Game.GameRules
                     Name = "Poor",
                     Description = "Has Nothing",
                     Level = 1,
-                    MaxHealth = 1,
-                    CurrentHealth = 1,
+                    MaxHealth = 10,
+                    CurrentHealth = 10,
                     Job = CharacterJobEnum.PetLover,
                     ImageURI = "character_01.png",
+                    OffHand = OffHandString,
                 },
             };
 
