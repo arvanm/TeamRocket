@@ -44,18 +44,24 @@ namespace Game.Views
         public async void Save_Clicked(object sender, EventArgs e)
         {
             // Only save when the Monster name is not empty, otherwise display an alert
-            if (await CheckScoreName() && await CheckScoreValue())
+            if (!await CheckScoreName())
             {
-                // If the image in the data box is empty, use the default one..
-                if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
-                {
-                    ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
-                }
-
-                MessagingCenter.Send(this, "Create", ViewModel.Data);
-                await Navigation.PopModalAsync();
+                return;
             }
 
+            if (!await CheckScoreValue())
+            {
+                return;
+            }
+
+            // If the image in the data box is empty, use the default one..
+            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            {
+                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+            }
+
+            MessagingCenter.Send(this, "Create", ViewModel.Data);
+            await Navigation.PopModalAsync();
         }
 
         /// <summary>

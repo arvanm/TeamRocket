@@ -211,17 +211,30 @@ namespace Game.Views
             // the character name is not empty,
             // the max health is not within [1, level * 10] range,
             // otherwise display an alert.
-            if (await CheckCharacterName() && await CheckCharacterMaxHealth() && await CheckCharacterCurHealth())
-            {
-                // If the image in the data box is empty, use the default one..
-                if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
-                {
-                    ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
-                }
 
-                MessagingCenter.Send(this, "Update", ViewModel.Data);
-                await Navigation.PopModalAsync();
+            if (!await CheckCharacterName())
+            {
+                return;
             }
+
+            if (!await CheckCharacterMaxHealth())
+            {
+                return;
+            }
+
+            if (!await CheckCharacterCurHealth())
+            { 
+                return; 
+            }
+
+            // If the image in the data box is empty, use the default one..
+            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            {
+                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+            }
+
+            MessagingCenter.Send(this, "Update", ViewModel.Data);
+            await Navigation.PopModalAsync();
         }
 
         /// <summary>

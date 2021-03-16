@@ -50,17 +50,29 @@ namespace Game.Views
         public async void Save_Clicked(object sender, EventArgs e)
         {
             // Only save when the item name is not empty, otherwise display an alert
-            if (await CheckItemName() && await CheckItemLocation() && await CheckItemAttribute())
+            if (!await CheckItemName())
             {
-                // If the image in the data box is empty, use the default one..
-                if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
-                {
-                    ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
-                }
-
-                MessagingCenter.Send(this, "Create", ViewModel.Data);
-                await Navigation.PopModalAsync();
+                return;
             }
+
+            if (!await CheckItemLocation())
+            {
+                return;
+            }
+
+            if (!await CheckItemAttribute())
+            {
+                return;
+            }
+
+            // If the image in the data box is empty, use the default one..
+            if (string.IsNullOrEmpty(ViewModel.Data.ImageURI))
+            {
+                ViewModel.Data.ImageURI = Services.ItemService.DefaultImageURI;
+            }
+
+            MessagingCenter.Send(this, "Create", ViewModel.Data);
+            await Navigation.PopModalAsync();
         }
 
         /// <summary>
