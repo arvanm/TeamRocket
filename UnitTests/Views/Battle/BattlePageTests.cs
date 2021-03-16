@@ -9,6 +9,7 @@ using Game;
 using Game.Views;
 using Game.Models;
 using Game.ViewModels;
+using Game.Helpers;
 
 namespace UnitTests.Views
 {
@@ -339,6 +340,84 @@ namespace UnitTests.Views
 
             // Reset
             BattleEngineViewModel.Instance.Engine.EngineSettings.CurrentAttacker.PrimaryHand = oldItem;
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void BattlePage_NextAttackExample_Set_Attack_Should_Pass()
+        {
+            // Arrange
+            // Dice
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(4);
+
+            // Clear List
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Clear();
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Clear();
+
+            // Add Character and Monster
+            var CharacterPlayer = new PlayerInfoModel(new CharacterModel());
+            var MonsterPlayer = new PlayerInfoModel(new MonsterModel());
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Add(MonsterPlayer);
+            BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
+
+            // Add Character and Monster on map
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.PopulateMapModel(BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList);
+
+            // Move character and monster close
+            var CharacterPlayerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayer);
+            var MonsterPlayerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(MonsterPlayer);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(CharacterPlayerLocation, BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[1, 1]);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(MonsterPlayerLocation, BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[1, 2]);
+
+            // Act
+            page.NextAttackExample();
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void BattlePage_NextAttackExample_Set_Capture_Should_Pass()
+        {
+            // Arrange
+            // Dice
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(2);
+
+            // Clear List
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Clear();
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Clear();
+            BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList.Clear();
+
+            // Add Character and Monster
+            var CharacterPlayer = new PlayerInfoModel(new CharacterModel());
+            var MonsterPlayer = new PlayerInfoModel(new MonsterModel());
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(CharacterPlayer);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MonsterList.Add(MonsterPlayer);
+            BattleEngineViewModel.Instance.Engine.Round.MakePlayerList();
+
+            // Add Character and Monster on map
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.PopulateMapModel(BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList);
+
+            // Move character and monster close
+            var CharacterPlayerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(CharacterPlayer);
+            var MonsterPlayerLocation = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.GetLocationForPlayer(MonsterPlayer);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(CharacterPlayerLocation, BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[1, 1]);
+            BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MovePlayerOnMap(MonsterPlayerLocation, BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.MapGridLocation[1, 2]);
+
+            // Act
+            page.NextAttackExample();
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
