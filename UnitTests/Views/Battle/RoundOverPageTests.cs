@@ -201,6 +201,31 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void RoundOverPage_DrawCharacterList_Remove_Old_List_Valid_Should_Pass()
+        {
+            // Arrange
+
+            FlexLayout CharacterListFrame = (FlexLayout) page.FindByName("CharacterListFrame");
+            CharacterListFrame.Children.Add(new StackLayout());
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.CharacterModelDeathList.Add(new PlayerInfoModel(new CharacterModel()));
+
+            // Draw the Monsters
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.MonsterModelDeathList.Add(new PlayerInfoModel(new CharacterModel()));
+
+            // Do it two times
+            page.DrawCharacterList();
+
+            // Act
+            page.DrawCharacterList();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void RoundOverPage_DrawDroppedItems_Valid_Should_Pass()
         {
             // Arrange
