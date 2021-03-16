@@ -108,5 +108,88 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
         }
+
+        [Test]
+        public void PickItemsPage_CreatePlayerDisplayBox_Null_Should_Pass()
+        {
+            // Arrange          
+
+            // Act
+            page.CreatePlayerDisplayBox(null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+
+        [Test]
+        public void PickItemsPage_GetItemToDisplay_Click_Button_Valid_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "PrimaryHand01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.PrimaryHand,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var StackItem = page.GetItemToDisplay(item);
+            var dataImage = StackItem.Children[0];
+
+            // Act
+            ((ImageButton)dataImage).PropagateUpClicked();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_SaveButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "PrimaryHand01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.PrimaryHand,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.SaveButton_Clicked(null,null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
     }
 }
