@@ -89,6 +89,8 @@ namespace UnitTests.Views
         public void ScoreCreatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
+            page.ViewModel.Data.Name = "Test";
+            page.ViewModel.Data.ScoreTotal = 1;
             page.ViewModel.Data.ImageURI = null;
 
             // Act

@@ -89,6 +89,11 @@ namespace UnitTests.Views
         public void ItemCreatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
+            page.ViewModel.Data.Name = "Test";
+            page.ViewModel.Data.Location = ItemLocationEnum.Head;
+            page.ViewModel.Data.Attribute = AttributeEnum.Attack;
+            page.ViewModel.Data.ImageURI = null;
+
             page.ViewModel.Data.ImageURI = null;
 
             // Act

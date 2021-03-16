@@ -84,6 +84,10 @@ namespace UnitTests.Views
         public void CharacterUpdatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
+            page.ViewModel.Data.Name = "Test";
+            page.ViewModel.Data.Level = 1;
+            page.ViewModel.Data.MaxHealth = 9;
+            page.ViewModel.Data.CurrentHealth = 9;
             page.ViewModel.Data.ImageURI = null;
 
             // Act
