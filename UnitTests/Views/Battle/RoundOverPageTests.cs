@@ -166,6 +166,19 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void RoundOverPage_ManualAssignButton_Clicked_Default_Should_Pass()
+        {
+            // Arrange
+            // Act
+            page.ManualAssignButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void RoundOverPage_DrawCharacterList_Valid_Should_Pass()
         {
             // Arrange
