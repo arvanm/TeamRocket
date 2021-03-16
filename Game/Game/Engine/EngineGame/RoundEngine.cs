@@ -265,6 +265,16 @@ namespace Game.Engine.EngineGame
         /// </summary>
         public override bool EndRound()
         {
+            // Save Character Levels
+            foreach (var Character in EngineSettings.PlayerList.Where(m => m.PlayerType == PlayerTypeEnum.Character).ToList())
+            {
+                int CharacterToUpdateIndex = EngineSettings.CharacterList.FindIndex(m => m.Name == Character.Name);
+                if (CharacterToUpdateIndex != -1)
+                {
+                    EngineSettings.CharacterList[CharacterToUpdateIndex] = new PlayerInfoModel(Character);
+                }
+            }
+
             // Deliver from amazon for each round, add one needed / better item for each character
             if (EngineSettings.BattleSettingsModel.AllowAmazonDelivery)
             {
