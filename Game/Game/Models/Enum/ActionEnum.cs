@@ -71,7 +71,7 @@
         public static string ToImageURI(this ActionEnum value)
         {
             // Default String
-            var Message = "item.png";
+            var Message = "item_pokestar.png";
 
             switch (value)
             {
@@ -83,14 +83,11 @@
                     Message = "item_airmax.png";
                     break;
 
-                case ActionEnum.Ability:
-                    Message = "item.png";
-                    break;
-
                 case ActionEnum.Capture:
                     Message = "item_pokeball.png";
                     break;
 
+                case ActionEnum.Ability:
                 case ActionEnum.Unknown:
                 default:
                     break;
