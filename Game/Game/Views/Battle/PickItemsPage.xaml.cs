@@ -114,11 +114,6 @@ namespace Game.Views
                 return new StackLayout();
             }
 
-            if (string.IsNullOrEmpty(item.Id))
-            {
-                return new StackLayout();
-            }
-
             // Defualt Image is the Plus
             var ClickableButton = true;
 
