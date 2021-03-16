@@ -74,16 +74,17 @@ namespace UnitTests.Views
         public void PickItemsPage_GetItemToDisplay_Default_Should_Pass()
         {
             // Arrange
-            ItemModel item = new ItemModel {
+            ItemModel item = new ItemModel
+            {
                 Name = "PrimaryHand01",
-                    Description = "May the force be with you!",
-                    ImageURI = "item_sword.png",
-                    Range = 5,
-                    Damage = 10,
-                    Value = 9,
-                    Location = ItemLocationEnum.PrimaryHand,
-                    Attribute = AttributeEnum.Attack
-                };
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.PrimaryHand,
+                Attribute = AttributeEnum.Attack
+            };
 
 
             // Act
@@ -115,7 +116,21 @@ namespace UnitTests.Views
             // Arrange          
 
             // Act
-            page.CreatePlayerDisplayBox(null);
+            StackLayout result = page.CreatePlayerDisplayBox(null);
+
+            // Reset
+
+            // Assert
+            Assert.NotNull(result);
+        }
+
+        [Test]
+        public void PickItemsPage_CreatePlayerDisplayBox_Default_Should_Pass()
+        {
+            // Arrange          
+
+            // Act
+            StackLayout result = page.CreatePlayerDisplayBox(new PlayerInfoModel(CharacterIndexViewModel.Instance.Dataset.FirstOrDefault()));
 
             // Reset
 
@@ -145,6 +160,36 @@ namespace UnitTests.Views
 
             // Act
             ((ImageButton)dataImage).PropagateUpClicked();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_GetItemToDisplay_Click_Button_Null_Should_Pass()
+        {
+            // Arrange
+            var StackItem = page.GetItemToDisplay(null);
+
+            // Act
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+            Assert.AreEqual(StackItem.Children.Count(), 0); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_GetItemToDisplay_Click_Button_Unknown_Should_Pass()
+        {
+            // Arrange
+            var StackItem = page.GetItemToDisplay(new ItemModel());
+            ImageButton dataImage = (ImageButton) StackItem.Children[0];
+
+            // Act
 
             // Reset
 
@@ -184,7 +229,61 @@ namespace UnitTests.Views
             page.SelectedCharacter = CharacterPlayer;
 
             // Act
-            page.SaveButton_Clicked(null,null);
+            page.SaveButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_DrawCharacterList_Default_Should_Pass()
+        {
+            // Arrange
+            FlexLayout CharacterListFrame = (FlexLayout)page.FindByName("CharacterListFrame");
+            CharacterListFrame.Children.Add(new StackLayout());
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.CharacterList.Add(new PlayerInfoModel(new CharacterModel()));
+
+            // Act
+            page.DrawCharacterList();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_DrawDroppedItems_Default_Should_Pass()
+        {
+            // Arrange
+            FlexLayout ItemListFoundFrame = (FlexLayout)page.FindByName("ItemListFoundFrame");
+            ItemListFoundFrame.Children.Add(new StackLayout());
+
+            BattleEngineViewModel.Instance.Engine.EngineSettings.BattleScore.ItemModelDropList.Add(new ItemModel());
+
+            // Act
+            page.DrawDroppedItems();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_UpdateDrawDroppedItems_Default_Should_Pass()
+        {
+            // Arrange
+            FlexLayout ItemListFoundFrame = (FlexLayout)page.FindByName("ItemListFoundFrame");
+            ItemListFoundFrame.Children.Add(new StackLayout());
+
+            page.AvailableItem.Add(new ItemModel());
+
+            // Act
+            page.UpdateDrawDroppedItems();
 
             // Reset
 
