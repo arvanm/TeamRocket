@@ -71,7 +71,7 @@
         public static string ToImageURI(this ActionEnum value)
         {
             // Default String
-            var Message = "item_pokestar.png";
+            var Message = "icon_pokestar.png";
 
             switch (value)
             {

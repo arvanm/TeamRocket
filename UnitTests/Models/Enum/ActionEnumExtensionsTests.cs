@@ -102,7 +102,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("item_pokestar.png", result);
+            Assert.AreEqual("icon_pokestar.png", result);
         }
 
         [Test]
@@ -144,7 +144,7 @@ namespace UnitTests.Models
             // Reset
 
             // Assert
-            Assert.AreEqual("item_pokestar.png", result);
+            Assert.AreEqual("icon_pokestar.png", result);
         }
     }
 }
