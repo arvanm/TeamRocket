@@ -1542,7 +1542,7 @@ namespace UnitTests.Engine.EngineGame
         }
 
         [Test]
-        public void TurnEngine_DetermineActionChoice_Valid_Character_Range_Roll_3_Should_Return_Capture()
+        public void TurnEngine_DetermineActionChoice_Valid_Character_QuickAttacker_Roll_3_Should_Return_Attack()
         {
             // Arrange
 
@@ -1550,7 +1550,7 @@ namespace UnitTests.Engine.EngineGame
             DiceHelper.EnableForcedRolls();
             DiceHelper.SetForcedRollValue(3);
 
-            var CharacterPlayer = new PlayerInfoModel(new CharacterModel());
+            var CharacterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.QuickAttacker }); 
             // Clear the abilities, so the attack is the choice.
             CharacterPlayer.AbilityTracker.Clear();
 
@@ -1576,6 +1576,43 @@ namespace UnitTests.Engine.EngineGame
 
             // Assert
             Assert.AreEqual(result, ActionEnum.Attack);
+        }
+
+        [Test]
+        public void TurnEngine_DetermineActionChoice_Valid_Character_PetLover_Roll_3_Should_Return_Capture()
+        {
+            // Arrange
+
+            // Set dice to roll 3
+            DiceHelper.EnableForcedRolls();
+            DiceHelper.SetForcedRollValue(3);
+
+            var CharacterPlayer = new PlayerInfoModel(new CharacterModel { Job = CharacterJobEnum.PetLover });
+            // Clear the abilities, so the attack is the choice.
+            CharacterPlayer.AbilityTracker.Clear();
+
+            // Get the longest range weapon in stock.
+            var weapon = ItemIndexViewModel.Instance.Dataset.Where(m => m.Range > 1).ToList().OrderByDescending(m => m.Range).FirstOrDefault();
+            CharacterPlayer.PrimaryHand = weapon.Id;
+            Engine.EngineSettings.PlayerList.Add(CharacterPlayer);
+
+            var Monster = new MonsterModel();
+            Engine.EngineSettings.PlayerList.Add(new PlayerInfoModel(Monster));
+            Engine.EngineSettings.PlayerList.Add(new PlayerInfoModel(Monster));
+
+            Engine.EngineSettings.MapModel.PopulateMapModel(Engine.EngineSettings.PlayerList);
+
+            Engine.EngineSettings.CurrentAction = ActionEnum.Unknown;
+            Engine.EngineSettings.BattleScore.AutoBattle = true;
+
+            // Act
+            var result = Engine.Round.Turn.DetermineActionChoice(CharacterPlayer);
+
+            // Reset
+            DiceHelper.DisableForcedRolls();
+
+            // Assert
+            Assert.AreEqual(result, ActionEnum.Capture);
         }
         #endregion DetermineActionChoice
 
