@@ -11,6 +11,7 @@ using Game.Views;
 using Xamarin.Forms.Mocks;
 using Xamarin.Forms;
 using Game.ViewModels;
+using Game.Models;
 
 namespace UnitTests.Views
 {
@@ -62,6 +63,31 @@ namespace UnitTests.Views
             // Arrange
             // Act
             page.CloseButton_Clicked(null, null);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_GetItemToDisplay_Default_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel {
+                Name = "PrimaryHand01",
+                    Description = "May the force be with you!",
+                    ImageURI = "item_sword.png",
+                    Range = 5,
+                    Damage = 10,
+                    Value = 9,
+                    Location = ItemLocationEnum.PrimaryHand,
+                    Attribute = AttributeEnum.Attack
+                };
+
+
+            // Act
+            page.GetItemToDisplay(item);
 
             // Reset
 
