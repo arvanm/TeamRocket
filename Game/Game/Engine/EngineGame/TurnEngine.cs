@@ -289,9 +289,14 @@ namespace Game.Engine.EngineGame
                 return false;
             }
 
-            // Roll dice to see whether to capture, 20% chance
+            // Roll dice to see whether to capture, 20% chance, Pet Lover has 30% chance
             var dice = DiceHelper.RollDice(1, 10);
-            if (dice <= 2)
+            var threshold = 2;
+            if (Attacker.Job == CharacterJobEnum.PetLover)
+            {
+                threshold = 3;
+            }
+            if (dice <= threshold)
             {
                 Debug.WriteLine(string.Format("{0} rolls {1} and choose to capture", Attacker.Name, dice));
                 return true;
