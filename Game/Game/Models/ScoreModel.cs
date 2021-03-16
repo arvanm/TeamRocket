@@ -78,7 +78,7 @@ namespace Game.Models
         {
             GameDate = DateTime.Now;    // Set to be now by default.
             AutoBattle = false;         //assume user battle
-
+            Name = "New Score";
             TurnCount = 0;
             RoundCount = 0;
             ExperienceGainedTotal = 0;
