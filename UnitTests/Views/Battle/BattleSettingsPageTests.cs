@@ -93,5 +93,25 @@ namespace UnitTests.Views
             // Assert
             Assert.IsTrue(!current); // Got to here, so it happened...
         }
+
+        [Test]
+        public void BattleSettingsPage_AllowAmazonDelivery_Toggled_True_Should_Pass()
+        {
+            // Arrange
+
+            var control = (Switch)page.FindByName("AllowAmazonDeliverySwitch");
+            control.IsToggled = true;
+            var current = control.IsToggled;
+
+            ToggledEventArgs args = new ToggledEventArgs(current);
+
+            // Act
+            page.AllowAmazonDelivery_Toggled(null, args);
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(current); // Got to here, so it happened...
+        }
     }
 }
