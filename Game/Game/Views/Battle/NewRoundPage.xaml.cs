@@ -26,9 +26,12 @@ namespace Game.Views
             InitializeComponent();
 
             // Draw the Characters
-            foreach (var data in EngineViewModel.Engine.EngineSettings.CharacterList)
+            foreach (var data in BattleEngineViewModel.Instance.Engine.EngineSettings.PlayerList)
             {
-                PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
+                if (data.PlayerType == PlayerTypeEnum.Character)
+                {
+                    PartyListFrame.Children.Add(CreatePlayerDisplayBox(data));
+                }
             }
 
             // Draw the Monsters
