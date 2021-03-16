@@ -39,6 +39,7 @@ namespace UnitTests.Views
             BattleEngineViewModel.Instance.SetBattleEngineToGame();
 
             page = new PickCharactersPage();
+
         }
 
         [TearDown]
@@ -149,6 +150,121 @@ namespace UnitTests.Views
 
             // Assert
             Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickCharactersPage_CharacterSelected_Add_To_Empty_Should_Add()
+        {
+            // Arrange
+            BattleEngineViewModel.Instance.PartyCharacterList.Clear();
+            var Button = new ImageButton();
+            Button.CommandParameter = CharacterIndexViewModel.Instance.Dataset.FirstOrDefault().Id;
+
+            // Act
+            page.CharacterSelected(Button, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(1, BattleEngineViewModel.Instance.PartyCharacterList.Count());
+        }
+
+        [Test]
+        public void PickCharactersPage_CharacterSelected_Add_To_Full_Should_Not_Add()
+        {
+            // Arrange
+            BattleEngineViewModel.Instance.PartyCharacterList.Clear();
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(new CharacterModel());
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(new CharacterModel());
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(new CharacterModel());
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(new CharacterModel());
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(new CharacterModel());
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(new CharacterModel());
+
+            var Button = new ImageButton();
+            Button.CommandParameter = CharacterIndexViewModel.Instance.Dataset.FirstOrDefault().Id;
+
+            // Act
+            page.CharacterSelected(Button, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(6, BattleEngineViewModel.Instance.PartyCharacterList.Count());
+        }
+
+        [Test]
+        public void PickCharactersPage_CharacterSelected_Add_To_Existed_Should_Not_Add()
+        {
+            // Arrange
+            BattleEngineViewModel.Instance.PartyCharacterList.Clear();
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(CharacterIndexViewModel.Instance.Dataset.FirstOrDefault());
+
+            var Button = new ImageButton();
+            Button.CommandParameter = CharacterIndexViewModel.Instance.Dataset.FirstOrDefault().Id;
+
+            // Act
+            page.CharacterSelected(Button, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(1, BattleEngineViewModel.Instance.PartyCharacterList.Count());
+        }
+
+        [Test]
+        public void PickCharactersPage_CharacterSelected_Add_Null_Should_Not_Add()
+        {
+            // Arrange
+            BattleEngineViewModel.Instance.PartyCharacterList.Clear();
+
+            var Button = new ImageButton();
+            Button.CommandParameter = "whatever";
+
+            // Act
+            page.CharacterSelected(Button, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, BattleEngineViewModel.Instance.PartyCharacterList.Count());
+        }
+
+        [Test]
+        public void PickCharactersPage_CharacterDeselected_Remove_Null_Should_Not_Remove()
+        {
+            // Arrange
+            BattleEngineViewModel.Instance.PartyCharacterList.Clear();
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(CharacterIndexViewModel.Instance.Dataset.FirstOrDefault());
+
+            var Button = new ImageButton();
+            Button.CommandParameter = "whatever";
+
+            // Act
+            page.CharacterDeselected(Button, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(1, BattleEngineViewModel.Instance.PartyCharacterList.Count());
+        }
+        [Test]
+        public void PickCharactersPage_CharacterDeselected_Remove_Valid_Should_Remove()
+        {
+            // Arrange
+            BattleEngineViewModel.Instance.PartyCharacterList.Clear();
+            BattleEngineViewModel.Instance.PartyCharacterList.Add(CharacterIndexViewModel.Instance.Dataset.FirstOrDefault());
+
+            var Button = new ImageButton();
+            Button.CommandParameter = CharacterIndexViewModel.Instance.Dataset.FirstOrDefault().Id;
+
+            // Act
+            page.CharacterDeselected(Button, null);
+
+            // Reset
+
+            // Assert
+            Assert.AreEqual(0, BattleEngineViewModel.Instance.PartyCharacterList.Count());
         }
 
         //[Test]
