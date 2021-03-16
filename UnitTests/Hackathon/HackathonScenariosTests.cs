@@ -193,6 +193,7 @@ namespace Scenario
             // Set Character Conditions
 
             EngineViewModel.Engine.EngineSettings.MaxNumberPartyCharacters = 1;
+
             var Character = new CharacterModel
             {
                 Speed = -1, // Will go last...
@@ -270,7 +271,7 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Miss;
 
             // Amazon delivers
-            EngineViewModel.Engine.EngineSettings.AmazonDeliver = true;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowAmazonDelivery = true;
 
             // Add Character
             var CharacterPlayer = new PlayerInfoModel(new CharacterModel
@@ -303,8 +304,8 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
             EngineViewModel.Engine.EngineSettings.MaxRoundCount = 100;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
-            EngineViewModel.Engine.EngineSettings.AmazonDeliver = false;
             await ItemIndexViewModel.Instance.DeleteAsync(NewHeadItem);
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowAmazonDelivery = false;
 
             //Assert
             Assert.NotNull(NewHeadItem);
@@ -348,7 +349,7 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Miss;
 
             // Amazon delivers
-            EngineViewModel.Engine.EngineSettings.AmazonDeliver = true;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowAmazonDelivery = true;
 
             // Add Items
             var FeetItem = new ItemModel { Name = "Test", Location = ItemLocationEnum.Feet, Attribute = AttributeEnum.Attack, Value = 20 };
@@ -400,7 +401,6 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
             EngineViewModel.Engine.EngineSettings.MaxRoundCount = 100;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
-            EngineViewModel.Engine.EngineSettings.AmazonDeliver = false;
             await ItemIndexViewModel.Instance.DeleteAsync(FeetItem);
             await ItemIndexViewModel.Instance.DeleteAsync(NeckItem);
             await ItemIndexViewModel.Instance.DeleteAsync(PHandItem);
@@ -410,6 +410,7 @@ namespace Scenario
             await ItemIndexViewModel.Instance.DeleteAsync(PokeballItem);
             await ItemIndexViewModel.Instance.DeleteAsync(HeadItem);
             await ItemIndexViewModel.Instance.DeleteAsync(NewPrimaryHandItem);
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowAmazonDelivery = false;
 
             //Assert
             Assert.AreEqual(NewPrimaryHandItem.Value, 20);
@@ -453,7 +454,7 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Miss;
 
             // Amazon delivers
-            EngineViewModel.Engine.EngineSettings.AmazonDeliver = true;
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowAmazonDelivery = true;
 
             // Add Items
             var FeetItem = new ItemModel { Name = "Test", Location = ItemLocationEnum.Feet, Attribute = AttributeEnum.Attack, Value = 20 };
@@ -510,7 +511,6 @@ namespace Scenario
             EngineViewModel.Engine.EngineSettings.PlayerList.Clear();
             EngineViewModel.Engine.EngineSettings.MaxRoundCount = 100;
             EngineViewModel.Engine.EngineSettings.BattleSettingsModel.MonsterHitEnum = HitStatusEnum.Default;
-            EngineViewModel.Engine.EngineSettings.AmazonDeliver = false;
             DiceHelper.DisableForcedRolls();
             await ItemIndexViewModel.Instance.DeleteAsync(FeetItem);
             await ItemIndexViewModel.Instance.DeleteAsync(NeckItem);
@@ -520,6 +520,7 @@ namespace Scenario
             await ItemIndexViewModel.Instance.DeleteAsync(RFingerItem);
             await ItemIndexViewModel.Instance.DeleteAsync(PokeballItem);
             await ItemIndexViewModel.Instance.DeleteAsync(HeadItem);
+            EngineViewModel.Engine.EngineSettings.BattleSettingsModel.AllowAmazonDelivery = false;
 
             //Assert
             Assert.AreEqual(NewItemsCount, OldItemsCount);

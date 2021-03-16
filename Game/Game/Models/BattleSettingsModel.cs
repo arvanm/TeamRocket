@@ -26,5 +26,8 @@ namespace Game.Models
 
         // Can monsters have Items and weapons?
         public bool AllowMonsterItems = false;
+
+        // Can Amazon deliver items in need?
+        public bool AllowAmazonDelivery = false;
     }
 }

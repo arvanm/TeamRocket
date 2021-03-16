@@ -266,7 +266,7 @@ namespace Game.Engine.EngineGame
         public override bool EndRound()
         {
             // Deliver from amazon for each round, add one needed / better item for each character
-            if (EngineSettings.AmazonDeliver)
+            if (EngineSettings.BattleSettingsModel.AllowAmazonDelivery)
             {
                 EngineSettings.CharacterList.ForEach(x => GetDeliveryForCharacter(x));
             }
