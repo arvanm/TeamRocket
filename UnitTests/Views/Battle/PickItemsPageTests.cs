@@ -238,6 +238,287 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void PickItemsPage_UpdateAttributeValues_Head_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "Head01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.Head,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.UpdateAttributeValues();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_UpdateAttributeValues_Feet_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "Feet01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.Feet,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.UpdateAttributeValues();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_UpdateAttributeValues_Finger_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "Finger01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.Finger,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.UpdateAttributeValues();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_UpdateAttributeValues_LeftFinger_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "LeftFinger01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.LeftFinger,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.UpdateAttributeValues();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_UpdateAttributeValues_RightFinger_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "RightFinger01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.RightFinger,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.UpdateAttributeValues();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_UpdateAttributeValues_Necklass_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "Necklass01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.Necklass,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.UpdateAttributeValues();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
+        public void PickItemsPage_UpdateAttributeValues_OffHand_Should_Pass()
+        {
+            // Arrange
+            ItemModel item = new ItemModel
+            {
+                Name = "OffHand01",
+                Description = "May the force be with you!",
+                ImageURI = "item_sword.png",
+                Range = 5,
+                Damage = 10,
+                Value = 9,
+                Location = ItemLocationEnum.OffHand,
+                Attribute = AttributeEnum.Attack
+            };
+
+            var CharacterPlayer = new PlayerInfoModel(
+                new CharacterModel
+                {
+                    Speed = 100,
+                    Level = 10,
+                    CurrentHealth = 11,
+                    ExperienceTotal = 1,
+                    ExperienceRemaining = 1,
+                    Name = "Mike",
+                    ListOrder = 1,
+                });
+
+            page.SelectedItem = item;
+            page.SelectedCharacter = CharacterPlayer;
+
+            // Act
+            page.UpdateAttributeValues();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+
+        [Test]
         public void PickItemsPage_DrawCharacterList_Default_Should_Pass()
         {
             // Arrange
