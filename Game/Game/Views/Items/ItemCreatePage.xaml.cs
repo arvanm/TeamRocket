@@ -124,7 +124,7 @@ namespace Game.Views
         /// <returns>Whether the input name is empty or null</returns>
         public async Task<bool> CheckItemName()
         {
-            if (string.IsNullOrEmpty(ViewModel.Data.Name))
+            if (ViewModel.Data.Name == null)
             {
                 await DisplayAlert("Alert", "Item name cannot be empty!", "OK");
                 return false;
