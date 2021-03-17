@@ -100,7 +100,7 @@ namespace Game.Views
         /// Otherwise return true.
         /// </summary>
         /// <returns></returns>
-        private async Task<bool> CheckScoreValue()
+        public async Task<bool> CheckScoreValue()
         {
             // Check to make sure value is not negative
             if (ViewModel.Data.ScoreTotal < 0)
