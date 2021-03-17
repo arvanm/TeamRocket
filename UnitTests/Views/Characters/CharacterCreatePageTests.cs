@@ -160,6 +160,21 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+        [Test]
+        public void CharacterCreatePage_CheckCharacterName_Null_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = null;
+
+            // Act
+            var boolValue = page.CheckCharacterName();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         #region LevelPicker_Changed
         [Test]
         public void CharacterCreatePage_LevelPicker_SelectedIndex_Neg1_Should_Return_Level()
