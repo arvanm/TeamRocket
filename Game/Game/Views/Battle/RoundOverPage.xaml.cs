@@ -327,7 +327,11 @@ namespace Game.Views
             // Show what was picked up
             DrawItemLists();
         }
-
+        /// <summary>
+        /// Click button to migrated to another page where user can manually assign items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void ManualAssignButton_Clicked(object sender, EventArgs e)
         {
             // Navigate to item pickup page
