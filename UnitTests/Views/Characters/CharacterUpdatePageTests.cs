@@ -145,6 +145,22 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+
+        [Test]
+        public void CharacterUpdatePage_CheckCharacterName_Null_Should_Pass()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = null;
+
+            // Act
+            var boolValue = page.CheckCharacterName();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
         [Test]
         public void CharacterUpdatePage_OnBackButtonPressed_Valid_Should_Pass()
         {
