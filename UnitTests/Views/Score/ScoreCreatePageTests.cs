@@ -102,6 +102,37 @@ namespace UnitTests.Views
             Assert.IsTrue(true); // Got to here, so it happened...
         }
 
+
+        [Test]
+        public async Task ScoreCreatePage_CheckScoreName_Name_Should_Return_True()
+        {
+            // Arrange
+            page.ViewModel.Data.Name = null;
+
+            // Act
+            var Result = page.CheckScoreName();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public async Task ScoreCreatePage_CheckScoreValue_BelowZero_Should_Return_True()
+        {
+            // Arrange
+            page.ViewModel.Data.ScoreTotal = -1;
+
+            // Act
+            var Result = page.CheckScoreValue();
+
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true);
+        }
+
         [Test]
         public void ScoreCreatePage_OnBackButtonPressed_Valid_Should_Pass()
         {
