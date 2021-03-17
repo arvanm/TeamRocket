@@ -86,6 +86,20 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void ItemUpdatePage_CheckItemName_Default_Should_Pass()
+        {
+            // Arrange
+
+            page.ViewModel.Data.Name = null;
+            // Act
+            _ = page.CheckItemName();
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void ItemUpdatePage_Save_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
