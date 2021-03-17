@@ -416,7 +416,7 @@ namespace Game.Views
                     break;
                 case PlayerTypeEnum.Unknown:
                 default:
-                    data.Clicked += (sender, args) => SetSelectedEmpty(MapLocationModel);
+                    //data.Clicked += (sender, args) => SetSelectedEmpty(MapLocationModel);
 
                     // Use the blank cell
                     data.Source = BattleEngineViewModel.Instance.Engine.EngineSettings.MapModel.EmptySquare.ImageURI;
