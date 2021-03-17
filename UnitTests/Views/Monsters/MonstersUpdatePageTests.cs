@@ -96,6 +96,20 @@ namespace UnitTests.Views
         }
 
         [Test]
+        public void MonsterUpdatePage_CheckItemName_Default_Should_Pass()
+        {
+            // Arrange
+
+            page.ViewModel.Data.Name = null;
+            // Act
+            _ = page.CheckMonsterName();
+            // Reset
+
+            // Assert
+            Assert.IsTrue(true); // Got to here, so it happened...
+        }
+
+        [Test]
         public void MonsterUpdatePage_ChangeImage_Clicked_Null_Image_Should_Pass()
         {
             // Arrange
